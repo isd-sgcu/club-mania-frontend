@@ -1,15 +1,28 @@
 @import './markdown.css';
+h1 {
+  @apply text-[96px] leading-[112px] tracking-[2px];
+  font-family: "Mitr";
+}
 
-html,
-body,
-#app {
+h3 {
+  @apply text-[72px] leading-[56px];
+  font-family: "Mitr";
+}
+
+h5 {
+  @apply text-[24px] leading-[24px] tracking-[0.18px];
+  font-family: "Mitr";
+}
+
+button {
+  @apply text-[24px] leading-[16px] tracking-[1.25px];
+  font-family: "Roboto" ,sans-serif;
+}
+
+html, body, #app {
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-html.dark {
-  background: #121212;
 }
 
 #nprogress {
@@ -17,27 +30,11 @@ html.dark {
 }
 
 #nprogress .bar {
-  @apply bg-teal-600 opacity-75;
-
+  @apply bg-red opacity-75;
   position: fixed;
   z-index: 1031;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 2px;
-}
-
-.btn {
-  @apply px-4 py-1 rounded inline-block
-    bg-teal-600 text-white cursor-pointer
-    hover:bg-teal-700
-    disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50;
-}
-
-.icon-btn {
-  @apply inline-block cursor-pointer select-none
-    opacity-75 transition duration-200 ease-in-out
-    hover:opacity-100 hover:text-teal-600;
-  font-size: 0.9em;
 }
