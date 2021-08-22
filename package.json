@@ -1,4 +1,5 @@
 {
+  "name": "club-mania",
   "private": true,
   "scripts": {
     "dev": "vite --port 3333 --open",
