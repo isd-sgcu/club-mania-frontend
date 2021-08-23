@@ -6,7 +6,6 @@ declare module 'vue' {
     CarbonWarning: typeof import('virtual:vite-icons/carbon/warning')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     README: typeof import('./src/components/README.md')['default']
-    TextBody: typeof import('./src/components/typography/text-body1.vue')['default']
     TextBody1: typeof import('./src/components/typography/text-body1.vue')['default']
     TextBody2: typeof import('./src/components/typography/text-body2.vue')['default']
     TextCaption: typeof import('./src/components/typography/text-caption.vue')['default']
