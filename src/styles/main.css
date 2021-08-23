@@ -1,4 +1,11 @@
 @import './markdown.css';
+@font-face {
+  font-family: "Retro Gaming";
+  src: url('../assets/fonts/Retro Gaming.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 h1 {
   @apply text-[96px] leading-[112px] tracking-[2px];
   font-family: "Mitr";
@@ -16,7 +23,7 @@ h5 {
 
 button {
   @apply text-[24px] leading-[16px] tracking-[1.25px];
-  font-family: "Roboto" ,sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 html, body, #app {

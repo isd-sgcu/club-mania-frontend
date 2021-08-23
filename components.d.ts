@@ -3,9 +3,18 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CarbonWarning: typeof import('virtual:vite-icons/carbon/warning')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']
     README: typeof import('./src/components/README.md')['default']
+    TextBody: typeof import('./src/components/typography/text-body1.vue')['default']
+    TextBody1: typeof import('./src/components/typography/text-body1.vue')['default']
+    TextBody2: typeof import('./src/components/typography/text-body2.vue')['default']
+    TextCaption: typeof import('./src/components/typography/text-caption.vue')['default']
+    TextLogo: typeof import('./src/components/typography/text-logo.vue')['default']
+    TextOverline: typeof import('./src/components/typography/text-overline.vue')['default']
+    TextSub1: typeof import('./src/components/typography/text-sub1.vue')['default']
+    TextSub2: typeof import('./src/components/typography/text-sub2.vue')['default']
   }
 }
 
