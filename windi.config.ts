@@ -31,6 +31,22 @@ export default defineConfig({
           "a400": "#7427D2",
           "textBox": "#3F2964",
         },
+        blue: {
+          b100: "#AACAE9",
+        },
+        darkPurple: "#1F0A41",
+        grey: {
+          primary: "#BBBBBB",
+          light: "#F5F5F5",
+          "light+": "#F3F3F3"
+        },
+        yellow: {
+          400: "#F4C437",
+          500: "#F5BB26",
+          700: "#F29A22",
+          800: "#F38C23",
+          900: "#F16A1F",
+        }
       },
       typography: {
         DEFAULT: {
