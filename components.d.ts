@@ -3,16 +3,16 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    CarbonCampsite: typeof import('virtual:vite-icons/carbon/campsite')['default']
-    CarbonDicomOverlay: typeof import('virtual:vite-icons/carbon/dicom-overlay')['default']
-    CarbonLanguage: typeof import('virtual:vite-icons/carbon/language')['default']
-    CarbonLogoGithub: typeof import('virtual:vite-icons/carbon/logo-github')['default']
-    CarbonMoon: typeof import('virtual:vite-icons/carbon/moon')['default']
-    CarbonPedestrian: typeof import('virtual:vite-icons/carbon/pedestrian')['default']
-    CarbonSun: typeof import('virtual:vite-icons/carbon/sun')['default']
-    CarbonWarning: typeof import('virtual:vite-icons/carbon/warning')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     README: typeof import('./src/components/README.md')['default']
+    TextBody: typeof import('./src/components/typography/text-body1.vue')['default']
+    TextBody1: typeof import('./src/components/typography/text-body1.vue')['default']
+    TextBody2: typeof import('./src/components/typography/text-body2.vue')['default']
+    TextCaption: typeof import('./src/components/typography/text-caption.vue')['default']
+    TextLogo: typeof import('./src/components/typography/text-logo.vue')['default']
+    TextOverline: typeof import('./src/components/typography/text-overline.vue')['default']
+    TextSub1: typeof import('./src/components/typography/text-sub1.vue')['default']
+    TextSub2: typeof import('./src/components/typography/text-sub2.vue')['default']
   }
 }
 

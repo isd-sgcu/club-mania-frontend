@@ -15,6 +15,7 @@ export default defineConfig({
       fontFamily: {
         Mitr: ["Mitr", "Arial", "sans"],
         Roboto: ["Roboto", "sans-serif"],
+        Retro: ["Retro Gaming", "Mitr", "Arial", "sans"],
       },
       colors: {
         red: "#DF322A",
