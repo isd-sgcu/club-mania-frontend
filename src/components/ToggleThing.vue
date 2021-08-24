@@ -19,7 +19,6 @@
         width: innerCirclueRadius + 'px',
         borderRadius: (innerCirclueRadius / 2) + 'px'
       }"
-      :class="{ innterActive: active }"
       ref="inner"
     ></div>
   </div>
@@ -32,6 +31,7 @@ const radius = height / 2;
 const outerPadding = 4;
 const innerCirclueRadius = height - 2 * outerPadding;
 
+// emit when this is clicked
 const emit = defineEmits<{
   (e: 'toggle', activeState: boolean): void
 }>();
@@ -47,6 +47,7 @@ watch(active, () => {
   setInnerXPosition();
 })
 
+// is called when clicked
 const toggle = () => {
   active.value = !active.value;
   emit('toggle', active.value);
