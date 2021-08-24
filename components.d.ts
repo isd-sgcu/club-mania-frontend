@@ -4,6 +4,8 @@
 declare module 'vue' {
   export interface GlobalComponents {
     CarbonWarning: typeof import('virtual:vite-icons/carbon/warning')['default']
+    Filter: typeof import('./src/components/Filter.vue')['default']
+    FilterButton: typeof import('./src/components/FilterButton.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     README: typeof import('./src/components/README.md')['default']
     TextBody1: typeof import('./src/components/typography/text-body1.vue')['default']
