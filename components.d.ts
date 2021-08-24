@@ -8,6 +8,7 @@ declare module 'vue' {
     README: typeof import('./src/components/README.md')['default']
     TextBody1: typeof import('./src/components/typography/text-body1.vue')['default']
     TextBody2: typeof import('./src/components/typography/text-body2.vue')['default']
+    TextBox: typeof import('./src/components/TextBox.vue')['default']
     TextCaption: typeof import('./src/components/typography/text-caption.vue')['default']
     TextLogo: typeof import('./src/components/typography/text-logo.vue')['default']
     TextOverline: typeof import('./src/components/typography/text-overline.vue')['default']
