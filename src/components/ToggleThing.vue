@@ -1,7 +1,7 @@
 <!-- Somehow "Toggle.vue" produces errors -->
 <template>
   <div
-    class="bg-white relative transition-all inline-block"
+    class="bg-white relative transition-all inline-block cursor-pointer"
     :style="{
       height: height + 'px',
       width: width + 'px',
