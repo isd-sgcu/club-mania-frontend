@@ -1,7 +1,7 @@
 <!-- Somehow "Toggle.vue" produces errors -->
 <template>
   <div
-    class="bg-white relative transition-all"
+    class="bg-white relative transition-all inline-block"
     :style="{
       height: height + 'px',
       width: width + 'px',
@@ -32,6 +32,11 @@ const radius = height / 2;
 const outerPadding = 4;
 const innerCirclueRadius = height - 2 * outerPadding;
 
+const emit = defineEmits<{
+  (e: 'toggle', activeState: boolean): void
+}>();
+
+
 const active = ref(false); // tells if the button is in active state
 const inner = ref<null | HTMLDivElement>(null); // the circle element
 
@@ -44,6 +49,7 @@ watch(active, () => {
 
 const toggle = () => {
   active.value = !active.value;
+  emit('toggle', active.value);
 }
 
 const innerTranslateXDistance = (width - 2 * outerPadding) - innerCirclueRadius;
