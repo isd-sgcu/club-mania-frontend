@@ -1,6 +1,6 @@
 <!-- <TextBox> pads all sides, mostly seen in Club1 page (Figma) -->
 <template>
-  <div class="w-full px-10">
+  <div class="w-full h-screen px-10 space-y-5 bg-dark-800">
     <TextBox>
       <header>
         <h5 class="text-white mb-2">เกี่ยวกับชมรม</h5>
@@ -13,5 +13,17 @@
         Update: ล่าสุด ศูนย์เอราวัณ มารับตัวแล้วครับ ฝ่ายชายไป รพ.กล้วยน้ำไท ฝ่ายหญิงไปจุดพักคอยเขตบางนา
       </text-body1>
     </TextBox>
+    <TextBox>
+      <input
+        v-model="name"
+        placeholder="Enter your name"
+        class="bg-purple-300 placeholder-light-50 rounded p-2 w-full"
+      />
+      <h1 class="text-white overflow-x-hidden">{{ name }}</h1>
+    </TextBox>
   </div>
 </template>
+
+<script setup lang="ts">
+const name = ref('');
+</script>
