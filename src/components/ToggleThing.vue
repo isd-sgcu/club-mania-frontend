@@ -31,13 +31,14 @@ const radius = height / 2;
 const outerPadding = 4;
 const innerCirclueRadius = height - 2 * outerPadding;
 
+const props = defineProps<{ initState?: boolean }>();
+
 // emit when this is clicked
 const emit = defineEmits<{
   (e: 'toggle', activeState: boolean): void
 }>();
 
-
-const active = ref(false); // tells if the button is in active state
+const active = ref(props.initState || false); // tells if the button is in active state
 const inner = ref<null | HTMLDivElement>(null); // the circle element
 
 onMounted(() => {
