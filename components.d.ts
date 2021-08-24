@@ -13,6 +13,7 @@ declare module 'vue' {
     TextBody2: typeof import('./src/components/typography/text-body2.vue')['default']
     TextBox: typeof import('./src/components/BackgroundSection.vue')['default']
     TextCaption: typeof import('./src/components/typography/text-caption.vue')['default']
+    TextFrame: typeof import('./src/components/TextFrame.vue')['default']
     TextLogo: typeof import('./src/components/typography/text-logo.vue')['default']
     TextOverline: typeof import('./src/components/typography/text-overline.vue')['default']
     TextSub1: typeof import('./src/components/typography/text-sub1.vue')['default']
