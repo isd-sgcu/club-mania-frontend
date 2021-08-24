@@ -32,11 +32,8 @@ const radius = height / 2;
 const outerPadding = 4;
 const innerCirclueRadius = height - 2 * outerPadding;
 
-const active = ref(false);
-
-const outer = ref<null | HTMLDivElement>(null);
-const inner = ref<null | HTMLDivElement>(null);
-
+const active = ref(false); // tells if the button is in active state
+const inner = ref<null | HTMLDivElement>(null); // the circle element
 
 onMounted(() => {
   setInnerXPosition();
@@ -64,8 +61,5 @@ const setInnerXPosition = () => {
 <style scoped>
 .outerActive {
   @apply bg-purple-600;
-}
-.innerActive {
-  /* transform: translateX(); */
 }
 </style>
