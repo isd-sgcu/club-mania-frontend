@@ -6,34 +6,43 @@
     <ol class="flex">
       <li>
         <router-link :to="'#'">
-          วิชาการ
+          {{ t('clubtype.title1.short') }}
         </router-link>
       </li>
       <li>
         <router-link :to="'#'">
-          ศิลป์วัฒน์
+          {{ t('clubtype.title2.short') }}
         </router-link>
       </li>
       <li>
         <router-link :to="'#'">
-          กีฬา
+          {{ t('clubtype.title3.short') }}
         </router-link>
       </li>
       <li>
         <router-link :to="'#'">
-          พัฒน์
+          {{ t('clubtype.title4.short') }}
         </router-link>
       </li>
     </ol>
     <div id="#searchBar" class="flex items-center">
       <mdi-account-circle-outline class="w-24px h-auto" />
-      <input type="text" placeholder="ชื่อชมรม" class="search-input bg-transparent max-w-133px h-32px ml-8px mr-24px" />
+      <input type="text" :placeholder="t('searchBar.placeholder')" class="search-input bg-transparent max-w-133px h-32px ml-8px mr-24px" />
       <mdi-magnify class="w-24px h-auto" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
+const searchClub = (searchTerm: string) => {
+
+  // TODO: implement search logic
+  // - may be fetch data from files
+
+}
 
 </script>
 
