@@ -1,7 +1,7 @@
 <template>
   <div class="relative transition-all">
     <!-- close icon -->
-    <div v-show="showDiscardIcon && value" @click="value = ''">
+    <div v-show="showDiscardIcon && value" @click="discard">
       <svg
         width="1em"
         height="1em"
@@ -20,7 +20,7 @@
       class="border-1 rounded-[8px] border-blue-b100 w-full bg-transparent placeholder-blue-b100 pl-[16px] pr-[28px] py-[8px] text-grey-light font-Roboto transition-all"
       :placeholder="props.placeholder ?? 'Placeholder...'"
       :disabled="props.disabled"
-      :style="{ minHeight }"
+      :style="{ height }"
       resize="none"
     ></textarea>
     <div v-show="props.disabled">
@@ -34,8 +34,11 @@
   </div>
 </template>
 
+<!-- TODO deleting a line doesn't result in correct resizing in y direction -->
+
 <script setup lang="ts">
-const minHeight = 80 + 'px';
+const defaultHeight = 80;
+const height = ref(defaultHeight + 'px');
 const expanded = ref(false);
 
 const props = defineProps<{
@@ -48,18 +51,22 @@ const emit = defineEmits<{
   (e: 'textChange', value: string): void,
 }>();
 
-const isYOverflown = () => {
-  const { scrollHeight, clientHeight } = getHeights();
-  return scrollHeight > clientHeight;
-}
-
-
 const value = ref(props.value ?? ''); // current text in the area
 watch(value, () => {
   emit('textChange', value.value);
-  if (isYOverflown()) expand();
-  else shrink();
+  if (value.value === '') {
+    shrink();
+    return;
+  }
+  const { scrollHeight } = getHeights();
+  if (scrollHeight > defaultHeight)
+    height.value = scrollHeight + 'px';
+  console.log(scrollHeight);
 })
+
+const discard = () => {
+  value.value = '';
+}
 
 const textarea = ref<null | HTMLTextAreaElement>(null);
 
@@ -73,11 +80,14 @@ const getHeights = () => {
 
 const expand = () => {
   const { scrollHeight } = getHeights();
-  (textarea.value as HTMLTextAreaElement).style.height = scrollHeight + 5 + 'px';
+  if (defaultHeight > scrollHeight) return
+  height.value = scrollHeight + 'px';
   expanded.value = true;
+  console.log("expand")
 }
 const shrink = () => {
-  (textarea.value as HTMLTextAreaElement).style.height = minHeight;
+  height.value = defaultHeight + 'px';
   expanded.value = false;
+  console.log("shrink")
 }
 </script>
