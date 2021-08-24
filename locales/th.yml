@@ -2,7 +2,7 @@ footer:
   text: องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย (อบจ.)
 button:
   back: ย้อนกลับ
-seachBar:
+searchBar:
   placeholder: ชื่อชมรม
 clubtype:
   title1: 

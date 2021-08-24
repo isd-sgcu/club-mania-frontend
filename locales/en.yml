@@ -2,7 +2,7 @@ button:
   back: Back
 footer:
   text: Footer text in English
-seachBar:
+searchBar:
   placeholder: club's name
 clubtype:
   title1: 
