@@ -3,14 +3,15 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BackgrondSection: typeof import('./src/components/BackgrondSection.vue')['default']
+    BackgroundSection: typeof import('./src/components/BackgroundSection.vue')['default']
     CarbonWarning: typeof import('virtual:vite-icons/carbon/warning')['default']
     Filter: typeof import('./src/components/Filter.vue')['default']
-    FilterButton: typeof import('./src/components/FilterButton.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     README: typeof import('./src/components/README.md')['default']
     TextBody1: typeof import('./src/components/typography/text-body1.vue')['default']
     TextBody2: typeof import('./src/components/typography/text-body2.vue')['default']
-    TextBox: typeof import('./src/components/TextBox.vue')['default']
+    TextBox: typeof import('./src/components/BackgroundSection.vue')['default']
     TextCaption: typeof import('./src/components/typography/text-caption.vue')['default']
     TextLogo: typeof import('./src/components/typography/text-logo.vue')['default']
     TextOverline: typeof import('./src/components/typography/text-overline.vue')['default']
