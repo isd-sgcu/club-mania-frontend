@@ -6,6 +6,7 @@ declare module 'vue' {
     BackgroundSection: typeof import('./src/components/BackgroundSection.vue')['default']
     CarbonCloseFilled: typeof import('virtual:vite-icons/carbon/close-filled')['default']
     Filter: typeof import('./src/components/Filter.vue')['default']
+    CarbonWarning: typeof import('virtual:vite-icons/carbon/warning')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     GeraCard: typeof import('./src/components/Card/Gera/gera-card.vue')['default']
     MdiAccountCircleOutline: typeof import('virtual:vite-icons/mdi/account-circle-outline')['default']
@@ -24,6 +25,8 @@ declare module 'vue' {
     TextSub2: typeof import('./src/components/typography/text-sub2.vue')['default']
     ToggleThing: typeof import('./src/components/ToggleThing.vue')['default']
     VichagarnCard: typeof import('./src/components/Card/Vichakarn/vichagarn-card.vue')['default']
+    VichagarnCard: typeof import('./src/components/Card/Vichakarn/vichagarn-card.vue')['default']
+    VichagarnText: typeof import('./src/components/Card/Vichakarn/VichagarnText.vue')['default']
     VichagarnTextCard: typeof import('./src/components/Card/Vichakarn/vichagarn-text-card.vue')['default']
     VichakarnImageCard: typeof import('./src/components/Card/Vichakarn/vichakarn-image-card.vue')['default']
   }
