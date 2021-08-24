@@ -14,6 +14,7 @@ declare module 'vue' {
     TextOverline: typeof import('./src/components/typography/text-overline.vue')['default']
     TextSub1: typeof import('./src/components/typography/text-sub1.vue')['default']
     TextSub2: typeof import('./src/components/typography/text-sub2.vue')['default']
+    ToggleThing: typeof import('./src/components/ToggleThing.vue')['default']
   }
 }
 
