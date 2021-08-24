@@ -1,9 +1,11 @@
 <template>
   <div
-    class="headbar container h-64px backdrop-blur-14px overflow-hidden flex px-8"
+    class="headbar"
   >
-    <text-logo>Club Mania</text-logo>
-    <ol class="flex">
+    <text-logo>
+      Club Mania
+    </text-logo>
+    <ol>
       <li>
         <router-link :to="'#'">
           {{ t('clubtype.title1.short') }}
@@ -25,22 +27,27 @@
         </router-link>
       </li>
     </ol>
-    <div :class="focusOnSearch ? 'searchbar active' : 'searchbar'">
-      <mdi-account-circle-outline v-if="!focusOnSearch" class="w-24px h-auto mr-8px" />
+    <!---Just for visual don't do anything special-->
+    <div class="flex items-center h-64px px-8">
+      <mdi-account-circle-outline class="w-24px h-auto mr-8px" />
+      <span class="dummy-block" @click="toggleSearch">{{ (name.length) ? name : t('searchBar.placeholder') }}</span>
+      <mdi-magnify class="w-24px h-auto ml-24px" @click="toggleSearch" />
+    </div>
+  </div>
+  <!--This show when an user click the magnify icon or the dummy block-->
+  <div v-if="isSearch" class="searchbox">
+    <div class="searchbar">
       <input
         v-model="name"
-        :class="focusOnSearch ? 'search-input active' : 'search-input'"
+        class="search-input"
         type="text"
-        :placeholder="t('searchBar.placeholder')"
-        outline="none"
-        @focus="toggleSearch"
-        @blur="toggleSearch"
+        placeholder="Search..."
       />
-      <mdi-magnify v-if="!focusOnSearch" class="w-24px h-auto ml-24px" @click="toggleSearch" />
-      <div>
-        <slot></slot>
-      </div>
+      <carbon-close-filled class="w-32px h-auto ml-8px" @click="toggleSearch" />
     </div>
+    <!---Search result add here!--->
+
+    <!---End--->
   </div>
 </template>
 
@@ -48,59 +55,56 @@
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const name = ref('')
-const focusOnSearch = ref(false)
+const isSearch = ref(false)
 
 const searchClub = (searchTerm: string) => {
 
   // TODO: implement search logic
-  // - may be fetch data from files
-
+  /* - may be fetch data from files or firebase
+     - create a element to render below searchbar
+  */
 }
 
 const toggleSearch = () => {
-  focusOnSearch.value = !focusOnSearch.value
+  isSearch.value = !isSearch.value
 }
 
 // trigger when there are change in name
 watchEffect(() => {
-  console.log(name.value)
+  // console.log(name.value)
   searchClub(name.value)
 })
 </script>
 
 <style scoped>
-
-.searchbar {
-  @apply flex items-center h-full;
-}
-
-.searchbar.active{
- @apply bg-grey-light px-16px py-12px;
-  transform: translateX(2rem);
-}
-.search-input {
-  @apply font-Roboto font-500 text-[20px] leading-[24px] tracking-[0.1px]
-    bg-transparent max-w-133px h-32px;
-}
-
-.search-input.active {
-  @apply max-w-364px w-364px rounded-xl border-gray-200;
-}
-
 .headbar {
-  color: white;
+  @apply container flex items-center justify-between text-white w-full h-64px
+    backdrop-blur-14px overflow-hidden pl-8;
+  position: fixed;
+  top: 0;
   background: rgba(0, 0, 0, 0.5);
-  align-items: center;
-  justify-content: space-between;
+}
+.dummy-block{
+  @apply font-Roboto font-500 text-[20px] leading-[24px] tracking-[0.1px]
+    bg-transparent w-133px h-32px py-1 opacity-50 overflow-ellipsis;
+}
+
+.searchbox {
+  @apply absolute text-purple-500 top-0 right-0;
+}
+.searchbar{
+  @apply flex items-center bg-grey-light px-16px py-12px;
+}
+
+.search-input {
+  @apply max-w-364px w-364px h-40px rounded-[8px] border-solid border-[1px]
+    px-12px overflow-ellipsis;
+  box-sizing: border-box;
 }
 
 li {
-  @apply font-Roboto font-500 text-[20px] leading-[24px] tracking-[0.1px];
-  display: flex;
-  align-items: center;
-  height: 64px;
-  padding: 0px 16px;
-  margin-right: 48px;
+  @apply inline float-left text-center font-Roboto font-500 text-[20px] leading-[24px]
+    tracking-[0.1px] mr-48px;
 }
 
 li:last-child {

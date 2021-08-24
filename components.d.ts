@@ -3,6 +3,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CarbonCloseFilled: typeof import('virtual:vite-icons/carbon/close-filled')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     MdiAccountCircleOutline: typeof import('virtual:vite-icons/mdi/account-circle-outline')['default']
     MdiMagnify: typeof import('virtual:vite-icons/mdi/magnify')['default']
