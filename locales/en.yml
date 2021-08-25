@@ -2,3 +2,18 @@ button:
   back: Back
 footer:
   text: Footer text in English
+searchBar:
+  placeholder: club's name
+clubtype:
+  title1: 
+    short: Academic
+    full: Academic Clubs
+  title2:
+    short: Art
+    full: Art and Culture Clubs
+  title3:
+    short: Sport
+    full: Sport Clubs
+  title4:
+    short: something
+    full: something Clubs

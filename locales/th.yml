@@ -2,3 +2,18 @@ footer:
   text: องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย (อบจ.)
 button:
   back: ย้อนกลับ
+searchBar:
+  placeholder: ชื่อชมรม
+clubtype:
+  title1: 
+    short: วิชาการ
+    full: ฝ่ายวิชาการ
+  title2:
+    short: ศิลป์วัฒน์
+    full: ฝ่ายศิลป์วัฒน์
+  title3:
+    short: กีฬา
+    full: ฝ่ายกีฬา
+  title4:
+    short: พัฒน์
+    full: ฝ่ายพัฒน์

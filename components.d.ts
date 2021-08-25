@@ -3,11 +3,15 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CarbonCloseFilled: typeof import('virtual:vite-icons/carbon/close-filled')['default']
     BackgrondSection: typeof import('./src/components/BackgrondSection.vue')['default']
     BackgroundSection: typeof import('./src/components/BackgroundSection.vue')['default']
     CarbonWarning: typeof import('virtual:vite-icons/carbon/warning')['default']
     Filter: typeof import('./src/components/Filter.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
+    MdiAccountCircleOutline: typeof import('virtual:vite-icons/mdi/account-circle-outline')['default']
+    MdiMagnify: typeof import('virtual:vite-icons/mdi/magnify')['default']
+    Navbar: typeof import('./src/components/Navbar.vue')['default']
     README: typeof import('./src/components/README.md')['default']
     TextBody1: typeof import('./src/components/typography/text-body1.vue')['default']
     TextBody2: typeof import('./src/components/typography/text-body2.vue')['default']
