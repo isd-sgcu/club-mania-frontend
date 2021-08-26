@@ -13,41 +13,41 @@ export default defineConfig({
   theme: {
     extend: {
       fontFamily: {
-        Mitr: ["Mitr", "Arial", "sans"],
-        Roboto: ["Roboto", "sans-serif"],
-        Retro: ["Retro Gaming", "Mitr", "Arial", "sans"],
+        Mitr: ['Mitr', 'Arial', 'sans'],
+        Roboto: ['Roboto', 'sans-serif'],
+        Retro: ['Retro Gaming', 'Mitr', 'Arial', 'sans'],
       },
       colors: {
-        red: "#DF322A",
-        navy: "##0C233F",
-        streetLight: "##8DB4DA",
+        red: '#DF322A',
+        navy: '#0C233F',
+        streetLight: '#8DB4DA',
         purple: {
-          400: "#6E459B",
-          500: "#633E8B",
-          600: "#5C3A87",
-          700: "#52317C",
-          900: "#391E67",
-          "900+": "#240F46",
-          "900++": "#1B0D31",
-          "a400": "#7427D2",
-          "textBox": "#3F2964",
+          '400': '#6E459B',
+          '500': '#633E8B',
+          '600': '#5C3A87',
+          '700': '#52317C',
+          '900': '#391E67',
+          '900+': '#240F46',
+          '900++': '#1B0D31',
+          'a400': '#7427D2',
+          'textBox': '#3F2964',
         },
         blue: {
-          b100: "#AACAE9",
+          b100: '#AACAE9',
         },
-        darkPurple: "#1F0A41",
+        darkPurple: '#1F0A41',
         grey: {
-          primary: "#BBBBBB",
-          light: "#F5F5F5",
-          "light+": "#F3F3F3"
+          'primary': '#BBBBBB',
+          'light': '#F5F5F5',
+          'light+': '#F3F3F3',
         },
         yellow: {
-          400: "#F4C437",
-          500: "#F5BB26",
-          700: "#F29A22",
-          800: "#F38C23",
-          900: "#F16A1F",
-        }
+          400: '#F4C437',
+          500: '#F5BB26',
+          700: '#F29A22',
+          800: '#F38C23',
+          900: '#F16A1F',
+        },
       },
       typography: {
         DEFAULT: {
