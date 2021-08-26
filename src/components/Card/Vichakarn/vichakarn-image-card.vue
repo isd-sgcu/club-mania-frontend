@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { defineProps, toRefs } from 'vue'
 
-const props = defineProps({
+defineProps({
   imgUrl: String,
 })
-
-const { imgUrl } = toRefs(props)
 
 </script>
 

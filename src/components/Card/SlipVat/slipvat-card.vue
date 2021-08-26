@@ -1,10 +1,8 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   dark: Boolean,
   text: String,
 })
-
-const { dark, text } = toRefs(props)
 
 </script>
 
