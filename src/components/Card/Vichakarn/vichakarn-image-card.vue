@@ -1,8 +1,10 @@
 <script setup lang="ts">
 
-defineProps({
-  imgUrl: String,
-})
+interface IProps {
+  imgUrl: string
+}
+
+defineProps<IProps>()
 
 </script>
 
