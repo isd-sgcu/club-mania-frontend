@@ -51,17 +51,18 @@ const emit = defineEmits<{
 }>();
 
 const value = ref(props.value ?? ''); // current text in the area
-watch(value, () => {
-  emit('textChange', value.value);
-  if (value.value === '') {
-    shrink();
-    return;
-  }
-})
 
 // resizing must be done at oninput, at watching value doesn't work.
 // https://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize
 const onInput = () => {
+  emit('textChange', value.value);
+
+  // In case of selecting all then delete
+  if (textarea.value!.value === '') {
+    height.value = defaultHeight + 'px';
+    return;
+  }
+
   const { scrollHeight } = getHeights();
   if (scrollHeight > defaultHeight) {
     textarea.value!.style.height = 'auto';
