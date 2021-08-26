@@ -10,3 +10,4 @@ node_modules
 # logs
 *.log
 note.txt
+components.d.ts
