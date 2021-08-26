@@ -17,7 +17,7 @@
     <textarea
       v-model="value"
       ref="textarea"
-      class="border-1 rounded-[8px] border-blue-b100 w-full bg-transparent placeholder-blue-b100 pl-[16px] pr-[28px] py-[8px] text-grey-light font-Roboto transition-all"
+      class="border-1 rounded-[8px] border-blue-b100 w-full bg-transparent placeholder-blue-b100 pl-[16px] pr-[28px] py-[8px] text-grey-light font-Roboto transition-all overflow-y-hidden"
       :placeholder="props.placeholder ?? 'Placeholder...'"
       :disabled="props.disabled"
       :style="{ height }"
