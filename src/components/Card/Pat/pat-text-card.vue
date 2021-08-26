@@ -1,5 +1,16 @@
+<script setup lang="ts">
+import { defineProps } from 'vue'
+import { PaletteKey } from './types'
+
+interface IProps {
+  color: PaletteKey
+}
+
+defineProps<IProps>()
+
+</script>
 <template>
-  <PatBorderCard>
+  <PatBorderCard :color="color">
     <div class="text-container">
       <TextSub2><slot /></TextSub2>
       <div class="rectangle-top-left" />
