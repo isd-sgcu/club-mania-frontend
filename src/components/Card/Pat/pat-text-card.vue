@@ -1,7 +1,7 @@
 <template>
   <PatBorderCard>
     <div class="text-container">
-      <TextSub2>Hello World</TextSub2>
+      <TextSub2><slot /></TextSub2>
       <div class="rectangle-top-left" />
       <div class="rectangle-top-right" />
       <div class="rectangle-bottom-left" />
@@ -12,7 +12,7 @@
 
 <style scoped>
 .text-container {
-    @apply w-full h-full pt-2 pb-2 pl-6 pr-6 text-white relative;
+    @apply min-h-[30px] w-full h-full pt-2 pb-2 pl-6 pr-6 text-white relative text-center;
 }
 
 .rectangle-top-left {
