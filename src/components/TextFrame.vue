@@ -23,6 +23,7 @@
       :style="{ height }"
       resize="none"
       @input="onInput"
+      @keydown.enter.exact.prevent="submit"
     ></textarea>
     <div v-show="props.disabled">
       <text-body2
@@ -42,15 +43,23 @@ const expanded = ref(false);
 
 const props = defineProps<{
   placeholder?: string,
-  disabled?: boolean,
+  disabled?: boolean, // ex. comment
   showDiscardIcon?: boolean,
-  value?: string,
+  value?: string, // initial value of the textarea, ex. comment
 }>();
+
 const emit = defineEmits<{
   (e: 'textChange', value: string): void,
+  (e: 'submit', value: string): void,
 }>();
 
 const value = ref(props.value ?? ''); // current text in the area
+
+// fires when enter is down
+const submit = () => {
+  emit('submit', value.value);
+  discard();
+}
 
 // resizing must be done at oninput, at watching value doesn't work.
 // https://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize
