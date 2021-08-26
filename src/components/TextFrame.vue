@@ -22,6 +22,7 @@
       :disabled="props.disabled"
       :style="{ height }"
       resize="none"
+      @input="onInput"
     ></textarea>
     <div v-show="props.disabled">
       <text-body2
@@ -33,8 +34,6 @@
     </div>
   </div>
 </template>
-
-<!-- TODO deleting a line doesn't result in correct resizing in y direction -->
 
 <script setup lang="ts">
 const defaultHeight = 80;
@@ -58,11 +57,17 @@ watch(value, () => {
     shrink();
     return;
   }
-  const { scrollHeight } = getHeights();
-  if (scrollHeight > defaultHeight)
-    height.value = scrollHeight + 'px';
-  console.log(scrollHeight);
 })
+
+// resizing must be done at oninput, at watching value doesn't work.
+// https://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize
+const onInput = () => {
+  const { scrollHeight } = getHeights();
+  if (scrollHeight > defaultHeight) {
+    textarea.value!.style.height = 'auto';
+    textarea.value!.style.height = textarea.value!.scrollHeight + 'px';
+  }
+}
 
 const discard = () => {
   value.value = '';
@@ -83,11 +88,9 @@ const expand = () => {
   if (defaultHeight > scrollHeight) return
   height.value = scrollHeight + 'px';
   expanded.value = true;
-  console.log("expand")
 }
 const shrink = () => {
   height.value = defaultHeight + 'px';
   expanded.value = false;
-  console.log("shrink")
 }
 </script>
