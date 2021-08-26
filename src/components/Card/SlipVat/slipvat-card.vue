@@ -1,8 +1,11 @@
 <script setup lang="ts">
-defineProps({
-  dark: Boolean,
-  text: String,
-})
+
+interface IProps {
+  dark: boolean
+  text: string
+}
+
+defineProps<IProps>()
 
 </script>
 

@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 
-defineProps({
-  imgUrl: String,
-  text: String,
-  dark: Boolean,
-})
+interface IProps {
+  imgUrl: string
+  text: string
+  dark: boolean
+}
+
+defineProps<IProps>()
 
 </script>
 
