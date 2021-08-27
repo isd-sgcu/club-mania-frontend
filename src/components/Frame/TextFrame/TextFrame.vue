@@ -18,7 +18,7 @@
       ref="textarea"
       v-model="value"
       class="border-1 rounded-[8px] w-full bg-transparent pl-[16px] pr-[28px] py-[8px] font-Roboto transition-all overflow-y-hidden"
-      :class="`border-${border[theme]} placeholder-${placeholder[theme]} text-${text[theme]}`"
+      :class="`border-${border[themeName]} placeholder-${placeholder[themeName]} text-${text[themeName]}`"
       :placeholder="props.placeholder ?? 'แสดงความคิดเห็น...'"
       :disabled="props.disabled"
       :style="{ height }"
@@ -44,17 +44,19 @@
 <script setup lang="ts">
 import useTextFrameConfig from './config'
 import { ThemeOption } from '~/types'
+import { useThemeStore } from '~/stores/themes'
+const { defaultHeight, border, placeholder, text } = useTextFrameConfig()
+const themeStore = useThemeStore()
 
 const props = defineProps<{
   placeholder?: string
   disabled?: boolean // ex. comment
   showDiscardIcon?: boolean
   value?: string // initial value of the textarea, ex. comment
-  theme: ThemeOption
+  theme?: ThemeOption
 }>()
 
-const { defaultHeight, border, placeholder, text } = useTextFrameConfig()
-
+const themeName = props.theme ?? themeStore.savedTheme
 const height = ref(`${defaultHeight}px`)
 const expanded = ref(false)
 
