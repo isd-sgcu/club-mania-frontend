@@ -7,12 +7,22 @@ interface IProps {
 
 defineProps<IProps>()
 
+const detect = ref(false)
+
+const handleMouseEnter = () => {
+  detect.value = true
+}
+
+const handleMouseOut = () => {
+  detect.value = false
+}
+
 </script>
 
 <template>
-  <div class="max-w-[200px]">
-    <img :class="'outer-frame-' + (dark ? 'pink' : 'blue')" class="rounded-2xl w-full" src="https://dummyimage.com/200x200/5c205c/ffffff.png">
-    <div :class="'text-frame-' + (dark ? 'pink' : 'blue')" class="bg-[#1F0A41] text-white pt-4 pb-4 pl-6 pr-6 rounded-2xl text-center mt-2">
+  <div class="max-w-[200px]" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+    <img :class="'outer-frame-' + (!detect ? 'pink' : 'blue')" class="rounded-2xl w-full" src="https://dummyimage.com/200x200/5c205c/ffffff.png">
+    <div :class="'text-frame-' + (!detect ? 'pink' : 'blue')" class="bg-[#1F0A41] text-white pt-4 pb-4 pl-6 pr-6 rounded-2xl text-center mt-2">
       <text-sub2 class="leading-6">
         {{ text }}
       </text-sub2>
