@@ -107,6 +107,9 @@ export default defineConfig({
       backgroundImage: {
 
       },
+      gridTemplateColumns: {
+        clubs: 'repeat(auto-fill, minmax(200px, 1fr))',
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -134,5 +137,8 @@ export default defineConfig({
         },
       },
     },
+  },
+  shortcuts: {
+    'Navbar-font': 'font-Roboto font-500 text-[20px] leading-[24px] tracking-[0.1px]',
   },
 })
