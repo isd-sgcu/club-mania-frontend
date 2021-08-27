@@ -10,7 +10,6 @@
     <OtherCard v-for="item in cardColor" :key="item" :color="item" text="ชมรมศิลปะการพูดและการแสดง" />
   </div>
   <div class="flex flex-wrap">
-    <GeraCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="ชมรม Hello World" dark />
     <GeraCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="ชมรม Hello World" />
   </div>
   <div class="flex flex-wrap">
