@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center space-y-3">
+  <div class="text-center space-y-3 pt-20">
     <p>
       <text-body1 class="text-red">Body 1</text-body1>
     </p>
@@ -20,6 +20,9 @@
     </p>
     <p>
       <text-sub2 class="uppercase">sub2</text-sub2>
+    </p>
+    <p>
+      <text-sub3 class="text-red">sub3</text-sub3>
     </p>
   </div>
 </template>
