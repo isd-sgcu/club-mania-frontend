@@ -17,7 +17,8 @@
     <textarea
       ref="textarea"
       v-model="value"
-      class="border-1 rounded-[8px] border-blue-b100 w-full bg-transparent placeholder-blue-b100 pl-[16px] pr-[28px] py-[8px] text-grey-light font-Roboto transition-all overflow-y-hidden"
+      class="border-1 rounded-[8px] w-full bg-transparent pl-[16px] pr-[28px] py-[8px] font-Roboto transition-all overflow-y-hidden"
+      :class="`border-${border[theme]} placeholder-${placeholder[theme]} text-${text[theme]}`"
       :placeholder="props.placeholder ?? 'Placeholder...'"
       :disabled="props.disabled"
       :style="{ height }"
@@ -30,27 +31,29 @@
         v-if="!expanded"
         class="text-white font-medium cursor-pointer"
         @click="expand"
-      >
-        Read more
-      </text-body2>
-      <text-body2 v-else class="text-white font-medium cursor-pointer" @click="shrink">
-        Show less
-      </text-body2>
+      >Read more</text-body2>
+      <text-body2 v-else class="text-white font-medium cursor-pointer" @click="shrink">Show less</text-body2>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const defaultHeight = 80
-const height = ref(`${defaultHeight}px`)
-const expanded = ref(false)
+import useTextFrameConfig from './config'
+import { ThemeOption } from '~/types'
 
 const props = defineProps<{
   placeholder?: string
   disabled?: boolean // ex. comment
   showDiscardIcon?: boolean
   value?: string // initial value of the textarea, ex. comment
+  theme: ThemeOption
 }>()
+
+const { defaultHeight, border, placeholder, text } = useTextFrameConfig()
+
+const height = ref(`${defaultHeight}px`)
+const expanded = ref(false)
+
 
 const emit = defineEmits<{
   (e: 'textChange', value: string): void

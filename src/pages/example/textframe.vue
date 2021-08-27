@@ -2,16 +2,15 @@
   <div class="bg-purple-900 w-full absolute h-screen px-[300px]">
     <!-- disable = false, auto resizes in height -->
     <TextFrame
+      theme="SilpVat"
       placeholder="Hi hi! This is a placeholder. 😎"
       :show-discard-icon="true"
       @textChange="show"
       @submit="onSubmit"
     />
-    <text-logo class="text-white">
-      {{ text }}
-    </text-logo>
+    <text-logo class="text-white">{{ text }}</text-logo>
     <!-- Read more button shows only if disable = true -->
-    <TextFrame :value="lorem100" :disabled="true" />
+    <TextFrame theme="Gera" :value="lorem100" :disabled="true" />
   </div>
 </template>
 
