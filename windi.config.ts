@@ -113,7 +113,7 @@ export default defineConfig({
           Vichagarn: '#0C233F',
           Gera: '#560000',
           Pat: '#914D1A',
-          Other: '#000D39',
+          Other: '#00274A',
         },
         darkPurple: '#1F0A41',
       },
