@@ -11,10 +11,9 @@ const makeSafe = (prefix: string, values: string | string[]): string => {
   return valuesArray.map(each => `${prefix}-${each}`).join(' ')
 }
 
-// const safelistBg = 'bg-textbox-Other bg-textbox-Pat bg-textbox-Gera bg-textbox-Vichagarn bg-textbox-SilpVat'
 const safeText = 'text-white text-Brown text-grey-light'
 const safeBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3]'
-const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat')
+const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat footer-SilpVat footer-Pat footer-default footer-Other footer-Gera footer-Vichagarn')
 const safePlaceholder = makeSafe('placeholder', 'blue-b100 [#FFCECB] LightBrown grey-light+')
 
 export default defineConfig({
@@ -70,14 +69,6 @@ export default defineConfig({
         },
         background: {
           DarkPurple: '#1F0A41',
-          Gera: '#linear-gradient(180deg, #390000 60.73%, #800000 100%)',
-          SlipVat: 'linear-gradient(180deg, #1F0A41 29.1%, #4F1B6F 100%)',
-          Vishagarn: 'linear-gradient(180deg, #003576 28.91%, #0B294E 100%)',
-          Vichagarn: 'linear-gradient(180deg, #003576 28.91%, #0B294E 100%)',
-          yellow: 'linear-gradient(180deg, #FFF2D7 0%, #FDD37E 99.99%, #FFCB64 100%)',
-          Other: 'linear-gradient(180deg, #35638E 26.29%, #00203E 100%)',
-          other: 'linear-gradient(180deg, #35638E 26.29%, #00203E 100%)',
-          vivi: 'linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(180deg, #04489A 28.91%, #0B294E 92.96%)',
         },
         grey: {
           'primary': '#BBBBBB',
@@ -116,7 +107,17 @@ export default defineConfig({
           Pat: 'rgba(254, 184, 41, 0.5)',
           Other: 'rgba(112, 159, 195, 0.25)',
         },
+        footer: {
+          default: '#0C0C0C',
+          SilpVat: '#1B0D31',
+          Vichagarn: '#0C233F',
+          Gera: '#560000',
+          Pat: '#914D1A',
+          Other: '#000D39',
+        },
         darkPurple: '#1F0A41',
+      },
+      backgroundImage: {
       },
       typography: {
         DEFAULT: {

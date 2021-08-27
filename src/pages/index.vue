@@ -1,9 +1,16 @@
 <template>
-    <h1>Hi</h1>
+  <PageBackground :theme="name" />
+  <div class="w-full min-h-960px text-center">
+    <Carousel />
+    <h1>สำรวจชมรม</h1>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { useThemeStore } from '~/stores/themes'
 
+const theme = useThemeStore()
+const name = ref(theme.savedTheme)
 </script>
 
 <style>

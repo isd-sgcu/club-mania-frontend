@@ -35,8 +35,8 @@
     </div>
   </div>
   <!--This show when an user click the magnify icon or the dummy block-->
-  <div v-if="isSearch" class="searchbox">
-    <div class="searchbar">
+  <div v-if="isSearch" class="search-box">
+    <div class="search-bar">
       <input
         v-model="name"
         class="search-input"
@@ -78,8 +78,8 @@ watchEffect(() => {
 
 <style scoped>
 .headbar {
-  @apply container flex items-center justify-between text-white w-full h-64px
-    backdrop-blur-14px overflow-hidden pl-8;
+  @apply w-full flex items-center justify-between text-white h-64px
+    backdrop-blur-14px overflow-hidden pl-8 z-50;
   position: fixed;
   top: 0;
   background: rgba(0, 0, 0, 0.5);
