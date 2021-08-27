@@ -1,7 +1,7 @@
 <template>
   <button
     class="text-white bg-transparent text-[24px] focus:outline-none px-[34px] py-[6px] rounded-full border-white border-1 transition-all"
-    :class="{ filterActive: isActive }"
+    :class="{ filterActive: activeState }"
     @click="toggle"
   >
     <slot></slot>
@@ -9,16 +9,17 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ initState?: boolean }>();
-const isActive = ref(props.initState || false);
+const props = defineProps<{ activeState: boolean }>()
+
+const isActive = ref(props.activeState || false)
 
 const emit = defineEmits<{
   (e: 'toggle', activeState: boolean): void
-}>();
+}>()
 
 const toggle = () => {
-  isActive.value = !isActive.value;
-  emit('toggle', isActive.value);
+  isActive.value = !isActive.value
+  emit('toggle', isActive.value)
 }
 
 </script>

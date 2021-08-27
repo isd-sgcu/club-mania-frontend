@@ -19,7 +19,7 @@
       v-model="value"
       class="border-1 rounded-[8px] w-full bg-transparent pl-[16px] pr-[28px] py-[8px] font-Roboto transition-all overflow-y-hidden"
       :class="`border-${border[theme]} placeholder-${placeholder[theme]} text-${text[theme]}`"
-      :placeholder="props.placeholder ?? 'Placeholder...'"
+      :placeholder="props.placeholder ?? 'แสดงความคิดเห็น...'"
       :disabled="props.disabled"
       :style="{ height }"
       resize="none"
