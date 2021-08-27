@@ -1,17 +1,18 @@
 <script setup lang="ts">
-const props = defineProps({
-  dark: Boolean,
-  text: String,
-})
 
-const { dark, text } = toRefs(props)
+interface IProps {
+  dark?: boolean
+  text: string
+}
+
+defineProps<IProps>()
 
 </script>
 
 <template>
   <div class="max-w-[200px]">
     <img :class="'outer-frame-' + (dark ? 'pink' : 'blue')" class="rounded-2xl w-full" src="https://dummyimage.com/200x200/5c205c/ffffff.png">
-    <div :class="'text-frame-' + (dark ? 'pink' : 'blue')" class="bg-[#1F0A41] text-white pt-4 pb-4 pl-6 pr-6 rounded-2xl text-center mt-4">
+    <div :class="'text-frame-' + (dark ? 'pink' : 'blue')" class="bg-[#1F0A41] text-white pt-4 pb-4 pl-6 pr-6 rounded-2xl text-center mt-2">
       <text-sub2 class="leading-6">
         {{ text }}
       </text-sub2>

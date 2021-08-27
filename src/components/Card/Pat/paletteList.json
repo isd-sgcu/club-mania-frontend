@@ -1,0 +1,46 @@
+{
+    "red": {
+        "borderTop": "#F64848",
+        "borderBottom": "#C11313",
+        "borderLeft": "#DD4848",
+        "borderRight": "#C31717",
+        "triangleTopLeft": "#EC4848",
+        "triangleTopRight": "#D71E1E",
+        "triangleBottomLeft": "#C82E2E",
+        "triangleBottomRight": "#BD1818",
+        "backgroundColor": "#D03131"
+    },
+    "green": {
+        "borderTop": "#4CAC29",
+        "borderBottom": "#347B1A",
+        "borderLeft": "#4C9C2E",
+        "borderRight": "#2F7715",
+        "triangleTopLeft": "#68B84A",
+        "triangleTopRight": "#3D8822",
+        "triangleBottomLeft": "#3B871F",
+        "triangleBottomRight": "#32711C",
+        "backgroundColor": "#3D8922"
+    },
+    "blue": {
+        "borderTop": "#5389BD",
+        "borderBottom": "#13324F",
+        "borderLeft": "#4679A9",
+        "borderRight": "#193F64",
+        "triangleTopLeft": "#6C96BF",
+        "triangleTopRight": "#2A5885",
+        "triangleBottomLeft": "#305475",
+        "triangleBottomRight": "#1B4267",
+        "backgroundColor": "#2B5782"
+    },
+    "yellow": {
+        "borderTop": "#FFD361",
+        "borderBottom": "#D17911",
+        "borderLeft": "#FFC739",
+        "borderRight": "#E29725",
+        "triangleTopLeft": "#FDCD52",
+        "triangleTopRight": "#F4B230",
+        "triangleBottomLeft": "#F4B230",
+        "triangleBottomRight": "#D18511",
+        "backgroundColor": "#F6B73C"
+    }
+}
