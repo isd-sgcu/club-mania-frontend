@@ -14,7 +14,7 @@
     <div
       ref="inner"
       class="absolute transition-all"
-      :class="'bg-' + innerBgColors[theme]"
+      :class="'bg-' + innerBgColors[themeName]"
       :style="{
         height: innerCircleRadius + 'px',
         width: innerCircleRadius + 'px',
@@ -28,19 +28,21 @@
 <script setup lang="ts">
 import useToggleConfig from './config'
 import { ThemeOption } from '~/types'
-
-const props = defineProps<{ initState?: boolean; theme: ThemeOption }>()
-
+import { useThemeStore } from '~/stores/themes'
 const { width, height, outerPadding, innerBgColors, outerColors, outerActiveColors, radius, innerCircleRadius, innerTranslateXDistance } = useToggleConfig()
+const themeStore = useThemeStore()
 
+const props = defineProps<{ initState?: boolean; theme?: ThemeOption }>()
+
+const themeName = props.theme ?? themeStore.savedTheme
 const active = ref(props.initState || false) // tells if the button is in active state
 const inner = ref<null | HTMLDivElement>(null) // the circle element
 
 const getOuterBackgroundColor = () => {
-  return active.value ? outerActiveColors[props.theme] : outerColors[props.theme]
+  return active.value ? outerActiveColors[themeName] : outerColors[themeName]
 }
 const outerBackground = ref(getOuterBackgroundColor())
-const innerBackground = innerBgColors[props.theme]
+const innerBackground = innerBgColors[themeName]
 
 // emit when this is clicked
 const emit = defineEmits<{
