@@ -1,12 +1,12 @@
 <template>
-  <div class="w-[200px]">
+  <div class="w-[200px]" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <div class="relative">
       <img class="absolute top-0 w-full h-full img-clip" :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
-      <img :src="ghostImg" class="w-full h-full mb-4" preserveAspectRatio="none">
+      <img :src="!detect ? ghostImg : ghostHover" class="w-full h-full mb-4" preserveAspectRatio="none">
     </div>
     <div class="relative">
-      <img :src="backgroundImg" class="w-full h-full" preserveAspectRatio="none">
-      <text-body2 class="absolute break-words p-5 pt-3 text-center text-card" :class="`text-${textColor}`">
+      <img :src="!detect ? backgroundImg : backgroundHover" class="w-full h-full" preserveAspectRatio="none">
+      <text-body2 class="absolute break-words p-5 pt-3 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
         {{ text }}
       </text-body2>
     </div>
@@ -29,6 +29,19 @@ const { color, text, imgUrl } = defineProps<IProps>()
 const textColor = TextColor[color]
 const backgroundImg = BACKGROUND[color]
 const ghostImg = GHOST[color]
+
+const ghostHover = GHOST.darkblue
+const backgroundHover = BACKGROUND.darkblue
+
+const detect = ref(false)
+
+const handleMouseEnter = () => {
+  detect.value = true
+}
+
+const handleMouseOut = () => {
+  detect.value = false
+}
 
 </script>
 

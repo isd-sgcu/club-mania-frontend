@@ -23,7 +23,7 @@
 import { GhostColorType } from '~/components/Card/Other/types'
 import { PaletteKey } from '~/components/Card/Pat/types'
 
-const cardColor = ['darkblue', 'lightcyan', 'pink', 'red', 'steel', 'yellow'] as GhostColorType[]
+const cardColor = ['lightcyan', 'pink', 'red', 'steel', 'yellow'] as GhostColorType[]
 const patColor = ['red', 'blue', 'yellow', 'green'] as PaletteKey[]
 
 </script>
