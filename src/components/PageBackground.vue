@@ -1,5 +1,5 @@
 <template>
-  <div class="background" :class="genre"></div>
+  <div class="background" :class="theme"></div>
 </template>
 
 <script setup lang="ts">
