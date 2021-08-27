@@ -9,7 +9,6 @@
       padding: outerPadding + 'px',
     }"
     :class="`bg-${active ? outerActiveColors[theme] : outerColors[theme]}`"
-    ref="outer"
     @click="toggle"
   >
     <div
