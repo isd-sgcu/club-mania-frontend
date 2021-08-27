@@ -96,7 +96,7 @@ export default defineConfig({
         textbox: {
           SilpVat: 'rgba(31, 10, 65, 0.75)',
           Vichagarn: 'rgba(12, 35, 63, 0.5)',
-          Gera: 'gba(223, 49, 42, 0.25)',
+          Gera: 'rgba(223, 49, 42, 0.25)',
           Pat: 'rgba(254, 184, 41, 0.5)',
           Other: 'rgba(112, 159, 195, 0.25)',
         },
