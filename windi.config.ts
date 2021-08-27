@@ -3,8 +3,8 @@ import colors from 'windicss/colors'
 import typography from 'windicss/plugin/typography'
 
 const dynamicStyleList = ['bg-textbox-Other', 'bg-textbox-Pat', 'bg-textbox-Gera', 'bg-textbox-Vichagarn',
-  'bg-textbox-SilpVat', 'bg-background-landing', 'bg-background-Other', 'bg-background-Gera', 'bg-background-Vichagarn',
-  'bg-background-pat', 'bg-background-SlipVat', 'text-white', 'text-Brown', 'text-grey-light']
+  'bg-textbox-SilpVat', 'bg-footer-default', 'bg-footer-Other', 'bg-footer-Gera', 'bg-footer-Vichagarn',
+  'bg-footer-Pat', 'bg-footer-SilpVat', 'text-white', 'text-Brown', 'text-grey-light']
 
 export default defineConfig({
   // 'bg-textbox-Other bg-textbox-Pat bg-textbox-Gera bg-textbox-Vichagarn bg-textbox-SilpVat text-white text-Brown text-grey-light'
@@ -93,6 +93,14 @@ export default defineConfig({
           Gera: 'rgba(223, 49, 42, 0.25)',
           Pat: 'rgba(254, 184, 41, 0.5)',
           Other: 'rgba(112, 159, 195, 0.25)',
+        },
+        footer: {
+          default: '#0C0C0C',
+          SilpVat: '#1B0D31',
+          Vichagarn: '#0C233F',
+          Gera: '#560000',
+          Pat: '#914D1A',
+          Other: '#000D39',
         },
         darkPurple: '#1F0A41',
       },

@@ -1,7 +1,7 @@
 <template>
   <div
-    class="h-[64px] text-white backdrop-blur-14px w-full px-[32px] py-[17.45px] bottom-0"
-    :class="`bg-[${color}]`"
+    class="h-[64px] text-white w-full px-[32px] py-[17.45px] bottom-0"
+    :class="`bg-footer-${options}`"
   >
     <h5>{{ t("footer.text") }}</h5>
   </div>
@@ -16,15 +16,7 @@ const props = defineProps<{
   theme: ThemeOption
 }>()
 
-const bgColors = {
-  Vichakarn: '#0C233F',
-  Silpvat: '#1B0D31',
-  Gera: '#560000',
-  Pat: '#914D1A',
-  Other: '#000D39',
-}
-
-const color = props.theme ? bgColors.Vichakarn : '#0C0C0C'
+const options = props.theme ? props.theme : 'default'
 </script>
 
 <style>

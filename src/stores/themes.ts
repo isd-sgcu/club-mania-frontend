@@ -1,14 +1,14 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
+import { ThemeOption } from '~/types'
 
-const themes = ['defualt', 'vichakarn', 'slipvat', 'gira', 'pat', 'other']
 export const useThemeStore = defineStore('theme', () => {
   /**
    * Current theme of the website.
    */
-  const savedTheme = ref(themes[2])
+  const savedTheme = ref<ThemeOption>('Vichagarn')
 
-  function setNewTheme(index: number) {
-    savedTheme.value = themes[index]
+  function setNewTheme(name: ThemeOption) {
+    savedTheme.value = name
   }
 
   return {
