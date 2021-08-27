@@ -2,13 +2,22 @@ import { defineConfig } from 'windicss/helpers'
 import colors from 'windicss/colors'
 import typography from 'windicss/plugin/typography'
 
-const dynamicStyleList = ['bg-textbox-Other', 'bg-textbox-Pat', 'bg-textbox-Gera', 'bg-textbox-Vichagarn',
-  'bg-textbox-SilpVat', 'bg-footer-default', 'bg-footer-Other', 'bg-footer-Gera', 'bg-footer-Vichagarn',
-  'bg-footer-Pat', 'bg-footer-SilpVat', 'text-white', 'text-Brown', 'text-grey-light']
+const makeSafe = (prefix: string, values: string | string[]): string => {
+  let valuesArray: string[]
+  if (typeof values === 'string')
+    valuesArray = values.split(' ')
+  else valuesArray = values
+
+  return valuesArray.map(each => `${prefix}-${each}`).join(' ')
+}
+
+const safeText = 'text-white text-Brown text-grey-light'
+const safeBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3]'
+const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat footer-SilpVat footer-Pat footer-default footer-Other footer-Gera footer-Vichagarn')
+const safePlaceholder = makeSafe('placeholder', 'blue-b100 [#FFCECB] LightBrown grey-light+')
 
 export default defineConfig({
-  // 'bg-textbox-Other bg-textbox-Pat bg-textbox-Gera bg-textbox-Vichagarn bg-textbox-SilpVat text-white text-Brown text-grey-light'
-  safelist: dynamicStyleList.join(' '),
+  safelist: `${safeBg} ${safeText} ${safeBorder} ${safePlaceholder}`,
   darkMode: 'class',
   // https://windicss.org/posts/v30.html#attributify-mode
   attributify: true,
@@ -50,6 +59,10 @@ export default defineConfig({
           '900++': '#1B0D31',
           '900+++': '#100423',
           'a400': '#7427D2',
+        },
+        gradient: {
+          1: 'linear-gradient(103.46deg, #492B75 12.75%, #DE3228 94.12%)',
+          3: 'linear-gradient(103.46deg, #DE3228 12.75%, #492B75 94.12%)',
         },
         blue: {
           b100: '#AACAE9',
@@ -105,7 +118,6 @@ export default defineConfig({
         darkPurple: '#1F0A41',
       },
       backgroundImage: {
-
       },
       typography: {
         DEFAULT: {
