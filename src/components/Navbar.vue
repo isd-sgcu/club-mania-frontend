@@ -30,7 +30,7 @@
     <!---Just for visual don't do anything special-->
     <div class="flex items-center h-64px px-8">
       <mdi-account-circle-outline class="w-24px h-auto mr-8px" />
-      <span class="dummy-block" @click="toggleSearch">{{ (name.length) ? name : t('searchBar.placeholder') }}</span>
+      <span class="admin-block">{{ adminName }}</span>
       <mdi-magnify class="w-24px h-auto ml-24px" @click="toggleSearch" />
     </div>
   </div>
@@ -38,7 +38,7 @@
   <div v-if="isSearch" class="search-box">
     <div class="search-bar">
       <input
-        v-model="name"
+        v-model="searchTerm"
         class="search-input"
         type="text"
         placeholder="Search..."
@@ -54,7 +54,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
-const name = ref('')
+const adminName = ref('ชมรมภาพยนตร์')
+const searchTerm = ref('')
 const isSearch = ref(false)
 
 const searchClub = (searchTerm: string) => {
@@ -69,41 +70,38 @@ const toggleSearch = () => {
   isSearch.value = !isSearch.value
 }
 
-// trigger when there are change in name
+// trigger when there are change in searchTerm
 watchEffect(() => {
-  // console.log(name.value)
-  searchClub(name.value)
+  // console.log(searchTerm.value)
+  searchClub(searchTerm.value)
 })
 </script>
 
 <style scoped>
 .headbar {
-  @apply w-full flex items-center justify-between text-white h-64px
-    backdrop-blur-14px overflow-hidden pl-8 z-50;
-  position: fixed;
-  top: 0;
-  background: rgba(0, 0, 0, 0.5);
+  @apply fixed flex w-full h-64px justify-between items-center text-white
+    backdrop-blur-14px overflow-hidden pl-8 top-0;
+    background: rgba(0, 0, 0, 0.5)
 }
-.dummy-block{
-  @apply font-Roboto font-500 text-[20px] leading-[24px] tracking-[0.1px]
-    bg-transparent w-133px h-32px py-1 opacity-50 overflow-ellipsis;
+.admin-block{
+  @apply Navbar-font w-133px
+    bg-transparent h-32px py-1 opacity-50 overflow-ellipsis;
 }
 
-.searchbox {
-  @apply absolute text-purple-500 top-0 right-0;
+.search-box {
+  @apply absolute max-w-432px w-1/3 box-border top-0 right-0;
 }
-.searchbar{
-  @apply flex items-center bg-grey-light px-16px py-12px;
+.search-bar{
+  @apply flex items-center bg-grey-light px-16px py-12px text-purple-500;
 }
 
 .search-input {
-  @apply max-w-364px w-364px h-40px rounded-[8px] border-solid border-[1px]
-    px-12px overflow-ellipsis;
-  box-sizing: border-box;
+  @apply w-9/10 h-40px rounded-[8px] bg-transparent px-12px Navbar-font
+  overflow-ellipsis focus:(border-solid border-[1.4px] border-purple-500 outline-none);
 }
 
 li {
-  @apply inline float-left text-center font-Roboto font-500 text-[20px] leading-[24px]
+  @apply inline text-center font-Roboto font-500 text-[20px] leading-[24px]
     tracking-[0.1px] mr-48px;
 }
 
