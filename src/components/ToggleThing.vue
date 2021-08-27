@@ -7,88 +7,97 @@
       width: width + 'px',
       borderRadius: radius + 'px',
       padding: outerPadding + 'px',
+      background: outerBackground
     }"
-    :class="`bg-${active ? outerActiveColors[theme] : outerColors[theme]}`"
     @click="toggle"
   >
     <div
+      ref="inner"
       class="absolute transition-all"
-      :class="`bg-${innerBgColors[theme]}`"
+      :class="'bg-' + innerBgColors[theme]"
       :style="{
         height: innerCirclueRadius + 'px',
         width: innerCirclueRadius + 'px',
-        borderRadius: (innerCirclueRadius / 2) + 'px'
+        borderRadius: (innerCirclueRadius / 2) + 'px',
+        background: innerBackground
       }"
-      ref="inner"
     ></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ThemeOption } from "~/types";
+import { ThemeOption } from '~/types'
 
-const width = 60;
-const height = 32;
-const radius = height / 2;
-const outerPadding = 4;
-const innerCirclueRadius = height - 2 * outerPadding;
+const props = defineProps<{ initState?: boolean; theme: ThemeOption }>()
 
-const props = defineProps<{ initState?: boolean, theme: ThemeOption }>();
-
-// emit when this is clicked
-const emit = defineEmits<{
-  (e: 'toggle', activeState: boolean): void
-}>();
-
-const active = ref(props.initState || false); // tells if the button is in active state
-const inner = ref<null | HTMLDivElement>(null); // the circle element
+const width = 60
+const height = 32
+const radius = height / 2
+const outerPadding = 4
+const innerCirclueRadius = height - 2 * outerPadding
+const active = ref(props.initState || false) // tells if the button is in active state
+const inner = ref<null | HTMLDivElement>(null) // the circle element
 
 // colors of the circluar thingy based on theme
 const innerBgColors = {
-  SilpVat: 'textbox-SilpVat',
-  Vichagarn: 'Navy',
-  Gera: '[#690000]',
-  Pat: 'LightBrown',
+  SilpVat: 'rgba(31, 10, 65, 0.75)',
+  Vichagarn: '#0C233F',
+  Gera: '#690000',
+  Pat: '#98521E',
   Other: 'white',
-};
-// colors of the outer region background when not active
+}
+// css style
 const outerColors = {
   SilpVat: 'white',
   Vichagarn: 'white',
   Gera: 'white',
-  Pat: 'yellow-800',
-  Other: 'Steel-900',
-};
-// colors of the outer region background when active
+  Pat: '#F38C23',
+  Other: '#2F4C7A',
+}
+// css style
 const outerActiveColors = {
-  SilpVat: 'purple-600',
-  Vichagarn: '[#0D3D78]',
-  Gera: '[#9F140E]',
-  Pat: 'Brown',
-  Other: 'Steel-800',
-};
+  SilpVat: '#5C3A87',
+  Vichagarn: '#0D3D78',
+  Gera: '#9F140E',
+  Pat: '#5B3112',
+  Other: '#516E8E',
+}
+
+const getOuterBackgroundColor = () => {
+  return active.value ? outerActiveColors[props.theme] : outerColors[props.theme]
+}
+
+const outerBackground = ref(getOuterBackgroundColor())
+const innerBackground = innerBgColors[props.theme]
+
+// emit when this is clicked
+const emit = defineEmits<{
+  (e: 'toggle', activeState: boolean): void
+}>()
+
+const innerTranslateXDistance = (width - 2 * outerPadding) - innerCirclueRadius
+const traslateInnerX = (inner: HTMLDivElement, distance: number | string) => {
+  inner.style.transform = `translateX(${distance}px)`
+}
+
+const setInnerXPosition = () => {
+  if (active.value)
+    traslateInnerX(inner.value as HTMLDivElement, 0)
+  else
+    traslateInnerX(inner.value as HTMLDivElement, innerTranslateXDistance)
+}
 
 onMounted(() => {
-  setInnerXPosition();
-});
+  setInnerXPosition()
+})
 watch(active, () => {
-  setInnerXPosition();
+  setInnerXPosition()
 })
 
 // is called when clicked
 const toggle = () => {
-  active.value = !active.value;
-  emit('toggle', active.value);
-}
-
-const innerTranslateXDistance = (width - 2 * outerPadding) - innerCirclueRadius;
-const traslateInnerX = (inner: HTMLDivElement, distance: number | string) => {
-  inner.style.transform = `translateX(${distance}px)`;
-}
-const setInnerXPosition = () => {
-  if (active.value)
-    traslateInnerX(inner.value as HTMLDivElement, 0);
-  else
-    traslateInnerX(inner.value as HTMLDivElement, innerTranslateXDistance);
+  active.value = !active.value
+  emit('toggle', active.value)
+  outerBackground.value = getOuterBackgroundColor()
 }
 </script>

@@ -8,11 +8,11 @@
 </template>
 
 <script setup lang="ts">
-import { ThemeOption } from "~/types";
+import { ThemeOption } from '~/types'
 
 const props = defineProps<{
-  theme: ThemeOption,
-}>();
+  theme: ThemeOption
+}>()
 
 const textColors = {
   SilpVat: 'grey-light',
@@ -20,7 +20,7 @@ const textColors = {
   Gera: 'grey-light',
   Pat: 'Brown',
   Other: 'white',
-};
+}
 </script>
 
 <style>
