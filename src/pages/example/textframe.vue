@@ -8,7 +8,9 @@
       @textChange="show"
       @submit="onSubmit"
     />
-    <text-logo class="text-white">{{ text }}</text-logo>
+    <text-logo class="text-white">
+      {{ text }}
+    </text-logo>
     <!-- Read more button shows only if disable = true -->
     <TextFrame theme="Gera" :value="lorem100" :disabled="true" />
   </div>

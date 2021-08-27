@@ -31,8 +31,12 @@
         v-if="!expanded"
         class="text-white font-medium cursor-pointer"
         @click="expand"
-      >Read more</text-body2>
-      <text-body2 v-else class="text-white font-medium cursor-pointer" @click="shrink">Show less</text-body2>
+      >
+        Read more
+      </text-body2>
+      <text-body2 v-else class="text-white font-medium cursor-pointer" @click="shrink">
+        Show less
+      </text-body2>
     </div>
   </div>
 </template>
@@ -53,7 +57,6 @@ const { defaultHeight, border, placeholder, text } = useTextFrameConfig()
 
 const height = ref(`${defaultHeight}px`)
 const expanded = ref(false)
-
 
 const emit = defineEmits<{
   (e: 'textChange', value: string): void
