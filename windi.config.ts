@@ -2,12 +2,23 @@ import { defineConfig } from 'windicss/helpers'
 import colors from 'windicss/colors'
 import typography from 'windicss/plugin/typography'
 
-const safelistBg = 'bg-textbox-Other bg-textbox-Pat bg-textbox-Gera bg-textbox-Vichagarn bg-textbox-SilpVat'
-const safelistText = 'text-white text-Brown text-grey-light'
-const safelistBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3]'
+const makeSafe = (prefix: string, values: string | string[]): string => {
+  let valuesArray: string[]
+  if (typeof values === 'string')
+    valuesArray = values.split(' ')
+  else valuesArray = values
+
+  return valuesArray.map(each => `${prefix}-${each}`).join(' ')
+}
+
+// const safelistBg = 'bg-textbox-Other bg-textbox-Pat bg-textbox-Gera bg-textbox-Vichagarn bg-textbox-SilpVat'
+const safeText = 'text-white text-Brown text-grey-light'
+const safeBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3]'
+const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat')
+const safePlaceholder = makeSafe('placeholder', 'blue-b100 [#FFCECB] LightBrown grey-light+')
 
 export default defineConfig({
-  safelist: `${safelistBg} ${safelistText} ${safelistBorder}`,
+  safelist: `${safeBg} ${safeText} ${safeBorder} ${safePlaceholder}`,
   darkMode: 'class',
   // https://windicss.org/posts/v30.html#attributify-mode
   attributify: true,
