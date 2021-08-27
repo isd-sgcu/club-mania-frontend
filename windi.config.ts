@@ -2,8 +2,12 @@ import { defineConfig } from 'windicss/helpers'
 import colors from 'windicss/colors'
 import typography from 'windicss/plugin/typography'
 
+const safelistBg = 'bg-textbox-Other bg-textbox-Pat bg-textbox-Gera bg-textbox-Vichagarn bg-textbox-SilpVat'
+const safelistText = 'text-white text-Brown text-grey-light'
+const safelistBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3]'
+
 export default defineConfig({
-  safelist: 'bg-textbox-Other bg-textbox-Pat bg-textbox-Gera bg-textbox-Vichagarn bg-textbox-SilpVat text-white text-Brown text-grey-light',
+  safelist: `${safelistBg} ${safelistText} ${safelistBorder}`,
   darkMode: 'class',
   // https://windicss.org/posts/v30.html#attributify-mode
   attributify: true,
