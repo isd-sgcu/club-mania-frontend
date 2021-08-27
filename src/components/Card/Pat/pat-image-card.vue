@@ -4,7 +4,7 @@ import { PaletteKey } from './types'
 
 interface IProps {
   imgUrl: string
-  color: PaletteKey
+  color: PaletteKey | 'hover'
 }
 
 defineProps<IProps>()
