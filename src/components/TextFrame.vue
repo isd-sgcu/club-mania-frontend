@@ -15,8 +15,8 @@
       </svg>
     </div>
     <textarea
-      v-model="value"
       ref="textarea"
+      v-model="value"
       class="border-1 rounded-[8px] border-blue-b100 w-full bg-transparent placeholder-blue-b100 pl-[16px] pr-[28px] py-[8px] text-grey-light font-Roboto transition-all overflow-y-hidden"
       :placeholder="props.placeholder ?? 'Placeholder...'"
       :disabled="props.disabled"
@@ -28,79 +28,82 @@
     <div v-show="props.disabled">
       <text-body2
         v-if="!expanded"
-        @click="expand"
         class="text-white font-medium cursor-pointer"
-      >Read more</text-body2>
-      <text-body2 v-else @click="shrink" class="text-white font-medium cursor-pointer">Show less</text-body2>
+        @click="expand"
+      >
+        Read more
+      </text-body2>
+      <text-body2 v-else class="text-white font-medium cursor-pointer" @click="shrink">
+        Show less
+      </text-body2>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const defaultHeight = 80;
-const height = ref(defaultHeight + 'px');
-const expanded = ref(false);
+const defaultHeight = 80
+const height = ref(`${defaultHeight}px`)
+const expanded = ref(false)
 
 const props = defineProps<{
-  placeholder?: string,
-  disabled?: boolean, // ex. comment
-  showDiscardIcon?: boolean,
-  value?: string, // initial value of the textarea, ex. comment
-}>();
+  placeholder?: string
+  disabled?: boolean // ex. comment
+  showDiscardIcon?: boolean
+  value?: string // initial value of the textarea, ex. comment
+}>()
 
 const emit = defineEmits<{
-  (e: 'textChange', value: string): void,
-  (e: 'submit', value: string): void,
-}>();
+  (e: 'textChange', value: string): void
+  (e: 'submit', value: string): void
+}>()
 
-const value = ref(props.value ?? ''); // current text in the area
-
-// fires when enter is down
-const submit = () => {
-  emit('submit', value.value);
-  discard();
-}
-
-// resizing must be done at oninput, at watching value doesn't work.
-// https://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize
-const onInput = () => {
-  emit('textChange', value.value);
-
-  // In case of selecting all then delete
-  if (textarea.value!.value === '') {
-    height.value = defaultHeight + 'px';
-    return;
-  }
-
-  const { scrollHeight } = getHeights();
-  if (scrollHeight > defaultHeight) {
-    textarea.value!.style.height = 'auto';
-    textarea.value!.style.height = textarea.value!.scrollHeight + 'px';
-  }
-}
+const value = ref(props.value ?? '') // current text in the area
 
 const discard = () => {
-  value.value = '';
+  value.value = ''
+}
+// fires when enter is down
+const submit = () => {
+  emit('submit', value.value)
+  discard()
 }
 
-const textarea = ref<null | HTMLTextAreaElement>(null);
+const textarea = ref<null | HTMLTextAreaElement>(null)
 
 const getHeights = () => {
   return {
     scrollHeight: (textarea.value as HTMLTextAreaElement).scrollHeight,
     clientHeight: (textarea.value as HTMLTextAreaElement).clientHeight,
-    offsetHeight: (textarea.value as HTMLTextAreaElement).offsetHeight
+    offsetHeight: (textarea.value as HTMLTextAreaElement).offsetHeight,
+  }
+}
+
+// resizing must be done at oninput, at watching value doesn't work.
+// https://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize
+const onInput = () => {
+  emit('textChange', value.value)
+
+  // In case of selecting all then delete
+  if (textarea.value!.value === '') {
+    height.value = `${defaultHeight}px`
+    return
+  }
+
+  const { scrollHeight } = getHeights()
+  if (scrollHeight > defaultHeight) {
+    textarea.value!.style.height = 'auto'
+    textarea.value!.style.height = `${textarea.value!.scrollHeight}px`
   }
 }
 
 const expand = () => {
-  const { scrollHeight } = getHeights();
+  const { scrollHeight } = getHeights()
   if (defaultHeight > scrollHeight) return
-  height.value = scrollHeight + 'px';
-  expanded.value = true;
+  height.value = `${scrollHeight}px`
+  expanded.value = true
 }
 const shrink = () => {
-  height.value = defaultHeight + 'px';
-  expanded.value = false;
+  height.value = `${defaultHeight}px`
+  expanded.value = false
 }
 </script>
