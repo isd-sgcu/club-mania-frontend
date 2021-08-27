@@ -14,44 +14,44 @@ export default defineConfig({
   theme: {
     extend: {
       fontFamily: {
-        Mitr: ["Mitr", "Arial", "sans"],
-        Roboto: ["Roboto", "sans-serif"],
-        Retro: ["Retro Gaming", "Mitr", "Arial", "sans"],
+        Mitr: ['Mitr', 'Arial', 'sans'],
+        Roboto: ['Roboto', 'sans-serif'],
+        Retro: ['Retro Gaming', 'Mitr', 'Arial', 'sans'],
       },
       colors: {
         Yellow: '#F4AF23',
-        red: "#DF322A",
-        Red: "#DF322A",
-        navy: "#0C233F",
-        Navy: "#0C233F",
-        streetLight: "#8DB4DA",
-        StreetLight: "#8DB4DA",
+        red: '#DF322A',
+        Red: '#DF322A',
+        navy: '#0C233F',
+        Navy: '#0C233F',
+        streetLight: '#8DB4DA',
+        StreetLight: '#8DB4DA',
         Brown: '#5B3112',
         LightBrown: '#98521E',
         brown: {
           primary: '#5B3112',
-          light: '#98521E'
+          light: '#98521E',
         },
         MainBlack: 'linear-gradient(137.77deg, #130000 6.66%, #343434 50.91%, #130000 95.54%)',
         buttonLogin: 'linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, #242323 26.04%, #4B4A4A 50%, #242323 75%, rgba(0, 0, 0, 0.8) 100%)',
         purple: {
-          400: "#6E459B",
-          500: "#633E8B",
-          600: "#5C3A87",
-          700: "#52317C",
-          900: "#391E67",
-          a100: "#AB8ACE",
-          "900+": "#240F46",
-          "900++": "#1B0D31",
-          "900+++": "#100423",
-          a400: "#7427D2",
+          '400': '#6E459B',
+          '500': '#633E8B',
+          '600': '#5C3A87',
+          '700': '#52317C',
+          '900': '#391E67',
+          'a100': '#AB8ACE',
+          '900+': '#240F46',
+          '900++': '#1B0D31',
+          '900+++': '#100423',
+          'a400': '#7427D2',
         },
         gradient: {
           1: 'linear-gradient(103.46deg, #492B75 12.75%, #DE3228 94.12%)',
-          3: 'linear-gradient(103.46deg, #DE3228 12.75%, #492B75 94.12%)'
+          3: 'linear-gradient(103.46deg, #DE3228 12.75%, #492B75 94.12%)',
         },
         blue: {
-          b100: "#AACAE9",
+          b100: '#AACAE9',
         },
         background: {
           DarkPurple: '#1F0A41',
@@ -65,18 +65,18 @@ export default defineConfig({
           vivi: 'linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(180deg, #04489A 28.91%, #0B294E 92.96%)',
         },
         grey: {
-          primary: "#BBBBBB",
-          light: "#F5F5F5",
-          "light+": "#F3F3F3"
+          'primary': '#BBBBBB',
+          'light': '#F5F5F5',
+          'light+': '#F3F3F3',
         },
         yellow: {
           primary: '#F4AF23',
           300: '#F4CF58',
-          400: "#F4C437",
-          500: "#F5BB26",
-          700: "#F29A22",
-          800: "#F38C23",
-          900: "#F16A1F",
+          400: '#F4C437',
+          500: '#F5BB26',
+          700: '#F29A22',
+          800: '#F38C23',
+          900: '#F16A1F',
         },
         Sport: {
           SteelPlate: 'linear-gradient(40.99deg, #606060 2.59%, #CDCDCD 24.51%, #A0A0A0 28.53%, #5A5A5A 46.62%, #9E9E9E 73.76%, #C8C8C8 78.29%, #606060 99.1%)',
@@ -101,7 +101,7 @@ export default defineConfig({
           Pat: 'rgba(254, 184, 41, 0.5)',
           Other: 'rgba(112, 159, 195, 0.25)',
         },
-        darkPurple: "#1F0A41",
+        darkPurple: '#1F0A41',
       },
       typography: {
         DEFAULT: {
