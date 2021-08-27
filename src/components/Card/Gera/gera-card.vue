@@ -9,11 +9,21 @@ interface IProps {
 
 defineProps<IProps>()
 
+const detect = ref(false)
+
+const handleMouseEnter = () => {
+  detect.value = true
+}
+
+const handleMouseOut = () => {
+  detect.value = false
+}
+
 </script>
 
 <template>
-  <div class="flex flex-col w-max box-border">
-    <div :class="dark ? 'dark' : 'light'">
+  <div class="flex flex-col w-max box-border" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+    <div :class="!detect ? 'dark' : 'light'">
       <img class="w-full" :src="imgUrl">
       <div class="inner-frame">
         <text-sub2>{{ text }}</text-sub2>
