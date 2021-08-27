@@ -9,15 +9,14 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { useThemeStore } from '~/stores/themes'
 import { ThemeOption } from '~/types'
 const { t } = useI18n()
+const themeStore = useThemeStore()
 
 const props = defineProps<{
-  theme: ThemeOption
+  theme?: ThemeOption
 }>()
 
-const options = props.theme ? props.theme : 'default'
+const options = props.theme ?? themeStore.savedTheme
 </script>
-
-<style>
-</style>
