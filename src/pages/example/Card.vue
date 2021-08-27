@@ -2,14 +2,21 @@
   <div class="flex flex-wrap">
     <PatCard v-for="item in patColor" :key="item" :color="item" img-url="https://dummyimage.com/500x500/5c205c/ffffff.png" text="เยาวชนจิตอาสา (Youth)" />
   </div>
-  <SlipvatCard dark text="ชมรมศิลปะการพูดและการแสดง" />
+  <div class="flex flex-wrap">
+    <SlipvatCard dark text="ชมรมศิลปะการพูดและการแสดง" />
+    <SlipvatCard text="ชมรมศิลปะการพูดและการแสดง" />
+  </div>
   <div class="flex flex-wrap">
     <OtherCard v-for="item in cardColor" :key="item" :color="item" text="ชมรมศิลปะการพูดและการแสดง" />
   </div>
   <div class="flex flex-wrap">
     <GeraCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="ชมรม Hello World" dark />
+    <GeraCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="ชมรม Hello World" />
   </div>
-  <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" />
+  <div class="flex flex-wrap">
+    <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" dark />
+    <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" />
+  </div>
 </template>
 
 <script setup lang="ts">
