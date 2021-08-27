@@ -2,8 +2,13 @@ import { defineConfig } from 'windicss/helpers'
 import colors from 'windicss/colors'
 import typography from 'windicss/plugin/typography'
 
+const dynamicStyleList = ['bg-textbox-Other', 'bg-textbox-Pat', 'bg-textbox-Gera', 'bg-textbox-Vichagarn',
+  'bg-textbox-SilpVat', 'bg-background-landing', 'bg-background-Other', 'bg-background-Gera', 'bg-background-Vichagarn',
+  'bg-background-pat', 'bg-background-SlipVat', 'text-white', 'text-Brown', 'text-grey-light']
+
 export default defineConfig({
-  safelist: 'bg-textbox-Other bg-textbox-Pat bg-textbox-Gera bg-textbox-Vichagarn bg-textbox-SilpVat text-white text-Brown text-grey-light',
+  // 'bg-textbox-Other bg-textbox-Pat bg-textbox-Gera bg-textbox-Vichagarn bg-textbox-SilpVat text-white text-Brown text-grey-light'
+  safelist: dynamicStyleList.join(' '),
   darkMode: 'class',
   // https://windicss.org/posts/v30.html#attributify-mode
   attributify: true,
@@ -46,23 +51,11 @@ export default defineConfig({
           '900+++': '#100423',
           'a400': '#7427D2',
         },
-        gradient: {
-          1: 'linear-gradient(103.46deg, #492B75 12.75%, #DE3228 94.12%)',
-          3: 'linear-gradient(103.46deg, #DE3228 12.75%, #492B75 94.12%)',
-        },
         blue: {
           b100: '#AACAE9',
         },
         background: {
           DarkPurple: '#1F0A41',
-          Gera: '#linear-gradient(180deg, #390000 60.73%, #800000 100%)',
-          SlipVat: 'linear-gradient(180deg, #1F0A41 29.1%, #4F1B6F 100%)',
-          Vishagarn: 'linear-gradient(180deg, #003576 28.91%, #0B294E 100%)',
-          Vichagarn: 'linear-gradient(180deg, #003576 28.91%, #0B294E 100%)',
-          yellow: 'linear-gradient(180deg, #FFF2D7 0%, #FDD37E 99.99%, #FFCB64 100%)',
-          Other: 'linear-gradient(180deg, #35638E 26.29%, #00203E 100%)',
-          other: 'linear-gradient(180deg, #35638E 26.29%, #00203E 100%)',
-          vivi: 'linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(180deg, #04489A 28.91%, #0B294E 92.96%)',
         },
         grey: {
           'primary': '#BBBBBB',
@@ -102,6 +95,9 @@ export default defineConfig({
           Other: 'rgba(112, 159, 195, 0.25)',
         },
         darkPurple: '#1F0A41',
+      },
+      backgroundImage: {
+
       },
       typography: {
         DEFAULT: {
