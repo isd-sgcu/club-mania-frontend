@@ -1,24 +1,28 @@
 <template>
   <!-- banner is here -->
-  <PageBackground theme="Gera"></PageBackground>
+  <PageBackground></PageBackground>
   <div class="px-[204px] bg-gradient-to-b">
     <div class="space-y-[24px]">
       <!-- club info -->
       <section class="space-y-[16px]">
         <text-sub1>
-          <span class="text-red">{{ clubType + ' > ' }}</span>
-          <span class="text-white">{{ clubName }}</span>
+          <span :class="`text-${clubTypeColor[themeStore.savedTheme]}`">{{ clubType + ' > ' }}</span>
+          <span :class="`text-${clubNameColor[themeStore.savedTheme]}`">{{ clubName }}</span>
         </text-sub1>
         <Gallery :club-name="clubName" :images="images" />
-        <BackgroundSection theme="Gera">
-          <h5 class="text-white">เกี่ยวกับชมรม</h5>
+        <BackgroundSection>
+          <h5 :class="`text-${clubNameColor[themeStore.savedTheme]}`">
+            เกี่ยวกับชมรม
+          </h5>
           <text-body1>{{ info }}</text-body1>
         </BackgroundSection>
       </section>
       <!-- new reply -->
       <section class="space-y-[16px]">
-        <h5 class="text-white">ความคิดเห็น</h5>
-        <BackgroundSection :theme="'Gera'">
+        <h5 :class="`text-${clubNameColor[themeStore.savedTheme]}`">
+          ความคิดเห็น
+        </h5>
+        <BackgroundSection>
           <NewReplyPost :is-anonymous="isAnonymous" />
         </BackgroundSection>
       </section>
@@ -28,14 +32,18 @@
           <Filter
             :active-state="isLastestFilterChosen"
             @toggle="(activeState) => isLastestFilterChosen = activeState"
-          >ล่าสุด</Filter>
+          >
+            ล่าสุด
+          </Filter>
           <Filter
             :active-state="!isLastestFilterChosen"
             @toggle="(activeState) => isLastestFilterChosen = !activeState"
-          >ยอดนิยม</Filter>
+          >
+            ยอดนิยม
+          </Filter>
         </div>
-        <div v-for="post in posts">
-          <Post></Post>
+        <div v-for="(post, idx) in posts" :key="idx">
+          <Post :post="post" />
         </div>
       </section>
     </div>
@@ -43,34 +51,25 @@
 </template>
 
 <script setup lang="ts">
+import useClubConfig from './config'
+import { useThemeStore } from '~/stores/themes'
+// import { Post } from '~/types'
+
+const { clubTypeColor, clubNameColor } = useClubConfig()
+const themeStore = useThemeStore()
 
 defineProps<{ clubId: string }>()
 
 const isAnonymous = ref(false)
 const isLastestFilterChosen = ref(false)
 
-const onNewPostSubmit = () => {
-
-}
-
-type Post = {
-  publisher: string // later should be user type
-  text: string
-  likes: number
-  postedAt: string
-  replies: {
-    publisher: string // later should be user type
-    repliedAt: number
-    likes: number
-  }[]
-}
-
 // dummy
 const posts: Post[] = [
   {
     publisher: 'Hihi',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?',
     likes: 3,
+    badge: 'ชมรมศิลปะการพูดและการแสดง',
     postedAt: new Date().toDateString(),
     replies: [],
   },
