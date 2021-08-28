@@ -22,8 +22,6 @@ const textColors = {
   Gera: 'grey-light',
   Pat: 'Brown',
   Other: 'white',
+  Main: 'white',
 }
 </script>
-
-<style>
-</style>
