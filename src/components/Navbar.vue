@@ -80,7 +80,7 @@ watchEffect(() => {
 <style scoped>
 .headbar {
   @apply fixed flex w-full h-64px justify-between items-center text-white
-    backdrop-blur-14px overflow-hidden pl-8 top-0 z-30;
+    backdrop-blur-14px overflow-hidden pl-8 top-0 z-10;
     background: rgba(0, 0, 0, 0.5)
 }
 .admin-block{
@@ -89,7 +89,7 @@ watchEffect(() => {
 }
 
 .search-box {
-  @apply absolute max-w-432px w-1/3 box-border top-0 right-0;
+  @apply absolute max-w-432px w-1/3 box-border top-0 right-0 z-10;
 }
 .search-bar{
   @apply flex items-center bg-grey-light px-16px py-12px text-purple-500;
