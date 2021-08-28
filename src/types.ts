@@ -6,14 +6,18 @@ export type UserModule = (ctx: ViteSSGContext) => void
 export type ThemeOption = 'SilpVat' | 'Vichagarn' | 'Gera' | 'Pat' | 'Other' | 'Main'
 
 export type Post = {
+  id: string
   publisher: string // later should be user type
   text: string
-  badge: string
+  badge?: string
   likes: number
-  postedAt: string
+  postedAt: string // should be datetime
   replies: {
+    id: string
     publisher: string // later should be user type
-    repliedAt: number
+    repliedAt: string // should be datetime
     likes: number
+    text: string
+    badge?: string
   }[]
 }
