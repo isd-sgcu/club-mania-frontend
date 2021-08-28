@@ -10,7 +10,7 @@
       >
         <path
           d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m3.59 5L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41L15.59 7z"
-          fill="white"
+          :fill="discardColor[themeName]"
         />
       </svg>
     </div>
@@ -29,12 +29,18 @@
     <div v-show="props.disabled && showReadMore">
       <text-body2
         v-if="!expanded"
-        class="text-white font-medium cursor-pointer"
+        :class="`text-${text[themeName]}`"
+        class="font-medium cursor-pointer"
         @click="expand"
       >
         แสดงเพิ่มเติม
       </text-body2>
-      <text-body2 v-else class="text-white font-medium cursor-pointer" @click="shrink">
+      <text-body2
+        v-else
+        :class="`text-${text[themeName]}`"
+        class="font-medium cursor-pointer"
+        @click="shrink"
+      >
         แสดงน้อยลง
       </text-body2>
     </div>
@@ -121,5 +127,14 @@ const expand = () => {
 const shrink = () => {
   height.value = `${defaultHeight}px`
   expanded.value = false
+}
+
+const discardColor = {
+  SilpVat: 'white',
+  Vichagarn: 'white',
+  Gera: 'white',
+  Pat: 'black',
+  Other: 'white',
+  Main: 'white',
 }
 </script>
