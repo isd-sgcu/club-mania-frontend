@@ -27,6 +27,6 @@ import { PaletteKey } from '~/components/Card/Pat/types'
 
 const cardColor = ['lightcyan', 'pink', 'red', 'steel', 'yellow'] as GhostColorType[]
 const patColor = ['red', 'blue', 'yellow', 'green'] as PaletteKey[]
-const mainColor = ['Gera', 'SlipVat', 'Pat', 'Vichagarn', 'Others'] as Variant[]
+const mainColor = ['Gera', 'SilpVat', 'Pat', 'Vichagarn', 'Other'] as Variant[]
 
 </script>
