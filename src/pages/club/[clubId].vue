@@ -11,17 +11,13 @@
         </text-sub1>
         <Gallery :club-name="clubName" :images="images" />
         <BackgroundSection>
-          <h5 :class="`text-${clubNameColor[themeStore.savedTheme]}`">
-            เกี่ยวกับชมรม
-          </h5>
+          <h5 :class="`text-${clubNameColor[themeStore.savedTheme]}`">เกี่ยวกับชมรม</h5>
           <text-body1>{{ info }}</text-body1>
         </BackgroundSection>
       </section>
       <!-- new reply -->
       <section class="space-y-[16px]">
-        <h5 :class="`text-${clubNameColor[themeStore.savedTheme]}`">
-          ความคิดเห็น
-        </h5>
+        <h5 :class="`text-${clubNameColor[themeStore.savedTheme]}`">ความคิดเห็น</h5>
         <BackgroundSection>
           <NewReplyPost :is-anonymous="isAnonymous" />
         </BackgroundSection>
@@ -32,15 +28,11 @@
           <Filter
             :active-state="isLastestFilterChosen"
             @toggle="(activeState) => isLastestFilterChosen = activeState"
-          >
-            ล่าสุด
-          </Filter>
+          >ล่าสุด</Filter>
           <Filter
             :active-state="!isLastestFilterChosen"
             @toggle="(activeState) => isLastestFilterChosen = !activeState"
-          >
-            ยอดนิยม
-          </Filter>
+          >ยอดนิยม</Filter>
         </div>
         <div v-for="(post, idx) in posts" :key="idx">
           <Post :post="post" />
@@ -66,12 +58,44 @@ const isLastestFilterChosen = ref(false)
 // dummy
 const posts: Post[] = [
   {
+    id: 'post1',
     publisher: 'Hihi',
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?',
     likes: 3,
     badge: 'ชมรมศิลปะการพูดและการแสดง',
     postedAt: new Date().toDateString(),
-    replies: [],
+    replies: [
+      {
+        id: 'lskdfjiweglglgkglgk3239f2jl',
+        publisher: 'hi2',
+        repliedAt: new Date().toDateString(),
+        likes: 10,
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus voluptatum sit, debitis voluptate nemo modi aliquid, aut ex unde labore, ullam dignissimos ipsa in nobis quas a deleniti sunt quod doloribus nihil magni numquam itaque amet? Voluptatibus sunt corporis dolorem! Id corrupti sint tempore autem fugiat a porro fuga dolore fugit ipsa facilis qui saepe, voluptatum facere blanditiis voluptas debitis reiciendis ducimus repellat possimus molestiae consequatur quo? Itaque molestias quia harum magnam blanditiis velit amet vel pariatur dolore explicabo minus, soluta aliquid modi sed cupiditate provident eos aliquam? Consequatur fuga sunt autem deserunt quibusdam rerum dolore officiis ipsa voluptate possimus.',
+      },
+      {
+        id: 'fwefwefwefwefwe',
+        publisher: 'hi2',
+        repliedAt: new Date().toDateString(),
+        likes: 10,
+        badge: 'おはよう',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus voluptatum sit, debitis volore explicabdam rerum dolore officiis ipsa voluptate possimus.',
+      }, {
+        id: 'dfgdfgdfgdfgdfg',
+        publisher: 'hi2',
+        repliedAt: new Date().toDateString(),
+        likes: 10,
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus voluptatum sit, debitis voluptate nemo modi aliquid, aut ex unde labore, ullam dignissimos ipsa in nobis quas a deleniti sunt quod doloribus nihil magni numquam itaque amet? Voluptatibus sunt corporis dolorem! Id corrupti sint tempore autem fugiat a porro fuga dolore fugit ipsa facilis qui saepe, voluptatum facere blanditiis voluptas debitis reiciendis ducimus repellat possimus molestiae consequatur quo? Itaque molestias quia harum magnam blanditiis velit amet vel pariatur dolore explicabo minus, soluta aliquid modi sed cupiditate provident eos aliquam? Consequatur fuga sunt autem deserunt quibusdam rerum dolore officiis ipsa voluptate possimus.',
+      },
+    ],
+  }, {
+    id: 'post2',
+    publisher: 'Hihi',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesm reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, modi. At dolore tenetur, laborum eligendi quae dolorum reiciendis ipsum fuga hic officiis nesciunt id ut aut sit accusamus atque iste?',
+    likes: 3,
+    badge: '黒猫',
+    postedAt: new Date().toDateString(),
+    replies: [
+    ],
   },
 ]
 const clubType = 'ชมรมฝ่ายกีฬา'
