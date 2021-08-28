@@ -11,8 +11,8 @@ const makeSafe = (prefix: string, values: string | string[]): string => {
   return valuesArray.map(each => `${prefix}-${each}`).join(' ')
 }
 
-const safeText = 'text-white text-Brown text-grey-light'
-const safeBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3]'
+const safeText = 'text-white text-LightBrown text-[#FFCECB] text-blue-b100 text-Brown text-grey-light'
+const safeBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3] border-LightBrown border-white border-gray-light'
 const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat footer-SilpVat footer-Pat footer-default footer-Other footer-Gera footer-Vichagarn dark-700')
 const safePlaceholder = makeSafe('placeholder', 'blue-b100 [#FFCECB] LightBrown grey-light+')
 
