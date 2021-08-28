@@ -22,8 +22,9 @@ const pageBgColors = {
   Gera: 'linear-gradient(180deg, #390000 60.73%, #800000 100%)',
   Pat: 'linear-gradient(180deg, #FFF2D7 58.85%, #FDD37E 99.99%, #FFCB64 100%)',
   Other: 'linear-gradient(180deg, #35638E 26.29%, #00203E 100%)',
+  Main: 'linear-gradient(137.77deg, #130000 6.66%, #343434 50.91%, #130000 95.54%)',
 }
 
-const background = props.theme ? pageBgColors[props.theme] : themeStore.savedTheme
+const background = pageBgColors[props.theme ?? themeStore.savedTheme]
 
 </script>
