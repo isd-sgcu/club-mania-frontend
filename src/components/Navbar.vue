@@ -80,7 +80,7 @@ watchEffect(() => {
 <style scoped>
 .headbar {
   @apply fixed flex w-full h-64px justify-between items-center text-white
-    backdrop-blur-14px overflow-hidden pl-8 top-0;
+    backdrop-blur-14px overflow-hidden pl-8 top-0 z-30;
     background: rgba(0, 0, 0, 0.5)
 }
 .admin-block{
