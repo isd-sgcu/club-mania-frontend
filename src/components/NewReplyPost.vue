@@ -14,15 +14,17 @@
         @submit="$emit('submit')"
       />
     </transition-group>
-    <div class="flex items-center justify-between">
+    <div class="mt-2 flex items-center justify-between">
       <div class="space-x-[12px] flex items-center">
         <ToggleThing @toggle="onToggle" />
         <span class="font-Roboto">{{ toggleText }}</span>
       </div>
       <button
-        class="text-[16px] h-[32px] w-[160px] text-Brown px-[16px] py-[4px] bg-white rounded focus:outline-none"
+        class="text-[16px] px-[16px] py-[4px] h-[32px] min-w-[160px] text-Brown  bg-white rounded focus:outline-none"
         @click="$emit('submit')"
-      >โพสต์</button>
+      >
+        {{ props.buttonText ?? 'โพสต์' }}
+      </button>
     </div>
   </div>
 </template>
@@ -35,6 +37,7 @@ const themeStore = useThemeStore()
 
 const props = defineProps<{
   isAnonymous: boolean
+  buttonText?: string
 }>()
 
 const emit = defineEmits<{

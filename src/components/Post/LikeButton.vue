@@ -24,6 +24,14 @@ const themeStore = useThemeStore()
 const props = defineProps<{
   theme?: ThemeOption
   likeStatus: boolean
+  fillColor: {
+    SilpVat: string
+    Vichagarn: string
+    Gera: string
+    Pat: string
+    Other: string
+    Main: string
+  }
 }>()
 
 const emit = defineEmits<{
@@ -38,14 +46,5 @@ const decidedTheme = props.theme ?? themeStore.savedTheme
 const likeToggle = () => {
   like.value = !like.value
   emit('toggleLike', like.value)
-}
-
-const fillColor = {
-  SilpVat: 'white',
-  Vichagarn: 'white',
-  Gera: 'white',
-  Pat: '#5B3112',
-  Other: 'white',
-  Main: 'white',
 }
 </script>
