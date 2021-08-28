@@ -26,16 +26,16 @@
       @input="onInput"
       @keydown.enter.exact.prevent="submit"
     ></textarea>
-    <div v-show="props.disabled">
+    <div v-show="props.disabled && showReadMore">
       <text-body2
         v-if="!expanded"
         class="text-white font-medium cursor-pointer"
         @click="expand"
       >
-        Read more
+        แสดงเพิ่มเติม
       </text-body2>
       <text-body2 v-else class="text-white font-medium cursor-pointer" @click="shrink">
-        Show less
+        แสดงน้อยลง
       </text-body2>
     </div>
   </div>
@@ -56,27 +56,35 @@ const props = defineProps<{
   theme?: ThemeOption
 }>()
 
-const themeName = props.theme ?? themeStore.savedTheme
-const height = ref(`${defaultHeight}px`)
-const expanded = ref(false)
-
 const emit = defineEmits<{
   (e: 'textChange', value: string): void
   (e: 'submit', value: string): void
 }>()
 
+const height = ref(`${defaultHeight}px`)
+const expanded = ref(false)
+const showReadMore = ref(false)
 const value = ref(props.value ?? '') // current text in the area
+const textarea = ref<null | HTMLTextAreaElement>(null)
+
+const themeName = props.theme ?? themeStore.savedTheme
+
+// if is a post or comment, let the height hugs the content
+onMounted(() => {
+  if (!props.disabled) return
+  textarea.value!.style.height = 'auto'
+  showReadMore.value = textarea.value!.scrollHeight > defaultHeight
+})
 
 const discard = () => {
   value.value = ''
 }
+
 // fires when enter is down
 const submit = () => {
   emit('submit', value.value)
   discard()
 }
-
-const textarea = ref<null | HTMLTextAreaElement>(null)
 
 const getHeights = () => {
   return {
