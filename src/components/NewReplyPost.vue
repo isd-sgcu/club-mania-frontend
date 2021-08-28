@@ -20,7 +20,11 @@
         <span class="font-Roboto">{{ toggleText }}</span>
       </div>
       <button
-        class="text-[16px] px-[16px] py-[4px] h-[32px] min-w-[160px] text-Brown  bg-white rounded focus:outline-none"
+        class="text-[16px] px-[16px] py-[4px] h-[32px] min-w-[160px] rounded focus:outline-none"
+        :style="{
+          color: buttonTextColors[themeStore.savedTheme],
+          backgroundColor: backgroundColors[themeStore.savedTheme]
+        }"
         @click="$emit('submit')"
       >
         {{ props.buttonText ?? 'โพสต์' }}
@@ -53,6 +57,23 @@ const onToggle = (activeState: boolean) => {
   emit('toggle', activeState)
   asAnonymous.value = activeState
   toggleText.value = activeState ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน'
+}
+
+const buttonTextColors = {
+  SilpVat: '#391E67',
+  Vichagarn: '#391E67',
+  Gera: '#5B3112',
+  Pat: '#F4CF58',
+  Other: '#2D3656',
+  Main: '#2D3656',
+}
+const backgroundColors = {
+  SilpVat: 'white',
+  Vichagarn: 'white',
+  Gera: 'white',
+  Pat: '#5B3112',
+  Other: 'white',
+  Main: 'white',
 }
 </script>
 
