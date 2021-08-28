@@ -26,12 +26,12 @@ interface IProps {
 
 const props = defineProps<IProps>()
 const CardBackground = ref('')
-const CardBorder = CardVariant.border[props.type || 'Others']
+const CardBorder = CardVariant.border[props.type || 'Other']
 const borderWidth = ref('3px')
 
 const handleMouseEnter = () => {
   borderWidth.value = '5px'
-  CardBackground.value = `${CardVariant.bg[props.type || 'Others']}, `
+  CardBackground.value = `${CardVariant.bg[props.type || 'Other']}, `
 }
 
 const handleMouseOut = () => {

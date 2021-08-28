@@ -1,1 +1,1 @@
-export type Variant = 'Gera' | 'SlipVat' | 'Pat' | 'Vichagarn' | 'Others'
+export type Variant = 'Gera' | 'SilpVat' | 'Pat' | 'Vichagarn' | 'Other'
