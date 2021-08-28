@@ -1,7 +1,7 @@
 <template>
   <div
     class="w-[200px]"
-    :style="{filter: `drop-shadow(0px 0px 4px ${CardBorder})`, border: `3px solid ${CardBorder}`, borderRadius: '8px' }"
+    :style="{filter: `drop-shadow(0px 0px ${borderWidth} ${CardBorder})`, border: `${borderWidth} solid ${CardBorder}`, borderRadius: '8px' }"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseOut"
   >
@@ -27,12 +27,15 @@ interface IProps {
 const props = defineProps<IProps>()
 const CardBackground = ref('')
 const CardBorder = CardVariant.border[props.type || 'Others']
+const borderWidth = ref('3px')
 
 const handleMouseEnter = () => {
+  borderWidth.value = '5px'
   CardBackground.value = `${CardVariant.bg[props.type || 'Others']}, `
 }
 
 const handleMouseOut = () => {
+  borderWidth.value = '2px'
   CardBackground.value = ''
 }
 </script>
