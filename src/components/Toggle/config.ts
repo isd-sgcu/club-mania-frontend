@@ -17,6 +17,7 @@ const useToggleConfig = () => {
       Gera: '#690000',
       Pat: '#98521E',
       Other: 'white',
+      Main: 'black',
     },
     // background colors of the whole thing
     outerColors: {
@@ -25,6 +26,7 @@ const useToggleConfig = () => {
       Gera: 'white',
       Pat: '#F38C23',
       Other: '#2F4C7A',
+      Main: 'white',
     },
     // background colors of the whole thing when active
     outerActiveColors: {
@@ -33,6 +35,7 @@ const useToggleConfig = () => {
       Gera: '#9F140E',
       Pat: '#5B3112',
       Other: '#516E8E',
+      Main: 'dark-700',
     },
   }
 }
