@@ -1,7 +1,11 @@
 <template>
   <button
-    class="text-white bg-transparent text-[24px] focus:outline-none px-[34px] py-[6px] rounded-full border-white border-1 transition-all"
-    :class="{ filterActive: activeState }"
+    class="bg-transparent text-[24px] focus:outline-none px-[34px] py-[6px] rounded-full border-1 transition-all active:outline-none"
+    :style="{
+      background: props.activeState ? backgrounds[themeStore.savedTheme] : 'transparent',
+      borderColor: backgrounds[themeStore.savedTheme],
+      color: props.activeState ? textActive[themeStore.savedTheme] : backgrounds[themeStore.savedTheme]
+    }"
     @click="toggle"
   >
     <slot></slot>
@@ -9,23 +13,34 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ activeState: boolean }>()
+import { useThemeStore } from '~/stores/themes'
+const themeStore = useThemeStore()
 
-const isActive = ref(props.activeState || false)
+const props = defineProps<{ activeState: boolean }>()
 
 const emit = defineEmits<{
   (e: 'toggle', activeState: boolean): void
 }>()
 
 const toggle = () => {
-  isActive.value = !isActive.value
-  emit('toggle', isActive.value)
+  emit('toggle', !props.activeState)
 }
 
+// css
+const backgrounds = {
+  SilpVat: 'white',
+  Vichagarn: 'white',
+  Gera: 'white',
+  Pat: '#5B3112',
+  Other: 'white',
+  Main: 'white',
+}
+const textActive = {
+  SilpVat: '#1B0D31',
+  Vichagarn: '#1B0D31',
+  Gera: '#1B0D31',
+  Pat: '#F4CF58',
+  Other: '#1B0D31',
+  Main: '#1B0D31',
+}
 </script>
-
-<style>
-.filterActive {
-  @apply text-purple-900 bg-white;
-}
-</style>
