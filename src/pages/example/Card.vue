@@ -15,13 +15,18 @@
     <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" dark />
     <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" />
   </div>
+  <div class="flex flex-wrap">
+    <MainCard v-for="item in mainColor" :key="item" :type="item" text="ชมรมศิลปะการพูดและการแสดง" img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" />
+  </div>
 </template>
 
 <script setup lang="ts">
+import { Variant } from '~/components/Card/Main/types'
 import { GhostColorType } from '~/components/Card/Other/types'
 import { PaletteKey } from '~/components/Card/Pat/types'
 
 const cardColor = ['lightcyan', 'pink', 'red', 'steel', 'yellow'] as GhostColorType[]
 const patColor = ['red', 'blue', 'yellow', 'green'] as PaletteKey[]
+const mainColor = ['Gera', 'SlipVat', 'Pat', 'Vichagarn', 'Others'] as Variant[]
 
 </script>
