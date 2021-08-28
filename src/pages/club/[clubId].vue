@@ -6,18 +6,22 @@
       <!-- club info -->
       <section class="space-y-[16px]">
         <text-sub1>
-          <span :class="`text-${clubTypeColor[themeStore.savedTheme]}`">{{ clubType + ' > ' }}</span>
-          <span :class="`text-${clubNameColor[themeStore.savedTheme]}`">{{ clubName }}</span>
+          <span :class="`text-${clubTypeClr}`">{{ clubType + ' > ' }}</span>
+          <span :class="`text-${clubNameClr}`">{{ clubName }}</span>
         </text-sub1>
         <Gallery :club-name="clubName" :images="images" />
         <BackgroundSection>
-          <h5 :class="`text-${clubNameColor[themeStore.savedTheme]}`">เกี่ยวกับชมรม</h5>
+          <h5 :class="`text-${clubNameClr}`">
+            เกี่ยวกับชมรม
+          </h5>
           <text-body1>{{ info }}</text-body1>
         </BackgroundSection>
       </section>
       <!-- new reply -->
       <section class="space-y-[16px]">
-        <h5 :class="`text-${clubNameColor[themeStore.savedTheme]}`">ความคิดเห็น</h5>
+        <h5 :class="`text-${clubNameClr}`">
+          ความคิดเห็น
+        </h5>
         <BackgroundSection>
           <NewReplyPost :is-anonymous="isAnonymous" />
         </BackgroundSection>
@@ -25,14 +29,12 @@
       <!-- posts -->
       <section v-if="posts.length" class="space-y-[16px]">
         <div class="space-x-[16px]">
-          <Filter
-            :active-state="isLastestFilterChosen"
-            @toggle="(activeState) => isLastestFilterChosen = activeState"
-          >ล่าสุด</Filter>
-          <Filter
-            :active-state="!isLastestFilterChosen"
-            @toggle="(activeState) => isLastestFilterChosen = !activeState"
-          >ยอดนิยม</Filter>
+          <Filter :active-state="isLastestFilterChosen" @toggle="latestFilterOnClick">
+            ล่าสุด
+          </Filter>
+          <Filter :active-state="!isLastestFilterChosen" @toggle="popularFilterOnClick">
+            ยอดนิยม
+          </Filter>
         </div>
         <div v-for="(post, idx) in posts" :key="idx">
           <Post :post="post" />
@@ -54,6 +56,17 @@ defineProps<{ clubId: string }>()
 
 const isAnonymous = ref(false)
 const isLastestFilterChosen = ref(false)
+
+const clubTypeClr = clubTypeColor[themeStore.savedTheme]
+const clubNameClr = clubNameColor[themeStore.savedTheme]
+
+const latestFilterOnClick = (activeState: boolean) => {
+  isLastestFilterChosen.value = activeState
+}
+
+const popularFilterOnClick = (activeState: boolean) => {
+  isLastestFilterChosen.value = !activeState
+}
 
 // dummy
 const posts: Post[] = [
