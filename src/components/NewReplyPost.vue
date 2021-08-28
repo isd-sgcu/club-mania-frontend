@@ -1,14 +1,14 @@
 <template>
-  <div class="space-y-[16px] relative">
+  <div class="relative">
     <transition-group appear name="fade" mode="out-in">
       <input
         v-if="asAnonymous"
         maxlength="25"
-        class="bg-transparent border-1 border-[#FFCECB] rounded-full focus:outline-none px-[12px] py-[4px] placeholder-[#FFCECB]"
+        class="bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
+        :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ"
       />
       <TextFrame
-        :theme="'Gera'"
         :show-discard-icon="true"
         @textChange="$emit('textChange')"
         @submit="$emit('submit')"
@@ -16,7 +16,7 @@
     </transition-group>
     <div class="flex items-center justify-between">
       <div class="space-x-[12px] flex items-center">
-        <ToggleThing :theme="'Gera'" @toggle="onToggle" />
+        <ToggleThing @toggle="onToggle" />
         <span class="font-Roboto">{{ toggleText }}</span>
       </div>
       <button
@@ -28,6 +28,11 @@
 </template>
 
 <script setup lang="ts">
+import useTextFrameConfig from './Frame/TextFrame/config'
+import { useThemeStore } from '~/stores/themes'
+const { border, placeholder, text } = useTextFrameConfig()
+const themeStore = useThemeStore()
+
 const props = defineProps<{
   isAnonymous: boolean
 }>()
