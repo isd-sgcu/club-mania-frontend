@@ -4,11 +4,19 @@
       <h3>
         สำรวจชมรม
       </h3>
-      <CategoryTable>
+      <CategoryTable v-if="newRouteName === 'Pat'">
         <PatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="'red'" />
+      </CategoryTable>
+      <CategoryTable v-if="newRouteName === 'SilpVat'">
         <SilpvatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
+      </CategoryTable>
+      <CategoryTable v-if="newRouteName === 'Other'">
         <OtherCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="'red'" />
+      </CategoryTable>
+      <CategoryTable v-if="newRouteName === 'Gera'">
         <GeraCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
+      </CategoryTable>
+      <CategoryTable v-if="newRouteName === 'Vichagarn'">
         <VichagarnCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
     </div>
@@ -24,9 +32,13 @@ const route = useRouter()
 const theme = useThemeStore()
 
 const currentRoute = route.currentRoute.value.params.type as string
-const newRouteName = `${currentRoute.slice(0, 1).toUpperCase()}${currentRoute.slice(1, currentRoute.length)}` as ThemeOption
 
-theme.setNewTheme(newRouteName)
+const newRouteName = ref(`${currentRoute.slice(0, 1).toUpperCase()}${currentRoute.slice(1, currentRoute.length)}`)
+
+if (newRouteName.value === 'Silpvat')
+  newRouteName.value = 'SilpVat'
+
+theme.setNewTheme(newRouteName.value as ThemeOption)
 
 const data: any = [
   {
