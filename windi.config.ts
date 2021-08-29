@@ -13,7 +13,7 @@ const makeSafe = (prefix: string, values: string | string[]): string => {
 
 const safeText = 'text-white text-LightBrown text-[#FFCECB] text-[#BB62DB] text-blue-b100 text-Brown text-grey-light text-[#DF322A] text-[#3DACEB] text-[#98521E] text-[#5B3112] text-[#7CB8E7]'
 const safeBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3] border-LightBrown border-white border-gray-light'
-const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat footer-SilpVat footer-Pat footer-default footer-Other footer-Gera footer-Vichagarn dark-700')
+const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat footer-SilpVat footer-Pat footer-Main footer-Other footer-Gera footer-Vichagarn dark-700')
 const safePlaceholder = makeSafe('placeholder', 'blue-b100 [#FFCECB] LightBrown grey-light+')
 const safeFontStyle = 'font-Main font-Gera font-Pat font-Vichagarn font-SilpVat font-Other'
 export default defineConfig({
@@ -109,7 +109,7 @@ export default defineConfig({
           Main: 'dark-700',
         },
         footer: {
-          default: '#0C0C0C',
+          Main: '#0C0C0C',
           SilpVat: '#1B0D31',
           Vichagarn: '#0C233F',
           Gera: '#560000',
@@ -119,9 +119,6 @@ export default defineConfig({
         darkPurple: '#1F0A41',
       },
       backgroundImage: {
-      },
-      gridTemplateColumns: {
-        clubs: 'repeat(auto-fill, minmax(200px, 1fr))',
       },
       typography: {
         DEFAULT: {
