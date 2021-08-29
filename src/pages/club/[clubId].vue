@@ -1,24 +1,24 @@
 <template>
   <!-- banner is here -->
   <PageBackground></PageBackground>
-  <div class="px-[204px] bg-gradient-to-b">
-    <div class="space-y-[24px]">
+  <div class="w-6xl mx-auto">
+    <div class="space-y-8">
       <!-- club info -->
-      <section class="space-y-[16px]">
+      <section class="space-y-4">
         <text-sub1>
           <span :class="`text-${clubTypeClr}`">{{ clubType + ' > ' }}</span>
           <span :class="`text-${clubNameClr}`">{{ clubName }}</span>
         </text-sub1>
         <Gallery :club-name="clubName" :images="images" />
         <BackgroundSection>
-          <h5 :class="`text-${clubNameClr}`">
+          <h5 :class="`mb-3 text-${clubNameClr}`">
             เกี่ยวกับชมรม
           </h5>
           <text-body1>{{ info }}</text-body1>
         </BackgroundSection>
       </section>
       <!-- new reply -->
-      <section class="space-y-[16px]">
+      <section class="space-y-4">
         <h5 :class="`text-${clubNameClr}`">
           ความคิดเห็น
         </h5>
@@ -27,8 +27,8 @@
         </BackgroundSection>
       </section>
       <!-- posts -->
-      <section v-if="posts.length" class="space-y-[16px]">
-        <div class="space-x-[16px]">
+      <section v-if="posts.length" class="space-y-4">
+        <div class="space-x-4">
           <Filter :active-state="isLastestFilterChosen" @toggle="latestFilterOnClick">
             ล่าสุด
           </Filter>
@@ -63,7 +63,6 @@ const clubNameClr = clubNameColor[themeStore.savedTheme]
 const latestFilterOnClick = (activeState: boolean) => {
   isLastestFilterChosen.value = activeState
 }
-
 const popularFilterOnClick = (activeState: boolean) => {
   isLastestFilterChosen.value = !activeState
 }
