@@ -14,22 +14,12 @@
   </swiper>
   <!---Main content-->
   <div class=" w-full flex flex-col items-center py-12 ">
-    <h3 class="mb-48px">
+    <h3>
       สำรวจชมรม
     </h3>
-    <Grid>
-      <!---Just Dummy Card--->
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" dark />
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" />
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" dark />
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" />
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" dark />
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" />
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" dark />
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" />
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" dark />
-      <VichagarnCard img-url="https://dummyimage.com/200x200/5c205c/ffffff.png" text="Hello World" />
-    </Grid>
+    <CategoryTable>
+      <MainCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :type="item.variant" />
+    </CategoryTable>
   </div>
 </template>
 
@@ -53,6 +43,72 @@ import { ThemeOption } from '~/types'
 SwiperCore.use([Autoplay, Pagination])
 
 const themes = ['Main', 'Gera', 'Pat', 'Vichagarn', 'SilpVat', 'Other'] as ThemeOption[]
+
+const data: any = [
+  {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'SilpVat',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Vichagarn',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Other',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Gera',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Pat',
+  },
+  {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'SilpVat',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Vichagarn',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Other',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Gera',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Pat',
+  },
+  {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'SilpVat',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Vichagarn',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Other',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Gera',
+  }, {
+    text: 'ชมรมวิจัย',
+    imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
+    variant: 'Pat',
+  },
+]
 </script>
 
 <style>
