@@ -1,1 +1,1 @@
-export type GhostColorType = 'darkblue' | 'lightcyan' | 'pink' | 'red' | 'steel' | 'yellow'
+export type GhostColorType = 'lightcyan' | 'pink' | 'red' | 'steel' | 'yellow'

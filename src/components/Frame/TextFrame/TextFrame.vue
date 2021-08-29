@@ -10,7 +10,7 @@
       >
         <path
           d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m3.59 5L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41L15.59 7z"
-          fill="white"
+          :fill="discardColor[themeName]"
         />
       </svg>
     </div>
@@ -18,24 +18,30 @@
       ref="textarea"
       v-model="value"
       class="border-1 rounded-[8px] w-full bg-transparent pl-[16px] pr-[28px] py-[8px] font-Roboto transition-all overflow-y-hidden"
-      :class="`border-${border[theme]} placeholder-${placeholder[theme]} text-${text[theme]}`"
-      :placeholder="props.placeholder ?? 'Placeholder...'"
+      :class="`border-${border[themeName]} placeholder-${placeholder[themeName]} text-${text[themeName]}`"
+      :placeholder="props.placeholder ?? 'แสดงความคิดเห็น...'"
       :disabled="props.disabled"
       :style="{ height }"
       resize="none"
       @input="onInput"
       @keydown.enter.exact.prevent="submit"
     ></textarea>
-    <div v-show="props.disabled">
+    <div v-show="props.disabled && showReadMore">
       <text-body2
         v-if="!expanded"
-        class="text-white font-medium cursor-pointer"
+        :class="`text-${text[themeName]}`"
+        class="font-medium cursor-pointer"
         @click="expand"
       >
-        Read more
+        แสดงเพิ่มเติม
       </text-body2>
-      <text-body2 v-else class="text-white font-medium cursor-pointer" @click="shrink">
-        Show less
+      <text-body2
+        v-else
+        :class="`text-${text[themeName]}`"
+        class="font-medium cursor-pointer"
+        @click="shrink"
+      >
+        แสดงน้อยลง
       </text-body2>
     </div>
   </div>
@@ -44,37 +50,47 @@
 <script setup lang="ts">
 import useTextFrameConfig from './config'
 import { ThemeOption } from '~/types'
+import { useThemeStore } from '~/stores/themes'
+const { defaultHeight, border, placeholder, text } = useTextFrameConfig()
+const themeStore = useThemeStore()
 
 const props = defineProps<{
   placeholder?: string
   disabled?: boolean // ex. comment
   showDiscardIcon?: boolean
   value?: string // initial value of the textarea, ex. comment
-  theme: ThemeOption
+  theme?: ThemeOption
 }>()
-
-const { defaultHeight, border, placeholder, text } = useTextFrameConfig()
-
-const height = ref(`${defaultHeight}px`)
-const expanded = ref(false)
 
 const emit = defineEmits<{
   (e: 'textChange', value: string): void
   (e: 'submit', value: string): void
 }>()
 
+const height = ref(`${defaultHeight}px`)
+const expanded = ref(false)
+const showReadMore = ref(false)
 const value = ref(props.value ?? '') // current text in the area
+const textarea = ref<null | HTMLTextAreaElement>(null)
+
+const themeName = props.theme ?? themeStore.savedTheme
+
+// if is a post or comment, let the height hugs the content
+onMounted(() => {
+  if (!props.disabled) return
+  textarea.value!.style.height = 'auto'
+  showReadMore.value = textarea.value!.scrollHeight > defaultHeight
+})
 
 const discard = () => {
   value.value = ''
 }
+
 // fires when enter is down
 const submit = () => {
   emit('submit', value.value)
   discard()
 }
-
-const textarea = ref<null | HTMLTextAreaElement>(null)
 
 const getHeights = () => {
   return {
@@ -111,5 +127,14 @@ const expand = () => {
 const shrink = () => {
   height.value = `${defaultHeight}px`
   expanded.value = false
+}
+
+const discardColor = {
+  SilpVat: 'white',
+  Vichagarn: 'white',
+  Gera: 'white',
+  Pat: 'black',
+  Other: 'white',
+  Main: 'white',
 }
 </script>

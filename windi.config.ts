@@ -11,9 +11,9 @@ const makeSafe = (prefix: string, values: string | string[]): string => {
   return valuesArray.map(each => `${prefix}-${each}`).join(' ')
 }
 
-const safeText = 'text-white text-Brown text-grey-light'
-const safeBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3]'
-const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat footer-SilpVat footer-Pat footer-default footer-Other footer-Gera footer-Vichagarn')
+const safeText = 'text-white text-LightBrown text-[#FFCECB] text-[#BB62DB] text-blue-b100 text-Brown text-grey-light text-[#DF322A] text-[#3DACEB] text-[#98521E] text-[#5B3112] text-[#7CB8E7]'
+const safeBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3] border-LightBrown border-white border-gray-light'
+const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat footer-SilpVat footer-Pat footer-default footer-Other footer-Gera footer-Vichagarn dark-700')
 const safePlaceholder = makeSafe('placeholder', 'blue-b100 [#FFCECB] LightBrown grey-light+')
 
 export default defineConfig({
@@ -106,6 +106,7 @@ export default defineConfig({
           Gera: 'rgba(223, 49, 42, 0.25)',
           Pat: 'rgba(254, 184, 41, 0.5)',
           Other: 'rgba(112, 159, 195, 0.25)',
+          Main: 'dark-700',
         },
         footer: {
           default: '#0C0C0C',
@@ -113,7 +114,7 @@ export default defineConfig({
           Vichagarn: '#0C233F',
           Gera: '#560000',
           Pat: '#914D1A',
-          Other: '#000D39',
+          Other: '#00274A',
         },
         darkPurple: '#1F0A41',
       },

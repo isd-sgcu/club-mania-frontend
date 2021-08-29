@@ -2,6 +2,7 @@
 
 interface IProps {
   imgUrl: string
+  hover?: boolean
 }
 
 defineProps<IProps>()
@@ -9,8 +10,8 @@ defineProps<IProps>()
 </script>
 
 <template>
-  <div class="outer-frame mb-3">
-    <div class="inner-frame">
+  <div :class="!hover ? 'outer-frame' : 'outer-frame-hover'" class="outer-frame mb-3 rounded-none border-solid border-width-8">
+    <div class="inner-frame w-full h-full border-width-8 max-w-[200px]">
       <img :src="imgUrl">
     </div>
   </div>
@@ -18,11 +19,13 @@ defineProps<IProps>()
 
 <style scoped>
 .outer-frame {
-    @apply rounded-none border-solid border-width-8;
     border-color:#228AC5 #0B2E58 #0C233F #0C5AA3;
 }
+
+.outer-frame-hover {
+  border-color: #71BBFF #0B2E58 #0C5AA3 #228AC5
+}
 .inner-frame {
-    @apply w-full h-full border-width-8 max-w-[200px];
     border-color: #0D3D78;
 }
 </style>

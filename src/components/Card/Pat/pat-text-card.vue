@@ -3,7 +3,7 @@ import { defineProps } from 'vue'
 import { PaletteKey } from './types'
 
 interface IProps {
-  color: PaletteKey
+  color: PaletteKey | 'hover'
 }
 
 defineProps<IProps>()

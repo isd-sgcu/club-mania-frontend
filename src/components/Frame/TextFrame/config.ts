@@ -7,6 +7,7 @@ const useTextFrameConfig = () => {
       Gera: '[#FFCECB]',
       Pat: '[#98521E]',
       Other: '[#F3F3F3]',
+      Main: 'grey-light',
     },
     placeholder: {
       SilpVat: 'blue-b100',
@@ -14,6 +15,7 @@ const useTextFrameConfig = () => {
       Gera: '[#FFCECB]',
       Pat: 'LightBrown',
       Other: 'grey-light+',
+      Main: 'grey-light',
     },
     text: {
       SilpVat: 'grey-light',
@@ -21,6 +23,7 @@ const useTextFrameConfig = () => {
       Gera: 'grey-light',
       Pat: 'Brown',
       Other: 'white',
+      Main: 'white',
     },
   }
 }

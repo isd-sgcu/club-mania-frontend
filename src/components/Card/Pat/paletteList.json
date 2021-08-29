@@ -42,5 +42,16 @@
         "triangleBottomLeft": "#F4B230",
         "triangleBottomRight": "#D18511",
         "backgroundColor": "#F6B73C"
+    },
+    "hover": {
+        "borderTop": "#EBB88D",
+        "borderRight": "#763F0F",
+        "borderBottom": "#5D2B06",
+        "borderLeft": "#C57E42",
+        "triangleTopLeft": "#E5AF81",
+        "triangleTopRight": "#BB7E4A",
+        "triangleBottomLeft": "#8D440E",
+        "triangleBottomRight": "#67340E",
+        "backgroundColor": "#98521E"
     }
 }

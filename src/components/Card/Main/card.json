@@ -1,0 +1,16 @@
+{
+    "bg": {
+        "Gera": "linear-gradient(180deg, rgba(223, 50, 42, 0) 0%, #C0261F 100%)",
+        "SilpVat": "linear-gradient(180deg, rgba(223, 42, 205, 0) 0%, #AA1FC0 100%)",
+        "Pat": "linear-gradient(180deg, rgba(255, 221, 135, 0) 0%, #FF9738 100%)",
+        "Vichagarn": "linear-gradient(180deg, rgba(84, 90, 232, 0) 0%, #030AAA 100%)",
+        "Other": "linear-gradient(180deg, rgba(140, 207, 255, 0) 0%, rgba(99, 199, 255, 0.8) 100%)"
+    },
+    "border": {
+        "Gera": "#FF4F4F",
+        "SilpVat": "#FF82F3",
+        "Pat": "#FFE298",
+        "Vichagarn": "#0042C1",
+        "Other": "#63C7FF"
+    }
+}
