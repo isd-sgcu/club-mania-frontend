@@ -15,9 +15,9 @@ const safeText = 'text-white text-LightBrown text-[#FFCECB] text-[#BB62DB] text-
 const safeBorder = 'border-blue-b100 border-[#AACAE9] border-[#FFCECB] border-[#98521E] border-[#F3F3F3] border-LightBrown border-white border-gray-light'
 const safeBg = makeSafe('bg', 'textbox-Other textbox-Pat textbox-Gera textbox-Vichagarn textbox-SilpVat footer-SilpVat footer-Pat footer-default footer-Other footer-Gera footer-Vichagarn dark-700')
 const safePlaceholder = makeSafe('placeholder', 'blue-b100 [#FFCECB] LightBrown grey-light+')
-
+const safeFontStyle = 'font-Main font-Gera font-Pat font-Vichagarn font-SilpVat font-Other'
 export default defineConfig({
-  safelist: `${safeBg} ${safeText} ${safeBorder} ${safePlaceholder}`,
+  safelist: `${safeBg} ${safeText} ${safeBorder} ${safePlaceholder} ${safeFontStyle}`,
   darkMode: 'class',
   // https://windicss.org/posts/v30.html#attributify-mode
   attributify: true,
