@@ -1,9 +1,8 @@
 <template>
   <Navbar />
-  <PageBackground :theme="name" />
-  <main>
+  <PageBackground :theme="name">
     <router-view />
-  </main>
+  </PageBackground>
   <Footer :theme="name" />
 </template>
 

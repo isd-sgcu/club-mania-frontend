@@ -1,10 +1,11 @@
 <template>
-  <div
-    class="fixed w-full h-full -z-50"
+  <main
     :style="{
-      background
+      background,
     }"
-  ></div>
+  >
+    <slot />
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -28,3 +29,6 @@ const pageBgColors = {
 const background = pageBgColors[props.theme ?? themeStore.savedTheme]
 
 </script>
+
+<style>
+</style>
