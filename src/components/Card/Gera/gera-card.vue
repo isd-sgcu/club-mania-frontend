@@ -4,7 +4,6 @@ import { defineProps } from 'vue'
 interface IProps {
   imgUrl: string
   text: string
-  dark?: boolean
 }
 
 defineProps<IProps>()

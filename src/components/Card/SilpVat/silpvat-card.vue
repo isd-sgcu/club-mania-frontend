@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 interface IProps {
-  dark?: boolean
   text: string
 }
 
