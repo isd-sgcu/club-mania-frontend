@@ -1,47 +1,48 @@
 <template>
   <!-- banner is here -->
-  <PageBackground></PageBackground>
-  <div class="w-6xl mx-auto">
-    <div class="space-y-8">
-      <!-- club info -->
-      <section class="space-y-4">
-        <text-sub1>
-          <span :class="`text-${clubTypeClr}`">{{ clubType + ' > ' }}</span>
-          <span :class="`text-${clubNameClr}`">{{ clubName }}</span>
-        </text-sub1>
-        <Gallery :club-name="clubName" :images="images" />
-        <BackgroundSection>
-          <h5 :class="`mb-3 text-${clubNameClr}`">
-            เกี่ยวกับชมรม
+  <PageBackground>
+    <div class="w-6xl mx-auto">
+      <div class="space-y-8">
+        <!-- club info -->
+        <section class="space-y-4">
+          <text-sub1>
+            <span :class="`text-${clubTypeClr}`">{{ clubType + ' > ' }}</span>
+            <span :class="`text-${clubNameClr}`">{{ clubName }}</span>
+          </text-sub1>
+          <Gallery :club-name="clubName" :images="images" />
+          <BackgroundSection>
+            <h5 :class="`mb-3 text-${clubNameClr}`">
+              เกี่ยวกับชมรม
+            </h5>
+            <text-body1>{{ info }}</text-body1>
+          </BackgroundSection>
+        </section>
+        <!-- new reply -->
+        <section class="space-y-4">
+          <h5 :class="`text-${clubNameClr}`">
+            ความคิดเห็น
           </h5>
-          <text-body1>{{ info }}</text-body1>
-        </BackgroundSection>
-      </section>
-      <!-- new reply -->
-      <section class="space-y-4">
-        <h5 :class="`text-${clubNameClr}`">
-          ความคิดเห็น
-        </h5>
-        <BackgroundSection>
-          <NewReplyPost :is-anonymous="isAnonymous" />
-        </BackgroundSection>
-      </section>
-      <!-- posts -->
-      <section v-if="posts.length" class="space-y-4">
-        <div class="space-x-4">
-          <Filter :active-state="isLastestFilterChosen" @toggle="latestFilterOnClick">
-            ล่าสุด
-          </Filter>
-          <Filter :active-state="!isLastestFilterChosen" @toggle="popularFilterOnClick">
-            ยอดนิยม
-          </Filter>
-        </div>
-        <div v-for="(post, idx) in posts" :key="idx">
-          <Post :post="post" />
-        </div>
-      </section>
+          <BackgroundSection>
+            <NewReplyPost :is-anonymous="isAnonymous" />
+          </BackgroundSection>
+        </section>
+        <!-- posts -->
+        <section v-if="posts.length" class="space-y-4">
+          <div class="space-x-4">
+            <Filter :active-state="isLastestFilterChosen" @toggle="latestFilterOnClick">
+              ล่าสุด
+            </Filter>
+            <Filter :active-state="!isLastestFilterChosen" @toggle="popularFilterOnClick">
+              ยอดนิยม
+            </Filter>
+          </div>
+          <div v-for="(post, idx) in posts" :key="idx">
+            <Post :post="post" />
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
+  </PageBackground>
 </template>
 
 <script setup lang="ts">
