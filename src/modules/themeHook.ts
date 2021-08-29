@@ -5,7 +5,11 @@ import { ThemeOption, UserModule } from '~/types'
 export const themeMap: {
   [route: string]: ThemeOption
 } = {
-  '/club/jk': 'Gera',
+  '/club/SilpVat': 'SilpVat',
+  '/club/Vichagarn': 'Vichagarn',
+  '/club/Gera': 'Gera',
+  '/club/Pat': 'Pat',
+  '/club/Other': 'Other',
 }
 
 export const install: UserModule = ({ router, isClient }) => {
