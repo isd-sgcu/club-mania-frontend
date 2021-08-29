@@ -67,6 +67,7 @@ const searchClub = (searchTerm: string) => {
 }
 
 const toggleSearch = () => {
+  searchTerm.value = ''
   isSearch.value = !isSearch.value
 }
 
@@ -92,11 +93,11 @@ watchEffect(() => {
   @apply absolute max-w-432px w-1/3 box-border top-0 right-0 z-10;
 }
 .search-bar{
-  @apply flex items-center bg-grey-light px-16px py-12px text-purple-500;
+  @apply flex items-center bg-grey-light+ px-16px py-12px text-purple-500;
 }
 
 .search-input {
-  @apply w-9/10 h-40px rounded-[8px] bg-transparent px-12px Navbar-font
+  @apply w-9/10 h-40px rounded-[8px] px-12px Navbar-font
   overflow-ellipsis focus:(border-solid border-[1.4px] border-purple-500 outline-none);
 }
 
