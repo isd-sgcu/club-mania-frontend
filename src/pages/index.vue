@@ -1,7 +1,7 @@
 <template>
   <!---Slide show--->
   <swiper
-    :pagination="true"
+    :pagination="{clickable: true}"
     :slides-per-view="1"
     :loop="true"
     :autoplay="{'delay': 2500, 'disableOnInteraction': false}"
