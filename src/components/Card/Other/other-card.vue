@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[200px]" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+  <div class="w-[200px]" style="z-index: 1;" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <div class="relative">
       <img class="absolute top-0 w-full h-full img-clip" :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
       <img :src="!detect ? ghostImg : ghostHover" class="w-full h-full mb-4" preserveAspectRatio="none">

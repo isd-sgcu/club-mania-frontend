@@ -1,6 +1,5 @@
 <template>
-  <div class="h-screen">
-    Hello World
+  <BackgroundSection>
     <div class=" w-full flex flex-col items-center py-12 ">
       <h3>
         สำรวจชมรม
@@ -13,15 +12,21 @@
         <VichagarnCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
     </div>
-  </div>
+  </BackgroundSection>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { useThemeStore } from '~/stores/themes'
+import { ThemeOption } from '~/types'
 
+const route = useRouter()
 const theme = useThemeStore()
 
-theme.setNewTheme('Vichagarn')
+const currentRoute = route.currentRoute.value.params.type as string
+const newRouteName = `${currentRoute.slice(0, 1).toUpperCase()}${currentRoute.slice(1, currentRoute.length)}` as ThemeOption
+
+theme.setNewTheme(newRouteName)
 
 const data: any = [
   {
