@@ -10,12 +10,22 @@ interface IProps {
 
 defineProps<IProps>()
 
+const detect = ref(false)
+
+const handleMouseEnter = () => {
+  detect.value = true
+}
+
+const handleMouseOut = () => {
+  detect.value = false
+}
+
 </script>
 
 <template>
-  <div>
-    <PatImageCard :color="color" class="mb-2" :img-url="imgUrl" />
-    <PatTextCard :color="color">
+  <div @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+    <PatImageCard :color="!detect ? color : 'hover'" class="mb-2" :img-url="imgUrl" />
+    <PatTextCard :color="!detect ? color: 'hover'">
       {{ text }}
     </PatTextCard>
   </div>

@@ -2,23 +2,26 @@
 import Palette from './paletteList.json'
 import { PaletteKey } from './types'
 
-const props = defineProps<{ color: PaletteKey }>()
+const props = defineProps<{ color: PaletteKey | 'hover' }>()
 
-const { color } = props
+const newPalette = ref(Palette[props.color])
 
-const { backgroundColor, borderTop, borderBottom, borderLeft, borderRight, triangleTopLeft, triangleTopRight, triangleBottomLeft, triangleBottomRight } = Palette[color]
+watch(props, () => {
+  newPalette.value = Palette[props.color]
+})
+
 </script>
 
 <template>
   <div
     class="outer-border"
-    :style="{ backgroundColor, borderTopColor: borderTop, borderBottomColor: borderBottom, borderLeftColor: borderLeft, borderRightColor: borderRight }"
+    :style="{ backgroundColor: newPalette.backgroundColor, borderTopColor: newPalette.borderTop, borderBottomColor: newPalette.borderBottom, borderLeftColor: newPalette.borderLeft, borderRightColor: newPalette.borderRight }"
   >
     <slot></slot>
-    <div class="triangle-corner-base triangle-corner-top-left" :style="{ borderRightColor: triangleTopLeft, borderBottomColor: triangleTopLeft}" />
-    <div class="triangle-corner-base triangle-corner-top-right" :style="{ borderLeftColor: triangleTopRight, borderBottomColor: triangleTopRight}" />
-    <div class="triangle-corner-base triangle-corner-bottom-left" :style="{ borderRightColor: triangleBottomLeft, borderTopColor: triangleBottomLeft}" />
-    <div class="triangle-corner-base triangle-corner-bottom-right" :style="{ borderLeftColor: triangleBottomRight, borderTopColor: triangleBottomRight}" />
+    <div class="triangle-corner-base triangle-corner-top-left" :style="{ borderRightColor: newPalette.triangleTopLeft, borderBottomColor: newPalette.triangleTopLeft}" />
+    <div class="triangle-corner-base triangle-corner-top-right" :style="{ borderLeftColor: newPalette.triangleTopRight, borderBottomColor: newPalette.triangleTopRight}" />
+    <div class="triangle-corner-base triangle-corner-bottom-left" :style="{ borderRightColor: newPalette.triangleBottomLeft, borderTopColor: newPalette.triangleBottomLeft}" />
+    <div class="triangle-corner-base triangle-corner-bottom-right" :style="{ borderLeftColor: newPalette.triangleBottomRight, borderTopColor: newPalette.triangleBottomRight}" />
   </div>
 </template>
 
