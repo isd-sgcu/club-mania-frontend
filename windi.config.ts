@@ -120,6 +120,9 @@ export default defineConfig({
       },
       backgroundImage: {
       },
+      gridTemplateColumns: {
+        clubs: 'repeat(auto-fill, minmax(200px, 1fr))',
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -147,5 +150,14 @@ export default defineConfig({
         },
       },
     },
+  },
+  shortcuts: {
+    'Navbar-font': 'font-Roboto font-500 text-[20px] leading-[24px] tracking-[0.1px]',
+    'font-Main': 'font-Retro text-[72px] leading-[24px]',
+    'font-Vichagarn': 'font-Mitr text-[84px] leading-[24px]',
+    'font-Gera': 'font-Mitr text-[84px] leading-[24px]',
+    'font-Pat': 'font-Mitr text-[84px] leading-[24px]',
+    'font-SilpVat': 'font-Mitr text-[84px] leading-[24px]',
+    'font-Other': 'font-Mitr text-[84px] leading-[24px]',
   },
 })

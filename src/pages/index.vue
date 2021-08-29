@@ -1,8 +1,22 @@
 <template>
-  <PageBackground :theme="name" />
-  <div class="w-full min-h-960px text-center">
-    <Carousel />
-    <h1>สำรวจชมรม</h1>
+  <!---Slide show--->
+  <swiper
+    :pagination="true"
+    :slides-per-view="1"
+    :loop="true"
+    :autoplay="{'delay': 2500, 'disableOnInteraction': false}"
+    class="w-screen"
+  >
+    <!---Each page of the slide-->
+    <swiper-slide v-for="(item, index) in themes" :key="index" class="relative flex items-center justify-center">
+      <Banner :theme="item" :is-club="false" />
+    </swiper-slide>
+  </swiper>
+  <!---Main content-->
+  <div class=" w-full flex flex-col items-center py-12 ">
+    <h3>
+      สำรวจชมรม
+    </h3>
     <CategoryTable>
       <MainCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :type="item.variant" />
     </CategoryTable>
@@ -10,10 +24,25 @@
 </template>
 
 <script setup lang="ts">
-import { useThemeStore } from '~/stores/themes'
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
 
-const theme = useThemeStore()
-const name = ref(theme.savedTheme)
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
+
+// import Swiper core and required modules
+import SwiperCore, {
+  Autoplay, Pagination,
+} from 'swiper'
+
+// Types
+import { ThemeOption } from '~/types'
+
+// install Swiper modules
+SwiperCore.use([Autoplay, Pagination])
+
+const themes = ['Main', 'Gera', 'Pat', 'Vichagarn', 'SilpVat', 'Other'] as ThemeOption[]
 
 const data: any = [
   {
@@ -83,4 +112,17 @@ const data: any = [
 </script>
 
 <style>
+.swiper-pagination {
+  transform: translateY(-65%);
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background: rgba(187, 187, 187, 0.4);
+}
+.swiper-pagination-bullet-active {
+  background: white;
+}
 </style>

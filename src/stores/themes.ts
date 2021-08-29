@@ -5,7 +5,7 @@ export const useThemeStore = defineStore('theme', () => {
   /**
    * Current theme of the website.
    */
-  const savedTheme = ref<ThemeOption>('Vichagarn')
+  const savedTheme = ref<ThemeOption>('Main')
 
   function setNewTheme(name: ThemeOption) {
     savedTheme.value = name

@@ -1,5 +1,6 @@
 <template>
   <Navbar />
+  <PageBackground :theme="name" />
   <main>
     <router-view />
   </main>
