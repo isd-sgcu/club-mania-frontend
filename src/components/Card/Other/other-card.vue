@@ -6,9 +6,9 @@
     </div>
     <div class="relative">
       <img :src="!detect ? backgroundImg : backgroundHover" class="w-full h-full" preserveAspectRatio="none">
-      <text-body2 class="absolute break-words p-5 pt-3 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
+      <text-body1 class="w-[200px] absolute break-words p-5 pt-3 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
         {{ text }}
-      </text-body2>
+      </text-body1>
     </div>
   </div>
 </template>
@@ -53,6 +53,7 @@ const handleMouseOut = () => {
 
 .text-card {
   top: 50%;
-  transform: translate(0, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
