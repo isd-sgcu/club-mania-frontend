@@ -150,11 +150,11 @@ export default defineConfig({
   },
   shortcuts: {
     'Navbar-font': 'font-Roboto font-500 text-[20px] leading-[24px] tracking-[0.1px]',
-    'font-Main': 'font-Retro text-[72px] leading-[24px]',
-    'font-Vichagarn': 'font-Mitr text-[84px] leading-[24px]',
-    'font-Gera': 'font-Mitr text-[84px] leading-[24px]',
-    'font-Pat': 'font-Mitr text-[84px] leading-[24px]',
-    'font-SilpVat': 'font-Mitr text-[84px] leading-[24px]',
-    'font-Other': 'font-Mitr text-[84px] leading-[24px]',
+    'font-Main': 'font-Retro text-[24px] md:text-[56px] xl:text-[72px] leading-[24px] tracking-[2px]',
+    'font-Vichagarn': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
+    'font-Gera': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[0.2px]',
+    'font-Pat': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
+    'font-SilpVat': 'font-Mitr font-700 text-[34px] md:text-[70px] xl:text-[86px] leading-[24px] tracking-[2px]',
+    'font-Other': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
   },
 })
