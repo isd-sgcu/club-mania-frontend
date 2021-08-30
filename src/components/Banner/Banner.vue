@@ -3,7 +3,7 @@
 <!-- Last Updated by Kaoklong -->
 
 <template>
-  <img :src="BannerBackground[theme]" :alt="theme" class="bg-cover h-8/25 max-h-312px 2xl:(min-h-348px max-h-600px)">
+  <img :src="BannerBackground[theme]" :alt="theme" class="bg-cover h-8/25 max-h-312px 2xl:(min-h-330px max-h-600px)">
   <p class="absolute" :class="`font-${theme}`">
     {{ displayText }}
   </p>

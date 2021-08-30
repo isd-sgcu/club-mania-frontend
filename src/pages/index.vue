@@ -5,7 +5,7 @@
     :slides-per-view="1"
     :loop="true"
     :autoplay="{'delay': 2500, 'disableOnInteraction': false}"
-    class="w-screen"
+    class="w-full"
   >
     <!---Each page of the slide-->
     <swiper-slide v-for="(item, index) in themes" :key="index" class="relative flex items-center justify-center">
