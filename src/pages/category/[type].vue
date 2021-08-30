@@ -1,25 +1,25 @@
 <template>
   <BackgroundSection>
     <div class="relative flex items-center justify-center">
-      <Banner :theme="newRouteName" :is-club="false" />
+      <Banner :theme="routeName" :is-club="false" />
     </div>
     <div class=" w-full flex flex-col items-center py-12 ">
       <h3>
         สำรวจชมรม
       </h3>
-      <CategoryTable v-if="newRouteName === 'Pat'">
+      <CategoryTable v-if="routeName === 'Pat'">
         <PatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="item.colorPat" />
       </CategoryTable>
-      <CategoryTable v-if="newRouteName === 'SilpVat'">
+      <CategoryTable v-if="routeName === 'SilpVat'">
         <SilpvatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
-      <CategoryTable v-if="newRouteName === 'Other'">
+      <CategoryTable v-if="routeName === 'Other'">
         <OtherCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="item.colorOther" />
       </CategoryTable>
-      <CategoryTable v-if="newRouteName === 'Gera'">
+      <CategoryTable v-if="routeName === 'Gera'">
         <GeraCard v-for="(item, index) in data" :key="index" href="/" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
-      <CategoryTable v-if="newRouteName === 'Vichagarn'">
+      <CategoryTable v-if="routeName === 'Vichagarn'">
         <VichagarnCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
     </div>
@@ -27,23 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import { useThemeStore } from '~/stores/themes'
-import { ThemeOption } from '~/types'
+import { useThemeHooks } from './themeHook'
 
-const route = useRouter()
-const theme = useThemeStore()
-
-const currentRoute = route.currentRoute.value.params.type as string
-
-let convertedName = `${currentRoute.slice(0, 1).toUpperCase()}${currentRoute.slice(1, currentRoute.length)}`
-
-if (convertedName === 'Silpvat')
-  convertedName = 'SilpVat'
-
-const newRouteName = ref(convertedName as ThemeOption)
-
-theme.setNewTheme(newRouteName.value)
+const routeName = useThemeHooks()
 
 const data: any = [
   {
