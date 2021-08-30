@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[200px]" style="z-index: 1;" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+  <div class="w-[200px] cursor-pointer" style="z-index: 1;" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <div class="relative">
       <img class="absolute top-0 w-full h-full img-clip" :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
       <img :src="!detect ? ghostImg : ghostHover" class="w-full h-full mb-4" preserveAspectRatio="none">
@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import TextColor from './text-color.json'
 import { BACKGROUND, GHOST } from './CardSchema'
 import { GhostColorType } from './types'
@@ -22,9 +23,11 @@ interface IProps {
   color: GhostColorType
   text?: string
   imgUrl?: string
+  href?: string
 }
 
-const { color, text, imgUrl } = defineProps<IProps>()
+const router = useRouter()
+const { color, text, imgUrl, href } = defineProps<IProps>()
 
 const textColor = TextColor[color]
 const backgroundImg = BACKGROUND[color]
@@ -41,6 +44,10 @@ const handleMouseEnter = () => {
 
 const handleMouseOut = () => {
   detect.value = false
+}
+
+const handleClick = () => {
+  router.push(href || '#')
 }
 
 </script>
