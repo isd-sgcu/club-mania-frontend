@@ -20,7 +20,7 @@ export const install: UserModule = ({ router, isClient }) => {
       const themeOfThisPath = themeMap[path]
       // themeOfThisPath could be undefined if the route hasn't been registered in the themeMap above.
       if (themeOfThisPath)
-        store.setNewTheme(themeMap[path])
+        store.setNewTheme(themeOfThisPath)
     })
   }
 }
