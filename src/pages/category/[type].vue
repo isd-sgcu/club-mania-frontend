@@ -8,16 +8,16 @@
         สำรวจชมรม
       </h3>
       <CategoryTable v-if="newRouteName === 'Pat'">
-        <PatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="'red'" />
+        <PatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="item.colorPat" />
       </CategoryTable>
       <CategoryTable v-if="newRouteName === 'SilpVat'">
         <SilpvatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
       <CategoryTable v-if="newRouteName === 'Other'">
-        <OtherCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="'red'" />
+        <OtherCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="item.colorOther" />
       </CategoryTable>
       <CategoryTable v-if="newRouteName === 'Gera'">
-        <GeraCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
+        <GeraCard v-for="(item, index) in data" :key="index" href="/" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
       <CategoryTable v-if="newRouteName === 'Vichagarn'">
         <VichagarnCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
@@ -49,65 +49,80 @@ const data: any = [
   {
     text: 'ชมรมวิจัยยยย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'SilpVat',
+    colorPat: 'red',
+    colorOther: 'lightcyan',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Vichagarn',
+    colorPat: 'blue',
+    colorOther: 'pink',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Other',
+    colorPat: 'green',
+    colorOther: 'red',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Gera',
+    colorPat: 'yellow',
+    colorOther: 'steel',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Pat',
+    colorPat: 'red',
+    colorOther: 'yellow',
   },
   {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'SilpVat',
+    colorPat: 'blue',
+    colorOther: 'lightcyan',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Vichagarn',
+    colorPat: 'green',
+    colorOther: 'pink',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Other',
+    colorPat: 'yellow',
+    colorOther: 'red',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Gera',
+    colorPat: 'red',
+    colorOther: 'steel',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Pat',
+    colorPat: 'blue',
+    colorOther: 'yellow',
   },
   {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'SilpVat',
+    colorPat: 'green',
+    colorOther: 'lightcyan',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Vichagarn',
+    colorPat: 'yellow',
+    colorOther: 'pink',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Other',
+    colorPat: 'red',
+    colorOther: 'red',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Gera',
+    colorPat: 'blue',
+    colorOther: 'steel',
   }, {
     text: 'ชมรมวิจัย',
     imgUrl: 'https://dummyimage.com/200x200/5c205c/ffffff.png',
-    variant: 'Pat',
+    colorPat: 'green',
+    colorOther: 'yellow',
   },
 ]
 
