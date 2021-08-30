@@ -6,9 +6,9 @@
     </div>
     <div class="relative">
       <img :src="!detect ? backgroundImg : backgroundHover" class="w-full h-full" preserveAspectRatio="none">
-      <text-body1 class="w-[200px] absolute break-words p-5 pt-3 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
+      <text-sub2 class="w-[200px] absolute break-words p-5 pt-3 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
         {{ text }}
-      </text-body1>
+      </text-sub2>
     </div>
   </div>
 </template>
