@@ -1,5 +1,8 @@
 <template>
   <BackgroundSection>
+    <div class="relative flex items-center justify-center">
+      <Banner :theme="newRouteName" :is-club="false" />
+    </div>
     <div class=" w-full flex flex-col items-center py-12 ">
       <h3>
         สำรวจชมรม
@@ -33,12 +36,14 @@ const theme = useThemeStore()
 
 const currentRoute = route.currentRoute.value.params.type as string
 
-const newRouteName = ref(`${currentRoute.slice(0, 1).toUpperCase()}${currentRoute.slice(1, currentRoute.length)}`)
+let convertedName = `${currentRoute.slice(0, 1).toUpperCase()}${currentRoute.slice(1, currentRoute.length)}`
 
-if (newRouteName.value === 'Silpvat')
-  newRouteName.value = 'SilpVat'
+if (convertedName === 'Silpvat')
+  convertedName = 'SilpVat'
 
-theme.setNewTheme(newRouteName.value as ThemeOption)
+const newRouteName = ref(convertedName as ThemeOption)
+
+theme.setNewTheme(newRouteName.value)
 
 const data: any = [
   {
