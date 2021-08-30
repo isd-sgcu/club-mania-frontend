@@ -62,7 +62,6 @@ const styleObject: any = TextStyle[props.theme]
 }
 
 .silpvat-glow {
-  box-sizing: content-box;
   @apply absolute font-SilpVat text-white;
   display: grid;
 }
@@ -79,7 +78,6 @@ const styleObject: any = TextStyle[props.theme]
 
 .silpvat-glow .inner {
   mix-blend-mode: soft-light;
-  border: 14.5px solid #BBBBBB;
   filter: blur(20.6px);
 }
 </style>
