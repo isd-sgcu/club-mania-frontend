@@ -1,6 +1,6 @@
 <template>
   <section
-    class="p-4 rounded-lg w-full"
+    class="<sm:(p-3) p-4 rounded-lg w-full"
     :class="`bg-textbox-${props.theme ?? themeStore.savedTheme} text-${textColors[props.theme ?? themeStore.savedTheme]}`"
   >
     <slot></slot>

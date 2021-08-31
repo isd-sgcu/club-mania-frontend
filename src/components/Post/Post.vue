@@ -25,8 +25,8 @@
       <hr v-if="replyActive" :style="{ borderColor: fillColor[themeStore.savedTheme] }" />
       <!-- new reply -->
       <transition name="flow" mode="out-in">
-        <div v-if="replyActive" class="ml-8 md:(ml-20)">
-          <NewReplyPost button-text="แสดงความคิดเห็น" :is-anonymous="false" />
+        <div v-if="replyActive" class="<sm:(ml-3) ml-8 md:(ml-20)">
+          <NewReplyPost :is-anonymous="false" />
         </div>
       </transition>
       <!-- existing replies -->
@@ -49,7 +49,7 @@
         </div>
       </div>
       <div v-if="showingMore" class="space-y-2">
-        <div v-for="(reply, idx) in post.replies" :key="idx" class=" ml-8 md:(ml-20)">
+        <div v-for="(reply, idx) in post.replies" :key="idx" class="<sm:(ml-3) ml-8 md:(ml-20)">
           <div class="space-y-2 pb-3">
             <PostHeader
               :badge="reply.badge"
