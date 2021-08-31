@@ -156,5 +156,6 @@ export default defineConfig({
     'font-Pat': 'font-Mitr text-[84px] leading-[24px]',
     'font-SilpVat': 'font-Mitr text-[84px] leading-[24px]',
     'font-Other': 'font-Mitr text-[84px] leading-[24px]',
+    'cover-center': 'object-center object-cover', // stretch out img and place at the center
   },
 })
