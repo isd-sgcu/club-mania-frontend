@@ -3,7 +3,7 @@
     <PatCard v-for="item in patColor" :key="item" :color="item" img-url="https://dummyimage.com/500x500/5c205c/ffffff.png" text="เยาวชนจิตอาสา (Youth)" />
   </div>
   <div class="flex flex-wrap">
-    <SlipvatCard text="ชมรมศิลปะการพูดและการแสดง" />
+    <SilpvatCard text="ชมรมศิลปะการพูดและการแสดง" />
   </div>
   <div class="flex flex-wrap">
     <OtherCard v-for="item in cardColor" :key="item" :color="item" text="ชมรมศิลปะการพูดและการแสดง" />
