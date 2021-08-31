@@ -1,7 +1,8 @@
 <template>
   <div
-    class="w-[200px] transition-all"
+    class="w-[200px] transition-all cursor-pointer"
     :style="{filter: `drop-shadow(0px 0px ${borderWidth} ${CardBorder})`, border: `${borderWidth} solid ${CardBorder}`, borderRadius: '8px' }"
+    @click="handleClick"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseOut"
   >
@@ -15,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { Variant } from './types'
 import CardVariant from './card.json'
 
@@ -22,8 +24,10 @@ interface IProps {
   type?: Variant
   text: string
   imgUrl: string
+  href?: string
 }
 
+const router = useRouter()
 const props = defineProps<IProps>()
 const CardBackground = ref('')
 const CardBorder = CardVariant.border[props.type || 'Other']
@@ -37,5 +41,9 @@ const handleMouseEnter = () => {
 const handleMouseOut = () => {
   borderWidth.value = '2px'
   CardBackground.value = ''
+}
+
+const handleClick = () => {
+  router.push(props.href || '#')
 }
 </script>

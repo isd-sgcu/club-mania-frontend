@@ -5,22 +5,28 @@ import { ThemeOption, UserModule } from '~/types'
 export const themeMap: {
   [route: string]: ThemeOption
 } = {
-  '/club/SilpVat': 'SilpVat',
-  '/club/Vichagarn': 'Vichagarn',
-  '/club/Gera': 'Gera',
-  '/club/Pat': 'Pat',
-  '/club/Other': 'Other',
+  '/club/silpVat': 'SilpVat',
+  '/club/vichagarn': 'Vichagarn',
+  '/club/gera': 'Gera',
+  '/club/pat': 'Pat',
+  '/club/other': 'Other',
+  '/category/silpvat': 'SilpVat',
+  '/category/vichagarn': 'Vichagarn',
+  '/category/gera': 'Gera',
+  '/category/pat': 'Pat',
+  '/category/other': 'Other',
 }
 
 export const install: UserModule = ({ router, isClient }) => {
   if (isClient) {
     const store = useThemeStore()
     router.afterEach(() => {
-      const path = router.currentRoute.value.path
+      const path = router.currentRoute.value.path.toLowerCase()
+
       const themeOfThisPath = themeMap[path]
       // themeOfThisPath could be undefined if the route hasn't been registered in the themeMap above.
       if (themeOfThisPath)
-        store.setNewTheme(themeMap[path])
+        store.setNewTheme(themeOfThisPath)
     })
   }
 }

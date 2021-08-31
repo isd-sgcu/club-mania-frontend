@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import { useRouter } from 'vue-router'
 
 interface IProps {
   imgUrl: string
   text: string
-  dark?: boolean
+  href?: string
 }
 
-defineProps<IProps>()
+const router = useRouter()
+const { href } = defineProps<IProps>()
 
 const detect = ref(false)
 
@@ -19,10 +21,14 @@ const handleMouseOut = () => {
   detect.value = false
 }
 
+const handleClick = () => {
+  router.push(href || '#')
+}
+
 </script>
 
 <template>
-  <div class="flex flex-col w-max box-border" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+  <div class="flex flex-col w-max box-border cursor-pointer" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <div :class="!detect ? 'dark' : 'light'">
       <img class="w-full" :src="imgUrl">
       <div class="inner-frame">
