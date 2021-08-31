@@ -1,5 +1,6 @@
 <template>
   <!-- banner is here -->
+  <Banner :theme="themeStore.savedTheme" :is-club="true" :text="clubName" />
   <PageBackground>
     <div class="w-10/11 xl:(max-w-6xl) mx-auto">
       <div class="space-y-4 md:(space-y-8)">
