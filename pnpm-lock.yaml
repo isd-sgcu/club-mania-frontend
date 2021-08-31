@@ -5,7 +5,6 @@ specifiers:
   '@iconify/json': ^1.1.387
   '@intlify/vite-plugin-vue-i18n': ^2.4.0
   '@types/nprogress': ^0.2.0
-  '@types/swiper': ^5.4.3
   '@vitejs/plugin-vue': ^1.4.0
   '@vue/compiler-sfc': ^3.2.2
   '@vue/server-renderer': ^3.2.2
@@ -21,7 +20,7 @@ specifiers:
   pinia: ^2.0.0-0
   pnpm: ^6.13.0
   prism-theme-vars: ^0.2.2
-  swiper: ^7.0.1
+  swiper: ^6.8.4
   typescript: ^4.3.5
   vite: ^2.4.4
   vite-plugin-components: ^0.13.2
@@ -40,13 +39,12 @@ specifiers:
   vue-tsc: ^0.3.0
 
 dependencies:
-  '@types/swiper': 5.4.3
   '@vueuse/core': 6.0.0_vue@3.2.2
   '@vueuse/head': 0.6.0_vue@3.2.2
   nprogress: 0.2.0
   pinia: 2.0.0-rc.4_typescript@4.3.5+vue@3.2.2
   prism-theme-vars: 0.2.2
-  swiper: 7.0.1
+  swiper: 6.8.4
   vue: 3.2.2
   vue-demi: 0.11.3_vue@3.2.2
   vue-global-api: 0.4.1_vue@3.2.2
@@ -1609,10 +1607,6 @@ packages:
       '@types/node': 16.4.3
     dev: true
 
-  /@types/swiper/5.4.3:
-    resolution: {integrity: sha512-hJXpVeANf+XQXgbvmuFZdsnaSOKqOEZcaLDnHhZOJDRow+lfboatwubW+Ay9XiHobMGyEomkgpXSYRlDVn4gMQ==}
-    dev: false
-
   /@types/throttle-debounce/2.1.0:
     resolution: {integrity: sha512-5eQEtSCoESnh2FsiLTxE121IiE60hnMqcb435fShf4bpLRjEu1Eoekht23y6zXS9Ts3l+Szu3TARnTsA0GkOkQ==}
     dev: true
@@ -2729,10 +2723,10 @@ packages:
       entities: 2.2.0
     dev: true
 
-  /dom7/4.0.0:
-    resolution: {integrity: sha512-xOJ0LAHFwktyj8Xljz4R2wzRI+Y9mR0plkMP0WlqtwqAkqn/vbdAyRifiW/w8mXe17LGktntcAwsQ5fKVDBNYg==}
+  /dom7/3.0.0:
+    resolution: {integrity: sha512-oNlcUdHsC4zb7Msx7JN3K0Nro1dzJ48knvBOnDPKJ2GV9wl1i5vydJZUSyOfrkKFDZEud/jBsTk92S/VGSAe/g==}
     dependencies:
-      ssr-window: 4.0.0
+      ssr-window: 3.0.0
     dev: false
 
   /domelementtype/2.2.0:
@@ -5387,8 +5381,8 @@ packages:
     resolution: {integrity: sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=}
     dev: true
 
-  /ssr-window/4.0.0:
-    resolution: {integrity: sha512-qCg6wJNeGNTVcPK2KFNfwtHU1gA3UZDZdxogu+Ys5+Ue5PMOENxUb7sscpAWWo4mWOBkJRCwQ50IlyA7qZ0hxw==}
+  /ssr-window/3.0.0:
+    resolution: {integrity: sha512-q+8UfWDg9Itrg0yWK7oe5p/XRCJpJF9OBtXfOPgSJl+u3Xd5KI328RUEvUqSMVM9CiQUEf1QdBzJMkYGErj9QA==}
     dev: false
 
   /statuses/1.5.0:
@@ -5498,13 +5492,13 @@ packages:
       has-flag: 4.0.0
     dev: true
 
-  /swiper/7.0.1:
-    resolution: {integrity: sha512-mvn5Pap63wi3gY+z4+OnDvFGtep8Z57rnyEKysq+KVcdc6wZP0b7g8YO04HqKb5+mgqzvKEoup9R759DkVAjTw==}
+  /swiper/6.8.4:
+    resolution: {integrity: sha512-O+buF9Q+sMA0H7luMS8R59hCaJKlpo8PXhQ6ZYu6Rn2v9OsFd4d1jmrv14QvxtQpKAvL/ZiovEeANI/uDGet7g==}
     engines: {node: '>= 4.7.0'}
     requiresBuild: true
     dependencies:
-      dom7: 4.0.0
-      ssr-window: 4.0.0
+      dom7: 3.0.0
+      ssr-window: 3.0.0
     dev: false
 
   /symbol-tree/3.2.4:

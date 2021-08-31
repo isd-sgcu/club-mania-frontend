@@ -28,8 +28,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
 // Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
+import 'swiper/swiper-bundle.css'
 
 // import Swiper core and required modules
 import SwiperCore, {
