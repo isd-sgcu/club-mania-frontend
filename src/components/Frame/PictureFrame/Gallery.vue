@@ -6,7 +6,7 @@
       </div>
     </div>
     <div v-else-if="props.images.length === 2"></div>
-    <div v-else-if="props.images.length === 3" class="flex flex-col h-auto  w-full sm:(h-md flex-row)">
+    <div v-else-if="props.images.length === 3" class="flex flex-col h-auto  w-full sm:(h-md flex-row) xl:(h-lg)">
       <img class="<sm:(w-full) rounded-lg w-2/3  mr-2 cover-center" :src="images[0].url" :alt="images[0].alt ?? clubName + ' 0'" />
       <div class="flex <sm:(flex-row) flex-col space-y-2 overflow-hidden rounded-lg">
         <img
