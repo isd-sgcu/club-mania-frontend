@@ -3,8 +3,8 @@
 <!-- Last Updated by Kaoklong -->
 
 <template>
-  <div class="relative flex" :class="{'items-center justify-center': !isClub}">
-    <img :src="isClub? ClubBanner[theme] :BannerBackground[theme]" :alt="theme" class="bg-cover h-8/25 min-h-145px max-h-312px 2xl:(min-h-330px max-h-600px)">
+  <div class="relative flex" :class="{'items-center justify-center': !isClub}" @click="directTo">
+    <img :src="isClub? ClubBanner[theme] :CategoryBanner[theme]" :alt="theme" class="bg-cover h-8/25 min-h-145px max-h-312px 2xl:(min-h-330px max-h-600px)">
     <span v-if="theme === 'Gera'" class="gera-glow" :class="{'md:text-[48px] xl:text-[64px] left-13/100 bottom-33/100': isClub}">
       <p class="gera-border">
         {{ displayText }}
@@ -25,10 +25,19 @@
 </template>
 
 <script setup lang="ts">
+// Route
+import { useRouter } from 'vue-router'
+import BannerRoute from './Route.json'
+
+// Style
+import TextStyle from './TextStyle.json'
+import CatagoryText from './BannerText.json'
+
 // Types
-import TextStyle from './bannerText.json'
 import { ThemeOption } from '~/types'
-import { BannerBackground, ClubBanner } from '~/imagePath'
+
+// Path
+import { CategoryBanner, ClubBanner } from '~/imagePath'
 
 const props = defineProps<{
   theme: ThemeOption
@@ -36,19 +45,14 @@ const props = defineProps<{
   isClub: boolean
 }>()
 
-// This text is displayed when an user is in a landing, catagory page
-// When an user is a club page, just show the text prop
-const CatagoryText = {
-  Main: 'Club Mania 2021',
-  Vichagarn: 'ฝ่ายวิชาการ',
-  Gera: 'ฝ่ายกีฬา',
-  SilpVat: 'ฝ่ายศิลป์วัฒน์',
-  Pat: 'ฝ่ายพัฒน์',
-  Other: 'ฝ่ายอื่นๆ',
-}
 // Text to display in components
 const displayText = props.isClub ? props.text : CatagoryText[props.theme]
 const styleObject: any = TextStyle[props.theme]
+
+const router = useRouter()
+const directTo = () => {
+  router.push({ path: BannerRoute[props.theme] })
+}
 </script>
 
 <style>

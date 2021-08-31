@@ -9,7 +9,7 @@ import VichagarnClubBanner from '~/assets/Banners/banner-club-Vichagarn.png'
 import SilpVatClubBanner from '~/assets/Banners/banner-club-SilpVat.png'
 import dummyImage from '~/assets/Banners/No_Image.png'
 
-export const BannerBackground = {
+export const CategoryBanner = {
   Main: MainBanner,
   Vichagarn: VichagarnBanner,
   Gera: GeraBanner,
