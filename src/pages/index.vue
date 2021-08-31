@@ -27,14 +27,13 @@
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-
 // import Swiper core and required modules
 import SwiperCore, {
   Autoplay, Pagination,
 } from 'swiper'
+
+// Import Swiper styles
+import 'swiper/swiper-bundle.css'
 
 // Types
 import { ThemeOption } from '~/types'
