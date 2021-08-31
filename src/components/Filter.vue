@@ -1,6 +1,6 @@
 <template>
   <button
-    class="<sm:(text-1.3rem px-20px) bg-transparent text-20px px-28px py-4px md:(text-[24px] px-[34px] py-[6px]) focus:outline-none rounded-full border-1 transition-all active:outline-none"
+    class="<sm:(text-1.3rem px-20px) bg-transparent text-20px px-28px py-4px md:(text-[24px] px-[34px] py-[6px]) focus:outline-none rounded-full border-1 transition-all active:outline-none tracking-normal"
     :style="{
       background: props.activeState ? backgrounds[themeStore.savedTheme] : 'transparent',
       borderColor: backgrounds[themeStore.savedTheme],
