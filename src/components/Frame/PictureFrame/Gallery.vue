@@ -6,16 +6,16 @@
       </div>
     </div>
     <div v-else-if="props.images.length === 2"></div>
-    <div v-else-if="props.images.length === 3" class="flex w-full h-md">
-      <img class="rounded-lg w-2/3 mr-2 cover-center" :src="images[0].url" :alt="images[0].alt ?? clubName + ' 0'" />
-      <div class="flex flex-col space-y-2 overflow-hidden rounded-lg">
+    <div v-else-if="props.images.length === 3" class="flex flex-col h-auto  w-full sm:(h-md flex-row)">
+      <img class="<sm:(w-full) rounded-lg w-2/3  mr-2 cover-center" :src="images[0].url" :alt="images[0].alt ?? clubName + ' 0'" />
+      <div class="flex <sm:(flex-row) flex-col space-y-2 overflow-hidden rounded-lg">
         <img
-          class="rounded-lg h-1/2 cover-center"
+          class="<sm:(h-full w-2/3 mr-2 mt-2) rounded-lg h-1/2  cover-center"
           :src="images[1].url"
           :alt="images[1].alt ?? clubName + ' 1'"
         />
         <img
-          class="rounded-lg h-1/2 cover-center"
+          class="<sm:(h-full w-1/3) rounded-lg h-1/2  cover-center"
           :src="images[2].url"
           :alt="images[2].alt ?? clubName + ' 2'"
         />
