@@ -6,7 +6,7 @@
     <Badge v-if="badge" :badge-text="badge" />
     <span class="<sm:(hidden)">{{ postedAt }}</span>
   </div>
-  <span>{{ postedAt }}</span>
+  <span class="sm:(hidden)">{{ postedAt }}</span>
 </template>
 
 <script setup lang="ts">
