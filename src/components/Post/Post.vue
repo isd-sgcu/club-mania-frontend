@@ -8,7 +8,7 @@
         {{ post.text }}
       </TextFrame>
       <!-- like/reply buttons -->
-      <div class="flex space-x-5 md:(space-x-8)">
+      <div class="flex space-x-3 md:(space-x-5)">
         <div class="space-x-3 flex items-center">
           <LikeButton
             :fill-color="fillColor"
@@ -17,10 +17,7 @@
           />
           <span>{{ post.likes > 0 ? post.likes : '' }}</span>
         </div>
-        <div class="space-x-3 flex items-center">
-          <ReplyButton :fill-color="fillColor" @click="onReplyClicked" />
-          <span class="font-Roboto cursor-pointer text-sm" @click="onReplyClicked">{{ 'ตอบกลับ' }}</span>
-        </div>
+        <ReplyButton :fill-color="fillColor" @click="onReplyClicked" />
       </div>
       <hr v-if="replyActive" :style="{ borderColor: fillColor[themeStore.savedTheme] }" />
       <!-- new reply -->
