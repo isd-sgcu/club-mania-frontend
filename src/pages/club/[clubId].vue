@@ -1,25 +1,25 @@
 <template>
   <!-- banner is here -->
   <PageBackground>
-    <div class="w-6xl mx-auto">
-      <div class="space-y-8">
+    <div class="w-30rem  md:(w-6xl) mx-auto">
+      <div class="space-y-4 md:(space-y-8)">
         <!-- club info -->
-        <section class="space-y-4">
+        <section class="space-y-3 md:(space-y-4)">
           <text-sub1>
-            <span :class="`text-${clubTypeClr}`">{{ clubType + ' > ' }}</span>
-            <span :class="`text-${clubNameClr}`">{{ clubName }}</span>
+            <span class="text-2xl" :class="`text-${clubTypeClr}`">{{ clubType}}</span><br />
+            <span class="text-2xl" :class="`text-${clubNameClr}`">{{ clubName }}</span>
           </text-sub1>
           <Gallery :club-name="clubName" :images="images" />
           <BackgroundSection>
-            <h5 :class="`mb-3 text-${clubNameClr}`">
+            <h5 class="mb-3" :class="`text-${clubNameClr}`">
               เกี่ยวกับชมรม
             </h5>
-            <text-body1>{{ info }}</text-body1>
+            <text-body1 class="leading-1.8rem">{{ info }}</text-body1>
           </BackgroundSection>
         </section>
         <!-- new reply -->
         <section class="space-y-4">
-          <h5 :class="`text-${clubNameClr}`">
+          <h5 class="text-md" :class="`text-${clubNameClr}`">
             ความคิดเห็น
           </h5>
           <BackgroundSection>

@@ -4,6 +4,7 @@
       {{ publisher }}
     </h2>
     <Badge v-if="badge" :badge-text="badge" />
+    <br class="md:(hidden)" />
     <span>{{ postedAt }}</span>
   </div>
 </template>

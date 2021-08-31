@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="cursor-pointer"
+    class="cursor-pointer transform scale-90 md:(scale-100)"
     :class="themeStore.savedTheme === 'Pat' ? 'active:fill-black' : 'active:fill-white'"
     width="25"
     height="24"
