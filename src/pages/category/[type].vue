@@ -1,8 +1,6 @@
 <template>
-  <BackgroundSection>
-    <div class="relative flex items-center justify-center">
-      <Banner :theme="routeName" :is-club="false" />
-    </div>
+  <PageBackground>
+    <Banner :theme="routeName" :is-club="false" />
     <div class=" w-full flex flex-col items-center py-12 ">
       <h3>
         สำรวจชมรม
@@ -23,7 +21,7 @@
         <VichagarnCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
     </div>
-  </BackgroundSection>
+  </PageBackground>
 </template>
 
 <script setup lang="ts">
