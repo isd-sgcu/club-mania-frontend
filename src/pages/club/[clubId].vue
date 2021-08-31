@@ -6,8 +6,8 @@
         <!-- club info -->
         <section class="space-y-3 md:(space-y-4)">
           <text-sub1>
-            <span class="text-1.3rem sm:(text-2xl)" :class="`text-${clubTypeClr}`">{{ clubType }}</span><br />
-            <span class="text-1.3rem sm:(text-2xl)" :class="`text-${clubNameClr}`">{{ clubName }}</span>
+            <span class="text-1.3rem sm:(text-2xl) lg:(text-3xl)" :class="`text-${clubTypeClr}`">{{ clubType }}</span><br />
+            <span class="text-1.3rem sm:(text-2xl) lg:(text-3xl)" :class="`text-${clubNameClr}`">{{ clubName }}</span>
           </text-sub1>
           <Gallery :club-name="clubName" :images="images" />
           <BackgroundSection>
