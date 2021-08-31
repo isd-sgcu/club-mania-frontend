@@ -1,0 +1,27 @@
+{
+  "Main": {
+      "color": "white", 
+      "textShadow": "0px 0px 10px #FFFFFF"
+  },
+  "Gera": {
+      "background": "linear-gradient(40.99deg, #606060 2.59%, #CDCDCD 24.51%, #A0A0A0 28.53%, #5A5A5A 46.62%, #9E9E9E 73.76%, #C8C8C8 78.29%, #606060 99.1%)",
+      "webkitBackgroundClip": "text",
+      "webkitTextFillColor": "rgba(255, 255, 255, 0.2)",
+      "webkitTextStroke": "0.5px transparent"
+  },
+  "Pat": {
+      "color": "#BA5425",
+      "textShadow": "3px 3px #000000"
+  },
+  "Vichagarn": {
+      "color": "white"
+  },
+  "SilpVat": {
+      "webkitTextFillColor": "transparent",
+      "WebkitTextStroke": "1px white"
+  },
+  "Other": {
+      "color": "white", 
+      "textShadow": "2px 4px 5px rgba(0, 0, 0, 0.3)"
+  }
+}
