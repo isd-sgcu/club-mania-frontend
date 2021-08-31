@@ -27,9 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { useThemeHooks } from './themeHook'
+import { getCategory } from './utils'
 
-const routeName = useThemeHooks()
+const routeName = getCategory()
 
 const data: any = [
   {

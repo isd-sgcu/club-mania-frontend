@@ -10,7 +10,7 @@ export const themeMap: {
   '/club/gera': 'Gera',
   '/club/pat': 'Pat',
   '/club/other': 'Other',
-  '/category/silpVat': 'SilpVat',
+  '/category/silpvat': 'SilpVat',
   '/category/vichagarn': 'Vichagarn',
   '/category/gera': 'Gera',
   '/category/pat': 'Pat',
