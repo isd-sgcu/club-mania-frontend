@@ -1,7 +1,7 @@
 <template>
   <!-- banner is here -->
   <PageBackground>
-    <div class="w-10/11 sm:(w-7/9) md:(w-6xl) mx-auto">
+    <div class="w-10/11 sm:(w-7/9) md:(max-w-4xl) mx-auto">
       <div class="space-y-4 md:(space-y-8)">
         <!-- club info -->
         <section class="space-y-3 md:(space-y-4)">
