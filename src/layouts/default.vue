@@ -1,15 +1,10 @@
 <template>
   <Navbar />
-  <PageBackground :theme="name">
+  <PageBackground>
     <router-view />
   </PageBackground>
-  <Footer :theme="name" />
+  <Footer />
 </template>
 
 <script setup lang="ts">
-import { useThemeStore } from '~/stores/themes'
-
-const theme = useThemeStore()
-const name = ref(theme.savedTheme)
-
 </script>

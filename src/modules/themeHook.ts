@@ -5,6 +5,7 @@ import { ThemeOption, UserModule } from '~/types'
 export const themeMap: {
   [route: string]: ThemeOption
 } = {
+  '/': 'Main',
   '/club/silpVat': 'SilpVat',
   '/club/vichagarn': 'Vichagarn',
   '/club/gera': 'Gera',

@@ -26,7 +26,7 @@ const pageBgColors = {
   Main: 'linear-gradient(137.77deg, #130000 6.66%, #343434 50.91%, #130000 95.54%)',
 }
 
-const background = pageBgColors[props.theme ?? themeStore.savedTheme]
+const background = computed(() => pageBgColors[themeStore.savedTheme])
 
 </script>
 

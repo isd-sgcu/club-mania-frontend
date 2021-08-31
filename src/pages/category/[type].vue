@@ -1,23 +1,23 @@
 <template>
   <PageBackground>
-    <Banner :theme="routeName" :is-club="false" />
+    <Banner :theme="themeStore.savedTheme" :is-club="false" />
     <div class=" w-full flex flex-col items-center py-12 ">
       <h3>
         สำรวจชมรม
       </h3>
-      <CategoryTable v-if="routeName === 'Pat'">
+      <CategoryTable v-if="themeStore.savedTheme === 'Pat'">
         <PatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="item.colorPat" />
       </CategoryTable>
-      <CategoryTable v-if="routeName === 'SilpVat'">
+      <CategoryTable v-if="themeStore.savedTheme === 'SilpVat'">
         <SilpvatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
-      <CategoryTable v-if="routeName === 'Other'">
+      <CategoryTable v-if="themeStore.savedTheme === 'Other'">
         <OtherCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="item.colorOther" />
       </CategoryTable>
-      <CategoryTable v-if="routeName === 'Gera'">
+      <CategoryTable v-if="themeStore.savedTheme === 'Gera'">
         <GeraCard v-for="(item, index) in data" :key="index" href="/" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
-      <CategoryTable v-if="routeName === 'Vichagarn'">
+      <CategoryTable v-if="themeStore.savedTheme === 'Vichagarn'">
         <VichagarnCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
     </div>
@@ -25,9 +25,8 @@
 </template>
 
 <script setup lang="ts">
-import { getCategory } from './utils'
-
-const routeName = getCategory()
+import { useThemeStore } from '~/stores/themes'
+const themeStore = useThemeStore()
 
 const data: any = [
   {

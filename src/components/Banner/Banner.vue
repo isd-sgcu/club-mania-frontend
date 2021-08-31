@@ -46,8 +46,8 @@ const props = defineProps<{
 }>()
 
 // Text to display in components
-const displayText = props.isClub ? props.text : CatagoryText[props.theme]
-const styleObject: any = TextStyle[props.theme]
+const displayText = computed(() => props.isClub ? props.text : CatagoryText[props.theme])
+const styleObject: any = computed(() => TextStyle[props.theme])
 
 const router = useRouter()
 const directTo = () => {
