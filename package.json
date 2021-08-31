@@ -8,13 +8,12 @@
     "preview-https": "serve dist"
   },
   "dependencies": {
-    "@types/swiper": "^5.4.3",
     "@vueuse/core": "^6.0.0",
     "@vueuse/head": "^0.6.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-0",
     "prism-theme-vars": "^0.2.2",
-    "swiper": "^7.0.1",
+    "swiper": "^6.8.4",
     "vue": "^3.2.2",
     "vue-demi": "^0.11.3",
     "vue-global-api": "^0.4.1",
