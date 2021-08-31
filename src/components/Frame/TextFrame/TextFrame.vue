@@ -17,8 +17,8 @@
     <textarea
       ref="textarea"
       v-model="value"
-      class="border-1 rounded-[8px] w-full bg-transparent pl-[16px] pr-[28px] py-[8px] font-Roboto transition-all overflow-y-hidden"
-      :class="`border-${border[themeName]} placeholder-${placeholder[themeName]} text-${text[themeName]}`"
+      class="<sm:(text-sm) border-1 rounded-[8px] w-full bg-transparent pl-10px md:(pl-[16px]) py-[8px] font-Roboto transition-all overflow-y-hidden"
+      :class="`border-${border[themeName]} placeholder-${placeholder[themeName]} text-${text[themeName]} ${showDiscardIcon ? 'pr-[28px]' : 'pr-10px md:(pr-16px)'}`"
       :placeholder="props.placeholder ?? 'แสดงความคิดเห็น...'"
       :disabled="props.disabled"
       :style="{ height }"

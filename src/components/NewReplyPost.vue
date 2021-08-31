@@ -4,7 +4,7 @@
       <input
         v-if="asAnonymous"
         maxlength="25"
-        class="bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
+        class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ"
       />
@@ -14,13 +14,13 @@
         @submit="$emit('submit')"
       />
     </transition-group>
-    <div class="mt-2 flex items-center justify-between">
-      <div class="space-x-[12px] flex items-center">
+    <div class="mt-1 md:(mt-2) flex items-center justify-between">
+      <div class="space-x-[6px] md:(space-x-[12px]) flex items-center">
         <ToggleThing @toggle="onToggle" />
-        <span class="font-Roboto">{{ toggleText }}</span>
+        <span class="<sm:(text-sm) font-Roboto">{{ toggleText }}</span>
       </div>
       <button
-        class="text-[16px] px-[16px] py-[4px] h-[32px] min-w-[160px] rounded focus:outline-none"
+        class="<sm:(min-w-4rem text-sm px-3px) min-w-6rem md:(min-w-[10rem]) rounded focus:outline-none text-[16px] px-[16px] py-[4px] h-[32px]"
         :style="{
           color: buttonTextColors[themeStore.savedTheme],
           backgroundColor: backgroundColors[themeStore.savedTheme]
