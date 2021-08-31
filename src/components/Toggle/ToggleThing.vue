@@ -1,7 +1,7 @@
 <!-- Somehow "Toggle.vue" produces errors -->
 <template>
   <div
-    class="relative transition-all inline-block cursor-pointer"
+    class="relative transition-all inline-block cursor-pointer transform scale-80 md:(scale-100)"
     :style="{
       height: height + 'px',
       width: width + 'px',

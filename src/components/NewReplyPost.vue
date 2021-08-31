@@ -14,13 +14,13 @@
         @submit="$emit('submit')"
       />
     </transition-group>
-    <div class="mt-2 flex items-center justify-between">
-      <div class="space-x-[12px] flex items-center">
+    <div class="mt-1 md:(mt-2) flex items-center justify-between">
+      <div class="space-x-[6px] md:(space-x-[12px]) flex items-center">
         <ToggleThing @toggle="onToggle" />
         <span class="font-Roboto">{{ toggleText }}</span>
       </div>
       <button
-        class="text-[16px] px-[16px] py-[4px] h-[32px] min-w-[160px] rounded focus:outline-none"
+        class="min-w-6rem md:(min-w-[10rem]) rounded focus:outline-none text-[16px] px-[16px] py-[4px] h-[32px]"
         :style="{
           color: buttonTextColors[themeStore.savedTheme],
           backgroundColor: backgroundColors[themeStore.savedTheme]

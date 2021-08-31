@@ -5,7 +5,7 @@
     viewBox="0 0 23 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    class="cursor-pointer inline-block"
+    class="cursor-pointer inline-block transform scale-90 md:(scale-100)"
     @click="likeToggle"
   >
     <path
