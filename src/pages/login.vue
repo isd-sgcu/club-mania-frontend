@@ -2,7 +2,7 @@
   <div>
     <Banner theme="Main" :is-club="false" class="cursor-default pointer-events-none" />
     <div class="flex justify-center ml-6 mr-6 mt-10 mb-10">
-      <form class="w-full max-w-[700px] flex flex-col" @submit="handleLogin">
+      <form class="w-full max-w-[700px] flex flex-col" @submit.prevent="handleLogin">
         <text-sub2 class="text">
           ชื่อผู้ใช้
         </text-sub2>
@@ -32,9 +32,8 @@ const password = ref('')
 
 const isLoginFailed = ref(false)
 
-const handleLogin = (e: Event) => {
+const handleLogin = () => {
   isLoginFailed.value = true
-  e.preventDefault()
 
   setTimeout(() => { isLoginFailed.value = false }, 3000)
 }
