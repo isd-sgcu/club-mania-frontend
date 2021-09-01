@@ -1,13 +1,15 @@
 <template>
-  <Navbar />
-  <PageBackground>
-    <router-view v-slot="{ Component, route }">
-      <transition name="route" mode="out-in">
-        <component :is="Component" :key="route.path"></component>
-      </transition>
-    </router-view>
-  </PageBackground>
-  <Footer />
+  <div class="flex flex-col h-[100vh]">
+    <Navbar />
+    <PageBackground class="flex-1">
+      <router-view v-slot="{ Component, route }">
+        <transition name="route" mode="out-in">
+          <component :is="Component" :key="route.path"></component>
+        </transition>
+      </router-view>
+    </PageBackground>
+    <Footer />
+  </div>
 </template>
 
 <script setup lang="ts">
