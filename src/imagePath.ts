@@ -4,10 +4,15 @@ import GeraBanner from '~/assets/Banners/banner-Gera.png'
 import SlipVatBanner from '~/assets/Banners/banner-SilpVat.png'
 import PatBanner from '~/assets/Banners/banner-Pat.png'
 import OtherBanner from '~/assets/Banners/banner-Other.png'
+
 import GeraClubBanner from '~/assets/Banners/banner-club-Gera.png'
 import VichagarnClubBanner from '~/assets/Banners/banner-club-Vichagarn.png'
 import SilpVatClubBanner from '~/assets/Banners/banner-club-SilpVat.png'
 import dummyImage from '~/assets/Banners/No_Image.png'
+
+import iconWhite from '~/assets/icons/icon_white.png'
+import iconYellow from '~/assets/icons/icon_yellow.png'
+import iconViolet from '~/assets/icons/icon_violet.png'
 
 export const CategoryBanner = {
   Main: MainBanner,
@@ -25,4 +30,13 @@ export const ClubBanner = {
   SilpVat: SilpVatClubBanner,
   Pat: PatBanner,
   Other: OtherBanner,
+}
+
+export const PageIcon = {
+  Main: iconWhite,
+  Vichagarn: iconYellow,
+  Gera: iconViolet,
+  SilpVat: iconYellow,
+  Pat: iconViolet,
+  Other: iconYellow,
 }
