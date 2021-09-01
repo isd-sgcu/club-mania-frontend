@@ -1,22 +1,44 @@
 <template>
   <div>
     <Banner theme="Main" :is-club="false" class="cursor-default pointer-events-none" />
-    <div class="flex justify-center ml-4 mr-4 mt-10">
-      <form class="w-full max-w-[700px] flex flex-col" @submit="(e) => {e.preventDefault()}">
-        <label class="text">ชื่อผู้ใช้</label>
-        <input class="input" type="text">
-        <label class="text">รหัสผ่าน</label>
-        <input class="input" type="password">
-        <button type="submit" class="text-white font-Mitr bg-button pt-3 pb-3 text-size-[1.25rem] mt-6">
+    <div class="flex justify-center ml-6 mr-6 mt-10 mb-10">
+      <form class="w-full max-w-[700px] flex flex-col" @submit="handleLogin">
+        <text-sub2 class="text">
+          ชื่อผู้ใช้
+        </text-sub2>
+        <input v-model="username" class="input" type="text">
+        <text-sub2 class="text">
+          รหัสผ่าน
+        </text-sub2>
+        <input v-model="password" class="input" type="password">
+        <button type="submit" class="text-white font-Mitr bg-button pt-3 pb-3 text-size-[1rem] sm:text-size-[1.25rem] mt-6">
           เข้าสู่ระบบ
         </button>
-        <text-logo class="text-white m-auto mt-10 text-size-[1rem] sm:text-size-[1.25rem]">
+        <text-sub2 v-if="isLoginFailed" class="text-red mx-auto mt-5">
+          ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
+        </text-sub2>
+        <text-logo class="text-white m-auto mt-5 hidden sm:block">
           Welcome to arena of valor!
         </text-logo>
       </form>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+
+const username = ref('')
+const password = ref('')
+
+const isLoginFailed = ref(false)
+
+const handleLogin = (e: Event) => {
+  isLoginFailed.value = true
+  e.preventDefault()
+
+  setTimeout(() => { isLoginFailed.value = false }, 3000)
+}
+</script>
 
 <style scoped>
 .text {
