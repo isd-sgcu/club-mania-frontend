@@ -1,27 +1,25 @@
 <template>
   <div
-    class="h-10 text-white w-full px-7 py-4 flex items-center"
+    class="space-x-2 w-full px-7 py-2 flex items-center text-white"
     :class="`bg-footer-${themeStore.savedTheme}`"
   >
-    <h5 class="text-lg">
+    <img class="h-5" src="/isd.svg" />
+    <span>สงวนลิขสิทธิ์</span>
+    <img class="h-4" src="/copyright.svg">
+    <span class="font-Roboto text-md">
       {{ t("footer.text") }}
-    </h5>
+    </span>
+    <span class="flex-grow"></span>
+    <span class="space-x-3">
+      <img class="h-5 inline" src="/ig.svg">
+      <img class="h-5 inline" src="/fb.svg">
+    </span>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useThemeStore } from '~/stores/themes'
-import { ThemeOption } from '~/types'
 const { t } = useI18n()
 const themeStore = useThemeStore()
-
-const props = defineProps<{
-  theme?: ThemeOption
-}>()
-
-// const chosenTheme = props.theme ?? themeStore.savedTheme
-// const chosenTheme = computed(() => {
-//   return props.theme ? props.theme : themeStore.savedTheme
-// })
 </script>
