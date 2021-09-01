@@ -9,7 +9,7 @@ defineProps<IProps>()
 </script>
 
 <template>
-  <div :class="!hover ? 'outer-frame' : 'outer-frame-hover'" class="rounded-none border-solid border-width-8 p-2 max-w-[200px] box-content text-center bg-[#0D3D78] text-white">
+  <div :class="!hover ? 'outer-frame' : 'outer-frame-hover'" class="rounded-none border-solid border-width-8 p-2 max-w-[200px] text-center bg-[#0D3D78] text-white w-full box-border">
     <text-sub2><slot /></text-sub2>
   </div>
 </template>
