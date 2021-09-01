@@ -9,22 +9,22 @@
     </router-link>
     <ol>
       <li>
-        <router-link to="/category/vichagarn">
+        <router-link to="/wichakarn">
           วิชาการ
         </router-link>
       </li>
       <li>
-        <router-link to="/category/silpvat">
+        <router-link to="/silpvat">
           ศิลป์วัฒน์
         </router-link>
       </li>
       <li>
-        <router-link to="/category/gera">
+        <router-link to="/geela">
           กีฬา
         </router-link>
       </li>
       <li>
-        <router-link to="/category/pat">
+        <router-link to="/pat">
           พัฒน์
         </router-link>
       </li>
