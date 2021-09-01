@@ -149,7 +149,7 @@ export default defineConfig({
     },
   },
   shortcuts: {
-    'Navbar-font': 'font-Roboto font-500 text-[20px] leading-[24px] tracking-[0.1px]',
+    'Navbar-font': 'font-Roboto font-500 text-[16px] md:text-[18px] xl:text-[20px] leading-[24px] tracking-[0.1px]',
     'font-Main': 'font-Retro text-[24px] md:text-[56px] xl:text-[72px] leading-[24px] tracking-[2px]',
     'font-Vichagarn': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
     'font-Gera': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[0.2px]',

@@ -3,10 +3,11 @@
     <nav class="headbar">
       <div class="clubmania-icon">
         <router-link to="/">
-          <img :src="PageIcon[theme.savedTheme]" class="min-w-20 h-auto" />
+          <img :src="PageIcon[theme.savedTheme]" class="py-2 w-18 md:w-22 lg:w-28 h-auto" />
         </router-link>
       </div>
-      <ol class="main-menu">
+      <ci-hamburger class="open-menu" @click="show" />
+      <ol ref="mainMenu" class="main-menu">
         <li>
           <router-link to="/category/vichagarn">
             วิชาการ
@@ -27,17 +28,26 @@
             พัฒน์
           </router-link>
         </li>
+        <!-- searchbox in mobile -->
+        <li class="search-box md:hidden">
+          <input
+            v-model="searchTerm"
+            type="text"
+            placeholder="Search..."
+          />
+        </li>
+        <carbon-close-filled class="close-menu hover:text-yellow-700" @click="close" />
       </ol>
       <!---Just for visual don't do anything special-->
       <div class="admin-block">
-        <mdi-account-circle-outline class="w-24px h-auto mr-8px" />
+        <mdi-account-circle-outline class="w-4 md:w-6 h-auto mr-8px" />
         <p>{{ adminName }}</p>
-        <mdi-magnify class="w-24px h-auto ml-24px cursor-pointer hover:text-yellow-700" @click="toggleSearch" />
+        <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="toggleSearch" />
       </div>
     </nav>
     <!--This show when an user click the magnify icon or the dummy block-->
-    <div v-if="isSearch" id="search-box">
-      <div id="search-bar">
+    <div v-if="isSearch" class="search-box <md:hidden">
+      <div class="search-bar">
         <input
           v-model="searchTerm"
           type="text"
@@ -78,51 +88,95 @@ watchEffect(() => {
   // console.log(searchTerm.value)
   searchClub(searchTerm.value)
 })
+
+const mainMenu = ref<HTMLElement>()
+
+const close = () => {
+  mainMenu.value!.style.top = '-400px'
+}
+
+const show = () => {
+  mainMenu.value!.style.display = 'flex'
+  mainMenu.value!.style.top = '0'
+}
 </script>
 
 <style scoped>
 .wrapper {
-  @apply fixed top-0 z-10 px-9 w-full h-64px overflow-hidden backdrop-filter backdrop-blur-[15px];
+  @apply fixed top-0 z-10 px-5 md:px-9 w-full min-h-8 backdrop-filter backdrop-blur-[15px];
 }
 
 .headbar {
-  @apply grid grid-cols-[1fr,2fr,1fr] items-center text-white;
+  @apply flex justify-between items-center lg:(grid grid-cols-[1fr,2fr,1fr]) text-white;
 
 }
 
 .clubmania-icon {
-  @apply  justify-self-start;
+  @apply justify-self-start;
 }
 
 .main-menu {
-  @apply h-full flex justify-self-center;
+  @apply relative flex justify-self-center;
 }
 .main-menu li {
-  @apply text-center font-Mitr font-300 text-[16px] leading-[20px] px-6 py-5
-    lg:(text-[20px] leading-[24px]) tracking-[0.1px] cursor-pointer;
+  @apply text-center font-Mitr font-300 text-[18px] leading-[20px] tracking-[0.1px] px-4 py-5
+    lg:(text-[20px] leading-[24px] px-6) cursor-pointer;
 }
 .main-menu li:hover {
   background: rgba(10, 10, 10, 0.7);
 }
+.open-menu, .close-menu {
+  @apply w-32px h-auto cursor-pointer hidden;
+}
 
 .admin-block {
-  @apply flex items-center h-64px justify-self-end;
+  @apply relative flex items-center h-64px justify-self-end;
 }
 .admin-block p{
-  @apply Navbar-font w-133px h-32px bg-transparent py-1 opacity-75
+  @apply Navbar-font w-133px h-32px bg-transparent pt-2px md:pt-6px opacity-75
     cursor-default overflow-ellipsis;
 }
 
-#search-box {
+.search-box {
   @apply absolute max-w-432px w-1/3 box-border top-0 right-0 z-10;
 }
-#search-bar{
-  @apply flex items-center bg-grey-light+ px-16px py-12px text-purple-500;
+.search-bar {
+  @apply flex items-center h-64px bg-grey-light+ px-4 text-purple-500;
 }
 
-#search-bar input{
-  @apply w-9/10 h-40px rounded-[8px] px-12px Navbar-font
+.search-bar input, .search-box input{
+  @apply w-9/10 h-40px rounded-[0.5rem] px-2 md:px-4 Navbar-font
   overflow-ellipsis focus:(border-solid border-[1.4px] border-purple-500 outline-none);
 }
 
+@media (max-width: 768px) {
+  .main-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 0 0 1rem 1rem;
+    z-index: 20;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: saddlebrown;
+    transition: top 1s ease;
+    display: none;
+  }
+  .admin-block {
+    display: none;
+  }
+  .open-menu, .close-menu {
+    display: block;
+  }
+
+  .close-menu {
+    @apply absolute top-2 right-2;
+  }
+
+  .search-box {
+  @apply relative max-w-full;
+}
+}
 </style>
