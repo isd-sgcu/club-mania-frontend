@@ -7,7 +7,7 @@ export const routeKeyToTheme: {
 } = {
   silpvat: 'SilpVat',
   wichakarn: 'Vichagarn',
-  gela: 'Gera',
+  geela: 'Gera',
   pat: 'Pat',
   other: 'Other',
 }
