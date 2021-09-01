@@ -14,12 +14,12 @@
         <button type="submit" class="text-white font-Mitr bg-button pt-3 pb-3 text-size-[1rem] sm:text-size-[1.25rem] mt-6">
           เข้าสู่ระบบ
         </button>
+        <text-logo class="text-white mx-auto mt-5 hidden sm:block">
+          Welcome to arena of valor!
+        </text-logo>]
         <text-sub2 v-if="isLoginFailed" class="text-red mx-auto mt-5">
           ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
         </text-sub2>
-        <text-logo class="text-white m-auto mt-5 hidden sm:block">
-          Welcome to arena of valor!
-        </text-logo>
       </form>
     </div>
   </div>
