@@ -6,7 +6,7 @@ export const themeMap: {
   [route: string]: ThemeOption
 } = {
   '/': 'Main',
-  '/club/silpVat': 'SilpVat',
+  '/club/silpvat': 'SilpVat',
   '/club/vichagarn': 'Vichagarn',
   '/club/gera': 'Gera',
   '/club/pat': 'Pat',
