@@ -9,8 +9,12 @@
     <span class="font-Roboto text-md">{{ t("footer.text") }}</span>
     <span class="flex-grow"></span>
     <span class="space-x-3">
-      <img class="h-5 inline" src="/ig.svg" />
-      <img class="h-5 inline" src="/fb.svg" />
+      <a :href="igLink" target="_blank">
+        <img class="h-5 inline" src="/ig.svg" />
+      </a>
+      <a :href="fbLink" target="_blank">
+        <img class="h-5 inline" src="/fb.svg" />
+      </a>
     </span>
   </div>
   <div
@@ -24,17 +28,24 @@
       </div>
       <div class="xs:(inline) space-x-2">
         <img class="h-4 inline" src="/copyright.svg" />
-        <span class="<sm:(text-xs) <md:(text-sm) font-Roboto text-md">องค์การบริหารสโมสรนิสิต<br class="xs:(hidden)" />จุฬาลงกรณ์มหาวิทยาลัย (อบจ.)</span>
+        <span class="<sm:(text-xs) <md:(text-sm) font-Roboto text-md">
+          องค์การบริหารสโมสรนิสิต
+          <br class="xs:(hidden)" />จุฬาลงกรณ์มหาวิทยาลัย (อบจ.)
+        </span>
       </div>
     </span>
     <div class="<xs:(space-y-2) space-y-3">
       <div class="flex items-center space-x-3">
-        <img class="h-5 inline" src="/ig.svg" />
-        <span class="<sm:(text-xs) <md:(text-sm) ">CLUB MANIA</span>
+        <a :href="igLink" target="_blank">
+          <img class="h-5 inline" src="/ig.svg" />
+        </a>
+        <span class="<sm:(text-xs) <md:(text-sm)">CLUB MANIA</span>
       </div>
       <div class="flex items-center space-x-3">
-        <img class="h-5 inline" src="/fb.svg" />
-        <span class="<sm:(text-xs) <md:(text-sm) ">SGCU CHULA</span>
+        <a :href="fbLink" target="_blank">
+          <img class="h-5 inline" src="/fb.svg" />
+        </a>
+        <span class="<sm:(text-xs) <md:(text-sm)">SGCU CHULA</span>
       </div>
     </div>
   </div>
@@ -45,4 +56,7 @@ import { useI18n } from 'vue-i18n'
 import { useThemeStore } from '~/stores/themes'
 const { t } = useI18n()
 const themeStore = useThemeStore()
+
+const igLink = '#'
+const fbLink = '#'
 </script>
