@@ -1,5 +1,4 @@
 <template>
-  <!---Slide show--->
   <div>
     <swiper
       :pagination="{clickable: true}"

@@ -1,12 +1,11 @@
 <template>
   <Navbar />
   <PageBackground>
-    <router-view />
-    <!-- <router-view v-slot="{ Component, route }">
+    <router-view v-slot="{ Component, route }">
       <transition name="route" mode="out-in">
         <component :is="Component" :key="route.path"></component>
       </transition>
-    </router-view> -->
+    </router-view>
   </PageBackground>
   <Footer />
 </template>
