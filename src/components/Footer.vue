@@ -1,9 +1,11 @@
 <template>
   <div
     class="h-10 text-white w-full px-7 py-4 flex items-center"
-    :class="`bg-footer-${options}`"
+    :class="`bg-footer-${themeStore.savedTheme}`"
   >
-    <h5 class="text-lg">{{ t("footer.text") }}</h5>
+    <h5 class="text-lg">
+      {{ t("footer.text") }}
+    </h5>
   </div>
 </template>
 
@@ -18,5 +20,8 @@ const props = defineProps<{
   theme?: ThemeOption
 }>()
 
-const options = props.theme ?? themeStore.savedTheme
+// const chosenTheme = props.theme ?? themeStore.savedTheme
+// const chosenTheme = computed(() => {
+//   return props.theme ? props.theme : themeStore.savedTheme
+// })
 </script>

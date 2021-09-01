@@ -2,28 +2,30 @@
   <div
     class="headbar"
   >
-    <text-logo>
-      Club Mania
-    </text-logo>
+    <router-link to="/">
+      <text-logo>
+        Club Mania
+      </text-logo>
+    </router-link>
     <ol>
       <li>
-        <router-link :to="'#'">
-          {{ t('clubtype.title1.short') }}
+        <router-link to="/category/vichagarn">
+          วิชาการ
         </router-link>
       </li>
       <li>
-        <router-link :to="'#'">
-          {{ t('clubtype.title2.short') }}
+        <router-link to="/category/silpvat">
+          ศิลป์วัฒน์
         </router-link>
       </li>
       <li>
-        <router-link :to="'#'">
-          {{ t('clubtype.title3.short') }}
+        <router-link to="/category/gera">
+          กีฬา
         </router-link>
       </li>
       <li>
-        <router-link :to="'#'">
-          {{ t('clubtype.title4.short') }}
+        <router-link to="/category/pat">
+          พัฒน์
         </router-link>
       </li>
     </ol>
@@ -52,8 +54,6 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
 const adminName = ref('ชมรมภาพยนตร์')
 const searchTerm = ref('')
 const isSearch = ref(false)
@@ -81,7 +81,7 @@ watchEffect(() => {
 <style scoped>
 .headbar {
   @apply fixed flex w-full h-64px justify-between items-center text-white
-    backdrop-blur-14px overflow-hidden pl-8 top-0 z-10;
+    backdrop-blur-30px overflow-hidden pl-8 top-0 z-10;
     background: rgba(0, 0, 0, 0.5)
 }
 .admin-block{
@@ -102,7 +102,7 @@ watchEffect(() => {
 }
 
 li {
-  @apply inline text-center font-Roboto font-500 text-[20px] leading-[24px]
+  @apply inline text-center font-Roboto font-500 text-[20px] leading-[24px] cursor-pointer
     tracking-[0.1px] mr-48px;
 }
 

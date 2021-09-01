@@ -1,25 +1,26 @@
 <template>
-  <!---Slide show--->
-  <swiper
-    :pagination="{clickable: true}"
-    :slides-per-view="1"
-    :loop="true"
-    :autoplay="{'delay': 2500, 'disableOnInteraction': false}"
-    class="w-full"
-  >
-    <!---Each page of the slide-->
-    <swiper-slide v-for="(item, index) in themes" :key="index" class="relative flex items-center justify-center">
-      <Banner :theme="item" :is-club="false" />
-    </swiper-slide>
-  </swiper>
-  <!---Main content-->
-  <div class=" w-full flex flex-col items-center py-12 ">
-    <h3 class="text-white text-[42px] leading-[26px] md:(text-[72px] leading-[56px])">
-      สำรวจชมรม
-    </h3>
-    <CategoryTable>
-      <MainCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :type="item.variant" />
-    </CategoryTable>
+  <div>
+    <swiper
+      :pagination="{clickable: true}"
+      :slides-per-view="1"
+      :loop="true"
+      :autoplay="{'delay': 2500, 'disableOnInteraction': false}"
+      class="w-full"
+    >
+      <!---Each page of the slide-->
+      <swiper-slide v-for="(item, index) in themes" :key="index" class="relative flex items-center justify-center">
+        <Banner :theme="item" :is-club="false" />
+      </swiper-slide>
+    </swiper>
+    <!---Main content-->
+    <div class=" w-full flex flex-col items-center py-12 ">
+      <TextHeading>
+        สำรวจชมรม
+      </TextHeading>
+      <CategoryTable>
+        <MainCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :type="item.variant" />
+      </CategoryTable>
+    </div>
   </div>
 </template>
 
@@ -37,6 +38,7 @@ import 'swiper/swiper-bundle.css'
 
 // Types
 import { ThemeOption } from '~/types'
+import TextHeading from '~/components/typography/text-heading.vue'
 
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination])
