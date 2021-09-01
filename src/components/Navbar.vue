@@ -1,14 +1,12 @@
 <template>
-  <div class="fixed top-0 z-10 px-9 w-full h-64px overflow-hidden backdrop-filter backdrop-blur-[15px]" style="background: rgba(0, 0, 0, 0.5)">
-    <div
-      class="headbar"
-    >
-      <div class="justify-self-start">
+  <div class="wrapper" style="background: rgba(0, 0, 0, 0.5)">
+    <nav class="headbar">
+      <div class="clubmania-icon">
         <router-link to="/">
-          <img :src="PageIcon[theme.savedTheme]" class="w-118px h-auto" />
+          <img :src="PageIcon[theme.savedTheme]" class="min-w-20 h-auto" />
         </router-link>
       </div>
-      <ol class="h-full flex justify-self-center">
+      <ol class="main-menu">
         <li>
           <router-link to="/category/vichagarn">
             วิชาการ
@@ -31,18 +29,17 @@
         </li>
       </ol>
       <!---Just for visual don't do anything special-->
-      <div class="flex items-center h-64px justify-self-end">
+      <div class="admin-block">
         <mdi-account-circle-outline class="w-24px h-auto mr-8px" />
-        <span class="admin-block">{{ adminName }}</span>
+        <p>{{ adminName }}</p>
         <mdi-magnify class="w-24px h-auto ml-24px cursor-pointer hover:text-yellow-700" @click="toggleSearch" />
       </div>
-    </div>
+    </nav>
     <!--This show when an user click the magnify icon or the dummy block-->
-    <div v-if="isSearch" class="search-box">
-      <div class="search-bar">
+    <div v-if="isSearch" id="search-box">
+      <div id="search-bar">
         <input
           v-model="searchTerm"
-          class="search-input"
           type="text"
           placeholder="Search..."
         />
@@ -84,35 +81,48 @@ watchEffect(() => {
 </script>
 
 <style scoped>
+.wrapper {
+  @apply fixed top-0 z-10 px-9 w-full h-64px overflow-hidden backdrop-filter backdrop-blur-[15px];
+}
+
 .headbar {
   @apply grid grid-cols-[1fr,2fr,1fr] items-center text-white;
 
 }
 
-.admin-block{
+.clubmania-icon {
+  @apply  justify-self-start;
+}
+
+.main-menu {
+  @apply h-full flex justify-self-center;
+}
+.main-menu li {
+  @apply text-center font-Mitr font-300 text-[16px] leading-[20px] px-6 py-5
+    lg:(text-[20px] leading-[24px]) tracking-[0.1px] cursor-pointer;
+}
+.main-menu li:hover {
+  background: rgba(10, 10, 10, 0.7);
+}
+
+.admin-block {
+  @apply flex items-center h-64px justify-self-end;
+}
+.admin-block p{
   @apply Navbar-font w-133px h-32px bg-transparent py-1 opacity-75
     cursor-default overflow-ellipsis;
 }
 
-.search-box {
+#search-box {
   @apply absolute max-w-432px w-1/3 box-border top-0 right-0 z-10;
 }
-.search-bar{
+#search-bar{
   @apply flex items-center bg-grey-light+ px-16px py-12px text-purple-500;
 }
 
-.search-input {
+#search-bar input{
   @apply w-9/10 h-40px rounded-[8px] px-12px Navbar-font
   overflow-ellipsis focus:(border-solid border-[1.4px] border-purple-500 outline-none);
-}
-
-li {
-  @apply text-center font-Mitr font-300 text-[16px] leading-[20px] px-6 py-5
-    lg:(text-[20px] leading-[24px]) tracking-[0.1px] cursor-pointer;
-}
-
-li:hover {
-  background: rgba(10, 10, 10, 0.7);
 }
 
 </style>
