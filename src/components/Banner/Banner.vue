@@ -31,7 +31,7 @@ import BannerRoute from './Route.json'
 
 // Style
 import TextStyle from './TextStyle.json'
-import CatagoryText from './BannerText.json'
+import CatagoryText from './bannerText.json'
 
 // Types
 import { ThemeOption } from '~/types'
