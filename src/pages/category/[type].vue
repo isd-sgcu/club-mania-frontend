@@ -2,9 +2,6 @@
   <div>
     <Banner :theme="themeStore.savedTheme" :is-club="false" />
     <div class=" w-full flex flex-col items-center py-12 ">
-      <h3>
-        สำรวจชมรม
-      </h3>
       <CategoryTable v-if="themeStore.savedTheme === 'Pat'">
         <PatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="item.colorPat" />
       </CategoryTable>

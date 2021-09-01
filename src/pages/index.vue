@@ -14,9 +14,9 @@
     </swiper>
     <!---Main content-->
     <div class=" w-full flex flex-col items-center py-12 ">
-      <h3 class="text-white text-[42px] leading-[26px] md:(text-[72px] leading-[56px])">
+      <TextHeading>
         สำรวจชมรม
-      </h3>
+      </TextHeading>
       <CategoryTable>
         <MainCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :type="item.variant" />
       </CategoryTable>
@@ -38,6 +38,7 @@ import 'swiper/swiper-bundle.css'
 
 // Types
 import { ThemeOption } from '~/types'
+import TextHeading from '~/components/typography/text-heading.vue'
 
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination])
