@@ -56,7 +56,7 @@ import { useThemeStore } from '~/stores/themes'
 const { clubTypeColor, clubNameColor } = useClubConfig()
 const themeStore = useThemeStore()
 
-defineProps<{ clubId: string }>()
+defineProps<{ clubName: string }>()
 
 const isAnonymous = ref(false)
 const isLastestFilterChosen = ref(false)
