@@ -6,8 +6,8 @@
           <img :src="PageIcon[theme.savedTheme]" class="py-2 w-18 md:w-22 lg:w-28 h-auto" />
         </router-link>
       </div>
-      <ci-hamburger class="open-menu" @click="show" />
-      <ol ref="mainMenu" class="main-menu">
+      <ci-hamburger class="open-menu" @click="toggleSearch" />
+      <ol class="main-menu">
         <li>
           <router-link to="/category/vichagarn">
             วิชาการ
@@ -28,15 +28,6 @@
             พัฒน์
           </router-link>
         </li>
-        <!-- searchbox in mobile -->
-        <li class="search-box md:hidden">
-          <input
-            v-model="searchTerm"
-            type="text"
-            placeholder="Search..."
-          />
-        </li>
-        <carbon-close-filled class="close-menu hover:text-yellow-700" @click="close" />
       </ol>
       <!---Just for visual don't do anything special-->
       <div class="admin-block">
@@ -45,18 +36,48 @@
         <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="toggleSearch" />
       </div>
     </nav>
-    <!--This show when an user click the magnify icon or the dummy block-->
-    <div v-if="isSearch" class="search-box <md:hidden">
-      <div class="search-bar">
-        <input
-          v-model="searchTerm"
-          type="text"
-          placeholder="Search..."
-        />
-        <carbon-close-filled class="w-32px h-auto ml-8px cursor-pointer hover:text-yellow-700" @click="toggleSearch" />
-      </div>
-    <!---Search result add here!--->
+  </div>
+  <!------blur backdrop----->
+  <div
+    v-if="isSearch"
+    class="fixed w-full h-full backdrop-filter backdrop-blur-[15px] bg-[rgba(0,0,0,0.3)]] z-10 md:hidden"
+    @click="toggleSearch"
+  />
+  <!--This show when an user click the magnify icon or the dummy block-->
+  <div ref="searchBox" class="search-box">
+    <!--Navigation menu in mobile screen-->
+    <img :src="PageIcon['Main']" class="py-2 w-28 h-auto md:hidden" />
+    <ol class="mobile-menu text-white md:hidden">
+      <li>
+        <router-link to="/category/vichagarn">
+          วิชาการ
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/category/silpvat">
+          ศิลป์วัฒน์
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/category/gera">
+          กีฬา
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/category/pat">
+          พัฒน์
+        </router-link>
+      </li>
+    </ol>
+    <div class="search-bar">
+      <input
+        v-model="searchTerm"
+        type="text"
+        placeholder="Search..."
+      />
+      <carbon-close-filled class="w-32px h-auto ml-8px cursor-pointer hover:text-yellow-700 <md:hidden" @click="toggleSearch" />
     </div>
+    <!---Search result add here!--->
   </div>
 </template>
 
@@ -78,8 +99,14 @@ const searchClub = (searchTerm: string) => {
   */
 }
 
+const searchBox = ref<HTMLDivElement>()
 const toggleSearch = () => {
   searchTerm.value = ''
+  if (!isSearch.value)
+    searchBox.value!.style.right = '0'
+  else
+    searchBox.value!.style.right = '-100%'
+
   isSearch.value = !isSearch.value
 }
 
@@ -89,16 +116,6 @@ watchEffect(() => {
   searchClub(searchTerm.value)
 })
 
-const mainMenu = ref<HTMLElement>()
-
-const close = () => {
-  mainMenu.value!.style.top = '-400px'
-}
-
-const show = () => {
-  mainMenu.value!.style.display = 'flex'
-  mainMenu.value!.style.top = '0'
-}
 </script>
 
 <style scoped>
@@ -116,7 +133,7 @@ const show = () => {
 }
 
 .main-menu {
-  @apply relative flex justify-self-center;
+  @apply relative flex flex-row justify-self-center <md:hidden;
 }
 .main-menu li {
   @apply text-center font-Mitr font-300 text-[18px] leading-[20px] tracking-[0.1px] px-4 py-5
@@ -126,11 +143,10 @@ const show = () => {
   background: rgba(10, 10, 10, 0.7);
 }
 .open-menu, .close-menu {
-  @apply w-32px h-auto cursor-pointer hidden;
+  @apply w-32px h-auto cursor-pointer  md:hidden;
 }
-
 .admin-block {
-  @apply relative flex items-center h-64px justify-self-end;
+  @apply relative flex items-center h-64px justify-self-end <md:hidden;
 }
 .admin-block p{
   @apply Navbar-font w-133px h-32px bg-transparent pt-2px md:pt-6px opacity-75
@@ -138,45 +154,16 @@ const show = () => {
 }
 
 .search-box {
-  @apply absolute max-w-432px w-1/3 box-border top-0 right-0 z-10;
+  @apply fixed top-0 right-0 z-30 w-3/5 h-screen -right-full px-8 py-6
+  bg-[#1f1f1f] md:(p-0 max-w-432px w-1/3 bg-transparent);
+  transition: right 0.5s ease-out;
 }
 .search-bar {
-  @apply flex items-center h-64px bg-grey-light+ px-4 text-purple-500;
+  @apply flex items-center bg-transparent md:(h-64px bg-grey-light+) px-4 text-purple-500;
 }
 
 .search-bar input, .search-box input{
   @apply w-9/10 h-40px rounded-[0.5rem] px-2 md:px-4 Navbar-font
   overflow-ellipsis focus:(border-solid border-[1.4px] border-purple-500 outline-none);
-}
-
-@media (max-width: 768px) {
-  .main-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    border-radius: 0 0 1rem 1rem;
-    z-index: 20;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: saddlebrown;
-    transition: top 1s ease;
-    display: none;
-  }
-  .admin-block {
-    display: none;
-  }
-  .open-menu, .close-menu {
-    display: block;
-  }
-
-  .close-menu {
-    @apply absolute top-2 right-2;
-  }
-
-  .search-box {
-  @apply relative max-w-full;
-}
 }
 </style>
