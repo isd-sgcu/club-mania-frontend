@@ -25,9 +25,11 @@ jobs:
         with:
           version: 6.0.2
           run_install: true
-      - uses: actions/checkout@v2
-      - run: pnpm build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: Build web page
+        run: pnpm build
+      
+        - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLUB_MANIA2021 }}'
