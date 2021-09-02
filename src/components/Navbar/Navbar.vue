@@ -1,0 +1,135 @@
+<template>
+  <div class="wrapper" style="background: rgba(0, 0, 0, 0.5)">
+    <nav class="headbar">
+      <div class="clubmania-icon">
+        <router-link to="/">
+          <img :src="PageIcon[theme.savedTheme]" class="py-2 w-18 md:w-22 lg:w-28 h-auto" />
+        </router-link>
+      </div>
+      <ci-hamburger class="open-menu" @click="toggleSearch" />
+      <ol class="main-menu">
+        <li>
+          <router-link to="/category/vichagarn">
+            วิชาการ
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/category/silpvat">
+            ศิลป์วัฒน์
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/category/gera">
+            กีฬา
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/category/pat">
+            พัฒน์
+          </router-link>
+        </li>
+      </ol>
+      <!---Just for visual don't do anything special-->
+      <div class="admin-block">
+        <mdi-account-circle-outline class="w-4 md:w-6 h-auto mr-8px" />
+        <p>{{ adminName }}</p>
+        <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="toggleSearch" />
+      </div>
+    </nav>
+  </div>
+  <!------blur backdrop----->
+  <div
+    v-if="isSearch"
+    class="fixed w-full h-full backdrop-filter backdrop-blur-[15px] bg-[rgba(0,0,0,0.3)]] z-10 md:hidden"
+    @click="toggleSearch"
+  />
+  <!--This show when an user click the magnify icon or the dummy block-->
+  <Sidebar
+    ref="searchBox"
+    :admin-name="adminName"
+    :search-term="searchTerm"
+    :show="isSearch"
+    @collaspe="toggleSearch"
+  />
+</template>
+
+<script setup lang="ts">
+import { PageIcon } from '~/imagePath'
+import { useThemeStore } from '~/stores/themes'
+
+const theme = useThemeStore()
+
+const adminName = ref('ชมรมภาพยนตร์')
+const searchTerm = ref('')
+const isSearch = ref(false)
+
+const searchClub = (searchTerm: string) => {
+
+  // TODO: implement search logic
+  /* - may be fetch data from files or firebase
+     - create a element to render below searchbar
+  */
+}
+
+const toggleSearch = () => {
+  searchTerm.value = ''
+  isSearch.value = !isSearch.value
+}
+
+// trigger when there are change in searchTerm
+watchEffect(() => {
+  // console.log(searchTerm.value)
+  searchClub(searchTerm.value)
+})
+
+</script>
+
+<style scoped>
+.wrapper {
+  @apply fixed top-0 z-10 px-5 md:px-9 w-full min-h-8 backdrop-filter backdrop-blur-[15px];
+}
+
+.headbar {
+  @apply flex justify-between items-center lg:(grid grid-cols-[1fr,2fr,1fr]) text-white;
+
+}
+
+.clubmania-icon {
+  @apply justify-self-start;
+}
+
+.main-menu {
+  @apply relative flex flex-row justify-self-center <md:hidden;
+}
+.main-menu li {
+  @apply text-center font-Mitr font-300 text-[18px] leading-[20px] tracking-[0.1px] px-4 py-5
+    lg:(text-[20px] leading-[24px] px-6) cursor-pointer;
+}
+.main-menu li:hover {
+  background: rgba(10, 10, 10, 0.7);
+}
+.open-menu, .close-menu {
+  @apply w-32px h-auto cursor-pointer  md:hidden;
+}
+.admin-block {
+  @apply relative flex items-center h-64px justify-self-end <md:hidden;
+}
+.admin-block p{
+  @apply Navbar-font w-133px h-32px bg-transparent pt-2px md:pt-6px opacity-75
+    cursor-default overflow-ellipsis;
+}
+
+/* .search-box {
+  @apply fixed top-0 right-0 z-30 w-3/5 h-screen -right-full px-8 py-6
+  bg-[#1f1f1f] md:(p-0 max-w-432px w-1/3 bg-transparent);
+  transition: right 0.5s ease-out;
+}
+.search-bar {
+  @apply flex items-center bg-transparent md:(h-64px bg-grey-light+) px-4 text-purple-500;
+}
+
+.search-bar input, .search-box input{
+  @apply w-9/10 h-40px rounded-[0.5rem] px-2 md:px-4 Navbar-font
+  overflow-ellipsis focus:(border-solid border-[1.4px] border-purple-500 outline-none);
+} */
+</style>
