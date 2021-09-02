@@ -3,8 +3,8 @@
 <!-- Last Updated by Kaoklong -->
 
 <template>
-  <div class="relative flex cursor-pointer" :class="{'items-center justify-center': !isClub}" @click="directTo">
-    <img :src="isClub? ClubBanner[theme] :CategoryBanner[theme]" :alt="theme" class="bg-cover h-8/25 min-h-145px max-h-312px 2xl:(min-h-330px max-h-600px)">
+  <div class="w-full relative flex cursor-pointer" :class="{'items-center justify-center': !isClub}" @click="directTo">
+    <img :src="isClub? ClubBanner[theme] :CategoryBanner[theme]" :alt="theme" class="w-full cover-center h-200px md:h-260px lg:(min-h-312px h-auto max-h-500px)">
     <span v-if="theme === 'Gera'" class="gera-glow" :class="{'md:text-[48px] xl:text-[64px] left-13/100 bottom-33/100': isClub}">
       <p class="gera-border">
         {{ displayText }}
