@@ -3,26 +3,26 @@
     <!--Navigation menu in mobile screen-->
     <img v-if="searchTerm === ''" :src="PageIcon['Main']" class="clubmania-icon" />
     <ol v-if="searchTerm === ''" class="mobile-menu">
-      <li>
-        <router-link to="/category/vichagarn">
+      <router-link to="/wichakarn" @click="$emit('collapse')">
+        <li>
           วิชาการ
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/category/silpvat">
+        </li>
+      </router-link>
+      <router-link to="/silpvat" @click="$emit('collapse')">
+        <li>
           ศิลป์วัฒน์
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/category/gera">
+        </li>
+      </router-link>
+      <router-link to="/geela" @click="$emit('collapse')">
+        <li>
           กีฬา
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/category/pat">
+        </li>
+      </router-link>
+      <router-link to="/pat" @click="$emit('collapse')">
+        <li>
           พัฒน์
-        </router-link>
-      </li>
+        </li>
+      </router-link>
     </ol>
     <div class="search-form">
       <mdi-magnify class="absolute box-border ml-1 text-[16px] text-[#898989] md:hidden" />
@@ -31,7 +31,7 @@
         type="text"
         placeholder="ค้นหาชมรม"
       >
-      <carbon-close-filled class="w-32px h-auto ml-8px cursor-pointer hover:text-yellow-700 <md:hidden" @click="$emit('collaspe')" />
+      <carbon-close-filled class="w-32px h-auto ml-8px cursor-pointer hover:text-yellow-700 <md:hidden" @click="$emit('collapse')" />
     </div>
     <!---Search result add here!--->
     <div class="result-container">
@@ -57,6 +57,9 @@ const props = defineProps<{
   show: boolean
 }>()
 
+defineEmits<{
+  (e: 'collapse'): void
+}>()
 const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' })
 </script>
 

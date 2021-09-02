@@ -8,26 +8,26 @@
       </div>
       <ci-hamburger class="open-menu" @click="toggleSearch" />
       <ol class="main-menu">
-        <li>
-          <router-link to="/wichakarn">
+        <router-link to="/wichakarn">
+          <li>
             วิชาการ
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/silpvat">
+          </li>
+        </router-link>
+        <router-link to="/silpvat">
+          <li>
             ศิลป์วัฒน์
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/geela">
+          </li>
+        </router-link>
+        <router-link to="/geela">
+          <li>
             กีฬา
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/pat">
+          </li>
+        </router-link>
+        <router-link to="/pat">
+          <li>
             พัฒน์
-          </router-link>
-        </li>
+          </li>
+        </router-link>
       </ol>
       <!---Just for visual don't do anything special-->
       <div class="admin-block">
@@ -49,6 +49,7 @@
     :admin-name="adminName"
     :search-term="searchTerm"
     :show="isSearch"
+    @collapse="toggleSearch"
   />
 </template>
 
