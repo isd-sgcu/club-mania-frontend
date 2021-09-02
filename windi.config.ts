@@ -27,6 +27,9 @@ export default defineConfig({
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '450px',
+      },
       fontFamily: {
         Mitr: ['Mitr', 'Arial', 'sans'],
         Roboto: ['Roboto', 'sans-serif'],

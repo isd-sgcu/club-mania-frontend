@@ -1,51 +1,53 @@
 <template>
-  <!-- banner is here -->
-  <Banner :theme="themeStore.savedTheme" :is-club="true" :text="clubName" />
-  <PageBackground>
-    <div class="w-10/11 xl:(max-w-6xl) mx-auto">
-      <div class="space-y-4 md:(space-y-8)">
-        <!-- club info -->
-        <section class="space-y-3 md:(space-y-4)">
-          <text-sub1>
-            <span class="text-1.3rem sm:(text-2xl) lg:(text-3xl)" :class="`text-${clubTypeClr}`">{{ clubType }}</span><br />
-            <span class="text-1.3rem sm:(text-2xl) lg:(text-3xl)" :class="`text-${clubNameClr}`">{{ clubName }}</span>
-          </text-sub1>
-          <Gallery :club-name="clubName" :images="images" />
-          <BackgroundSection>
-            <h5 class="<sm:(text-1.3rem) mb-3" :class="`text-${clubNameClr}`">
-              เกี่ยวกับชมรม
+  <div>
+    <!-- banner is here -->
+    <Banner :theme="themeStore.savedTheme" :is-club="true" :text="clubName" />
+    <PageBackground>
+      <div class="w-10/11 xl:(max-w-6xl) mx-auto">
+        <div class="space-y-4 md:(space-y-8)">
+          <!-- club info -->
+          <section class="space-y-3 md:(space-y-4)">
+            <text-sub1>
+              <span class="text-1.3rem sm:(text-2xl) lg:(text-3xl)" :class="`text-${clubTypeClr}`">{{ clubType }}</span><br />
+              <span class="text-1.3rem sm:(text-2xl) lg:(text-3xl)" :class="`text-${clubNameClr}`">{{ clubName }}</span>
+            </text-sub1>
+            <Gallery :club-name="clubName" :images="images" />
+            <BackgroundSection>
+              <h5 class="<sm:(text-1.3rem) mb-3" :class="`text-${clubNameClr}`">
+                เกี่ยวกับชมรม
+              </h5>
+              <text-body1 class="<sm:(leading-1.6rem text-0.9rem) leading-1.8rem">
+                {{ info }}
+              </text-body1>
+            </BackgroundSection>
+          </section>
+          <!-- new reply -->
+          <section class="space-y-4">
+            <h5 class="<sm:(text-1.3rem) text-md" :class="`text-${clubNameClr}`">
+              ความคิดเห็น
             </h5>
-            <text-body1 class="<sm:(leading-1.6rem text-0.9rem) leading-1.8rem">
-              {{ info }}
-            </text-body1>
-          </BackgroundSection>
-        </section>
-        <!-- new reply -->
-        <section class="space-y-4">
-          <h5 class="<sm:(text-1.3rem) text-md" :class="`text-${clubNameClr}`">
-            ความคิดเห็น
-          </h5>
-          <BackgroundSection>
-            <NewReplyPost :is-anonymous="isAnonymous" />
-          </BackgroundSection>
-        </section>
-        <!-- posts -->
-        <section v-if="posts.length" class="space-y-4">
-          <div class="<sm:(space-x-2) space-x-4">
-            <Filter :active-state="isLastestFilterChosen" @toggle="latestFilterOnClick">
-              ล่าสุด
-            </Filter>
-            <Filter :active-state="!isLastestFilterChosen" @toggle="popularFilterOnClick">
-              ยอดนิยม
-            </Filter>
-          </div>
-          <div v-for="(post, idx) in posts" :key="idx">
-            <Post :post="post" />
-          </div>
-        </section>
+            <BackgroundSection>
+              <NewReplyPost :is-anonymous="isAnonymous" />
+            </BackgroundSection>
+          </section>
+          <!-- posts -->
+          <section v-if="posts.length" class="space-y-4">
+            <div class="<sm:(space-x-2) space-x-4">
+              <Filter :active-state="isLastestFilterChosen" @toggle="latestFilterOnClick">
+                ล่าสุด
+              </Filter>
+              <Filter :active-state="!isLastestFilterChosen" @toggle="popularFilterOnClick">
+                ยอดนิยม
+              </Filter>
+            </div>
+            <div v-for="(post, idx) in posts" :key="idx">
+              <Post :post="post" />
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
-  </PageBackground>
+    </PageBackground>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -56,7 +58,7 @@ import { useThemeStore } from '~/stores/themes'
 const { clubTypeColor, clubNameColor } = useClubConfig()
 const themeStore = useThemeStore()
 
-defineProps<{ clubId: string }>()
+defineProps<{ clubName: string }>()
 
 const isAnonymous = ref(false)
 const isLastestFilterChosen = ref(false)

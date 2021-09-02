@@ -9,22 +9,22 @@
       <ci-hamburger class="open-menu" @click="toggleSearch" />
       <ol class="main-menu">
         <li>
-          <router-link to="/category/vichagarn">
+          <router-link to="/wichakarn">
             วิชาการ
           </router-link>
         </li>
         <li>
-          <router-link to="/category/silpvat">
+          <router-link to="/silpvat">
             ศิลป์วัฒน์
           </router-link>
         </li>
         <li>
-          <router-link to="/category/gera">
+          <router-link to="/geela">
             กีฬา
           </router-link>
         </li>
         <li>
-          <router-link to="/category/pat">
+          <router-link to="/pat">
             พัฒน์
           </router-link>
         </li>
@@ -49,7 +49,6 @@
     :admin-name="adminName"
     :search-term="searchTerm"
     :show="isSearch"
-    @collaspe="toggleSearch"
   />
 </template>
 

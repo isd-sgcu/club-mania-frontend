@@ -8,15 +8,13 @@
         {{ post.text }}
       </TextFrame>
       <!-- like/reply buttons -->
-      <div class="flex space-x-3 md:(space-x-5)">
-        <div class="space-x-3 flex items-center">
-          <LikeButton
-            :fill-color="fillColor"
-            :like-status="likeStatus"
-            @toggle-like="onToggleLike"
-          />
-          <span>{{ post.likes > 0 ? post.likes : '' }}</span>
-        </div>
+      <div class="flex md:(space-x-1)">
+        <LikeButton
+          :fill-color="fillColor"
+          :like-status="likeStatus"
+          :likes="3"
+          @toggle-like="onToggleLike"
+        />
         <ReplyButton :fill-color="fillColor" @click="onReplyClicked" />
       </div>
       <hr v-if="replyActive" :style="{ borderColor: fillColor[themeStore.savedTheme] }" />
@@ -58,9 +56,9 @@
               <LikeButton
                 :fill-color="fillColor"
                 :like-status="likeStatus"
+                :likes="5"
                 @toggle-like="onToggleLike"
               />
-              <span>{{ post.likes > 0 ? post.likes : '' }}</span>
             </div>
           </div>
         </div>
