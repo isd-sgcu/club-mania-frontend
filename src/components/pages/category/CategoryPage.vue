@@ -22,8 +22,14 @@
 </template>
 
 <script setup lang="ts">
+import { useFavicon } from '@vueuse/core'
 import { useThemeStore } from '~/stores/themes'
 const themeStore = useThemeStore()
+
+// dynamic favicon
+if (themeStore.savedTheme === 'Pat')
+  useFavicon('/favicon-light.svg')
+else useFavicon('/favicon-dark.svg')
 
 const data: any = [
   {
