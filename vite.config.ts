@@ -84,11 +84,11 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-pwa
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'robots.txt', 'safari-pinned-tab.svg'],
+      includeAssets: ['favicon-main.svg', 'favicon-light.svg', 'favicon-dark.svg', 'fb.svg', 'ig.svg', 'isd.svg', 'robots.txt', 'safari-pinned-tab.svg'],
       manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
-        theme_color: '#ffffff',
+        name: 'Club Mania',
+        short_name: 'ClubMania',
+        theme_color: '#000000',
         icons: [
           {
             src: '/pwa-192x192.png',
