@@ -40,7 +40,7 @@
   <!------blur backdrop----->
   <div
     v-if="isSearch"
-    class="fixed w-full h-full backdrop-filter backdrop-blur-[15px] bg-[rgba(0,0,0,0.3)]] z-10 md:hidden"
+    class="fixed w-full h-full backdrop-filter backdrop-blur-[15px] bg-[rgba(0,0,0,0.5)] z-10 md:hidden"
     @click="toggleSearch"
   />
   <!--This show when an user click the magnify icon or the dummy block-->
@@ -115,21 +115,8 @@ watchEffect(() => {
   @apply relative flex items-center h-64px justify-self-end <md:hidden;
 }
 .admin-block p{
-  @apply Navbar-font w-133px h-32px bg-transparent pt-2px md:pt-6px opacity-75
+  @apply font-Navbar w-133px h-32px bg-transparent pt-2px md:pt-6px opacity-75
     cursor-default overflow-ellipsis;
 }
 
-/* .search-box {
-  @apply fixed top-0 right-0 z-30 w-3/5 h-screen -right-full px-8 py-6
-  bg-[#1f1f1f] md:(p-0 max-w-432px w-1/3 bg-transparent);
-  transition: right 0.5s ease-out;
-}
-.search-bar {
-  @apply flex items-center bg-transparent md:(h-64px bg-grey-light+) px-4 text-purple-500;
-}
-
-.search-bar input, .search-box input{
-  @apply w-9/10 h-40px rounded-[0.5rem] px-2 md:px-4 Navbar-font
-  overflow-ellipsis focus:(border-solid border-[1.4px] border-purple-500 outline-none);
-} */
 </style>
