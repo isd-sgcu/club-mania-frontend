@@ -45,7 +45,6 @@
   />
   <!--This show when an user click the magnify icon or the dummy block-->
   <Sidebar
-    ref="searchBox"
     :admin-name="adminName"
     :search-term="searchTerm"
     :show="isSearch"
