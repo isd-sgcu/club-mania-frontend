@@ -86,6 +86,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon-main.svg', 'favicon-light.svg', 'favicon-dark.svg', 'fb.svg', 'ig.svg', 'isd.svg', 'robots.txt', 'safari-pinned-tab.svg'],
       manifest: {
+        lang: 'th',
         name: 'Club Mania',
         short_name: 'ClubMania',
         theme_color: '#000000',
