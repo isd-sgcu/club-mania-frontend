@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="p-1 sm:(p-2) md:(p-3) cursor-pointer space-x-3 rounded-lg  bg-opacity-0 active:bg-opacity-25 hover:bg-opacity-50"
-    :class="`bg-textbox-${props.theme ?? themeStore.savedTheme}`"
-  >
+  <LikeReplyContainer>
     <svg
       class="transform scale-90 inline-block md:(scale-100)"
       :class="`${themeStore.savedTheme === 'Pat' ? 'active:fill-black' : 'active:fill-white'}`"
@@ -18,7 +15,7 @@
       />
     </svg>
     <span class="font-Roboto text-sm">{{ 'ตอบกลับ' }}</span>
-  </div>
+  </LikeReplyContainer>
 </template>
 
 <script setup lang="ts">
