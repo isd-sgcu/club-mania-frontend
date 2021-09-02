@@ -1,7 +1,7 @@
 <template>
   <LikeReplyContainer>
     <svg
-      class="transform scale-90 inline-block md:(scale-100)"
+      class="transform scale-60 inline-block md:(scale-80)"
       :class="`${themeStore.savedTheme === 'Pat' ? 'active:fill-black' : 'active:fill-white'}`"
       width="25"
       height="24"
