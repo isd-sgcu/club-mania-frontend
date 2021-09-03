@@ -28,29 +28,34 @@
               </text-body1>
             </BackgroundSection>
           </section>
-          <!-- new reply -->
-          <section class="space-y-4">
-            <h5 class="<sm:(text-1.3rem) text-md" :class="`text-${clubNameClr}`">
-              ความคิดเห็น
-            </h5>
-            <BackgroundSection>
-              <NewReplyPost :is-anonymous="isAnonymous" />
-            </BackgroundSection>
-          </section>
-          <!-- posts -->
-          <section v-if="posts.length" class="space-y-4">
-            <div class="<sm:(space-x-2) space-x-4">
-              <Filter :active-state="isLastestFilterChosen" @toggle="latestFilterOnClick">
-                ล่าสุด
-              </Filter>
-              <Filter :active-state="!isLastestFilterChosen" @toggle="popularFilterOnClick">
-                ยอดนิยม
-              </Filter>
-            </div>
-            <div v-for="(post, idx) in posts" :key="idx">
-              <Post :post="post" />
-            </div>
-          </section>
+          <client-only>
+            <!-- new reply -->
+            <section class="space-y-4">
+              <h5 class="<sm:(text-1.3rem) text-md" :class="`text-${clubNameClr}`">
+                ความคิดเห็น
+              </h5>
+              <BackgroundSection>
+                <NewReplyPost :is-anonymous="isAnonymous" />
+              </BackgroundSection>
+            </section>
+            <!-- posts -->
+            <section v-if="posts.length" class="space-y-4">
+              <div class="<sm:(space-x-2) space-x-4">
+                <Filter :active-state="isLastestFilterChosen" @toggle="latestFilterOnClick">
+                  ล่าสุด
+                </Filter>
+                <Filter
+                  :active-state="!isLastestFilterChosen"
+                  @toggle="popularFilterOnClick"
+                >
+                  ยอดนิยม
+                </Filter>
+              </div>
+              <div v-for="(post, idx) in posts" :key="idx">
+                <Post :post="post" />
+              </div>
+            </section>
+          </client-only>
         </div>
       </div>
     </PageBackground>
@@ -59,12 +64,10 @@
 
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
-import { getDoc, doc, DocumentReference } from 'firebase/firestore'
+import { getDoc, doc, DocumentReference, Firestore } from 'firebase/firestore'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
-import { db } from '~/firebase'
 import { ClubDoc, PostDoc } from '~/firestore'
-// import { Post } from '~/types'
 
 const { clubTypeColor, clubNameColor } = useClubConfig()
 const themeStore = useThemeStore()
@@ -82,7 +85,7 @@ if (themeStore.savedTheme === 'Pat')
   useFavicon('/favicon-light.svg')
 else useFavicon('/favicon-dark.svg')
 
-const getAndSetData = async() => {
+const getAndSetData = async(db: Firestore) => {
   const clubSnap = await getDoc(doc(db, 'clubs', 'tennis'))
   const clubDoc = clubSnap.data() as ClubDoc
 
@@ -104,7 +107,8 @@ const popularFilterOnClick = (activeState: boolean) => {
 }
 
 onMounted(async() => {
-  await getAndSetData()
+  const { db } = await import('~/firebase')
+  await getAndSetData(db.value as Firestore)
 })
 
 // dummy
