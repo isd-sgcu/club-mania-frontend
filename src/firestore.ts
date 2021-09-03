@@ -10,6 +10,9 @@ export const staffsColRef = collection(db, 'staffs')
 
 export type CollectionOption = 'clubs' | 'members' | 'posts' | 'replies' | 'staffs'
 
+// We should persist this in the local storage
+type AnonymousId = string
+
 // Keep these types in sync with the real docs in firestore
 export type ClubDoc = {
   // club name is the doc id itself
@@ -23,15 +26,15 @@ export type MemberDoc = {
   year: number
 }
 export type PostDoc = {
-  by?: DocumentReference // maybe anonymous, undefined
-  likes: number
+  by: DocumentReference | AnonymousId
+  likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
   postedAt: Timestamp
   replies: DocumentReference[] // ReplyDoc[]
   text: string
 }
 export type ReplyDoc = {
-  by?: DocumentReference // maybe anonymous, undefined
-  likes: number
+  by: DocumentReference | AnonymousId
+  likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
   repliedAt: Timestamp
   text: string
 }
