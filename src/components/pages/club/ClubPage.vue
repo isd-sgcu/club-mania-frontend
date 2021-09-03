@@ -85,8 +85,8 @@ if (themeStore.savedTheme === 'Pat')
   useFavicon('/favicon-light.svg')
 else useFavicon('/favicon-dark.svg')
 
-const getAndSetData = async(db: Firestore) => {
-  const clubSnap = await getDoc(doc(db, 'clubs', 'tennis'))
+const getAndSetData = async(db: Firestore, clubName: string) => {
+  const clubSnap = await getDoc(doc(db, 'clubs', clubName))
   const clubDoc = clubSnap.data() as ClubDoc
 
   // get posts
@@ -108,7 +108,7 @@ const popularFilterOnClick = (activeState: boolean) => {
 
 onMounted(async() => {
   const { db } = await import('~/firebase')
-  await getAndSetData(db.value as Firestore)
+  await getAndSetData(db.value as Firestore, '%name%')
 })
 
 // dummy
