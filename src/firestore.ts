@@ -1,5 +1,4 @@
-import { collection, DocumentReference, Timestamp } from 'firebase/firestore'
-import { db } from './firebase'
+import { DocumentReference, Timestamp } from 'firebase/firestore'
 
 export type CollectionOption = 'clubs' | 'members' | 'posts' | 'replies' | 'staffs'
 
