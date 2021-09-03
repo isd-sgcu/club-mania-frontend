@@ -1,6 +1,7 @@
 // Initialize Cloud Firestore through Firebase
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
 initializeApp({
   apiKey: 'AIzaSyBS0vzbtI2vIs--V0gPBm2fzhVB-xkOomE',
@@ -13,3 +14,4 @@ initializeApp({
 })
 
 export const auth = getAuth()
+export const db = getFirestore()
