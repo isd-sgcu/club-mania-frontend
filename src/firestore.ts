@@ -1,17 +1,10 @@
-import { collection, DocumentReference, getFirestore, Timestamp } from 'firebase/firestore'
-
-export const db = getFirestore()
-
-export const clubsColRef = collection(db, 'clubs')
-export const membersColRef = collection(db, 'members')
-export const postsColRef = collection(db, 'posts')
-export const repliesColRef = collection(db, 'replies')
-export const staffsColRef = collection(db, 'staffs')
+import { collection, DocumentReference, Timestamp } from 'firebase/firestore'
+import { db } from './firebase'
 
 export type CollectionOption = 'clubs' | 'members' | 'posts' | 'replies' | 'staffs'
 
 // We should persist this in the local storage
-type AnonymousId = string
+export type AnonymousId = string
 
 // Keep these types in sync with the real docs in firestore
 export type ClubDoc = {
@@ -24,6 +17,7 @@ export type MemberDoc = {
   name: string
   studentId: string
   year: number
+  badge: string
 }
 export type PostDoc = {
   by: DocumentReference | AnonymousId
