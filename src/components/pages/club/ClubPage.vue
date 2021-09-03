@@ -108,6 +108,7 @@ const popularFilterOnClick = (activeState: boolean) => {
 
 onMounted(async() => {
   const { db } = await import('~/firebase')
+  // * IMPORTANT the club must exist in the firestore
   await getAndSetData(db.value as Firestore, '%name%')
 })
 
