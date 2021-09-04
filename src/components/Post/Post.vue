@@ -44,11 +44,11 @@
         </div>
       </div>
       <div v-if="showingMore" class="space-y-2">
-        <div v-for="(reply, idx) in replies" :key="idx" :class="commentMarginLeft">
+        <div v-for="(reply, idx) in props.post.replies" :key="idx" :class="commentMarginLeft">
           <div class="space-y-2 pb-3">
             <PostHeader
               :publisher="reply.by"
-              :posted-at="post.postedAt"
+              :posted-at="reply.repliedAt"
             />
             <TextFrame :disabled="true" :value="reply.text" />
             <div class="space-x-3 flex items-center">
@@ -76,10 +76,11 @@ const props = defineProps<{
   post: PostDoc
 }>()
 
+console.log(props.post.replies)
+
 const likeStatus = ref(false)
 const replyActive = ref(true)
 const showingMore = ref(true)
-const replies = ref<ReplyDoc[]>([])
 
 const onReplyClicked = () => {
   replyActive.value = !replyActive.value
