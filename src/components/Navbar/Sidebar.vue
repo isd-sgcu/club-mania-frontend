@@ -34,8 +34,8 @@
       <carbon-close-filled class="w-32px h-auto ml-8px cursor-pointer hover:text-yellow-700 <md:hidden" @click="$emit('collapse')" />
     </div>
     <!---Search result add here!--->
-    <div class="result-container">
-      <slot />
+    <div v-if="searchTerm !== ''" class="result-container">
+      <slot></slot>
     </div>
     <div
       v-if="searchTerm === ''"
@@ -93,6 +93,6 @@ const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' }
     focus:(border-solid border-[1.4px] text-purple-500 border-purple-500 outline-none));
 }
 .result-container {
-  @apply flex;
+
 }
 </style>

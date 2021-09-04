@@ -49,10 +49,19 @@
     :search-term="searchTerm"
     :show="isSearch"
     @collapse="toggleSearch"
-  />
+  >
+    <Searchbox
+      v-for="(item, index) in data"
+      :key="index"
+      :name="item.name"
+      :description="item.description"
+      :image="item.image"
+    />
+  </Sidebar>
 </template>
 
 <script setup lang="ts">
+import Searchbox from './Searchbox.vue'
 import { PageIcon } from '~/imagePath'
 import { useThemeStore } from '~/stores/themes'
 
@@ -81,6 +90,30 @@ watchEffect(() => {
   searchClub(searchTerm.value)
 })
 
+const data: any = [
+  {
+    name: 'ชมรมหมากกระดาน',
+    description: 'ชมรมอื่นๆ',
+    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
+  },
+  {
+    name: 'ชมรมถ่ายภาพ',
+    description: 'ชมรมฝ่ายศิลป์วัฒน์',
+    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
+  },
+  {
+    name: 'ชมรมภาพยนตร์',
+    description: 'ชมรมฝ่ายศิลป์วัฒน์',
+    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
+  },
+  {
+    name: 'ชมรมภาพศิลป์',
+    description: 'ชมรมฝ่ายศิลป์วัฒน์',
+    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
+  },
+]
+
+onMounted(() => console.log(data))
 </script>
 
 <style scoped>
