@@ -11,7 +11,7 @@ defineProps<IProps>()
 
 <template>
   <div :class="!hover ? 'outer-frame' : 'outer-frame-hover'" class="outer-frame mb-3 rounded-none border-solid border-width-8">
-    <div class="inner-frame w-full h-full border-width-8 max-w-[200px]">
+    <div class="inner-frame border-width-8 max-w-[200px]">
       <img :src="imgUrl">
     </div>
   </div>
