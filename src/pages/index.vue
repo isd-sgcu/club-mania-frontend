@@ -114,11 +114,11 @@ const data: any = [
 
 <style>
 .swiper-pagination {
-  @apply bottom-4 md:bottom-8 lg:bottom-16;
+  @apply bottom-6 md:bottom-12 2xl:bottom-2018;
 }
 
 .swiper-pagination-bullet {
-  @apply w-12px h-12px 2xl:(w-18px h-18px);
+  @apply w-12px h-12px 2xl:(w-16px h-16px);
   opacity: 1;
   background: rgba(187, 187, 187, 0.4);
 }
