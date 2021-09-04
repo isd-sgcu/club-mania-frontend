@@ -24,7 +24,7 @@ const publisherBadge = ref<string | null>(null)
 const postedDate = props.postedAt.toDate()
 
 onMounted(async() => {
-  if (props.publisher instanceof String) { publisherName.value = 'บุคคลนิรนาม' }
+  if (typeof props.publisher === 'string') { publisherName.value = 'บุคคลนิรนาม' }
   else {
     const posterDoc = (await getDoc(props.publisher as DocumentReference)).data() as MemberDoc
     publisherName.value = posterDoc.name
@@ -32,6 +32,3 @@ onMounted(async() => {
   }
 })
 </script>
-
-<style>
-</style>
