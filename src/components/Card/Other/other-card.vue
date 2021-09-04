@@ -1,12 +1,12 @@
 <template>
-  <div class="w-[200px] cursor-pointer" style="z-index: 1;" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+  <div class="max-w-[200px] cursor-pointer" style="z-index: 1;" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <div class="relative">
       <img class="absolute top-0 w-full h-full img-clip" :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
       <img :src="!detect ? ghostImg : ghostHover" class="w-full h-full mb-4" preserveAspectRatio="none">
     </div>
     <div class="relative">
       <img :src="!detect ? backgroundImg : backgroundHover" class="w-full h-full" preserveAspectRatio="none">
-      <text-sub2 class="w-[200px] absolute break-words p-5 pt-3 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
+      <text-sub2 class="w-[200px] text-size-[0.9rem] sm:text-size-[1.25rem] absolute break-words p-5 pt-3 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
         {{ text }}
       </text-sub2>
     </div>
@@ -55,7 +55,7 @@ const handleClick = () => {
 <style scoped>
 .img-clip {
     z-index: -1;
-    clip-path: inset(10px 20px 20px 20px);
+    clip-path: inset(10px 17px 20px 17px);
 }
 
 .text-card {
