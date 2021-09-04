@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- banner is here -->
-    <Banner :theme="themeStore.savedTheme" :is-club="true" text="%name%" />
+    <Banner :theme="themeStore.savedTheme" :is-club="true" :text="staticInfo.name" />
     <PageBackground>
       <div class="w-10/11 xl:(max-w-6xl) mx-auto">
         <div class="space-y-4 md:(space-y-8)">
@@ -11,22 +11,24 @@
               <span
                 class="text-1.3rem sm:(text-2xl) lg:(text-3xl)"
                 :class="`text-${clubTypeClr}`"
-              >%category%</span>
+              >{{ staticInfo.category }}</span>
               <br />
               <span
                 class="text-1.3rem sm:(text-2xl) lg:(text-3xl)"
                 :class="`text-${clubNameClr}`"
-              >%name%</span>
+              >{{ staticInfo.name }}</span>
             </text-sub1>
-            <Gallery club-name="%name%" :images="images" />
-            <BackgroundSection>
-              <h5 class="<sm:(text-1.3rem) mb-3" :class="`text-${clubNameClr}`">
-                เกี่ยวกับชมรม
-              </h5>
-              <text-body1 class="<sm:(leading-1.6rem text-0.9rem) leading-1.8rem">
-                %info%
-              </text-body1>
-            </BackgroundSection>
+            <Gallery :club-name="staticInfo.name" :images="images" />
+            <div v-for="topic in topics" :key="topic">
+              <BackgroundSection>
+                <h5 class="<sm:(text-1.3rem) mb-3" :class="`text-${clubNameClr}`">
+                  {{ topic }}
+                </h5>
+                <text-body1 class="<sm:(leading-1.6rem text-0.9rem) leading-1.8rem">
+                  {{ decideInfoText(topic) }}
+                </text-body1>
+              </BackgroundSection>
+            </div>
           </section>
           <client-only>
             <!-- new new post -->
@@ -69,9 +71,15 @@ import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
 import { ClubDoc, PostDoc } from '~/firestore'
 import { db } from '~/firebase'
+import { ClubStaticInfo, InfoTopicOption } from '~/types'
 
 const { clubTypeColor, clubNameColor } = useClubConfig()
 const themeStore = useThemeStore()
+
+const props = defineProps<{
+  category: string
+  clubName: string
+}>()
 
 const isAnonymous = ref(false)
 const isLastestFilterChosen = ref(false)
@@ -79,7 +87,29 @@ const postRefs = ref<DocumentReference[]>([])
 const memberRefs = ref<DocumentReference[]>([])
 const unsubClub = ref<Unsubscribe | null>(null)
 const clubRef = ref<DocumentReference | null>(null)
+const staticInfo = ref<ClubStaticInfo>({
+  name: '',
+  category: '',
+  about: '',
+  whatToExpect: '',
+  recruitmentPeriod: '',
+  contact: '',
+})
 
+const aboutText = computed(() => {
+  return staticInfo.value.about
+})
+const expectText = computed(() => {
+  return staticInfo.value.whatToExpect
+})
+const periodText = computed(() => {
+  return staticInfo.value.recruitmentPeriod
+})
+const contactText = computed(() => {
+  return staticInfo.value.contact
+})
+
+const topics: InfoTopicOption[] = ['เกี่ยวกับชมรม', 'สิ่งที่น้อง ๆ จะได้รับ', 'ช่วงเวลาที่รับสมัคร', 'ช่องทางการติดต่อ']
 const clubTypeClr = clubTypeColor[themeStore.savedTheme]
 const clubNameClr = clubNameColor[themeStore.savedTheme]
 
@@ -87,6 +117,16 @@ const clubNameClr = clubNameColor[themeStore.savedTheme]
 if (themeStore.savedTheme === 'Pat')
   useFavicon('/favicon-light.svg')
 else useFavicon('/favicon-dark.svg')
+
+const decideInfoText = (topic: InfoTopicOption) => {
+  if (topic === 'เกี่ยวกับชมรม')
+    return aboutText.value
+  else if (topic === 'สิ่งที่น้อง ๆ จะได้รับ')
+    return expectText.value
+  else if (topic === 'ช่วงเวลาที่รับสมัคร')
+    return periodText.value
+  return contactText.value
+}
 
 const latestFilterOnClick = (activeState: boolean) => {
   isLastestFilterChosen.value = activeState
@@ -114,7 +154,10 @@ const post = async(text: string) => {
 }
 
 onMounted(async() => {
-  clubRef.value = doc(db.value as Firestore, 'clubs', '%name%')
+  const { info } = await import(`../../../assets/clubs/${props.category}/${props.clubName}`)
+  staticInfo.value = info
+
+  clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)
   // * IMPORTANT the club must exist in the firestore
   unsubClub.value = onSnapshot(clubRef.value, (snap) => {
     const clubDoc = snap.data() as ClubDoc
