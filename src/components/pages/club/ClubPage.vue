@@ -121,11 +121,11 @@ else useFavicon('/favicon-dark.svg')
 const decideInfoText = (topic: InfoTopicOption) => {
   if (topic === 'เกี่ยวกับชมรม')
     return aboutText.value
-  else if (topic === 'สิ่งที่น้อง ๆ จะได้รับ')
+  if (topic === 'สิ่งที่น้อง ๆ จะได้รับ')
     return expectText.value
-  else if (topic === 'ช่วงเวลาที่รับสมัคร')
-    return periodText.value
-  return contactText.value
+  return topic === 'ช่วงเวลาที่รับสมัคร'
+    ? periodText.value
+    : contactText.value
 }
 
 const latestFilterOnClick = (activeState: boolean) => {
