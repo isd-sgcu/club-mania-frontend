@@ -29,17 +29,17 @@
             </BackgroundSection>
           </section>
           <client-only>
-            <!-- new reply -->
+            <!-- new new post -->
             <section class="space-y-4">
               <h5 class="<sm:(text-1.3rem) text-md" :class="`text-${clubNameClr}`">
                 ความคิดเห็น
               </h5>
               <BackgroundSection>
-                <NewReplyPost :is-anonymous="isAnonymous" />
+                <NewReplyPost :is-anonymous="isAnonymous" @submit="post" />
               </BackgroundSection>
             </section>
             <!-- posts -->
-            <section v-if="posts.length" class="space-y-4">
+            <section v-if="postRefs.length" class="space-y-4">
               <div class="<sm:(space-x-2) space-x-4">
                 <Filter :active-state="isLastestFilterChosen" @toggle="latestFilterOnClick">
                   ล่าสุด
@@ -51,7 +51,7 @@
                   ยอดนิยม
                 </Filter>
               </div>
-              <div v-for="(post, idx) in posts" :key="idx">
+              <div v-for="(post, idx) in postRefs" :key="idx">
                 <Post :post="post" />
               </div>
             </section>
@@ -64,19 +64,21 @@
 
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
-import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot } from 'firebase/firestore'
+import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, Timestamp, updateDoc, arrayUnion, addDoc, collection } from 'firebase/firestore'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
-import { ClubDoc } from '~/firestore'
+import { ClubDoc, PostDoc } from '~/firestore'
+import { db } from '~/firebase'
 
 const { clubTypeColor, clubNameColor } = useClubConfig()
 const themeStore = useThemeStore()
 
 const isAnonymous = ref(false)
 const isLastestFilterChosen = ref(false)
-const posts = ref<DocumentReference[]>([])
-const members = ref<DocumentReference[]>()
-const unsubClub = ref<Unsubscribe | null>()
+const postRefs = ref<DocumentReference[]>([])
+const memberRefs = ref<DocumentReference[]>([])
+const unsubClub = ref<Unsubscribe | null>(null)
+const clubRef = ref<DocumentReference | null>(null)
 
 const clubTypeClr = clubTypeColor[themeStore.savedTheme]
 const clubNameClr = clubNameColor[themeStore.savedTheme]
@@ -93,13 +95,30 @@ const popularFilterOnClick = (activeState: boolean) => {
   isLastestFilterChosen.value = !activeState
 }
 
+const post = async(text: string) => {
+  const by = 'test' // or the real thing
+
+  const postDoc: PostDoc = {
+    by,
+    likes: [],
+    postedAt: Timestamp.fromDate(new Date()),
+    replies: [],
+    text,
+  }
+
+  const postRef = await addDoc(collection(clubRef.value as DocumentReference, 'posts'), postDoc)
+
+  updateDoc(clubRef.value as DocumentReference, {
+    posts: arrayUnion(postRef),
+  })
+}
+
 onMounted(async() => {
-  const { db } = await import('~/firebase')
+  clubRef.value = doc(db.value as Firestore, 'clubs', '%name%')
   // * IMPORTANT the club must exist in the firestore
-  const clubRef = doc(db.value as Firestore, 'clubs', '%name%')
-  unsubClub.value = onSnapshot(clubRef, (snap) => {
+  unsubClub.value = onSnapshot(clubRef.value, (snap) => {
     const clubDoc = snap.data() as ClubDoc
-    posts.value = clubDoc.posts
+    postRefs.value = clubDoc.posts
   })
 })
 
