@@ -14,7 +14,6 @@ export type ClubStaticInfo = {
   whatToExpect: string
   recruitmentPeriod: string
   contact: string
-  representativeEmail: string
 }
 
 export type InfoTopicOption = 'เกี่ยวกับชมรม' | 'สิ่งที่น้อง ๆ จะได้รับ' | 'ช่วงเวลาที่รับสมัคร' | 'ช่องทางการติดต่อ'
