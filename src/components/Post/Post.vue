@@ -2,10 +2,10 @@
   <BackgroundSection>
     <div class="space-y-3 relative">
       <!-- header -->
-      <PostHeader :publisher="props.post.by" :posted-at="post.postedAt" />
+      <PostHeader v-if="postDoc" :publisher="postDoc.by" :posted-at="postDoc.postedAt" />
       <!-- text of the post -->
-      <TextFrame :value="post.text" :disabled="true">
-        {{ post.text }}
+      <TextFrame v-if="postDoc" :value="postDoc.text" :disabled="true">
+        {{ postDoc.text }}
       </TextFrame>
       <!-- like/reply buttons -->
       <div class="flex md:(space-x-1)">
@@ -25,7 +25,7 @@
         </div>
       </transition>
       <!-- existing replies -->
-      <div v-if="post.replies.length > 0">
+      <div v-if="postDoc && postDoc.replies.length > 0">
         <div class="cursor-pointer" @click="toggleShowMore">
           <svg
             width="12"
@@ -43,8 +43,8 @@
           <text-body2>{{ showingMore ? 'ซ่อนการตอบกลับ' : 'แสดงการตอบกลับ' }}</text-body2>
         </div>
       </div>
-      <div v-if="showingMore" class="space-y-2">
-        <div v-for="(reply, idx) in props.post.replies" :key="idx" :class="commentMarginLeft">
+      <div v-if="showingMore && postDoc" class="space-y-2">
+        <div v-for="(reply, idx) in postDoc.replies" :key="idx" :class="commentMarginLeft">
           <div class="space-y-2 pb-3">
             <PostHeader
               :publisher="reply.by"
@@ -67,20 +67,22 @@
 </template>
 
 <script setup lang="ts">
-import { PostDoc, ReplyDoc } from '~/firestore'
+import { DocumentReference, onSnapshot, Unsubscribe } from 'firebase/firestore'
+import { onUnmounted } from 'vue'
+import { PostDoc } from '~/firestore'
 import { useThemeStore } from '~/stores/themes'
 
 const themeStore = useThemeStore()
 
 const props = defineProps<{
-  post: PostDoc
+  post: DocumentReference
 }>()
-
-console.log(props.post.replies)
 
 const likeStatus = ref(false)
 const replyActive = ref(true)
 const showingMore = ref(true)
+const postDoc = ref<PostDoc | null>(null)
+const unsubPost = ref<Unsubscribe | null>(null)
 
 const onReplyClicked = () => {
   replyActive.value = !replyActive.value
@@ -91,6 +93,15 @@ const onToggleLike = (like: boolean) => {
 const toggleShowMore = () => {
   showingMore.value = !showingMore.value
 }
+
+onMounted(() => {
+  const unsub = onSnapshot(props.post, (snap) => {
+    postDoc.value = snap.data() as PostDoc
+  })
+  unsubPost.value = unsub
+})
+
+onUnmounted(() => unsubPost.value!())
 
 const commentMarginLeft = '<sm:(ml-3) ml-8 md:(ml-12) xl:(ml-16)'
 // of like and reply buttons

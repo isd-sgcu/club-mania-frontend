@@ -74,7 +74,7 @@ const themeStore = useThemeStore()
 
 const isAnonymous = ref(false)
 const isLastestFilterChosen = ref(false)
-const posts = ref<PostDoc[]>([])
+const posts = ref<DocumentReference[]>([])
 const members = ref<DocumentReference[]>()
 const unsubClub = ref<Unsubscribe | null>()
 
@@ -111,8 +111,8 @@ onMounted(async() => {
   // * IMPORTANT the club must exist in the firestore
   const clubRef = doc(db.value as Firestore, 'clubs', '%name%')
   unsubClub.value = onSnapshot(clubRef, (snap) => {
-    setPostsAndReplies(snap)
-    console.log(snap.data().members)
+    const clubDoc = snap.data() as ClubDoc
+    posts.value = clubDoc.posts
   })
 })
 
