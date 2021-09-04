@@ -64,10 +64,10 @@
 
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
-import { getDoc, doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, DocumentSnapshot } from 'firebase/firestore'
+import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot } from 'firebase/firestore'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
-import { ClubDoc, PostDoc } from '~/firestore'
+import { ClubDoc } from '~/firestore'
 
 const { clubTypeColor, clubNameColor } = useClubConfig()
 const themeStore = useThemeStore()
