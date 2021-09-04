@@ -10,8 +10,8 @@
       />
       <TextFrame
         :show-discard-icon="true"
-        @textChange="$emit('textChange')"
-        @submit="$emit('submit')"
+        @textChange="(text) => currentText = text"
+        @submit="submit"
       />
     </transition-group>
     <div class="mt-1 md:(mt-2) flex items-center justify-between">
@@ -25,7 +25,7 @@
           color: buttonTextColors[themeStore.savedTheme],
           backgroundColor: backgroundColors[themeStore.savedTheme]
         }"
-        @click="$emit('submit')"
+        @click="submit()"
       >
         {{ props.buttonText ?? 'โพสต์' }}
       </button>
@@ -45,11 +45,12 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'submit'): void
-  (e: 'textChange'): void
+  (e: 'submit', text: string): void
+  (e: 'textChange', text: string): void
   (e: 'toggle', activeState: boolean): void
 }>()
 
+const currentText = ref('')
 const asAnonymous = ref(props.isAnonymous)
 const toggleText = ref(props.isAnonymous ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
 
@@ -57,6 +58,9 @@ const onToggle = (activeState: boolean) => {
   emit('toggle', activeState)
   asAnonymous.value = activeState
   toggleText.value = activeState ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน'
+}
+const submit = () => {
+  emit('submit', currentText.value)
 }
 
 const buttonTextColors = {
