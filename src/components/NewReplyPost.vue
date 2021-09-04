@@ -11,7 +11,7 @@
       <TextFrame
         :show-discard-icon="true"
         :value="currentText"
-        @textChange="(text) => currentText = text"
+        @textChange="onTextChange"
         @submit="submit"
         @discard="currentText = ''"
       />
@@ -60,6 +60,11 @@ const toggleText = ref(props.isAnonymous ? 'แสดงตัวตน' : 'ไ�
 const isEmpty = computed(() => {
   return currentText.value === ''
 })
+
+const onTextChange = (text: string) => {
+  currentText.value = text
+  emit('textChange', text)
+}
 
 const onToggle = (activeState: boolean) => {
   emit('toggle', activeState)

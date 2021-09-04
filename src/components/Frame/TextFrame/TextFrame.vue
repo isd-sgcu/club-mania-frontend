@@ -1,7 +1,7 @@
 <template>
   <div class="relative transition-all">
     <!-- close icon -->
-    <div v-show="showDiscardIcon && value" @click="discard">
+    <div v-show="showDiscardIcon && props.value" @click="$emit('discard')">
       <svg
         width="1em"
         height="1em"
@@ -16,7 +16,7 @@
     </div>
     <textarea
       ref="textarea"
-      v-model="value"
+      :value="props.value"
       class="<sm:(text-sm) border-1 rounded-[8px] w-full bg-transparent pl-10px md:(pl-[16px]) py-[8px] font-Roboto transition-all overflow-y-hidden"
       :class="`border-${border[themeName]} placeholder-${placeholder[themeName]} text-${text[themeName]} ${showDiscardIcon ? 'pr-[28px]' : 'pr-10px md:(pr-16px)'}`"
       :placeholder="props.placeholder ?? 'แสดงความคิดเห็น...'"
@@ -58,13 +58,14 @@ const props = defineProps<{
   placeholder?: string
   disabled?: boolean // ex. comment
   showDiscardIcon?: boolean
-  value?: string // initial value of the textarea, ex. comment
+  value: string // initial value of the textarea, ex. comment
   theme?: ThemeOption
 }>()
 
 const emit = defineEmits<{
   (e: 'textChange', value: string): void
   (e: 'submit', value: string): void
+  (e: 'discard'): void
 }>()
 
 const height = ref(`${defaultHeight}px`)
@@ -82,14 +83,9 @@ onMounted(() => {
   showReadMore.value = textarea.value!.scrollHeight > defaultHeight
 })
 
-const discard = () => {
-  value.value = ''
-}
-
 // fires when enter is down
 const submit = () => {
   emit('submit', value.value)
-  discard()
 }
 
 const getHeights = () => {
@@ -102,8 +98,8 @@ const getHeights = () => {
 
 // resizing must be done at oninput, at watching value doesn't work.
 // https://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize
-const onInput = () => {
-  emit('textChange', value.value)
+const onInput = (e: Event) => {
+  emit('textChange', (e.target as HTMLTextAreaElement).value)
 
   // In case of selecting all then delete
   if (textarea.value!.value === '') {
