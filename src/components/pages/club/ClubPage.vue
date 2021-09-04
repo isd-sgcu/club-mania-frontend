@@ -18,7 +18,7 @@
                 :class="`text-${clubNameClr}`"
               >{{ staticInfo.name }}</span>
             </text-sub1>
-            <Gallery :club-name="staticInfo.name" :images="images" />
+            <Gallery v-if="staticInfo.images" :club-name="staticInfo.name" :images="staticInfo.images" />
             <div v-for="topic in topics" :key="topic">
               <BackgroundSection>
                 <h5 class="<sm:(text-1.3rem) mb-3" :class="`text-${clubNameClr}`">
@@ -94,6 +94,8 @@ const staticInfo = ref<ClubStaticInfo>({
   whatToExpect: '',
   recruitmentPeriod: '',
   contact: '',
+  badge: '',
+  images: [],
 })
 
 const aboutText = computed(() => {
@@ -177,13 +179,6 @@ onMounted(async() => {
 })
 
 onUnmounted(() => (unsubClub.value as Unsubscribe)())
-
-// dummy
-const images = [
-  { url: 'https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg' },
-  { url: 'https://c.files.bbci.co.uk/12A9B/production/_111434467_gettyimages-1143489763.jpg' },
-  { url: 'https://i.natgeofe.com/n/3861de2a-04e6-45fd-aec8-02e7809f9d4e/02-cat-training-NationalGeographic_1484324.jpg' },
-]
 </script>
 
 <style>
