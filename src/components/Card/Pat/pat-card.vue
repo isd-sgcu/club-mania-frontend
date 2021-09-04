@@ -30,9 +30,9 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="cursor-pointer" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+  <div class="cursor-pointer flex flex-col" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <PatImageCard :color="!detect ? color : 'hover'" class="mb-2" :img-url="imgUrl" />
-    <PatTextCard :color="!detect ? color: 'hover'">
+    <PatTextCard class="flex-1" :color="!detect ? color: 'hover'">
       {{ text }}
     </PatTextCard>
   </div>
