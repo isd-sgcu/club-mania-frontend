@@ -155,9 +155,7 @@ const post = async(text: string) => {
 
 const createClubDoc = async(clubRef: DocumentReference) => {
   const defaultClubDoc: ClubDoc = {
-    members: [
-      doc(db.value as Firestore, 'members', staticInfo.value.representativeEmail),
-    ],
+    members: [],
     posts: [],
   }
   await setDoc(clubRef, defaultClubDoc)
