@@ -27,9 +27,9 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-max max-w-[200px] cursor-pointer" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+  <div class="flex flex-col items-center max-w-[200px] cursor-pointer" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <vichakarn-image-card :img-url="imgUrl" :hover="detect"></vichakarn-image-card>
-    <vichagarn-text-card :hover="detect">
+    <vichagarn-text-card class="flex-1 flex-col flex justify-center items-center" :hover="detect">
       {{ text }}
     </vichagarn-text-card>
   </div>
