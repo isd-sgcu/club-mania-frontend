@@ -56,7 +56,6 @@ import { PageIcon } from '~/imagePath'
 
 const props = defineProps<{
   adminName?: string
-  searchTerm: string
   show: boolean
 }>()
 
@@ -64,6 +63,22 @@ defineEmits<{
   (e: 'collapse'): void
 }>()
 const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' })
+
+const searchTerm = ref('')
+
+const searchClub = async(searchTerm: string) => {
+  // TODO: implement search logic
+  /* - may be fetch data from files or firebase
+     - create a element to render below searchbar
+  */
+  console.log(searchTerm)
+}
+
+// trigger when there are change in searchTerm
+watchEffect(() => {
+  // console.log(searchTerm.value)
+  searchClub(searchTerm.value)
+})
 </script>
 
 <style scoped>
@@ -92,8 +107,8 @@ const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' }
 
 .search-form input {
   @apply font-Navbar w-full rounded-xl pl-6 text-[10px] <md:bg-transparent border-solid border-[1px] border-[#C4C4C4]
-    text-white overflow-ellipsis md:(h-40px rounded-[0.5rem] pl-2 md:pl-4
-    focus:(border-solid border-[1.4px] text-purple-500 border-purple-500 outline-none));
+    text-white overflow-ellipsis md:(h-40px rounded-[0.5rem] pl-2 md:pl-4 text-purple-500
+    focus:(border-solid border-[1.4px] border-purple-500 outline-none));
 }
 .result-container {
 
