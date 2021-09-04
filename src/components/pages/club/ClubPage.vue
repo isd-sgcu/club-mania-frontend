@@ -66,7 +66,7 @@
 
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
-import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, Timestamp, updateDoc, arrayUnion, addDoc, collection } from 'firebase/firestore'
+import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, Timestamp, updateDoc, arrayUnion, addDoc, collection, setDoc } from 'firebase/firestore'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
 import { ClubDoc, PostDoc } from '~/firestore'
@@ -153,15 +153,26 @@ const post = async(text: string) => {
   })
 }
 
+const createClubDoc = async(clubRef: DocumentReference) => {
+  const defaultClubDoc: ClubDoc = {
+    members: [],
+    posts: [],
+  }
+  await setDoc(clubRef, defaultClubDoc)
+}
+
 onMounted(async() => {
   const { info } = await import(`../../../assets/clubs/${props.category}/${props.clubName}`)
   staticInfo.value = info
 
   clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)
   // * IMPORTANT the club must exist in the firestore
-  unsubClub.value = onSnapshot(clubRef.value, (snap) => {
-    const clubDoc = snap.data() as ClubDoc
-    postRefs.value = clubDoc.posts
+  unsubClub.value = onSnapshot(clubRef.value, async(snap) => {
+    const clubDoc = snap.data() as ClubDoc | undefined // if not exist
+    if (clubDoc === undefined)
+      await createClubDoc(clubRef.value as DocumentReference)
+    else
+      postRefs.value = clubDoc.posts
   })
 })
 
