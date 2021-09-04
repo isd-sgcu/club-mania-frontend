@@ -10,8 +10,10 @@
       />
       <TextFrame
         :show-discard-icon="true"
+        :value="currentText"
         @textChange="(text) => currentText = text"
         @submit="submit"
+        @discard="currentText = ''"
       />
     </transition-group>
     <div class="mt-1 md:(mt-2) flex items-center justify-between">
@@ -67,6 +69,7 @@ const onToggle = (activeState: boolean) => {
 const submit = () => {
   if (isEmpty.value) return
   emit('submit', currentText.value)
+  currentText.value = ''
 }
 
 const buttonTextColors = {
