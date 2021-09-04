@@ -46,41 +46,54 @@
   <!--This show when an user click the magnify icon or the dummy block-->
   <Sidebar
     :admin-name="adminName"
-    :search-term="searchTerm"
     :show="isSearch"
     @collapse="toggleSearch"
-  />
+  >
+    <Searchbox
+      v-for="(item, index) in data"
+      :key="index"
+      :name="item.name"
+      :description="item.description"
+      :image="item.image"
+    />
+  </Sidebar>
 </template>
 
 <script setup lang="ts">
+import Searchbox from './Searchbox.vue'
 import { PageIcon } from '~/imagePath'
 import { useThemeStore } from '~/stores/themes'
 
 const theme = useThemeStore()
 
 const adminName = ref('ชมรมภาพยนตร์')
-const searchTerm = ref('')
 const isSearch = ref(false)
 
-const searchClub = (searchTerm: string) => {
-
-  // TODO: implement search logic
-  /* - may be fetch data from files or firebase
-     - create a element to render below searchbar
-  */
-}
-
 const toggleSearch = () => {
-  searchTerm.value = ''
   isSearch.value = !isSearch.value
 }
-
-// trigger when there are change in searchTerm
-watchEffect(() => {
-  // console.log(searchTerm.value)
-  searchClub(searchTerm.value)
-})
-
+const data: any = [
+  {
+    name: 'ชมรมหมากกระดาน',
+    description: 'ชมรมอื่นๆ',
+    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
+  },
+  {
+    name: 'ชมรมถ่ายภาพ',
+    description: 'ชมรมฝ่ายศิลป์วัฒน์',
+    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
+  },
+  {
+    name: 'ชมรมภาพยนตร์',
+    description: 'ชมรมฝ่ายศิลป์วัฒน์',
+    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
+  },
+  {
+    name: 'ชมรมภาพศิลป์',
+    description: 'ชมรมฝ่ายศิลป์วัฒน์',
+    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
+  },
+]
 </script>
 
 <style scoped>
