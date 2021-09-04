@@ -24,6 +24,9 @@
         </li>
       </router-link>
     </ol>
+    <text-body2 v-if="searchTerm === ''" class="text-white ml-6 md:hidden">
+      ค้นหา
+    </text-body2>
     <div class="search-form">
       <mdi-magnify class="absolute box-border ml-1 text-[16px] text-[#898989] md:hidden" />
       <input
