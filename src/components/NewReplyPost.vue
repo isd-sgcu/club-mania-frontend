@@ -21,6 +21,7 @@
       </div>
       <button
         class="<sm:(min-w-4rem text-sm px-3px) min-w-6rem md:(min-w-[10rem]) rounded focus:outline-none text-[16px] px-[16px] py-[4px] h-[32px]"
+        :class="{'cursor-not-allowed': isEmpty }"
         :style="{
           color: buttonTextColors[themeStore.savedTheme],
           backgroundColor: backgroundColors[themeStore.savedTheme]
@@ -54,12 +55,17 @@ const currentText = ref('')
 const asAnonymous = ref(props.isAnonymous)
 const toggleText = ref(props.isAnonymous ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
 
+const isEmpty = computed(() => {
+  return currentText.value === ''
+})
+
 const onToggle = (activeState: boolean) => {
   emit('toggle', activeState)
   asAnonymous.value = activeState
   toggleText.value = activeState ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน'
 }
 const submit = () => {
+  if (isEmpty.value) return
   emit('submit', currentText.value)
 }
 
