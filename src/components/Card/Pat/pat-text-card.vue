@@ -11,7 +11,7 @@ defineProps<IProps>()
 </script>
 <template>
   <PatBorderCard :color="color">
-    <div class="text-container">
+    <div class="text-container flex items-center justify-center">
       <TextSub2><slot /></TextSub2>
       <div class="rectangle-top-left" />
       <div class="rectangle-top-right" />
@@ -23,7 +23,7 @@ defineProps<IProps>()
 
 <style scoped>
 .text-container {
-    @apply min-h-[30px] w-full h-full pt-2 pb-2 pl-6 pr-6 text-white relative text-center;
+    @apply min-h-[30px] w-full h-full pt-2 pb-2 pl-4 pr-4 text-white relative text-center;
 }
 
 .rectangle-top-left {
