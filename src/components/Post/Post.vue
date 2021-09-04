@@ -21,7 +21,7 @@
       <!-- new reply -->
       <transition name="flow" mode="out-in">
         <div v-if="replyActive" :class="commentMarginLeft">
-          <NewReplyPost :is-anonymous="false" />
+          <NewReplyPost :is-anonymous="false" @submit="reply" />
         </div>
       </transition>
       <!-- existing replies -->
@@ -67,9 +67,9 @@
 </template>
 
 <script setup lang="ts">
-import { DocumentReference, onSnapshot, Unsubscribe } from 'firebase/firestore'
+import { DocumentReference, onSnapshot, Timestamp, Unsubscribe, updateDoc, arrayUnion } from 'firebase/firestore'
 import { onUnmounted } from 'vue'
-import { PostDoc } from '~/firestore'
+import { PostDoc, ReplyDoc } from '~/firestore'
 import { useThemeStore } from '~/stores/themes'
 
 const themeStore = useThemeStore()
@@ -79,7 +79,7 @@ const props = defineProps<{
 }>()
 
 const likeStatus = ref(false)
-const replyActive = ref(true)
+const replyActive = ref(false)
 const showingMore = ref(true)
 const postDoc = ref<PostDoc | null>(null)
 const unsubPost = ref<Unsubscribe | null>(null)
@@ -92,6 +92,21 @@ const onToggleLike = (like: boolean) => {
 }
 const toggleShowMore = () => {
   showingMore.value = !showingMore.value
+}
+
+const reply = async(text: string) => {
+  replyActive.value = false // This is bad but needed to reset text in the area
+
+  const by = 'test' // string for anonymous or ref
+  const replyDoc: ReplyDoc = {
+    by,
+    likes: [by],
+    repliedAt: Timestamp.fromDate(new Date()),
+    text,
+  }
+  updateDoc(props.post, {
+    replies: arrayUnion(replyDoc),
+  })
 }
 
 onMounted(() => {
