@@ -94,7 +94,6 @@ const staticInfo = ref<ClubStaticInfo>({
   whatToExpect: '',
   recruitmentPeriod: '',
   contact: '',
-  representativeEmail: '',
 })
 
 const aboutText = computed(() => {
