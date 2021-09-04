@@ -95,8 +95,6 @@ const toggleShowMore = () => {
 }
 
 const reply = async(text: string) => {
-  replyActive.value = false // This is bad but needed to reset text in the area
-
   const by = 'test' // string for anonymous or ref
   const replyDoc: ReplyDoc = {
     by,
