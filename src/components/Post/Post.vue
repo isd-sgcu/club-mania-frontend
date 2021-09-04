@@ -2,7 +2,7 @@
   <BackgroundSection>
     <div class="space-y-3 relative">
       <!-- header -->
-      <PostHeader :badge="posterBadge" :publisher="props.post.by" :posted-at="post.postedAt" />
+      <PostHeader :publisher="props.post.by" :posted-at="post.postedAt" />
       <!-- text of the post -->
       <TextFrame :value="post.text" :disabled="true">
         {{ post.text }}
@@ -47,7 +47,6 @@
         <div v-for="(reply, idx) in replies" :key="idx" :class="commentMarginLeft">
           <div class="space-y-2 pb-3">
             <PostHeader
-              :badge="reply.badge"
               :publisher="reply.by"
               :posted-at="post.postedAt"
             />
@@ -68,8 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { DocumentReference, getDoc } from 'firebase/firestore'
-import { AnonymousId, MemberDoc, PostDoc, ReplyDoc } from '~/firestore'
+import { PostDoc, ReplyDoc } from '~/firestore'
 import { useThemeStore } from '~/stores/themes'
 
 const themeStore = useThemeStore()
@@ -81,18 +79,7 @@ const props = defineProps<{
 const likeStatus = ref(false)
 const replyActive = ref(true)
 const showingMore = ref(true)
-const poster = ref<MemberDoc | AnonymousId | null>(null)
 const replies = ref<ReplyDoc[]>([])
-
-const isAnonymous = computed(() => {
-  if (!poster.value) return true
-  return typeof poster.value === 'string'
-})
-const posterBadge = computed(() => {
-  if (!poster.value) return undefined
-  // if string, anonymous
-  return isAnonymous.value ? undefined : (poster.value as MemberDoc).badge
-})
 
 const onReplyClicked = () => {
   replyActive.value = !replyActive.value
@@ -103,29 +90,6 @@ const onToggleLike = (like: boolean) => {
 const toggleShowMore = () => {
   showingMore.value = !showingMore.value
 }
-
-const getPosterDoc = async(posterRef: DocumentReference) => {
-  const posterSnap = await getDoc(posterRef)
-  return posterSnap.data()
-}
-const getReplyDocs = async(replyRefs: DocumentReference[]) => {
-  replyRefs.forEach(async(ref) => {
-    replies.value.push((await getDoc(ref)).data() as ReplyDoc)
-  })
-}
-const getAnonymousId = () => {
-  // TODO get from local storage or gen a new one
-  return ''
-}
-
-onMounted(async() => {
-  if (props.post.by instanceof DocumentReference)
-    poster.value = await getPosterDoc(props.post.by) as MemberDoc
-  else
-    poster.value = getAnonymousId()
-
-  getReplyDocs(props.post.replies)
-})
 
 const commentMarginLeft = '<sm:(ml-3) ml-8 md:(ml-12) xl:(ml-16)'
 // of like and reply buttons
