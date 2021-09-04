@@ -12,3 +12,4 @@ node_modules
 note.txt
 components.d.ts
 *.csv
+venv
