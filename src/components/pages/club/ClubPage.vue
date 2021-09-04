@@ -64,7 +64,7 @@
 
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
-import { getDoc, doc, DocumentReference, Firestore } from 'firebase/firestore'
+import { getDoc, doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, DocumentSnapshot } from 'firebase/firestore'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
 import { ClubDoc, PostDoc } from '~/firestore'
@@ -76,6 +76,7 @@ const isAnonymous = ref(false)
 const isLastestFilterChosen = ref(false)
 const posts = ref<PostDoc[]>([])
 const members = ref<DocumentReference[]>()
+const unsubClub = ref<Unsubscribe | null>()
 
 const clubTypeClr = clubTypeColor[themeStore.savedTheme]
 const clubNameClr = clubNameColor[themeStore.savedTheme]
@@ -85,8 +86,7 @@ if (themeStore.savedTheme === 'Pat')
   useFavicon('/favicon-light.svg')
 else useFavicon('/favicon-dark.svg')
 
-const getAndSetData = async(db: Firestore, clubName: string) => {
-  const clubSnap = await getDoc(doc(db, 'clubs', clubName))
+const setPostsAndReplies = async(clubSnap: DocumentSnapshot) => {
   const clubDoc = clubSnap.data() as ClubDoc
 
   // get posts
@@ -109,8 +109,14 @@ const popularFilterOnClick = (activeState: boolean) => {
 onMounted(async() => {
   const { db } = await import('~/firebase')
   // * IMPORTANT the club must exist in the firestore
-  await getAndSetData(db.value as Firestore, '%name%')
+  const clubRef = doc(db.value as Firestore, 'clubs', '%name%')
+  unsubClub.value = onSnapshot(clubRef, (snap) => {
+    setPostsAndReplies(snap)
+    console.log(snap.data().members)
+  })
 })
+
+onUnmounted(() => (unsubClub.value as Unsubscribe)())
 
 // dummy
 const images = [
