@@ -28,8 +28,8 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="flex flex-col max-w-[200px] h-full box-border cursor-pointer" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
-    <div :class="!detect ? 'dark' : 'light'">
+  <div class="max-w-[200px] box-border cursor-pointer" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+    <div class="flex flex-col" :class="!detect ? 'dark' : 'light'">
       <img :src="imgUrl">
       <div class="inner-frame">
         <text-sub2>{{ text }}</text-sub2>
@@ -51,7 +51,7 @@ const handleClick = () => {
 }
 
 .inner-frame {
-    @apply pt-5 pb-5 text-center text-white break-words leading-relaxed;
+    @apply flex-1 text-center pt-5 pb-5 text-white break-words leading-relaxed flex justify-center items-center;
 }
 
 </style>
