@@ -94,6 +94,7 @@ const staticInfo = ref<ClubStaticInfo>({
   whatToExpect: '',
   recruitmentPeriod: '',
   contact: '',
+  representativeEmail: '',
 })
 
 const aboutText = computed(() => {
@@ -155,7 +156,9 @@ const post = async(text: string) => {
 
 const createClubDoc = async(clubRef: DocumentReference) => {
   const defaultClubDoc: ClubDoc = {
-    members: [],
+    members: [
+      doc(db.value as Firestore, 'members', staticInfo.value.representativeEmail),
+    ],
     posts: [],
   }
   await setDoc(clubRef, defaultClubDoc)
@@ -166,7 +169,6 @@ onMounted(async() => {
   staticInfo.value = info
 
   clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)
-  // * IMPORTANT the club must exist in the firestore
   unsubClub.value = onSnapshot(clubRef.value, async(snap) => {
     const clubDoc = snap.data() as ClubDoc | undefined // if not exist
     if (clubDoc === undefined)
