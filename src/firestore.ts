@@ -18,17 +18,17 @@ export type MemberDoc = {
   year: number
   badge: string
 }
-export type PostDoc = {
-  by: DocumentReference | AnonymousId
-  likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
-  postedAt: Timestamp
-  replies: DocumentReference[] // ReplyDoc[]
-  text: string
-}
 export type ReplyDoc = {
   by: DocumentReference | AnonymousId
   likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
   repliedAt: Timestamp
+  text: string
+}
+export type PostDoc = {
+  by: DocumentReference | AnonymousId
+  likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
+  postedAt: Timestamp
+  replies: ReplyDoc[]
   text: string
 }
 export type StaffDoc = {
