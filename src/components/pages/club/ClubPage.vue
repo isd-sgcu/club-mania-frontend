@@ -86,19 +86,6 @@ if (themeStore.savedTheme === 'Pat')
   useFavicon('/favicon-light.svg')
 else useFavicon('/favicon-dark.svg')
 
-const setPostsAndReplies = async(clubSnap: DocumentSnapshot) => {
-  const clubDoc = clubSnap.data() as ClubDoc
-
-  // get posts
-  clubDoc.posts.forEach(async(postRef) => {
-    const postSnap = await getDoc(postRef)
-    posts.value.push(postSnap.data() as PostDoc)
-  })
-
-  // get members's refs
-  members.value = clubDoc.members
-}
-
 const latestFilterOnClick = (activeState: boolean) => {
   isLastestFilterChosen.value = activeState
 }
