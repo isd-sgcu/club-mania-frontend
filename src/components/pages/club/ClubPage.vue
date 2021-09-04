@@ -168,10 +168,11 @@ onMounted(async() => {
   clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)
   unsubClub.value = onSnapshot(clubRef.value, async(snap) => {
     const clubDoc = snap.data() as ClubDoc | undefined // if not exist
-    if (clubDoc === undefined)
-      await createClubDoc(clubRef.value as DocumentReference)
-    else
+    if (clubDoc === undefined) { await createClubDoc(clubRef.value as DocumentReference) }
+    else {
       postRefs.value = clubDoc.posts
+      memberRefs.value = clubDoc.members
+    }
   })
 })
 
