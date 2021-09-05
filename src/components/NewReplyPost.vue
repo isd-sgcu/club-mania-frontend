@@ -3,6 +3,7 @@
     <transition-group appear name="fade" mode="out-in">
       <input
         v-if="!asAnonymous"
+        v-model="customName"
         maxlength="25"
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
@@ -48,13 +49,14 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'submit', text: string): void
+  (e: 'submit', text: string, customName: string): void
   (e: 'textChange', text: string): void
   (e: 'toggle', activeState: boolean): void
 }>()
 
 const currentText = ref('')
 const asAnonymous = ref(!auth.value?.currentUser)
+const customName = ref('')
 
 const isEmpty = computed(() => {
   return currentText.value === ''
@@ -73,7 +75,7 @@ const onToggle = (activeState: boolean) => {
 }
 const submit = () => {
   if (isEmpty.value) return
-  emit('submit', currentText.value)
+  emit('submit', currentText.value, customName.value)
   currentText.value = ''
 }
 
