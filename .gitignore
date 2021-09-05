@@ -14,4 +14,4 @@ components.d.ts
 *.csv
 venv
 __pycache__
-*.json
+club_members.json
