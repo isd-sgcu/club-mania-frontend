@@ -5,6 +5,8 @@
       :style="{'--swiper-navigation-color': '#fff','--swiper-pagination-color': '#fff'}"
       :lazy="true"
       :loop="true"
+      :observer="true"
+      :observe-parents="true"
       :centered-slides="true"
       :pagination="{
         'type': 'bullets',
@@ -29,6 +31,8 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import SwiperCore, {
   Pagination, Navigation,
 } from 'swiper'
+
+import 'swiper/swiper-bundle.css'
 
 SwiperCore.use([Pagination, Navigation])
 
@@ -76,7 +80,7 @@ defineProps<{ handleClose(): void; isOpen: boolean; imgUrl: string[]}>()
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: scale-down;
+  object-fit: contain;
 }
 
 </style>
