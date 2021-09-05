@@ -24,7 +24,7 @@ const gen = () => {
         year: e.year,
       }
     }
-    setDoc(clubRef, data)
+    setDoc(clubRef, clubDoc)
   }
 }
 </script>
