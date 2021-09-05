@@ -8,7 +8,8 @@ import requests
 url = 'https://docs.google.com/spreadsheets/u/1/d/1l8FlP4FULZFxI9df-XwpmHG1_gK3OOPFqg3Uwpf4XeM/export?format=csv'
 downloaded_csv = requests.get(url).content.decode('utf-8').splitlines()
 
-clubToMembers = {}
+clubMembers_collection = {}
+field_name = 'members'
 # with open(downloaded_csv, encoding='utf8') as f:
 reader = csv.DictReader(downloaded_csv)
 for line in reader:
@@ -17,14 +18,16 @@ for line in reader:
     year = int(line['ชั้นปี'].replace(' ', '').replace('ปี', ''))
     id = line['รหัสนิสิตของตัวแทนชมรม']
 
-    if processed_club_name not in clubToMembers:
-        clubToMembers[processed_club_name] = []
+    if processed_club_name not in clubMembers_collection:
+        clubMembers_collection[processed_club_name] = {
+            field_name: []
+        }
 
-    clubToMembers[processed_club_name].append({
+    clubMembers_collection[processed_club_name][field_name].append({
         'name': nickname,
         'studentId': id,
         year: year
     })
 
 with open('club_members.json', 'w', encoding="utf8") as f:
-    json.dump(clubToMembers, f, indent=4, ensure_ascii=False)
+    json.dump(clubMembers_collection, f, indent=4, ensure_ascii=False)
