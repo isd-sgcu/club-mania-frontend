@@ -4,6 +4,7 @@ export type CollectionOption = 'clubs' | 'members' | 'posts' | 'replies' | 'staf
 
 // We should persist this in the local storage
 export type AnonymousId = string
+type Email = string
 
 // Keep these types in sync with the real docs in firestore
 export type ClubDoc = {
@@ -19,17 +20,19 @@ export type MemberDoc = {
   badge: string
 }
 export type ReplyDoc = {
-  by: DocumentReference | AnonymousId
+  by: Email | AnonymousId // stores email if logged in
   likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
   repliedAt: Timestamp
   text: string
+  name: string
 }
 export type PostDoc = {
-  by: DocumentReference | AnonymousId
+  by: Email | AnonymousId // stores email if logged in
   likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
   postedAt: Timestamp
   replies: ReplyDoc[]
   text: string
+  name: string
 }
 export type StaffDoc = {
   name: string
