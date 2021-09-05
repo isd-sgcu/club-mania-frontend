@@ -1,32 +1,27 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', () => {
-  /**
-   * Current named of the user.
-   */
-  const savedName = ref('')
-  const previousNames = ref(new Set<string>())
+  const clubOfUser = ref<string | null>(null) // club route
+  const displayName = ref<string | null>(null)
+  const badge = ref<string | null>(null)
 
-  const usedNames = computed(() => Array.from(previousNames.value))
-  const otherNames = computed(() => usedNames.value.filter(name => name !== savedName.value))
-
-  /**
-   * Changes the current name of the user and saves the one that was used
-   * before.
-   *
-   * @param name - new name to set
-   */
-  function setNewName(name: string) {
-    if (savedName.value)
-      previousNames.value.add(savedName.value)
-
-    savedName.value = name
+  const setBadge = (str: string) => {
+    badge.value = str
+  }
+  const setDisplayName = (name: string) => {
+    displayName.value = name
+  }
+  const setClubOfUser = (clubRoute: string) => {
+    clubOfUser.value = clubRoute
   }
 
   return {
-    setNewName,
-    otherNames,
-    savedName,
+    clubOfUser,
+    displayName,
+    badge,
+    setBadge,
+    setDisplayName,
+    setClubOfUser,
   }
 })
 
