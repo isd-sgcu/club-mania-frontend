@@ -15,7 +15,7 @@ export const goToCategoryIfNotValid = (clubName: string, category: RouteCategory
     clubNames = otherRoutes
   else if (category === 'pat')
     clubNames = patRoutes
-  else if (category === 'slipvat')
+  else if (category === 'silpvat')
     clubNames = silpvatRoutes
   else clubNames = wichakarnRoutes
 

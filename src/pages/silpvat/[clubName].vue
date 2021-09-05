@@ -10,6 +10,6 @@ const props = defineProps<{
   clubName: string
 }>()
 
-const category: RouteCategoryOption = 'slipvat'
+const category: RouteCategoryOption = 'silpvat'
 goToCategoryIfNotValid(props.clubName, category)
 </script>
