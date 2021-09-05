@@ -1,22 +1,6 @@
 import { useRouter } from 'vue-router'
+import { geelaRoutes, otherRoutes, patRoutes, slipVatRoutes, wichakarnRoutes } from './routes'
 import { RouteCategoryOption } from '~/types'
-
-// register valid club names
-export const geelaRoutes = new Set<string>([
-  'tennis',
-])
-export const slipVatRoutes = new Set<string>([
-  '',
-])
-export const wichakarnRoutes = new Set<string>([
-  '',
-])
-export const otherRoutes = new Set<string>([
-  '',
-])
-export const patRoutes = new Set<string>([
-  '',
-])
 
 export const validateRoute = (route: string, validRoutes: Set<string>) => {
   return validRoutes.has(route)
