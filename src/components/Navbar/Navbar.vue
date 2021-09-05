@@ -28,11 +28,16 @@
             พัฒน์
           </li>
         </router-link>
+        <router-link to="/other">
+          <li>
+            อื่นๆ
+          </li>
+        </router-link>
       </ol>
       <!---Just for visual don't do anything special-->
       <div class="admin-block">
         <mdi-account-circle-outline class="w-4 md:w-6 h-auto mr-8px" />
-        <p>{{ adminName }}</p>
+        <p>{{ user.savedName }}</p>
         <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="toggleSearch" />
       </div>
     </nav>
@@ -45,7 +50,7 @@
   />
   <!--This show when an user click the magnify icon or the dummy block-->
   <Sidebar
-    :admin-name="adminName"
+    :admin-name="user.savedName"
     :show="isSearch"
     @collapse="toggleSearch"
   >
@@ -60,13 +65,17 @@
 </template>
 
 <script setup lang="ts">
+// components
 import Searchbox from './Searchbox.vue'
 import { PageIcon } from '~/imagePath'
+
+// stores
 import { useThemeStore } from '~/stores/themes'
+import { useUserStore } from '~/stores/user'
 
 const theme = useThemeStore()
+const user = useUserStore()
 
-const adminName = ref('ชมรมภาพยนตร์')
 const isSearch = ref(false)
 
 const toggleSearch = () => {
@@ -114,8 +123,8 @@ const data: any = [
   @apply relative flex flex-row justify-self-center <md:hidden;
 }
 .main-menu li {
-  @apply text-center font-Mitr font-300 text-[18px] leading-[20px] tracking-[0.1px] px-4 py-5
-    lg:(text-[20px] leading-[24px] px-6) cursor-pointer;
+  @apply text-center font-Mitr font-300 text-[18px] leading-[20px] tracking-[0.1px] px-3 py-5
+    lg:(text-[20px] leading-[24px] px-5) cursor-pointer;
 }
 .main-menu li:hover {
   background: rgba(10, 10, 10, 0.7);

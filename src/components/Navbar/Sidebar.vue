@@ -23,6 +23,11 @@
           พัฒน์
         </li>
       </router-link>
+      <router-link to="/other">
+        <li>
+          อื่นๆ
+        </li>
+      </router-link>
     </ol>
     <text-body2 v-if="searchTerm === ''" class="text-white ml-6 md:hidden">
       ค้นหา
