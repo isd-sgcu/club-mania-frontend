@@ -74,22 +74,26 @@ def update_static_info():
         category = e[1][1]
 
         club_data = extract_csv(f)
-        dir = Path(f'src/assets/clubs/{category}')
-        dir.mkdir(parents=True, exist_ok=True)
+        # dir = Path(f'src/assets/clubs/{category}')
+        # dir.mkdir(parents=True, exist_ok=True)
 
         routes = []
         # updates each club static info
         for route, doc in club_data.items():
             routes.append(route)
-            content = 'export const info = ' + \
-                json.dumps(doc, indent=2, ensure_ascii=False)
-            path = dir.joinpath(f'{route}.js')
-            with open(path, 'w', encoding='utf8') as f:
-                f.write(content)
+
+            # ! Do not use this, the content parsed from the csv is badly formatted
+            # ! Update them manually
+            # ! unless we make the format right
+            # content = 'export const info = ' + \
+            #     json.dumps(doc, indent=2, ensure_ascii=False)
+            # path = dir.joinpath(f'{route}.js')
+            # with open(path, 'w', encoding='utf8') as f:
+            #     f.write(content)
 
         registered_routes_file_content += f'export const {category}Routes = new Set<string>(' + json.dumps(
             routes, indent=2).replace('"', "'") + ')\n'
-    
+
     # updates registered routes
     dir = Path(f'src/components/pages/club')
     dir.mkdir(parents=True, exist_ok=True)
