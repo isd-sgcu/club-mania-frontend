@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ถ้าหากสมัครมาเป็น Coachee ของโครงการน้องๆ จะได้รับ Coach ส่วนตัวที่จะฟัง และถามคำถามเพื่อให้น้องๆ ปลดล็อคตัวเองและเจอศักยภาพที่ซ่อนอยู่ในตัวของทุกๆ คน",
   "recruitmentPeriod": "Coachee รับสมัคร: 6-20 Sep",
   "contact": "Facebook: Coach by ChAMPIG: coachbychamp",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Coach by ChAMP",
+  "images": []
 }

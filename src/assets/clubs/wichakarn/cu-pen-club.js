@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "มีพี่ ๆ คอยสอนงาน ไม่ว่าจะเป็นงานฝ่ายเขียนและบรรณาธิการ หรือฝ่ายอาร์ต และยังได้ลองทำงานจริง",
   "recruitmentPeriod": "ตลอดทั้งปี",
   "contact": "Facebook Page: CU Pen Club, Instagram: cupenclub",
-  "badge": "uncomment in python to get the badge"
+  "badge": "",
+  "images": []
 }

@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "น้องๆจะได้ฝึกทั้ง English communication, public speaking, leadership skills ที่สำคัญมากๆกับโลกในการทำงานจริงอย่างแน่นอน✨",
   "recruitmentPeriod": "สามารถสมัครเป็น member ของชมรมได้ตลอดทั้งปี",
   "contact": "Facebook: CU Gavel ClubInstagram: cu.gavel",
-  "badge": "uncomment in python to get the badge"
+  "badge": "",
+  "images": []
 }

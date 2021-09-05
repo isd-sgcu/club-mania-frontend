@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "น้อง ๆ จะได้รับการปรับพื้นฐานที่ดีสำหรับการร้องเพลงประสานเสียง และจะได้ร่วมแสดงในงานพิธีการของมหาวิทยาลัย เช่น งานปฐมนิเทศนิสิตใหม่ พิธีพระราชทานปริญญาบัตรแก่ผู้สำเร็จการศึกษา หรืองานร้องเพลงประสานเสียงภายนอกมหาวิทยาลัย นอกจากนี้น้อง ๆ จะได้รับมิตรภาพที่ดีจากเพื่อนต่างคณะและต่างชั้นปีกลับไปค่ะ",
   "recruitmentPeriod": "20 กรกฎาคม - 25 สิงหาคม 2021",
   "contact": "Instagram: @cuchorus_officialFacebook: CU ChorusYoutube: CU Chorus Twitter: CU Chorus",
-  "badge": "uncomment in python to get the badge"
+  "badge": "CU Chorus",
+  "images": []
 }

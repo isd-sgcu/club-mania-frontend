@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ได้สุขภาพที่แข็งแรงและมิตรภาพดีๆ",
   "recruitmentPeriod": "เปิดรับสมัครตลอดเวลาเลย",
   "contact": "Ig: chula_fencing facebook: cu fencing club",
-  "badge": "uncomment in python to get the badge"
+  "badge": "CU Fencing Club",
+  "images": []
 }

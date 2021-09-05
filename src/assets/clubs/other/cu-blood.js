@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "สิ่งที่น้องๆจะได้รับประสบการณ์ดี ๆ จากเพื่อน ๆ ในชมรมและเรียนรู้คำว่า “ให้โดยไม่หวังผลตอบแทน” อย่างแท้จริง",
   "recruitmentPeriod": "1 เทอม (สามารถทำงานต่อได้จนครบปีการศึกษาและมีการรับสตาฟเพิ่มทุก ๆ เทอม)",
   "contact": "Facebook: CU BloodInstagram: cu.blood",
-  "badge": "uncomment in python to get the badge"
+  "badge": "CU Blood",
+  "images": []
 }

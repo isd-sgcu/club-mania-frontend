@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "เรียนรู้การทำงานเกี่ยวกับ esportsได้ค้นหาตัวเอง เกี่ยวกับเส้นทางในอนาคตติดต่อกับองค์กรภายนอกและระหว่างมหาลัยเกี่ยวกับ esportsฝึกการแก้ปัญหาเฉพาะหน้าได้รับมิตรภาพ เพื่อนที่ชอบอะไรเหมือนๆกัน",
   "recruitmentPeriod": "ปลายเทอม 2 ประมาณ เดือน พ.ค-มิ.ย.",
   "contact": "Facebook: Chula EsportsInstagram: chulaesports",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Chula Esports",
+  "images": []
 }

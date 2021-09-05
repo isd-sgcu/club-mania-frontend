@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ทักษะการป้องกันตัวด้วยมือเปล่าตามแบบมวยไทยโบราณและทักษะการใช้กระบี่กระบอง",
   "recruitmentPeriod": "ไม่จำกัดเวลา",
   "contact": "Facebook : ชมรมศิลปป้องกันและอาวุธไทย จุฬาฯ",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Thai Martial Arts",
+  "images": []
 }

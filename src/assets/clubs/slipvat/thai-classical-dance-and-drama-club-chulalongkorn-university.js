@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ความรู้และความเข้าใจในนาฏศิลป์ทั้ง ทั้งในด้านทฤษฎีและปฏิบัติ ซึ่งเรามีความตั้งใจสอนและถ่ายทอดความรู้ให้อย่างเต็มที่ ",
   "recruitmentPeriod": "เปิดรับสมัครตลอดเรือยๆทั้งปีการศึกษา ",
   "contact": "Facebook Fanpage : ชมรมนาฏศิลป์และการละครไทย จุฬาลงกรณ์มหาวิทยาลัย",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Thai Classical Dance and Drama",
+  "images": []
 }

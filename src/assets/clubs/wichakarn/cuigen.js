@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ได้ให้…อะไรดีๆกับสังคมผ่านทักษะภาษาที่เรามี ได้ให้…เวลาตัวเองออกจาก comfort zone เพื่อเรียนรู้เรื่องราวใหม่ๆได้ให้…โอกาสตัวเองมาอยู่ท่ามกลางกลุ่มคนที่มีแรงบันดาลใจในการใช้ชีวิตให้มีคุณค่าไปด้วยกัน",
   "recruitmentPeriod": "-",
   "contact": "Facebook/IG/Line@ : iGenclubth",
-  "badge": "uncomment in python to get the badge"
+  "badge": "",
+  "images": []
 }

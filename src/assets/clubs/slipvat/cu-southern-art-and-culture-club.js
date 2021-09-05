@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "การเข้าร่วมกิจกรรมที่น่าสนใจ ได้สัมผัสวิถีชีวิต วัฒนธรรม อาหารปักษ์ใต้ ได้แก่ค่ายสืบศิลป์ถิ่นใต้ สานใจสู่ชุมชน จังหวัดระนอง และ งานสืบศิลป์ถิ่นใต้ สายใยใบยาง",
   "recruitmentPeriod": "-",
   "contact": "IG : cuoursouthernhomeFB : CU Our Southern HomeLINE : http://line.me/ti/g/Wn5t5w7By_",
-  "badge": "uncomment in python to get the badge"
+  "badge": "",
+  "images": []
 }

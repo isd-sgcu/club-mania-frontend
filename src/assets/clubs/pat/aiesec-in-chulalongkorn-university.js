@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "- ได้ประสบการณ์และพัฒนาทักษะความเป็นผู้นำผ่านการทำงานในสภาพแวดล้อมที่ profession แต่ supportive- มีโอกาสในการทำงานที่หลากหลาย สามารถเข้าร่วมอื่นๆ โปรเจคของไอเซคในตำแหน่งงานที่ต่างออกไปได้- ได้ฝึกการใช้ภาษาอังกฤษในการทำงาน- ได้ทำงานกับคนที่หลากหลาย ฝึกทักษะการทำงานเป็นทีม",
   "recruitmentPeriod": "เดือนมกราคม",
   "contact": "Facebook group: AIESEC in Chulalongkorn University",
-  "badge": "uncomment in python to get the badge"
+  "badge": "AIESEC",
+  "images": []
 }

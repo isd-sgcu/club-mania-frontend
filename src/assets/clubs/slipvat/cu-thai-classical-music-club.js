@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ความรู้และทักษะทางด้านดนตรีไทย รวมถึงประสบการณ์ในการแสดงดนตรีไทย",
   "recruitmentPeriod": "ศุกร์ที่  20 สิงหาคม 2561 เป็นต้นไป",
   "contact": "เพจเฟซบุ๊ก  ชมรมดนตรีไทย สโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Thai classical music",
+  "images": []
 }

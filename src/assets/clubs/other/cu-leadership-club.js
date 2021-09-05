@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ได้ความรู้และพัฒนาด้าน Leadership และ soft skills",
   "recruitmentPeriod": "ตุลาคม 2021",
   "contact": "FB: CU  Leadership Club IG: culeadershipclub",
-  "badge": "uncomment in python to get the badge"
+  "badge": "CU Leadership Club",
+  "images": []
 }

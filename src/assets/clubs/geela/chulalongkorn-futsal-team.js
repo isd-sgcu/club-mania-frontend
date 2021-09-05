@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ได้เข้ามาทำความรู้จักกับกีฬาฟุตซอล ทักษะ รูปแบบการเล่น ได้ออกกำลังกายเพื่อสุขภาพ หากมีความตั้งใจก็จะได้เป็นตัวแทนของมหาวิทยาลัยในการแข่งขันต่าง ๆ รวมถึงได้รู้จักกับสมาชิกในชมรมที่มาจากต่างคณะ ต่างสาขา ",
   "recruitmentPeriod": "รับสมัครไม่จำกัด",
   "contact": "Facebook : Chulalongkorn Futsal Team",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Chulalongkorn Futsal Team",
+  "images": []
 }

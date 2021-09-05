@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "- เรียนรู้และพัฒนาทักษะการเป็นผู้ประกอบการ - โอกาสที่จะเรียนรู้ผ่านการทำงาน (Learning by doing)- พัฒนาทักษะการบริหารโครงการ (Project Management)- คอร์สพัฒนาทักษะแบบ exclusive ก่อนการทำงาน ",
   "recruitmentPeriod": "เปิดรับสมัครผู้เข้าร่วมช่วง เดือนตุลาคม 2564",
   "contact": "E-mail : cofounder2022@gmail.comFacebook : Co-founder TraineeIG : CofounderTrainee",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Co-founder Trainee ",
+  "images": []
 }

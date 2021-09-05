@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "น้องๆจะได้เรียนรู้แง่มุมต่างๆของวิถีชีวิตชาวไทยภูเขา ได้เปิดมุมมองให้กว้างขึ้น ได้ประสบการณ์ที่มีค่าจากการทำงาน ได้พบเจอเพื่อนใหม่ๆ ได้สร้างความทรงจำดีๆ และที่สำคัญคือได้เป็นส่วนหนึ่งของครอบครัวแสนอบอุ่นของเรา!",
   "recruitmentPeriod": "รอติดตามข้อมูลได้ใน Facebook ของชมรมเลยยย",
   "contact": "Facebook: Hill Tribe Club CU - ชมรมค่ายอาสาพัฒนาชาวไทยภูเขา จุฬาลงกรณ์มหาวิทยาลัยIG: @htc.chula Twitter: @htcChula",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Hill Tribe Club",
+  "images": []
 }

@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ประสบการณ์การทำงานที่คล้ายคลึงกับการทำงานในอง์กรภายนอกมหาวิทยาลัยจริง ๆ, การรู้จักและสร้างความสัมพันธ์กับเพื่อนนใหม่ ๆ หลากหลายคณะ, การฝึกอบรม, กิจกรรมต่าง ๆ, หนังสือรับรองการผ่านงาน, และอื่น ๆ อีกมกมาย ",
   "recruitmentPeriod": "ฌาร์มเปิดรับสมัครสมาชิกใหม่ตลอดทั้งปี ทั้งนี้ โปรดติดตามทางเฟซบุ๊กและอินสตาแกรม",
   "contact": "Facebook Page: CHARM Chula (https://www.facebook.com/page.charmchula)Instagram: charm.chula (https://www.instagram.com/charm.chula)  ",
-  "badge": "uncomment in python to get the badge"
+  "badge": "",
+  "images": []
 }

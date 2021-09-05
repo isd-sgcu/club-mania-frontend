@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "กิจกรรมเกี่ยวกับการถ่ายภาพตลอดปีการศึกษา และเป็นอีกหนึ่งครอบครัวที่อบอุ่นในจุฬาฯ",
   "recruitmentPeriod": "เพียงเข้าร่วมกิจกรรมกับทางชมรมก็ได้เป็นสมาชิกชมรมแล้ว ติดตามกิจกรรมได้ตลอดทั้งปีผ่านช่องทางต่างๆ เลยนะ",
   "contact": "Facebook Page: CU Photo Club, Instagram: @cuphotoclub, website: http://www.cuphotoclub.com",
-  "badge": "uncomment in python to get the badge"
+  "badge": "CU Photo Club",
+  "images": []
 }

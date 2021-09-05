@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ความสนุกสนาน สนิทสนม และมิตรภาพดีๆจากเพื่อนๆในชมรม ร่วมออกค่ายช่วยเหลือและเสริมสร้างเด็กด้อยโอกาส การอาสาช่วยเหลือโรงเรียน ความรัก ความปลาบปลื้มใจ และความตื้นตันจากเด็กมากมาย กิจกรรมสนุกสนานตลอดค่าย และทริปกระชับสัมพันธ์หลังค่าย",
   "recruitmentPeriod": "เปิดรับสมัครตั้งแต่วันที่ 9 - 30 กันยายน 2564",
   "contact": "Facebook : chula volunteers for vulnerable children club: cvvcInstagram : cvvc.official",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Volunteers for vulnerable children",
+  "images": []
 }

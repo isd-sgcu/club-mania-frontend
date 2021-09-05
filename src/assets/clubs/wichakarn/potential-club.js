@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ได้รู้จักเอง เพื่อน เเละพื้นที่ที่จะพัฒนาตัวเองไปพร้อมกัน ",
   "recruitmentPeriod": "ตลอดทั้งปี ",
   "contact": "Facebook : CU Potential clubInstagram : cupotentialclub",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Potential club",
+  "images": []
 }

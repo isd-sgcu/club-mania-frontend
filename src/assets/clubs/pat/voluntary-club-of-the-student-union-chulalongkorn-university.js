@@ -5,5 +5,6 @@ export const info = {
   "whatToExpect": "ได้รับมิตรภาพ และ ประสบการณ์ในการเรียนรู้ปัญหาสังคมผ่านการทำจิตอาสาเพื่อผู้อื่นในพื้นที่ที่มีปัญหาจริง",
   "recruitmentPeriod": "เปิดรับสมัครช่วงเทอม2",
   "contact": "Facebook: ชมรมค่ายอาสาสมัครสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัยIG:VoluntaryclubofchulaLine:@193jtnsd",
-  "badge": "uncomment in python to get the badge"
+  "badge": "Voluntary Club",
+  "images": []
 }
