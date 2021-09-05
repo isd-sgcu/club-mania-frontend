@@ -16,14 +16,14 @@ geela_csv_url = f'{base_csv_url}1989655880'
 
 
 def main():
+    # updates the src/assets/clubs
+    update_static_info()
+
+
+def update_static_info():
     csv_urls = [(other_csv_url, 'other'), (wichakarn_csv_url, 'wichakarn'),
                 (pat_csv_url, 'pat'), (silpvat_csv_url, 'slipvat'), (geela_csv_url, 'geela')]
 
-    # updates the src/assets/clubs
-    update_static_info(csv_urls)
-
-
-def update_static_info(csv_urls):
     csv_files = []
     with ThreadPoolExecutor() as ex:
         urls = [e[0] for e in csv_urls]
@@ -42,7 +42,6 @@ def update_static_info(csv_urls):
                 json.dumps(doc, indent=2, ensure_ascii=False)
             path = dir.joinpath(f'{route}.js')
             with open(path, 'w', encoding='utf8') as f:
-                print(content, path)
                 f.write(content)
 
 
