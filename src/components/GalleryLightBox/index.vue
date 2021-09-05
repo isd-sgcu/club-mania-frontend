@@ -15,7 +15,7 @@
       class="mySwiper text-white"
     >
       <swiper-slide v-for="item in imgUrl" :key="item">
-        <img class="m-auto" :src="item">
+        <img class="m-auto max-h-[500px]" :src="item">
       </swiper-slide>
     </swiper>
     <!-- Backdrop -->
@@ -38,11 +38,45 @@ defineProps<{ handleClose(): void; isOpen: boolean; imgUrl: string[]}>()
 
 <style scoped>
 .mySwiper {
-    max-width: 800px;
-    max-height: 500px;
+  max-width: 800px;
+  max-height: 500px;
 }
 
 .root {
-    background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  max-height: 500px;
+  text-align: center;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0);
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+
 </style>

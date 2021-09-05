@@ -1,5 +1,7 @@
 <template>
   <div>
+    <GalleryLightBox :img-url="staticInfo.images" :is-open="isOpen" :handle-close="handleClose" />
+
     <!-- banner is here -->
     <Banner :theme="themeStore.savedTheme" :is-club="true" :text="staticInfo.name" />
     <PageBackground>
@@ -18,7 +20,7 @@
                 :class="`text-${clubNameClr}`"
               >{{ staticInfo.name }}</span>
             </text-sub1>
-            <Gallery v-if="staticInfo.images" :club-name="staticInfo.name" :images="staticInfo.images" />
+            <Gallery v-if="staticInfo.images" :club-name="staticInfo.name" :images="staticInfo.images" class="cursor-pointer" @click="isOpen = true" />
             <div v-for="topic in topics" :key="topic">
               <BackgroundSection>
                 <h5 class="<sm:(text-1.3rem) mb-3" :class="`text-${clubNameClr}`">
@@ -86,6 +88,7 @@ const isLastestFilterChosen = ref(false)
 const postRefs = ref<DocumentReference[]>([])
 const memberRefs = ref<DocumentReference[]>([])
 const unsubClub = ref<Unsubscribe | null>(null)
+const isOpen = ref(false)
 const clubRef = ref<DocumentReference | null>(null)
 const staticInfo = ref<ClubStaticInfo>({
   name: '',
@@ -97,6 +100,10 @@ const staticInfo = ref<ClubStaticInfo>({
   badge: '',
   images: [],
 })
+
+const handleClose = () => {
+  isOpen.value = false
+}
 
 const aboutText = computed(() => {
   return staticInfo.value.about
