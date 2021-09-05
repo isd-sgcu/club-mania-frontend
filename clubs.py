@@ -1,29 +1,36 @@
-import csv
 import json
-from utils import get_club_route, download_contact_list_csv
-import requests
+from utils import download_csv, extract_csv
+from concurrent.futures import ThreadPoolExecutor
 
 # The output json of this will populate the clubMembers collection which store personal info of each club's representatives.
+category_base_csv_url = other_csv_url = 'https://docs.google.com/spreadsheets/d/1nD2hRoXo-khHlwb73b_iR-jRMPHqUViLAdbJGmtCZWE/export?format=csv&id=1nD2hRoXo-khHlwb73b_iR-jRMPHqUViLAdbJGmtCZWE&gid='
+other_csv_url = f'{category_base_csv_url}168970715'
+wichakarn_csv_url = f'{category_base_csv_url}1451517396'
+pat_csv_url = f'{category_base_csv_url}1863263145'
+silpvat_csv_url = f'{category_base_csv_url}1957563667'
+geela_csv_url = f'{category_base_csv_url}1989655880'
 
-downloaded_csv = download_contact_list_csv()
+csv_urls = [(other_csv_url, 'other'), (wichakarn_csv_url, 'wichakarn'),
+                (pat_csv_url, 'pat'), (silpvat_csv_url, 'silpvat'), (geela_csv_url, 'geela')]
 
-clubMembers_collection = {}
+clubs_collection = []
+csv_files = []
+with ThreadPoolExecutor() as ex:
+    urls = [e[0] for e in csv_urls]
+    csv_files = [f for f in ex.map(download_csv, urls)]
 
-# with open(downloaded_csv, encoding='utf8') as f:
-reader = csv.DictReader(downloaded_csv)
-for line in reader:
-    processed_club_name = get_club_route(line['ชื่อชมรมแบบเป็นภาษาอังกฤษ (สามารถใช้ภาษาคาราโอเกะได้ถ้าไม่มีจริงๆ)'])
-    email = line['e-mail จุฬาฯ']
+registered_routes_file_content = ''
+for e in zip(csv_files, csv_urls):
+    f = e[0]
+    category = e[1][1]
 
-    if processed_club_name not in clubMembers_collection:
-        clubMembers_collection[processed_club_name] = {
-            'members': [],
-            'posts': []
-        }
-
-    clubMembers_collection[processed_club_name]['members'].append(
-        '/members/' + email
-    )
+    club_data = extract_csv(f)
+    for key, value in club_data.items():
+        clubs_collection.append({
+            'name': value['name'],
+            'category': value['category'],
+            'logo': ""
+        })
 
 with open('clubs.json', 'w', encoding="utf8") as f:
-    json.dump(clubMembers_collection, f, indent=4, ensure_ascii=False)
+    json.dump(clubs_collection, f, indent=4, ensure_ascii=False)
