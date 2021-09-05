@@ -1,12 +1,13 @@
 import csv
 from typing import List
+
 import requests
 
 
 # club route is the key of each club
 def get_club_route(clubname_en: str):
     return '-'.join(
-        clubname_en.lower().replace(',', '').split())
+        clubname_en.lower().replace(',', '').replace('(', '').replace(')', '').split())
 
 
 def download_contact_list_csv():
@@ -39,7 +40,7 @@ def extract_csv(file: List[str]):
         club['recruitmentPeriod'] = recruitment_period
         club['contact'] = contact
         club['badge'] = 'uncomment in python to get the badge'
-        # club['images'] = [''] TODO 
+        # club['images'] = [''] TODO
 
         # route is the key for each club
         category_clubs[route] = club
