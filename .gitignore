@@ -15,3 +15,5 @@ components.d.ts
 venv
 __pycache__
 club_members.json
+.env
+club-mania2021-firebase-adminsdk-iwl8t-9ba64c360c.json
