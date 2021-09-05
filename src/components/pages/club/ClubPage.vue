@@ -72,8 +72,9 @@ import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, Timestamp, 
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
 import { ClubDoc, PostDoc } from '~/firestore'
-import { db } from '~/firebase'
+import { db, auth } from '~/firebase'
 import { ClubStaticInfo, InfoTopicOption } from '~/types'
+import { getAnonymousId } from '../../../utils'
 
 const { clubTypeColor, clubNameColor } = useClubConfig()
 const themeStore = useThemeStore()
@@ -145,10 +146,9 @@ const popularFilterOnClick = (activeState: boolean) => {
 }
 
 const post = async(text: string) => {
-  const by = 'test' // or the real thing
-
+  const user = auth.value!.currentUser
   const postDoc: PostDoc = {
-    by,
+    by: user ? user.email : getAnonymousId(),
     likes: [],
     postedAt: Timestamp.fromDate(new Date()),
     replies: [],

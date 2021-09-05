@@ -21,7 +21,7 @@
       <!-- new reply -->
       <transition name="flow" mode="out-in">
         <div v-if="replyActive" :class="commentMarginLeft">
-          <NewReplyPost :is-anonymous="false" @submit="reply" />
+          <NewReplyPost @submit="reply" />
         </div>
       </transition>
       <!-- existing replies -->
@@ -69,8 +69,10 @@
 <script setup lang="ts">
 import { DocumentReference, onSnapshot, Timestamp, Unsubscribe, updateDoc, arrayUnion } from 'firebase/firestore'
 import { onUnmounted } from 'vue'
+import { auth } from '../../firebase'
 import { PostDoc, ReplyDoc } from '~/firestore'
 import { useThemeStore } from '~/stores/themes'
+import { getAnonymousId } from '~/utils'
 
 const themeStore = useThemeStore()
 
@@ -95,12 +97,13 @@ const toggleShowMore = () => {
 }
 
 const reply = async(text: string) => {
-  const by = 'test' // string for anonymous or ref
+  const user = auth.value!.currentUser
   const replyDoc: ReplyDoc = {
-    by,
-    likes: [by],
+    by: user ? user.email as string : getAnonymousId(),
+    likes: [],
     repliedAt: Timestamp.fromDate(new Date()),
     text,
+    name: ''
   }
   updateDoc(props.post, {
     replies: arrayUnion(replyDoc),

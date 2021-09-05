@@ -2,7 +2,7 @@
   <div class="relative">
     <transition-group appear name="fade" mode="out-in">
       <input
-        v-if="asAnonymous"
+        v-if="!asAnonymous"
         maxlength="25"
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
@@ -18,7 +18,7 @@
     </transition-group>
     <div class="mt-1 md:(mt-2) flex items-center justify-between">
       <div class="space-x-[6px] md:(space-x-[12px]) flex items-center">
-        <ToggleThing @toggle="onToggle" />
+        <ToggleThing :init-state="!asAnonymous" @toggle="onToggle" />
         <span class="<sm:(text-sm) font-Roboto">{{ toggleText }}</span>
       </div>
       <button
@@ -39,11 +39,11 @@
 <script setup lang="ts">
 import useTextFrameConfig from './Frame/TextFrame/config'
 import { useThemeStore } from '~/stores/themes'
+import { auth } from '~/firebase'
 const { border, placeholder, text } = useTextFrameConfig()
 const themeStore = useThemeStore()
 
 const props = defineProps<{
-  isAnonymous: boolean
   buttonText?: string
 }>()
 
@@ -54,12 +54,12 @@ const emit = defineEmits<{
 }>()
 
 const currentText = ref('')
-const asAnonymous = ref(props.isAnonymous)
-const toggleText = ref(props.isAnonymous ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
+const asAnonymous = ref(!auth.value?.currentUser)
 
 const isEmpty = computed(() => {
   return currentText.value === ''
 })
+const toggleText = computed(() => !asAnonymous.value ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
 
 const onTextChange = (text: string) => {
   currentText.value = text
@@ -68,8 +68,8 @@ const onTextChange = (text: string) => {
 
 const onToggle = (activeState: boolean) => {
   emit('toggle', activeState)
-  asAnonymous.value = activeState
-  toggleText.value = activeState ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน'
+  asAnonymous.value = !asAnonymous.value
+  // toggleText.value = activeState ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน'
 }
 const submit = () => {
   if (isEmpty.value) return
