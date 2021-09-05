@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute h-full w-full flex justify-center items-center">
+  <div class="absolute h-full w-full pl-4 pr-4 flex justify-center items-center transition-all" :style="{opacity: isOpen ? '1': '0', zIndex: isOpen ? '99' : '-1'}">
     <swiper
       :auto-height="true"
       :style="{'--swiper-navigation-color': '#fff','--swiper-pagination-color': '#fff'}"
@@ -31,7 +31,7 @@
       </swiper-slide>
     </swiper>
     <!-- Backdrop -->
-    <div class="absolute h-full w-full flex justify-center items-center root" @click="print" />
+    <div class="absolute h-full w-full flex justify-center items-center root" @click="handleClose" />
   </div>
 </template>
 
@@ -44,9 +44,7 @@ import SwiperCore, {
 
 SwiperCore.use([Pagination, Navigation])
 
-const print = (e: MouseEvent) => {
-  e.stopPropagation()
-}
+defineProps<{ handleClose(): void; isOpen: boolean}>()
 
 </script>
 
