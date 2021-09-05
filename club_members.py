@@ -1,12 +1,11 @@
 import csv
 import json
-from utils import get_club_route
+from utils import get_club_route, download_contact_list_csv
 import requests
 
 # The output json of this will populate the clubMembers collection which store personal info of each club's representatives.
 
-url = 'https://docs.google.com/spreadsheets/u/1/d/1l8FlP4FULZFxI9df-XwpmHG1_gK3OOPFqg3Uwpf4XeM/export?format=csv'
-downloaded_csv = requests.get(url).content.decode('utf-8').splitlines()
+downloaded_csv = download_contact_list_csv()
 
 clubMembers_collection = {}
 field_name = 'members'
