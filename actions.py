@@ -38,6 +38,7 @@ def update_static_info():
         urls = [e[0] for e in csv_urls]
         csv_files = [f for f in ex.map(download_csv, urls)]
 
+    registered_routes_file_content = ''
     for e in zip(csv_files, csv_urls):
         f = e[0]
         category = e[1][1]
@@ -46,9 +47,22 @@ def update_static_info():
         dir = Path(f'src/assets/clubs/{category}')
         dir.mkdir(parents=True, exist_ok=True)
 
+        routes = []
+        # updates each club static info
         for route, doc in club_data.items():
+            routes.append(route)
             content = 'export const info = ' + \
                 json.dumps(doc, indent=2, ensure_ascii=False)
             path = dir.joinpath(f'{route}.js')
             with open(path, 'w', encoding='utf8') as f:
                 f.write(content)
+
+        registered_routes_file_content += f'export const {category}Routes = new Set<string>(' + json.dumps(
+            routes, indent=2).replace('"', "'") + ')\n'
+    
+    # updates registered routes
+    dir = Path(f'src/components/pages/club')
+    dir.mkdir(parents=True, exist_ok=True)
+    file_path = dir.joinpath('routes.ts')
+    with open(file_path, 'w', encoding='utf8') as f:
+        f.write(registered_routes_file_content)
