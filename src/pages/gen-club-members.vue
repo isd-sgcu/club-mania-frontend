@@ -16,6 +16,14 @@ const gen = () => {
   for (const clubName of Object.keys(clubMembers)) {
     const data = clubMembers[clubName]
     const clubRef = doc(db.value, 'clubMembers', clubName)
+    const clubDoc = {}
+    for (const e of data.members) {
+      const chulaEmail = `${e.studentId}@student.chula.ac.th`
+      clubDoc[chulaEmail] = {
+        name: e.name,
+        year: e.year,
+      }
+    }
     setDoc(clubRef, data)
   }
 }
