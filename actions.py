@@ -31,7 +31,7 @@ def update_static_info():
     geela_csv_url = f'{category_base_csv_url}1989655880'
 
     csv_urls = [(other_csv_url, 'other'), (wichakarn_csv_url, 'wichakarn'),
-                (pat_csv_url, 'pat'), (silpvat_csv_url, 'slipvat'), (geela_csv_url, 'geela')]
+                (pat_csv_url, 'pat'), (silpvat_csv_url, 'silpvat'), (geela_csv_url, 'geela')]
 
     csv_files = []
     with ThreadPoolExecutor() as ex:
