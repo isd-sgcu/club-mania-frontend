@@ -25,7 +25,7 @@ for line in reader:
     clubMembers_collection[processed_club_name][field_name].append({
         'name': nickname,
         'studentId': id,
-        year: year
+        'year': year
     })
 
 with open('club_members.json', 'w', encoding="utf8") as f:
