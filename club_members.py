@@ -27,4 +27,4 @@ for line in reader:
     })
 
 with open('club_members.json', 'w', encoding="utf8") as f:
-    json.dump(clubToMembers, f, indent=4)
+    json.dump(clubToMembers, f, indent=4, ensure_ascii=False)
