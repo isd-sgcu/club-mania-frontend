@@ -1,21 +1,35 @@
-from utils import extract_csv
-from concurrent.futures import ThreadPoolExecutor
-from utils import download_csv
 import json
+import os
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-category_base_csv_url = other_csv_url = 'https://docs.google.com/spreadsheets/d/1nD2hRoXo-khHlwb73b_iR-jRMPHqUViLAdbJGmtCZWE/export?format=csv&id=1nD2hRoXo-khHlwb73b_iR-jRMPHqUViLAdbJGmtCZWE&gid='
-other_csv_url = f'{category_base_csv_url}168970715'
-wichakarn_csv_url = f'{category_base_csv_url}1451517396'
-pat_csv_url = f'{category_base_csv_url}1863263145'
-silpvat_csv_url = f'{category_base_csv_url}1957563667'
-geela_csv_url = f'{category_base_csv_url}1989655880'
+import firebase_admin
+from dotenv import load_dotenv
+from firebase_admin import credentials, firestore
+
+from utils import download_csv, extract_csv
+
 
 def generate_club_docs():
-    path_to_private_key = 'club-mania2021-firebase-adminsdk-iwl8t-0c6a46efc9.json'
+    load_dotenv()
+    path_to_private_key = os.environ.get('FIREBASE_PRIVATE_KEY_JSON')
+    if not path_to_private_key:
+        print('Get the private key json from the firebase console first')
+        exit(-1)
+
+    cred = credentials.Certificate(path_to_private_key)
+    firebase_admin.initialize_app(cred)
+    db = firestore.client()
 
 
 def update_static_info():
+    category_base_csv_url = other_csv_url = 'https://docs.google.com/spreadsheets/d/1nD2hRoXo-khHlwb73b_iR-jRMPHqUViLAdbJGmtCZWE/export?format=csv&id=1nD2hRoXo-khHlwb73b_iR-jRMPHqUViLAdbJGmtCZWE&gid='
+    other_csv_url = f'{category_base_csv_url}168970715'
+    wichakarn_csv_url = f'{category_base_csv_url}1451517396'
+    pat_csv_url = f'{category_base_csv_url}1863263145'
+    silpvat_csv_url = f'{category_base_csv_url}1957563667'
+    geela_csv_url = f'{category_base_csv_url}1989655880'
+
     csv_urls = [(other_csv_url, 'other'), (wichakarn_csv_url, 'wichakarn'),
                 (pat_csv_url, 'pat'), (silpvat_csv_url, 'slipvat'), (geela_csv_url, 'geela')]
 
