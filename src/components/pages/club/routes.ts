@@ -25,7 +25,7 @@ export const patRoutes = new Set<string>([
   'voluntary-club-of-the-student-union-chulalongkorn-university',
   'aiesec-in-chulalongkorn-university'
 ])
-export const slipvatRoutes = new Set<string>([
+export const silpvatRoutes = new Set<string>([
   'awutthai',
   'cu-chorus',
   'cu-band',
