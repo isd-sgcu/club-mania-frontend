@@ -27,6 +27,7 @@ for e in zip(csv_files, csv_urls):
     club_data = extract_csv(f)
     for key, value in club_data.items():
         clubs_collection.append({
+            'url': f'{category}/{key}',
             'name': value['name'],
             'category': value['category'],
             'logo': ""
