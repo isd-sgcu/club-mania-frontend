@@ -19,7 +19,37 @@ def generate_club_docs():
 
     cred = credentials.Certificate(path_to_private_key)
     firebase_admin.initialize_app(cred)
+
     db = firestore.client()
+    clubs_ref = db.collection(u'clubs')
+    members_ref = db.collection(u'members')
+
+    with open('club_members.json', 'r', encoding="utf8") as f:
+        data = json.load(f)
+        print(data)
+
+        for key in data:
+            ref = clubs_ref.document(key)
+            ref.set({
+                u'members': [],
+                u'posts': []
+            })
+            member_list = []
+            for member in data[key]['members']:
+                print(member)
+                mem_ref = members_ref.document(member['email'])
+                member_list.append(mem_ref)
+                mem_ref.set({
+                    u'club': ref,
+                    u'name': member['name'],
+                    u'studentId': member['studentId'],
+                    u'year': member['year'],
+                })
+
+            ref.update({u'members': member_list})
+
+
+    
 
 
 def update_static_info():

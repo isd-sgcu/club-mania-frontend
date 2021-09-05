@@ -8,28 +8,22 @@ import requests
 downloaded_csv = download_contact_list_csv()
 
 clubMembers_collection = {}
-field_name = 'members'
+
 # with open(downloaded_csv, encoding='utf8') as f:
 reader = csv.DictReader(downloaded_csv)
 for line in reader:
     processed_club_name = get_club_route(line['ชื่อชมรมแบบเป็นภาษาอังกฤษ (สามารถใช้ภาษาคาราโอเกะได้ถ้าไม่มีจริงๆ)'])
-    nickname = line['ชื่อเล่น']
     email = line['e-mail จุฬาฯ']
-    year = int(line['ชั้นปี'].replace(' ', '').replace('ปี', ''))
-    id = line['รหัสนิสิตของตัวแทนชมรม']
 
     if processed_club_name not in clubMembers_collection:
         clubMembers_collection[processed_club_name] = {
-            field_name: [],
+            'members': [],
             'posts': []
         }
 
-    clubMembers_collection[processed_club_name][field_name].append({
-        'email': email,
-        'name': nickname,
-        'studentId': id,
-        'year': year
-    })
+    clubMembers_collection[processed_club_name]['members'].append(
+        '/members/' + email
+    )
 
-with open('club_members.json', 'w', encoding="utf8") as f:
+with open('clubs.json', 'w', encoding="utf8") as f:
     json.dump(clubMembers_collection, f, indent=4, ensure_ascii=False)
