@@ -1,5 +1,5 @@
 import { useRouter } from 'vue-router'
-import { geelaRoutes, otherRoutes, patRoutes, slipVatRoutes, wichakarnRoutes } from './routes'
+import { geelaRoutes, otherRoutes, patRoutes, silpvatRoutes, wichakarnRoutes } from './routes'
 import { RouteCategoryOption } from '~/types'
 
 export const validateRoute = (route: string, validRoutes: Set<string>) => {
@@ -16,7 +16,7 @@ export const goToCategoryIfNotValid = (clubName: string, category: RouteCategory
   else if (category === 'pat')
     clubNames = patRoutes
   else if (category === 'slipvat')
-    clubNames = slipVatRoutes
+    clubNames = silpvatRoutes
   else clubNames = wichakarnRoutes
 
   if (!validateRoute(clubName, clubNames)) {

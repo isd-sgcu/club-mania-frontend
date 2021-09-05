@@ -1,7 +1,7 @@
 export const geelaRoutes = new Set<string>([
   'tennis',
 ])
-export const slipVatRoutes = new Set<string>([
+export const silpvatRoutes = new Set<string>([
   '',
 ])
 export const wichakarnRoutes = new Set<string>([
