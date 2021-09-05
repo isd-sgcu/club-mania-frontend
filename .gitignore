@@ -11,3 +11,7 @@ node_modules
 *.log
 note.txt
 components.d.ts
+*.csv
+venv
+__pycache__
+*.json
