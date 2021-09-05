@@ -31,7 +31,7 @@ def extract_csv(file: List[str]):
         contact = line['ช่องทางการติดต่อ']
         recruitment_period = line['ระยะเวลาในการเปิดรับสมัคร']
         route = get_club_route(line['ชื่อชมรมแบบเป็นภาษาอังกฤษ'])
-        # badge = line['badge']
+        badge = line['badge']
 
         club['name'] = club_name
         club['category'] = category
@@ -39,8 +39,8 @@ def extract_csv(file: List[str]):
         club['whatToExpect'] = what_to_expect
         club['recruitmentPeriod'] = recruitment_period
         club['contact'] = contact
-        club['badge'] = 'uncomment in python to get the badge'
-        # club['images'] = [''] TODO
+        club['badge'] = badge
+        club['images'] = [] # TODO
 
         # route is the key for each club
         category_clubs[route] = club
