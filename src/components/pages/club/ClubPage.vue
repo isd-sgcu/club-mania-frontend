@@ -26,7 +26,7 @@
                 <h5 class="<sm:(text-1.3rem) mb-3" :class="`text-${clubNameClr}`">
                   {{ topic }}
                 </h5>
-                <text-body1 class="<sm:(leading-1.6rem text-0.9rem) leading-1.8rem">
+                <text-body1 class="<sm:(leading-1.6rem text-0.9rem) leading-1.8rem whitespace-pre">
                   {{ decideInfoText(topic) }}
                 </text-body1>
               </BackgroundSection>
