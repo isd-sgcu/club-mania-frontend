@@ -171,7 +171,7 @@ const createClubDoc = async(clubRef: DocumentReference) => {
 }
 
 onMounted(async() => {
-  const { info } = await import(`../../../assets/clubs/${props.category}/${props.clubName}`)
+  const { info } = await import(`../../../assets/clubs/${props.category}/${props.clubName}.js`)
   staticInfo.value = info
 
   clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)

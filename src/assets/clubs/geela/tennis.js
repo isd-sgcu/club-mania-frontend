@@ -1,6 +1,4 @@
-import { ClubStaticInfo } from '~/types'
-
-export const info: ClubStaticInfo = {
+export const info = {
   name: 'ชมรมเทนนิส',
   category: 'ฝ่ายกีฬา',
   about: 'เกี่ยวกับชมรมเทสนิส',

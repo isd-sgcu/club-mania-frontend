@@ -15,3 +15,4 @@ components.d.ts
 venv
 __pycache__
 club_members.json
+keys.txt
