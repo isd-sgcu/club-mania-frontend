@@ -14,20 +14,8 @@
       :navigation="true"
       class="mySwiper text-white"
     >
-      <swiper-slide>
-        <img class="m-auto" src="https://picsum.photos/500/500?key=1">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="m-auto" src="https://picsum.photos/500/500?key=2">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="m-auto" src="https://picsum.photos/500/500?key=3">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="m-auto" src="https://picsum.photos/500/500?key=4">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="m-auto" src="https://picsum.photos/500/500?key=5">
+      <swiper-slide v-for="item in imgUrl" :key="item">
+        <img class="m-auto" :src="item">
       </swiper-slide>
     </swiper>
     <!-- Backdrop -->
@@ -44,7 +32,7 @@ import SwiperCore, {
 
 SwiperCore.use([Pagination, Navigation])
 
-defineProps<{ handleClose(): void; isOpen: boolean}>()
+defineProps<{ handleClose(): void; isOpen: boolean; imgUrl: string[]}>()
 
 </script>
 
