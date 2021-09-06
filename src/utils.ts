@@ -90,8 +90,9 @@ export const setValuesIfIsMember = async() => {
   }
 
   const userDoc = userSnap.data() as MemberDoc
-  store.setMemberValues({
-    nickname: userDoc.name,
-    clubRef: userDoc.club,
-  })
+  store.setMemberValues(
+    userDoc.name,
+    userDoc.club,
+    userDoc.year,
+  )
 }
