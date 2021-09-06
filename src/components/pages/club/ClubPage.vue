@@ -169,20 +169,22 @@ onMounted(async() => {
     = await import(`../../../assets/clubs/${props.category}/${props.clubName}.js`)
   staticInfo.value = info
 
-  setValuesIfIsMember()
-  const userStore = useUserStore()
-  if (userStore.isMember(props.clubName) && userStore.badge === null)
-    userStore.setBadge(info.badge)
-
   clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)
   unsubClub.value = onSnapshot(clubRef.value, async(snap) => {
     const clubDoc = snap.data() as ClubDoc | undefined // if not exist
-    if (clubDoc === undefined) { await createClubDoc(clubRef.value as DocumentReference) }
+    if (clubDoc === undefined) {
+      await createClubDoc(clubRef.value as DocumentReference)
+    }
     else {
       postRefs.value = clubDoc.posts
       memberRefs.value = clubDoc.members
     }
   })
+
+  await setValuesIfIsMember()
+  const userStore = useUserStore()
+  if (userStore.isMember(props.clubName) && userStore.badge === null)
+    userStore.setBadge(info.badge)
 })
 
 onUnmounted(() => (unsubClub.value as Unsubscribe)())
