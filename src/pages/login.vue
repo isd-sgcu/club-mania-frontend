@@ -12,14 +12,23 @@
         </text-sub2>
         <input v-model="password" class="input" type="password" /> -->
         <button
+          v-if="!auth?.currentUser"
           type="submit"
           class="text-white font-Mitr h-13 bg-button pt-3 pb-3 text-size-[1rem] sm:text-size-[1.25rem] mt-6"
         >
           เข้าสู่ระบบด้วย Google
         </button>
+        <button
+          v-if="auth?.currentUser"
+          type="button"
+          class="text-white font-Mitr h-13 bg-button pt-3 pb-3 text-size-[1rem] sm:text-size-[1.25rem] mt-6"
+          @click="handleSignout"
+        >
+          Sigout
+        </button>
         <text-logo class="text-white mx-auto mt-5 hidden sm:block">
           Welcome to arena of valor!
-        </text-logo>]
+        </text-logo>
         <text-sub2
           v-if="isLoginFailed"
           class="text-red mx-auto mt-5"
@@ -33,14 +42,14 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-
-import { signInWithPopup, GoogleAuthProvider, Auth } from 'firebase/auth'
+import { signInWithPopup, GoogleAuthProvider, Auth, signOut } from 'firebase/auth'
 import { auth } from '~/firebase'
 
-import { setValuesIfIsMember } from '~/utils'
+import { clearAllStorage, setValuesIfIsMember } from '~/utils'
+import { useUserStore } from '~/stores/user'
 
 const router = useRouter()
-
+const store = useUserStore()
 // const username = ref('')
 // const password = ref('')
 
@@ -52,6 +61,7 @@ const handleLogin = async() => {
     // call google authetication
     await signInWithPopup(auth.value as Auth, provider)
     // set user data in user store
+    clearAllStorage()
     await setValuesIfIsMember()
     router.push('/')
   }
@@ -60,6 +70,19 @@ const handleLogin = async() => {
     console.log(error.message)
     isLoginFailed.value = true
     setTimeout(() => { isLoginFailed.value = false }, 3000)
+  }
+}
+
+const handleSignout = async() => {
+  try {
+    await signOut(auth.value!)
+    clearAllStorage()
+    store.reset()
+    store.setDisplayName(null)
+  }
+  catch (error) {
+    // eslint-disable-next-line no-alert
+    alert('Logout fail, pleas logout again!')
   }
 }
 </script>

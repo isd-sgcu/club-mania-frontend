@@ -87,7 +87,6 @@ export const useUserStore = defineStore('user', () => {
       year: y,
     }
     setToLocal('staffAccount', JSON.stringify(storedData))
-    localStorage.removeItem('anonymousCustomName')
   }
 
   return {

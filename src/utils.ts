@@ -16,6 +16,16 @@ export const setToLocal = (key: LocalStorageKeys, data: string) => {
   localStorage.setItem(key, data)
 }
 
+export const clearLocal = (key: LocalStorageKeys) => {
+  localStorage.removeItem(key)
+}
+
+export const clearAllStorage = () => {
+  clearLocal('anonymousId')
+  clearLocal('anonymousCustomName')
+  clearLocal('staffAccount')
+}
+
 // generates new anonymous id
 export const guid = () => {
   const s4 = () => {
