@@ -41,7 +41,7 @@ export const getAnonymousId = () => {
 /**
  * Get a new post/reply doc
  * @param text text of the textarea
- * @param customName 
+ * @param customName
  * @returns
  */
 export const getNewPostReplyDoc = (text: string, customName: string) => {

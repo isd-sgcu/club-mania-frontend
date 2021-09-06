@@ -19,15 +19,15 @@ export type MemberDoc = {
   year: number
   badge: string
 }
-export type PostReplyDoc = {
+export type TextDoc = {
   by: Email | AnonymousId // stores email if logged in
   likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
   createdAt: Timestamp
   text: string
-  name: string
+  name: string // The person who submits
 }
-export type ReplyDoc = PostReplyDoc
-export type PostDoc = PostReplyDoc
+export type ReplyDoc = TextDoc
+export type PostDoc = TextDoc & { replies: ReplyDoc[] }
 export type StaffDoc = {
   name: string
   studentId: string
