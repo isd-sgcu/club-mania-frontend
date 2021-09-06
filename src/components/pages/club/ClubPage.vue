@@ -180,11 +180,13 @@ const createClubDoc = async(clubRef: DocumentReference) => {
   await setDoc(clubRef, defaultClubDoc)
 }
 
-onMounted(async() => {
+onBeforeMount(async() => {
   const { info }: { info: ClubStaticInfo }
     = await import(`../../../assets/clubs/${props.category}/${props.clubName}.js`)
   staticInfo.value = info
+})
 
+onMounted(async() => {
   clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)
   unsubClub.value = onSnapshot(clubRef.value, async(snap) => {
     const clubDoc = snap.data() as ClubDoc | undefined // if not exist
