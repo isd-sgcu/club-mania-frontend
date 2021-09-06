@@ -2,20 +2,20 @@
   <div>
     <Banner theme="Main" :is-club="false" class="cursor-default pointer-events-none" />
     <div class="flex justify-center ml-6 mr-6 mt-10 mb-10">
-      <form class="w-full max-w-[700px] flex flex-col" @submit.prevent="handleLogin">
-        <text-sub2 class="text">
+      <form class="w-full max-w-[500px] flex flex-col" @submit.prevent="handleLogin">
+        <!-- <text-sub2 class="text">
           ชื่อผู้ใช้
         </text-sub2>
         <input v-model="username" class="input" type="text" />
         <text-sub2 class="text">
           รหัสผ่าน
         </text-sub2>
-        <input v-model="password" class="input" type="password" />
+        <input v-model="password" class="input" type="password" /> -->
         <button
           type="submit"
-          class="text-white font-Mitr bg-button pt-3 pb-3 text-size-[1rem] sm:text-size-[1.25rem] mt-6"
+          class="text-white font-Mitr h-13 bg-button pt-3 pb-3 text-size-[1rem] sm:text-size-[1.25rem] mt-6"
         >
-          เข้าสู่ระบบ
+          เข้าสู่ระบบด้วย Google
         </button>
         <text-logo class="text-white mx-auto mt-5 hidden sm:block">
           Welcome to arena of valor!
@@ -34,41 +34,33 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 
-import { doc, getDoc, Firestore } from 'firebase/firestore'
 import { signInWithPopup, GoogleAuthProvider, Auth } from 'firebase/auth'
-import { auth, db } from '~/firebase'
+import { auth } from '~/firebase'
 
-import { useUserStore } from '~/stores/user'
+import { setValuesIfIsMember } from '~/utils'
 
 const router = useRouter()
-const user = useUserStore()
 
-const username = ref('')
-const password = ref('')
+// const username = ref('')
+// const password = ref('')
 
 const isLoginFailed = ref(false)
 
-const handleLogin = () => {
-  const provider = new GoogleAuthProvider()
-  signInWithPopup(auth.value as Auth, provider).then((result) => {
-    // The signed-in user info
-    const email = result.user.email
-    const staffRef = doc(db.value as Firestore, 'staffs', email!.substr(0, 10))
-    const staffdoc = getDoc(staffRef)
-
-    staffdoc.then((snap) => {
-      const staff = snap.data()
-      if (staff)
-        user.setNewName(staff.name)
-    })
+const handleLogin = async() => {
+  try {
+    const provider = new GoogleAuthProvider()
+    // call google authetication
+    await signInWithPopup(auth.value as Auth, provider)
+    // set user data in user store
+    await setValuesIfIsMember()
     router.push('/')
-  })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error.message)
-      isLoginFailed.value = true
-      setTimeout(() => { isLoginFailed.value = false }, 3000)
-    })
+  }
+  catch (error: any) {
+    // eslint-disable-next-line no-console
+    console.log(error.message)
+    isLoginFailed.value = true
+    setTimeout(() => { isLoginFailed.value = false }, 3000)
+  }
 }
 </script>
 
