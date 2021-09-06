@@ -23,3 +23,10 @@ export type InfoTopicOption = 'เกี่ยวกับชมรม' | 'ส�
 export type LocalStorageKeys = 'anonymousId'
 
 export type AnonymousName = 'บุคคลนิรนาม'
+
+export type Club = {
+  url: string
+  name: string
+  category: RouteCategoryOption
+  logo: string
+}
