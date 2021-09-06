@@ -103,11 +103,14 @@ const decideShowDeleteIcon = () => {
     return
   }
 
+  // this evaluates to true when a post is deleted
+  if (!postDoc.value) return false
+
   const user = auth.value!.currentUser
   if (!user)
-    showDeleteIcon.value = postDoc.value!.by === getAnonymousId()
+    showDeleteIcon.value = postDoc.value.by === getAnonymousId()
   else
-    showDeleteIcon.value = postDoc.value!.by === user.email
+    showDeleteIcon.value = postDoc.value.by === user.email
 }
 
 const onReplyClicked = () => {
