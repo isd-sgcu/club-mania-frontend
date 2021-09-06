@@ -56,7 +56,7 @@
                 </Filter>
               </div>
               <div v-for="(post, idx) in postRefs" :key="idx">
-                <Post :post="post" @delete="deletePost" />
+                <Post :club-name="props.clubName" :post="post" @delete="deletePost" />
               </div>
             </section>
           </client-only>

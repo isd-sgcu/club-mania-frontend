@@ -84,11 +84,14 @@ import { useThemeStore } from '~/stores/themes'
 import { getAnonymousId, getNewReplyDoc } from '~/utils'
 import { AnonymousName } from '~/types'
 import { auth } from '~/firebase'
+import { useUserStore } from '~/stores/user'
 
 const themeStore = useThemeStore()
+const userStore = useUserStore()
 
 const props = defineProps<{
   post: DocumentReference
+  clubName: string // as in route
 }>()
 
 const emit = defineEmits<{
@@ -103,6 +106,11 @@ const unsubPost = ref<Unsubscribe | null>(null)
 const showDeleteIcon = ref(false)
 
 const decideShowDeleteIcon = () => {
+  if (userStore.isMember(props.clubName)) {
+    showDeleteIcon.value = true
+    return
+  }
+
   const user = auth.value!.currentUser
   if (!user)
     showDeleteIcon.value = postDoc.value!.by === getAnonymousId()
