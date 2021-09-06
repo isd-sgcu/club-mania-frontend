@@ -55,16 +55,33 @@ SwiperCore.use([Autoplay, Pagination])
 const themes = ['Main', 'Gera', 'Pat', 'Vichagarn', 'SilpVat', 'Other'] as ThemeOption[]
 const variantList = ['Main', 'Gera', 'Pat', 'Wichakarn', 'SilpVat', 'Other'] as Variant[]
 
-const data = clubList.map((value) => {
+const shuffle = (array: any[]) => {
+  let currentIndex = array.length
+  let randomIndex
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]]
+  }
+
+  return array
+}
+
+const data = shuffle(clubList.map((value) => {
   const newVariant = variantList.filter(each => each.toLowerCase() === value.category)[0]
-  console.log(value.url)
   return {
     text: value.name,
     imgUrl: value.logo,
     variant: newVariant,
     href: value.url,
   }
-})
+}))
 
 </script>
 
