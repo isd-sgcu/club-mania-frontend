@@ -17,6 +17,7 @@ specifiers:
   https-localhost: ^4.6.5
   markdown-it-link-attributes: ^3.0.0
   markdown-it-prism: ^2.1.8
+  moment: ^2.29.1
   nprogress: ^0.2.0
   pinia: ^2.0.0-0
   pnpm: ^6.13.0
@@ -43,6 +44,7 @@ dependencies:
   '@vueuse/core': 6.0.0_vue@3.2.2
   '@vueuse/head': 0.6.0_vue@3.2.2
   firebase: 9.0.0
+  moment: 2.29.1
   nprogress: 0.2.0
   pinia: 2.0.0-rc.4_typescript@4.3.5+vue@3.2.2
   prism-theme-vars: 0.2.2
@@ -4883,6 +4885,10 @@ packages:
   /minimist/1.2.5:
     resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
     dev: true
+
+  /moment/2.29.1:
+    resolution: {integrity: sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==}
+    dev: false
 
   /ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
