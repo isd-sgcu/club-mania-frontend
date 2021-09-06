@@ -2,7 +2,7 @@
   <BackgroundSection>
     <div class="space-y-3 relative">
       <!-- header -->
-      <PostHeader v-if="postDoc" :publisher="postDoc.by" :posted-at="postDoc.postedAt" />
+      <PostHeader v-if="postDoc" :publisher="postDoc.name" :posted-at="postDoc.postedAt" />
       <!-- text of the post -->
       <TextFrame v-if="postDoc" :value="postDoc.text" :disabled="true">
         {{ postDoc.text }}
@@ -96,14 +96,14 @@ const toggleShowMore = () => {
   showingMore.value = !showingMore.value
 }
 
-const reply = async(text: string) => {
+const reply = async(text: string, customName: string) => {
   const user = auth.value!.currentUser
   const replyDoc: ReplyDoc = {
     by: user ? user.email as string : getAnonymousId(),
     likes: [],
     repliedAt: Timestamp.fromDate(new Date()),
     text,
-    name: ''
+    name: customName === '' ? 'บุคคลนิรนาม' : customName,
   }
   updateDoc(props.post, {
     replies: arrayUnion(replyDoc),
