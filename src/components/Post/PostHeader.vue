@@ -3,7 +3,7 @@
     <h2 class="text-[24px] font-Roboto inline">
       {{ props.publisher }}
     </h2>
-    <Badge v-if="publisherBadge" :badge-text="publisherBadge" />
+    <Badge v-if="props.badge" :badge-text="props.badge" />
     <span class="<sm:(hidden)">{{ formattedCreatedAt }}</span>
   </div>
   <span class="sm:(hidden)">{{ formattedCreatedAt }}</span>
@@ -16,9 +16,9 @@ import moment from 'moment'
 const props = defineProps<{
   publisher: string // name of the publisher
   createdAt: Timestamp
+  badge: string | null // The badge of the member, null if the poster is not a club member
 }>()
 
-const publisherBadge = ref<string | null>(null)
 const formattedCreatedAt = ref('...')
 const formatInterval = ref(0)
 
