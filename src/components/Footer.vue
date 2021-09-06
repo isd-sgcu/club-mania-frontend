@@ -6,7 +6,9 @@
       <img class="h-5" src="/isd.svg" />
       <span>สงวนลิขสิทธิ์</span>
       <img class="h-4" src="/copyright.svg" />
-      <span class="font-Roboto text-md">{{ t("footer.text") }}</span>
+      <span class="font-Roboto text-md">
+        2564 องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย (อบจ.)
+      </span>
       <span class="flex-grow"></span>
       <span class="space-x-3">
         <a :href="igLink" target="_blank">
@@ -28,7 +30,7 @@
         <div class="xs:(inline) space-x-2">
           <img class="h-4 inline" src="/copyright.svg" />
           <span class="<sm:(text-xs) <md:(text-sm) font-Roboto text-md">
-            องค์การบริหารสโมสรนิสิต
+            2564 องค์การบริหารสโมสรนิสิต
             <br class="xs:(hidden)" />จุฬาลงกรณ์มหาวิทยาลัย (อบจ.)
           </span>
         </div>
