@@ -9,7 +9,7 @@
     <div class="p-3 rounded-tl-md rounded-tr-md" style="background: linear-gradient(160.98deg, #130000 0%, #7B7B7B 34.44%, #130000 68.49%);">
       <img :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
     </div>
-    <div class="flex-1 break-words text-white p-4 pt-2 text-center rounded-bl-md rounded-br-md" :style="{ background: CardBackground + 'linear-gradient(138.79deg, #130000 70%, #4F4F4F 85%, #130000 100%)' }">
+    <div class="flex justify-center items-center flex-1 break-words text-white p-4 pt-2 text-center rounded-bl-md rounded-br-md" :style="{ background: CardBackground + 'linear-gradient(138.79deg, #130000 70%, #4F4F4F 85%, #130000 100%)' }">
       <text-sub2>{{ text }}</text-sub2>
     </div>
   </div>
