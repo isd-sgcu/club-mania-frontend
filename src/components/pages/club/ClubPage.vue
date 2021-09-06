@@ -55,7 +55,7 @@
                   ยอดนิยม
                 </Filter>
               </div>
-              <div v-for="(each, idx) in filteredPostDocsWithRefs" :key="idx">
+              <div v-for="(each) in filteredPostDocsWithRefs" :key="each.ref.id">
                 <Post :club-name="props.clubName" :post="each.ref" @delete="deletePost" />
               </div>
             </section>
@@ -113,11 +113,10 @@ const handleClose = () => {
 }
 
 const filteredPostDocsWithRefs = computed(() => {
-  console.log(isLastestFilterChosen.value)
   if (isLastestFilterChosen.value)
-    return postDocsWithRefs.value.sort((a, b) => a.doc.createdAt.toMillis() - b.doc.createdAt.toMillis())
+    return postDocsWithRefs.value.sort((a, b) => b.doc.createdAt.toMillis() - a.doc.createdAt.toMillis())
   else
-    return postDocsWithRefs.value.sort((a, b) => a.doc.nLikes - b.doc.nLikes)
+    return postDocsWithRefs.value.sort((a, b) => b.doc.nLikes - a.doc.nLikes)
 })
 const aboutText = computed(() => {
   return staticInfo.value.about
