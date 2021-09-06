@@ -23,7 +23,7 @@ export const clearLocal = (key: LocalStorageKeys) => {
 export const clearAllStorage = () => {
   clearLocal('anonymousId')
   clearLocal('anonymousCustomName')
-  clearLocal('staffAccount')
+  clearLocal('memberAccount')
 }
 
 // generates new anonymous id

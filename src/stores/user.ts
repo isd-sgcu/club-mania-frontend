@@ -12,7 +12,7 @@ export const useUserStore = defineStore('user', () => {
   const asStaff = ref(false) // tells if this user is a staff of the site
 
   // Check if staff data is in local storage
-  const persistedData = getFromLocal('staffAccount')
+  const persistedData = getFromLocal('memberAccount')
   if (persistedData) {
     const userData = JSON.parse(persistedData)
     displayName.value = userData.nickname
@@ -98,7 +98,7 @@ export const useUserStore = defineStore('user', () => {
       clubRef,
       year: y,
     }
-    setToLocal('staffAccount', JSON.stringify(storedData))
+    setToLocal('memberAccount', JSON.stringify(storedData))
   }
 
   return {
@@ -113,6 +113,7 @@ export const useUserStore = defineStore('user', () => {
     isMember,
     setYear,
     setAsStaff,
+    asStaff,
   }
 })
 
