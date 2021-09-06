@@ -4,7 +4,7 @@
 
     <!-- banner is here -->
     <Banner :theme="themeStore.savedTheme" :is-club="true" :text="staticInfo.name" />
-    <PageBackground>
+    <PageBackground class="<sm:(pt-5 pb-10) pt-10 pb-20">
       <div class="w-10/11 xl:(max-w-6xl) mx-auto">
         <div class="space-y-4 md:(space-y-8)">
           <!-- club info -->
