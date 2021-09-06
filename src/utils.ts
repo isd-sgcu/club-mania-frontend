@@ -1,6 +1,6 @@
 import { collection, doc, getDoc, Timestamp } from 'firebase/firestore'
 import { auth, db } from './firebase'
-import { CollectionOption, MemberDoc, PostDoc } from './firestore'
+import { CollectionOption, MemberDoc, PostDoc, TextDoc } from './firestore'
 import { useUserStore } from './stores/user'
 import { LocalStorageKeys } from './types'
 
@@ -39,24 +39,43 @@ export const getAnonymousId = () => {
 }
 
 /**
- * Get a new post/reply doc
  * @param text text of the textarea
- * @param customName
- * @returns
+ * @param customName the custom name
+ * @param badge null if not a club member else the badge of the club where this member belongs to
+ * @returns the new text doc structure which is the base of PostDoc and is the ReplyDoc
  */
-export const getNewPostReplyDoc = (text: string, customName: string) => {
+const getNewTextDoc = (text: string, customName: string) => {
   const store = useUserStore()
   const user = auth.value!.currentUser
-  const postDoc: PostDoc = {
+  const textDoc: TextDoc = {
     by: user ? user.email! : getAnonymousId(),
     likes: [],
     createdAt: Timestamp.fromDate(new Date()),
-    replies: [],
     text,
-    name: user ? store.displayName : customName,
+    name: user ? (store.displayName ?? customName) : customName,
+    badge: store.badge,
   }
-  return postDoc
+  return textDoc
 }
+/**
+ * Get a new PostDoc structure
+ * @param text text of the textarea
+ * @param customName the custom name
+ * @param badge null if not a club member else the badge of the club where this member belongs to
+ * @returns a new PostDoc structure
+ */
+export const getNewPostDoc = (text: string, customName: string): PostDoc => {
+  const newTextDoc = getNewTextDoc(text, customName)
+  return { ...newTextDoc, replies: [] }
+}
+/**
+ * Get a new ReplyDoc structure
+ * @param text text of the textarea
+ * @param customName the custom name
+ * @param badge null if not a club member else the badge of the club where this member belongs to
+ * @returns a new ReplyDoc structure
+ */
+export const getNewReplyDoc = (text: string, customName: string) => getNewTextDoc(text, customName)
 
 /**
    * Checks if a currently logged in user is a member of a club,
