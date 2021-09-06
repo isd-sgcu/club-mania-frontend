@@ -4,7 +4,7 @@
       <input
         v-if="!asAnonymous"
         v-model="customName"
-        maxlength="12"
+        :maxlength="maxLength"
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ"
@@ -41,8 +41,9 @@
 import useTextFrameConfig from './Frame/TextFrame/config'
 import { useThemeStore } from '~/stores/themes'
 import { auth } from '~/firebase'
+import { useUserStore } from '~/stores/user'
+import { getFromLocal, setToLocal } from '~/utils'
 const { border, placeholder, text } = useTextFrameConfig()
-const themeStore = useThemeStore()
 
 const props = defineProps<{
   buttonText?: string
@@ -54,9 +55,34 @@ const emit = defineEmits<{
   (e: 'toggle', activeState: boolean): void
 }>()
 
+const themeStore = useThemeStore()
+const userStore: { displayName: string | null; setDisplayName: (name: string) => void } = useUserStore() // displayName does not need to be reactive
+
 const currentText = ref('')
 const asAnonymous = ref(!auth.value?.currentUser)
-const customName = ref('')
+
+const maxLength = 12
+
+/**
+ * Decide initial custom name
+ */
+const initCustomName = () => {
+  if (userStore.displayName) return userStore.displayName.slice(0, maxLength - 1)
+
+  const user = auth.value!.currentUser
+  if (!user) {
+    const savedCustomName = getFromLocal('anonymousCustomName')
+    return savedCustomName ?? ''
+  }
+
+  const defaultUserDisplayName = user.displayName
+  if (!defaultUserDisplayName)
+    return ''
+
+  userStore.setDisplayName(defaultUserDisplayName)
+  return defaultUserDisplayName.slice(0, maxLength - 1)
+}
+const customName = ref(initCustomName())
 
 const isEmpty = computed(() => {
   return currentText.value === ''
@@ -77,6 +103,12 @@ const submit = () => {
   if (isEmpty.value) return
   emit('submit', currentText.value, customName.value === '' ? undefined : customName.value)
   currentText.value = ''
+
+  // saves new custom name to local storage and user store if the poster is anonymous user
+  // for later use
+  if (auth.value!.currentUser) return
+  setToLocal('anonymousCustomName', customName.value)
+  userStore.setDisplayName(customName.value)
 }
 
 const buttonTextColors = {

@@ -4,13 +4,14 @@ import { db } from '~/firebase'
 
 export const useUserStore = defineStore('user', () => {
   const clubOfUser = ref<DocumentReference | null>(null) // ref to the club of this member
-  // displayName is the nickname of the club member if this user is a member of a club or the default display name of the google account
+  // displayName is the nickname of the club member if this user is a member of a club or the default display name of the google account OR if the user is not logged in this is the name saved when a custom named is typed and the post is submitted
   const displayName = ref<string | null>(null)
   const badge = ref<string | null>(null)
   const year = ref<number | null>(null)
 
   const reset = () => {
-    clubOfUser.value = displayName.value = badge.value = null
+    // We don't reset displayName because we still want anonymous user's custom name to persist
+    clubOfUser.value = badge.value = null
   }
 
   /**
