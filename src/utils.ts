@@ -49,7 +49,6 @@ const getNewTextDoc = (text: string, customName: string) => {
   const user = auth.value!.currentUser
   const textDoc: TextDoc = {
     by: user ? user.email! : getAnonymousId(),
-    likes: [],
     createdAt: Timestamp.fromDate(new Date()),
     text,
     name: user ? (store.displayName ?? customName) : customName,
@@ -66,7 +65,7 @@ const getNewTextDoc = (text: string, customName: string) => {
  */
 export const getNewPostDoc = (text: string, customName: string): PostDoc => {
   const newTextDoc = getNewTextDoc(text, customName)
-  return { ...newTextDoc, replies: [] }
+  return { ...newTextDoc, replies: [], likes: [], nLikes: 0 }
 }
 /**
  * Get a new ReplyDoc structure
