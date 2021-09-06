@@ -58,9 +58,6 @@ const emit = defineEmits<{
 const themeStore = useThemeStore()
 const userStore: { displayName: string | null; setDisplayName: (name: string) => void } = useUserStore() // displayName does not need to be reactive
 
-const currentText = ref('')
-const asAnonymous = ref(!auth.value?.currentUser)
-
 const maxLength = 12
 
 /**
@@ -82,7 +79,10 @@ const initCustomName = () => {
   userStore.setDisplayName(defaultUserDisplayName)
   return defaultUserDisplayName.slice(0, maxLength - 1)
 }
+
+const currentText = ref('')
 const customName = ref(initCustomName())
+const asAnonymous = ref(customName.value === '')
 
 const isEmpty = computed(() => {
   return currentText.value === ''
