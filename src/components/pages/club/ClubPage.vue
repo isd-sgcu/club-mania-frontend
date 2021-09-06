@@ -55,8 +55,8 @@
                   ยอดนิยม
                 </Filter>
               </div>
-              <div v-for="(post, idx) in postRefs" :key="idx">
-                <Post :club-name="props.clubName" :post="post" @delete="deletePost" />
+              <div v-for="(each, idx) in filteredPostDocsWithRefs" :key="idx">
+                <Post :club-name="props.clubName" :post="each.ref" @delete="deletePost" />
               </div>
             </section>
           </client-only>
@@ -68,7 +68,7 @@
 
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
-import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, updateDoc, arrayUnion, addDoc, collection, setDoc, arrayRemove, deleteDoc } from 'firebase/firestore'
+import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, updateDoc, arrayUnion, addDoc, collection, setDoc, arrayRemove, deleteDoc, getDoc } from 'firebase/firestore'
 import { getNewPostDoc, setValuesIfIsMember } from '../../../utils'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
@@ -102,11 +102,23 @@ const staticInfo = ref<ClubStaticInfo>({
   badge: '',
   images: [],
 })
+const postDocsWithRefs = ref<
+{ ref: DocumentReference
+  doc: PostDoc
+}[]
+>([])
 
 const handleClose = () => {
   isOpen.value = false
 }
 
+const filteredPostDocsWithRefs = computed(() => {
+  console.log(isLastestFilterChosen.value)
+  if (isLastestFilterChosen.value)
+    return postDocsWithRefs.value.sort((a, b) => a.doc.createdAt.toMillis() - b.doc.createdAt.toMillis())
+  else
+    return postDocsWithRefs.value.sort((a, b) => a.doc.nLikes - b.doc.nLikes)
+})
 const aboutText = computed(() => {
   return staticInfo.value.about
 })
@@ -183,6 +195,14 @@ onMounted(async() => {
     else {
       postRefs.value = clubDoc.posts
       memberRefs.value = clubDoc.members
+      const temp = []
+      for (const e of clubDoc.posts) {
+        temp.push({
+          ref: e,
+          doc: (await getDoc(e)).data() as PostDoc,
+        })
+      }
+      postDocsWithRefs.value = temp
     }
   })
 
