@@ -68,12 +68,12 @@
 
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
-import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, Timestamp, updateDoc, arrayUnion, addDoc, collection, setDoc } from 'firebase/firestore'
-import { getAnonymousId, setValuesIfIsMember } from '../../../utils'
+import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, updateDoc, arrayUnion, addDoc, collection, setDoc } from 'firebase/firestore'
+import { getNewPostReplyDoc, setValuesIfIsMember } from '../../../utils'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
 import { ClubDoc, PostDoc } from '~/firestore'
-import { db, auth } from '~/firebase'
+import { db } from '~/firebase'
 import { AnonymousName, ClubStaticInfo, InfoTopicOption } from '~/types'
 import { useUserStore } from '~/stores/user'
 
@@ -147,16 +147,7 @@ const popularFilterOnClick = (activeState: boolean) => {
 }
 
 const post = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
-  const store = useUserStore()
-  const user = auth.value!.currentUser
-  const postDoc: PostDoc = {
-    by: user ? user.email! : getAnonymousId(),
-    likes: [],
-    postedAt: Timestamp.fromDate(new Date()),
-    replies: [],
-    text,
-    name: user ? store.displayName : customName,
-  }
+  const postDoc: PostDoc = getNewPostReplyDoc(text, customName)
 
   const postRef = await addDoc(collection(clubRef.value as DocumentReference, 'posts'), postDoc)
 

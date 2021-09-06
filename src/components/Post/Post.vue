@@ -2,11 +2,9 @@
   <BackgroundSection>
     <div class="space-y-3 relative">
       <!-- header -->
-      <PostHeader v-if="postDoc" :publisher="postDoc.name" :posted-at="postDoc.postedAt" />
+      <PostHeader v-if="postDoc" :publisher="postDoc.name" :created-at="postDoc.createdAt" />
       <!-- text of the post -->
-      <TextFrame v-if="postDoc" :value="postDoc.text" :disabled="true">
-        {{ postDoc.text }}
-      </TextFrame>
+      <TextFrame v-if="postDoc" :value="postDoc.text" :disabled="true">{{ postDoc.text }}</TextFrame>
       <!-- like/reply buttons -->
       <div class="flex md:(space-x-1)">
         <LikeButton
@@ -46,10 +44,7 @@
       <div v-if="showingMore && postDoc" class="space-y-2">
         <div v-for="(reply, idx) in postDoc.replies" :key="idx" :class="commentMarginLeft">
           <div class="space-y-2 pb-3">
-            <PostHeader
-              :publisher="reply.by"
-              :posted-at="reply.repliedAt"
-            />
+            <PostHeader :publisher="reply.by" :created-at="reply.createdAt" />
             <TextFrame :disabled="true" :value="reply.text" />
             <div class="space-x-3 flex items-center">
               <LikeButton
@@ -98,13 +93,13 @@ const toggleShowMore = () => {
   showingMore.value = !showingMore.value
 }
 
-const reply = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
+const reply = async (text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
   const store = useUserStore()
   const user = auth.value!.currentUser
   const replyDoc: ReplyDoc = {
     by: user ? user.email as string : getAnonymousId(),
     likes: [],
-    repliedAt: Timestamp.fromDate(new Date()),
+    createdAt: Timestamp.fromDate(new Date()),
     text,
     name: user ? store.displayName : customName,
   }

@@ -15,13 +15,13 @@ import { MemberDoc } from '~/firestore'
 
 const props = defineProps<{
   publisher: string | DocumentReference
-  postedAt: Timestamp
+  createdAt: Timestamp
 }>()
 
 const publisherName = ref('...')
 const publisherBadge = ref<string | null>(null)
 
-const postedDate = props.postedAt.toDate()
+const postedDate = props.createdAt.toDate()
 
 onMounted(async() => {
   if (typeof props.publisher === 'string') { publisherName.value = 'บุคคลนิรนาม' }
