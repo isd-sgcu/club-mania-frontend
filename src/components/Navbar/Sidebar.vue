@@ -41,6 +41,7 @@
       <searchbox
         v-for="item in foundClubs"
         :key="item.name"
+        :embed-link="item.url"
         :name="item.name"
         :description="item.category"
       />
