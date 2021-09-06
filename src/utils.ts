@@ -54,15 +54,15 @@ export const getAnonymousId = () => {
  * @param badge null if not a club member else the badge of the club where this member belongs to
  * @returns the new text doc structure which is the base of PostDoc and is the ReplyDoc
  */
-const getNewTextDoc = (text: string, customName: string) => {
+const getNewTextDoc = (text: string, customName: string, asAnonymous: boolean) => {
   const store = useUserStore()
   const user = auth.value!.currentUser
   const textDoc: TextDoc = {
     by: user ? user.email! : getAnonymousId(),
     createdAt: Timestamp.fromDate(new Date()),
     text,
-    name: user ? (store.displayName ?? customName) : customName,
-    badge: store.badge,
+    name: asAnonymous ? 'บุคคลนิรนาม' : user ? (store.displayName ?? customName) : customName,
+    badge: asAnonymous ? null : store.badge,
   }
   return textDoc
 }
@@ -73,8 +73,8 @@ const getNewTextDoc = (text: string, customName: string) => {
  * @param badge null if not a club member else the badge of the club where this member belongs to
  * @returns a new PostDoc structure
  */
-export const getNewPostDoc = (text: string, customName: string): PostDoc => {
-  const newTextDoc = getNewTextDoc(text, customName)
+export const getNewPostDoc = (text: string, customName: string, asAnonymous: boolean): PostDoc => {
+  const newTextDoc = getNewTextDoc(text, customName, asAnonymous)
   return { ...newTextDoc, replies: [], likes: [], nLikes: 0 }
 }
 /**
@@ -84,7 +84,7 @@ export const getNewPostDoc = (text: string, customName: string): PostDoc => {
  * @param badge null if not a club member else the badge of the club where this member belongs to
  * @returns a new ReplyDoc structure
  */
-export const getNewReplyDoc = (text: string, customName: string) => getNewTextDoc(text, customName)
+export const getNewReplyDoc = (text: string, customName: string, asAnonymous: boolean) => getNewTextDoc(text, customName, asAnonymous)
 
 /**
    * Checks if a currently logged in user is a member of a club,

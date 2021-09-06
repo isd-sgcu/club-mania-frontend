@@ -121,7 +121,7 @@ const toggleShowMore = () => {
 }
 
 const reply = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม', asAnonymous: boolean) => {
-  const replyDoc: ReplyDoc = getNewReplyDoc(text, asAnonymous ? 'บุคคลนิรนาม' : customName)
+  const replyDoc: ReplyDoc = getNewReplyDoc(text, customName, asAnonymous)
   updateDoc(props.post, {
     replies: arrayUnion(replyDoc),
   })
