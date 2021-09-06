@@ -1,6 +1,6 @@
-import { collection, doc, getDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, Timestamp } from 'firebase/firestore'
 import { auth, db } from './firebase'
-import { CollectionOption, MemberDoc } from './firestore'
+import { CollectionOption, MemberDoc, PostDoc } from './firestore'
 import { useUserStore } from './stores/user'
 import { LocalStorageKeys } from './types'
 
@@ -39,9 +39,29 @@ export const getAnonymousId = () => {
 }
 
 /**
- * checks if is a member of a club if yes set nickname, year to the user store else reset values
- * @note This does not set the badge
+ * Get a new post/reply doc
+ * @param text text of the textarea
+ * @param customName 
+ * @returns
  */
+export const getNewPostReplyDoc = (text: string, customName: string) => {
+  const store = useUserStore()
+  const user = auth.value!.currentUser
+  const postDoc: PostDoc = {
+    by: user ? user.email! : getAnonymousId(),
+    likes: [],
+    createdAt: Timestamp.fromDate(new Date()),
+    replies: [],
+    text,
+    name: user ? store.displayName : customName,
+  }
+  return postDoc
+}
+
+/**
+   * checks if is a member of a club if yes set nickname, year to the user store else reset values
+   * @note This does not set the badge
+   */
 export const setValuesIfIsMember = async() => {
   // checks if is a member of a club
   // if yes set nickname, year to the user store, *not the badge
