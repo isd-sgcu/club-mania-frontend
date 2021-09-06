@@ -31,7 +31,10 @@ export const useUserStore = defineStore('user', () => {
   const setBadge = (badgeText: string) => {
     badge.value = badgeText
   }
-  const setDisplayName = (name: string) => {
+  /**
+   * @param name display name of the club member or the auth.user.displayName which can be null
+   */
+  const setDisplayName = (name: string | null) => {
     displayName.value = name
   }
   const setClubOfUser = (clubRef: DocumentReference) => {
