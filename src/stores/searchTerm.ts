@@ -4,7 +4,7 @@ import { clubList } from '~/assets/clubs/clubList'
 
 const MAX_DISPLAY = 5
 
-export const useSearchTerm = defineStore('searchTerm,', () => {
+export const useSearchTerm = defineStore('searchTerm', () => {
   const foundClubs = ref<Array<Club>>([])
   const savedTerm = ref<string>('')
   const initial = ref(true)
