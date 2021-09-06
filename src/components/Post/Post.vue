@@ -73,6 +73,8 @@ import { auth } from '../../firebase'
 import { PostDoc, ReplyDoc } from '~/firestore'
 import { useThemeStore } from '~/stores/themes'
 import { getAnonymousId } from '~/utils'
+import { AnonymousName } from '~/types'
+import { useUserStore } from '~/stores/user'
 
 const themeStore = useThemeStore()
 
@@ -96,14 +98,15 @@ const toggleShowMore = () => {
   showingMore.value = !showingMore.value
 }
 
-const reply = async(text: string, customName: string) => {
+const reply = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
+  const store = useUserStore()
   const user = auth.value!.currentUser
   const replyDoc: ReplyDoc = {
     by: user ? user.email as string : getAnonymousId(),
     likes: [],
     repliedAt: Timestamp.fromDate(new Date()),
     text,
-    name: customName === '' ? 'บุคคลนิรนาม' : customName,
+    name: user ? store.displayName : customName,
   }
   updateDoc(props.post, {
     replies: arrayUnion(replyDoc),
