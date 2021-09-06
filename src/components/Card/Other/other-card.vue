@@ -6,7 +6,7 @@
     </div>
     <div class="relative">
       <img :src="!detect ? backgroundImg : backgroundHover" class="w-full h-full" preserveAspectRatio="none">
-      <text-sub2 class="w-[200px] text-size-[0.9rem] sm:text-size-[1.25rem] absolute break-words p-5 pt-3 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
+      <text-sub2 class="w-[200px] text-size-[0.8rem] sm:text-size-[1rem] absolute break-words pl-6 pr-6 pb-2 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
         {{ text }}
       </text-sub2>
     </div>
@@ -61,6 +61,7 @@ const handleClick = () => {
 .text-card {
   top: 50%;
   left: 50%;
+  line-height: 1rem;
   transform: translate(-50%, -50%);
 }
 </style>
