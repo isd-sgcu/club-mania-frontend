@@ -2,7 +2,7 @@
   <BackgroundSection>
     <div class="space-y-3 relative">
       <!-- close icon -->
-      <div v-show="true" @click="emitDelete">
+      <div v-show="showDeleteIcon" @click="emitDelete">
         <svg
           width="1.2em"
           height="1.2em"
@@ -81,8 +81,9 @@
 import { DocumentReference, onSnapshot, Unsubscribe, updateDoc, arrayUnion } from 'firebase/firestore'
 import { PostDoc, ReplyDoc } from '~/firestore'
 import { useThemeStore } from '~/stores/themes'
-import { getNewReplyDoc } from '~/utils'
+import { getAnonymousId, getNewReplyDoc } from '~/utils'
 import { AnonymousName } from '~/types'
+import { auth } from '~/firebase'
 
 const themeStore = useThemeStore()
 
@@ -99,6 +100,15 @@ const replyActive = ref(false)
 const showingMore = ref(true)
 const postDoc = ref<PostDoc | null>(null)
 const unsubPost = ref<Unsubscribe | null>(null)
+const showDeleteIcon = ref(false)
+
+const decideShowDeleteIcon = () => {
+  const user = auth.value!.currentUser
+  if (!user)
+    showDeleteIcon.value = postDoc.value!.by === getAnonymousId()
+  else
+    showDeleteIcon.value = postDoc.value!.by === user.email
+}
 
 const onReplyClicked = () => {
   replyActive.value = !replyActive.value
@@ -124,6 +134,7 @@ const emitDelete = () => {
 onMounted(() => {
   const unsub = onSnapshot(props.post, (snap) => {
     postDoc.value = snap.data() as PostDoc
+    decideShowDeleteIcon()
   })
   unsubPost.value = unsub
 })
