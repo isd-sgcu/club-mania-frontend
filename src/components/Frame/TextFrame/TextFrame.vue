@@ -76,6 +76,10 @@ const textarea = ref<null | HTMLTextAreaElement>(null)
 
 const themeName = props.theme ?? themeStore.savedTheme
 
+watch(() => props.value, () => {
+  if (props.value === '') height.value = `${defaultHeight}px`
+})
+
 // if is a post or comment, let the height hugs the content
 onMounted(() => {
   if (!props.disabled) return
@@ -86,6 +90,7 @@ onMounted(() => {
 // fires when enter is down
 const submit = () => {
   emit('submit', value.value)
+  height.value = `${defaultHeight}px`
 }
 
 const getHeights = () => {
@@ -99,6 +104,7 @@ const getHeights = () => {
 // resizing must be done at oninput, at watching value doesn't work.
 // https://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize
 const onInput = (e: Event) => {
+  // console.log('hi')
   emit('textChange', (e.target as HTMLTextAreaElement).value)
 
   // In case of selecting all then delete
@@ -111,6 +117,7 @@ const onInput = (e: Event) => {
   if (scrollHeight > defaultHeight) {
     textarea.value!.style.height = 'auto'
     textarea.value!.style.height = `${textarea.value!.scrollHeight}px`
+    height.value = `${textarea.value!.scrollHeight}px`
   }
 }
 
