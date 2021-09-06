@@ -8,7 +8,7 @@
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ (12)"
-        :disabled="nameEditable"
+        :disabled="!nameEditable"
       />
       <TextFrame
         :show-discard-icon="true"
@@ -84,14 +84,17 @@ const initCustomName = () => {
 const currentText = ref('')
 const customName = ref(initCustomName())
 const asAnonymous = ref(customName.value === '')
-const nameEditable = ref(
-  auth.value!.currentUser !== null && customName.value,
-)
 
 const isEmpty = computed(() => {
   return currentText.value === ''
 })
 const toggleText = computed(() => !asAnonymous.value ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
+
+const nameEditable = (function() {
+  const user = auth.value!.currentUser
+  if (!user) return true
+  return customName.value === ''
+})()
 
 const onTextChange = (text: string) => {
   currentText.value = text
