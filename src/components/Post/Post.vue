@@ -1,6 +1,20 @@
 <template>
   <BackgroundSection>
     <div class="space-y-3 relative">
+      <!-- close icon -->
+      <div v-show="true" @click="emitDelete">
+        <svg
+          width="1.2em"
+          height="1.2em"
+          viewBox="0 0 24 24"
+          class="absolute top-[2px] right-[2px] cursor-pointer"
+        >
+          <path
+            d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m3.59 5L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41L15.59 7z"
+            :fill="discardColor[themeStore.savedTheme]"
+          />
+        </svg>
+      </div>
       <!-- header -->
       <PostHeader v-if="postDoc" :publisher="postDoc.name" :created-at="postDoc.createdAt" :badge="postDoc.badge" />
       <!-- text of the post -->
@@ -65,7 +79,6 @@
 
 <script setup lang="ts">
 import { DocumentReference, onSnapshot, Unsubscribe, updateDoc, arrayUnion } from 'firebase/firestore'
-import { onUnmounted } from 'vue'
 import { PostDoc, ReplyDoc } from '~/firestore'
 import { useThemeStore } from '~/stores/themes'
 import { getNewReplyDoc } from '~/utils'
@@ -75,6 +88,10 @@ const themeStore = useThemeStore()
 
 const props = defineProps<{
   post: DocumentReference
+}>()
+
+const emit = defineEmits<{
+  (e: 'delete', postRef: DocumentReference): void
 }>()
 
 const likeStatus = ref(false)
@@ -100,6 +117,10 @@ const reply = async(text: string, customName: string | AnonymousName = 'บุ�
   })
 }
 
+const emitDelete = () => {
+  emit('delete', props.post)
+}
+
 onMounted(() => {
   const unsub = onSnapshot(props.post, (snap) => {
     postDoc.value = snap.data() as PostDoc
@@ -116,6 +137,14 @@ const fillColor = {
   Vichagarn: 'white',
   Gera: 'white',
   Pat: '#5B3112',
+  Other: 'white',
+  Main: 'white',
+}
+const discardColor = {
+  SilpVat: 'white',
+  Vichagarn: 'white',
+  Gera: 'white',
+  Pat: 'black',
   Other: 'white',
   Main: 'white',
 }

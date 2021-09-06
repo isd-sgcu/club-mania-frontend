@@ -56,7 +56,7 @@
                 </Filter>
               </div>
               <div v-for="(post, idx) in postRefs" :key="idx">
-                <Post :post="post" />
+                <Post :post="post" @delete="deletePost" />
               </div>
             </section>
           </client-only>
@@ -68,7 +68,7 @@
 
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
-import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, updateDoc, arrayUnion, addDoc, collection, setDoc } from 'firebase/firestore'
+import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, updateDoc, arrayUnion, addDoc, collection, setDoc, arrayRemove, deleteDoc } from 'firebase/firestore'
 import { getNewPostDoc, setValuesIfIsMember } from '../../../utils'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
@@ -154,6 +154,13 @@ const post = async(text: string, customName: string | AnonymousName = 'บุค
   updateDoc(clubRef.value as DocumentReference, {
     posts: arrayUnion(postRef),
   })
+}
+
+const deletePost = async(postRef: DocumentReference) => {
+  updateDoc(clubRef.value!, {
+    posts: arrayRemove(postRef),
+  })
+  deleteDoc(postRef)
 }
 
 const createClubDoc = async(clubRef: DocumentReference) => {
