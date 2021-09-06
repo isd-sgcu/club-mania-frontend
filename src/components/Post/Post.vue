@@ -98,6 +98,7 @@ const unsubPost = ref<Unsubscribe | null>(null)
 const showDeleteIcon = ref(false)
 
 const decideShowDeleteIcon = () => {
+  if (userStore.asStaff) return true
   if (userStore.isMember(props.clubName)) {
     showDeleteIcon.value = true
     return
