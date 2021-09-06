@@ -2,11 +2,12 @@
   <div class="relative">
     <transition-group appear name="fade" mode="out-in">
       <input
-        v-if="asAnonymous"
-        maxlength="25"
+        v-if="!asAnonymous"
+        v-model="customName"
+        :maxlength="maxLength"
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
-        placeholder="ใส่ชื่อของคุณ"
+        placeholder="ใส่ชื่อของคุณ (12)"
       />
       <TextFrame
         :show-discard-icon="true"
@@ -18,7 +19,7 @@
     </transition-group>
     <div class="mt-1 md:(mt-2) flex items-center justify-between">
       <div class="space-x-[6px] md:(space-x-[12px]) flex items-center">
-        <ToggleThing @toggle="onToggle" />
+        <ToggleThing :init-state="!asAnonymous" @toggle="onToggle" />
         <span class="<sm:(text-sm) font-Roboto">{{ toggleText }}</span>
       </div>
       <button
@@ -39,27 +40,54 @@
 <script setup lang="ts">
 import useTextFrameConfig from './Frame/TextFrame/config'
 import { useThemeStore } from '~/stores/themes'
+import { auth } from '~/firebase'
+import { useUserStore } from '~/stores/user'
+import { getFromLocal, setToLocal } from '~/utils'
 const { border, placeholder, text } = useTextFrameConfig()
-const themeStore = useThemeStore()
 
 const props = defineProps<{
-  isAnonymous: boolean
   buttonText?: string
 }>()
 
 const emit = defineEmits<{
-  (e: 'submit', text: string): void
+  (e: 'submit', text: string, customName?: string): void
   (e: 'textChange', text: string): void
   (e: 'toggle', activeState: boolean): void
 }>()
 
+const themeStore = useThemeStore()
+const userStore: { displayName: string | null; setDisplayName: (name: string) => void } = useUserStore() // displayName does not need to be reactive
+
 const currentText = ref('')
-const asAnonymous = ref(props.isAnonymous)
-const toggleText = ref(props.isAnonymous ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
+const asAnonymous = ref(!auth.value?.currentUser)
+
+const maxLength = 12
+
+/**
+ * Decide initial custom name
+ */
+const initCustomName = () => {
+  if (userStore.displayName) return userStore.displayName.slice(0, maxLength - 1)
+
+  const user = auth.value!.currentUser
+  if (!user) {
+    const savedCustomName = getFromLocal('anonymousCustomName')
+    return savedCustomName ?? ''
+  }
+
+  const defaultUserDisplayName = user.displayName
+  if (!defaultUserDisplayName)
+    return ''
+
+  userStore.setDisplayName(defaultUserDisplayName)
+  return defaultUserDisplayName.slice(0, maxLength - 1)
+}
+const customName = ref(initCustomName())
 
 const isEmpty = computed(() => {
   return currentText.value === ''
 })
+const toggleText = computed(() => !asAnonymous.value ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
 
 const onTextChange = (text: string) => {
   currentText.value = text
@@ -68,13 +96,19 @@ const onTextChange = (text: string) => {
 
 const onToggle = (activeState: boolean) => {
   emit('toggle', activeState)
-  asAnonymous.value = activeState
-  toggleText.value = activeState ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน'
+  asAnonymous.value = !asAnonymous.value
+  // toggleText.value = activeState ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน'
 }
 const submit = () => {
   if (isEmpty.value) return
-  emit('submit', currentText.value)
+  emit('submit', currentText.value, customName.value === '' ? undefined : customName.value)
   currentText.value = ''
+
+  // saves new custom name to local storage and user store if the poster is anonymous user
+  // for later use
+  if (auth.value!.currentUser) return
+  setToLocal('anonymousCustomName', customName.value)
+  userStore.setDisplayName(customName.value)
 }
 
 const buttonTextColors = {

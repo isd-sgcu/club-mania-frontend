@@ -5,7 +5,7 @@ export type UserModule = (ctx: ViteSSGContext) => void
 // IMPORTANT some colors in Figma are named 'Vishagarn' not 'Vichagarn' so watchout if that's the case
 export type ThemeOption = 'SilpVat' | 'Vichagarn' | 'Gera' | 'Pat' | 'Other' | 'Main'
 
-export type RouteCategoryOption = 'geela' | 'pat' | 'other' | 'slipvat' | 'wichakarn'
+export type RouteCategoryOption = 'geela' | 'pat' | 'other' | 'silpvat' | 'wichakarn'
 
 export type ClubStaticInfo = {
   name: string
@@ -19,3 +19,14 @@ export type ClubStaticInfo = {
 }
 
 export type InfoTopicOption = 'เกี่ยวกับชมรม' | 'สิ่งที่น้อง ๆ จะได้รับ' | 'ช่วงเวลาที่รับสมัคร' | 'ช่องทางการติดต่อ'
+
+export type LocalStorageKeys = 'anonymousId' | 'anonymousCustomName'
+
+export type AnonymousName = 'บุคคลนิรนาม'
+
+export type Club = {
+  url: string
+  name: string
+  category: RouteCategoryOption
+  logo: string
+}

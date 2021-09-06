@@ -1,22 +1,6 @@
 import { useRouter } from 'vue-router'
+import { geelaRoutes, otherRoutes, patRoutes, silpvatRoutes, wichakarnRoutes } from './routes'
 import { RouteCategoryOption } from '~/types'
-
-// register valid club names
-export const geelaClubNames = new Set<string>([
-  'tennis',
-])
-export const slipVatClubNames = new Set<string>([
-  '',
-])
-export const wichakarnClubNames = new Set<string>([
-  '',
-])
-export const otherClubNames = new Set<string>([
-  '',
-])
-export const patClubNames = new Set<string>([
-  '',
-])
 
 export const validateRoute = (route: string, validRoutes: Set<string>) => {
   return validRoutes.has(route)
@@ -26,14 +10,14 @@ export const goToCategoryIfNotValid = (clubName: string, category: RouteCategory
   let clubNames: Set<string>
 
   if (category === 'geela')
-    clubNames = geelaClubNames
+    clubNames = geelaRoutes
   else if (category === 'other')
-    clubNames = otherClubNames
+    clubNames = otherRoutes
   else if (category === 'pat')
-    clubNames = patClubNames
-  else if (category === 'slipvat')
-    clubNames = slipVatClubNames
-  else clubNames = wichakarnClubNames
+    clubNames = patRoutes
+  else if (category === 'silpvat')
+    clubNames = silpvatRoutes
+  else clubNames = wichakarnRoutes
 
   if (!validateRoute(clubName, clubNames)) {
     const router = useRouter()

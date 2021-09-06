@@ -1,5 +1,7 @@
 <template>
   <div>
+    <GalleryLightBox :img-url="staticInfo.images" :is-open="isOpen" :handle-close="handleClose" />
+
     <!-- banner is here -->
     <Banner :theme="themeStore.savedTheme" :is-club="true" :text="staticInfo.name" />
     <PageBackground>
@@ -18,13 +20,13 @@
                 :class="`text-${clubNameClr}`"
               >{{ staticInfo.name }}</span>
             </text-sub1>
-            <Gallery v-if="staticInfo.images" :club-name="staticInfo.name" :images="staticInfo.images" />
+            <Gallery v-if="staticInfo.images" :club-name="staticInfo.name" :images="staticInfo.images" class="cursor-pointer" @click="isOpen = true" />
             <div v-for="topic in topics" :key="topic">
               <BackgroundSection>
                 <h5 class="<sm:(text-1.3rem) mb-3" :class="`text-${clubNameClr}`">
                   {{ topic }}
                 </h5>
-                <text-body1 class="<sm:(leading-1.6rem text-0.9rem) leading-1.8rem">
+                <text-body1 class="<sm:(leading-1.6rem text-0.9rem) leading-1.8rem whitespace-pre-wrap">
                   {{ decideInfoText(topic) }}
                 </text-body1>
               </BackgroundSection>
@@ -34,7 +36,7 @@
             <!-- new new post -->
             <section class="space-y-4">
               <h5 class="<sm:(text-1.3rem) text-md" :class="`text-${clubNameClr}`">
-                ความคิดเห็น
+                ความคิดเห็น/ถามคำถาม
               </h5>
               <BackgroundSection>
                 <NewReplyPost :is-anonymous="isAnonymous" @submit="post" />
@@ -53,8 +55,8 @@
                   ยอดนิยม
                 </Filter>
               </div>
-              <div v-for="(post, idx) in postRefs" :key="idx">
-                <Post :post="post" />
+              <div v-for="(each) in filteredPostDocsWithRefs" :key="each.ref.id">
+                <Post :club-name="props.clubName" :post="each.ref" @delete="deletePost" />
               </div>
             </section>
           </client-only>
@@ -66,12 +68,14 @@
 
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
-import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, Timestamp, updateDoc, arrayUnion, addDoc, collection, setDoc } from 'firebase/firestore'
+import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, updateDoc, arrayUnion, addDoc, collection, setDoc, arrayRemove, deleteDoc, getDoc } from 'firebase/firestore'
+import { getNewPostDoc, setValuesIfIsMember } from '../../../utils'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
 import { ClubDoc, PostDoc } from '~/firestore'
 import { db } from '~/firebase'
-import { ClubStaticInfo, InfoTopicOption } from '~/types'
+import { AnonymousName, ClubStaticInfo, InfoTopicOption } from '~/types'
+import { useUserStore } from '~/stores/user'
 
 const { clubTypeColor, clubNameColor } = useClubConfig()
 const themeStore = useThemeStore()
@@ -86,6 +90,7 @@ const isLastestFilterChosen = ref(false)
 const postRefs = ref<DocumentReference[]>([])
 const memberRefs = ref<DocumentReference[]>([])
 const unsubClub = ref<Unsubscribe | null>(null)
+const isOpen = ref(false)
 const clubRef = ref<DocumentReference | null>(null)
 const staticInfo = ref<ClubStaticInfo>({
   name: '',
@@ -97,7 +102,22 @@ const staticInfo = ref<ClubStaticInfo>({
   badge: '',
   images: [],
 })
+const postDocsWithRefs = ref<
+{ ref: DocumentReference
+  doc: PostDoc
+}[]
+>([])
 
+const handleClose = () => {
+  isOpen.value = false
+}
+
+const filteredPostDocsWithRefs = computed(() => {
+  if (isLastestFilterChosen.value)
+    return postDocsWithRefs.value.sort((a, b) => b.doc.createdAt.toMillis() - a.doc.createdAt.toMillis())
+  else
+    return postDocsWithRefs.value.sort((a, b) => b.doc.nLikes - a.doc.nLikes)
+})
 const aboutText = computed(() => {
   return staticInfo.value.about
 })
@@ -137,22 +157,19 @@ const popularFilterOnClick = (activeState: boolean) => {
   isLastestFilterChosen.value = !activeState
 }
 
-const post = async(text: string) => {
-  const by = 'test' // or the real thing
-
-  const postDoc: PostDoc = {
-    by,
-    likes: [],
-    postedAt: Timestamp.fromDate(new Date()),
-    replies: [],
-    text,
-  }
-
+const post = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
+  const postDoc: PostDoc = getNewPostDoc(text, customName)
   const postRef = await addDoc(collection(clubRef.value as DocumentReference, 'posts'), postDoc)
-
   updateDoc(clubRef.value as DocumentReference, {
     posts: arrayUnion(postRef),
   })
+}
+
+const deletePost = async(postRef: DocumentReference) => {
+  updateDoc(clubRef.value!, {
+    posts: arrayRemove(postRef),
+  })
+  deleteDoc(postRef)
 }
 
 const createClubDoc = async(clubRef: DocumentReference) => {
@@ -164,18 +181,34 @@ const createClubDoc = async(clubRef: DocumentReference) => {
 }
 
 onMounted(async() => {
-  const { info } = await import(`../../../assets/clubs/${props.category}/${props.clubName}`)
+  const { info }: { info: ClubStaticInfo }
+    = await import(`../../../assets/clubs/${props.category}/${props.clubName}.js`)
   staticInfo.value = info
 
   clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)
   unsubClub.value = onSnapshot(clubRef.value, async(snap) => {
     const clubDoc = snap.data() as ClubDoc | undefined // if not exist
-    if (clubDoc === undefined) { await createClubDoc(clubRef.value as DocumentReference) }
+    if (clubDoc === undefined) {
+      await createClubDoc(clubRef.value as DocumentReference)
+    }
     else {
       postRefs.value = clubDoc.posts
       memberRefs.value = clubDoc.members
+      const temp = []
+      for (const e of clubDoc.posts) {
+        temp.push({
+          ref: e,
+          doc: (await getDoc(e)).data() as PostDoc,
+        })
+      }
+      postDocsWithRefs.value = temp
     }
   })
+
+  await setValuesIfIsMember()
+  const userStore = useUserStore()
+  if (userStore.isMember(props.clubName) && userStore.badge === null)
+    userStore.setBadge(info.badge)
 })
 
 onUnmounted(() => (unsubClub.value as Unsubscribe)())

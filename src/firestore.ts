@@ -1,9 +1,10 @@
 import { DocumentReference, Timestamp } from 'firebase/firestore'
 
-export type CollectionOption = 'clubs' | 'members' | 'posts' | 'replies' | 'staffs'
+export type CollectionOption = 'clubs' | 'members' | 'staffs'
 
 // We should persist this in the local storage
 export type AnonymousId = string
+export type Email = string
 
 // Keep these types in sync with the real docs in firestore
 export type ClubDoc = {
@@ -18,18 +19,18 @@ export type MemberDoc = {
   year: number
   badge: string
 }
-export type ReplyDoc = {
-  by: DocumentReference | AnonymousId
-  likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
-  repliedAt: Timestamp
+export type TextDoc = {
+  by: Email | AnonymousId // stores email if logged in
+  createdAt: Timestamp
   text: string
+  name: string // The person who submits
+  badge: string | null // The badge of the poster who is also a member of a club, null if the poster is not in a club
 }
-export type PostDoc = {
-  by: DocumentReference | AnonymousId
-  likes: (DocumentReference | AnonymousId)[] // so that we know who likes this
-  postedAt: Timestamp
+export type ReplyDoc = TextDoc
+export type PostDoc = TextDoc & {
   replies: ReplyDoc[]
-  text: string
+  likes: (Email | AnonymousId)[] // so that we know who likes this
+  nLikes: number // number of likes, keep in sync with 'likes'
 }
 export type StaffDoc = {
   name: string

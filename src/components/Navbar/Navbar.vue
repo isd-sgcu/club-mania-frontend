@@ -6,7 +6,7 @@
           <img :src="PageIcon[theme.savedTheme]" class="py-2 w-18 md:w-22 lg:w-28 h-auto" />
         </router-link>
       </div>
-      <ci-hamburger class="open-menu" @click="toggleSearch" />
+      <ci-hamburger class="open-menu" @click="openSearch" />
       <ol class="main-menu">
         <router-link to="/wichakarn">
           <li>
@@ -37,8 +37,8 @@
       <!---Just for visual don't do anything special-->
       <div class="admin-block">
         <mdi-account-circle-outline class="w-4 md:w-6 h-auto mr-8px" />
-        <p>{{ user.savedName }}</p>
-        <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="toggleSearch" />
+        <p>{{ adminName }}</p>
+        <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="openSearch" />
       </div>
     </nav>
   </div>
@@ -46,63 +46,35 @@
   <div
     v-if="isSearch"
     class="fixed w-full h-full backdrop-filter backdrop-blur-[15px] bg-[rgba(0,0,0,0.5)] z-10 md:hidden"
-    @click="toggleSearch"
+    @click="closeSearch"
   />
   <!--This show when an user click the magnify icon or the dummy block-->
   <Sidebar
     :admin-name="user.savedName"
     :show="isSearch"
-    @collapse="toggleSearch"
-  >
-    <Searchbox
-      v-for="(item, index) in data"
-      :key="index"
-      :name="item.name"
-      :description="item.description"
-      :image="item.image"
-    />
-  </Sidebar>
+    @collapse="closeSearch"
+  />
 </template>
 
 <script setup lang="ts">
-// components
-import Searchbox from './Searchbox.vue'
 import { PageIcon } from '~/imagePath'
-
-// stores
+import { useSearchTerm } from '~/stores/searchTerm'
 import { useThemeStore } from '~/stores/themes'
 import { useUserStore } from '~/stores/user'
 
 const theme = useThemeStore()
-const user = useUserStore()
+const searchTerm = useSearchTerm()
 
 const isSearch = ref(false)
 
-const toggleSearch = () => {
-  isSearch.value = !isSearch.value
+const openSearch = () => {
+  isSearch.value = true
 }
-const data: any = [
-  {
-    name: 'ชมรมหมากกระดาน',
-    description: 'ชมรมอื่นๆ',
-    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
-  },
-  {
-    name: 'ชมรมถ่ายภาพ',
-    description: 'ชมรมฝ่ายศิลป์วัฒน์',
-    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
-  },
-  {
-    name: 'ชมรมภาพยนตร์',
-    description: 'ชมรมฝ่ายศิลป์วัฒน์',
-    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
-  },
-  {
-    name: 'ชมรมภาพศิลป์',
-    description: 'ชมรมฝ่ายศิลป์วัฒน์',
-    image: 'https://dummyimage.com/88x88/5c205c/ffffff.png',
-  },
-]
+
+const closeSearch = () => {
+  searchTerm.clearSavedTerm()
+  isSearch.value = false
+}
 </script>
 
 <style scoped>
