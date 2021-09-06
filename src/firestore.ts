@@ -25,6 +25,7 @@ export type TextDoc = {
   createdAt: Timestamp
   text: string
   name: string // The person who submits
+  badge: string | null // The badge of the poster who is also a member of a club, null if the poster is not in a club
 }
 export type ReplyDoc = TextDoc
 export type PostDoc = TextDoc & { replies: ReplyDoc[] }
