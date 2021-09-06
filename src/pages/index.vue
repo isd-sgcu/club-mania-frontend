@@ -38,15 +38,18 @@ import 'swiper/swiper-bundle.css'
 
 // Types
 import TextHeading from '~/components/typography/text-heading.vue'
-import { clubList } from '~/assets/clubs/clubList'
 import { Variant } from '~/components/Card/Main/types'
+import { clubList } from '~/assets/clubs/clubList'
+import { ThemeOption } from '~/types'
 
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination])
 
-const themes = ['Main', 'Gera', 'Pat', 'Wichakarn', 'SilpVat', 'Other'] as Variant[]
+const themes = ['Main', 'Gera', 'Pat', 'Vichagarn', 'SilpVat', 'Other'] as ThemeOption[]
+const variantList = ['Main', 'Gera', 'Pat', 'Wichakarn', 'SilpVat', 'Other'] as Variant[]
+
 const data = clubList.map((value) => {
-  const newVariant = themes.filter(each => each.toLowerCase() === value.category)[0]
+  const newVariant = variantList.filter(each => each.toLowerCase() === value.category)[0]
   return {
     text: value.name,
     imgUrl: value.logo,
