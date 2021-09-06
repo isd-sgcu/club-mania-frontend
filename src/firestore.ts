@@ -1,6 +1,6 @@
 import { DocumentReference, Timestamp } from 'firebase/firestore'
 
-export type CollectionOption = 'clubs' | 'members' | 'posts' | 'replies' | 'staffs'
+export type CollectionOption = 'clubs' | 'members' | 'staffs'
 
 // We should persist this in the local storage
 export type AnonymousId = string
