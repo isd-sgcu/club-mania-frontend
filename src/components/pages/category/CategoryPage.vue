@@ -3,19 +3,33 @@
     <Banner :theme="themeStore.savedTheme" :is-club="false" />
     <div class=" w-full flex flex-col items-center py-12 ">
       <CategoryTable v-if="themeStore.savedTheme === 'Pat'">
-        <PatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="item.colorPat || 'red'" />
+        <PatCard
+          v-for="(item, index) in data"
+          :key="index"
+          :href="item.href"
+          :text="item.text"
+          :img-url="item.imgUrl"
+          :color="item.colorPat || 'red'"
+        />
       </CategoryTable>
       <CategoryTable v-if="themeStore.savedTheme === 'SilpVat'">
-        <SilpvatCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
+        <SilpvatCard v-for="(item, index) in data" :key="index" :href="item.href" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
       <CategoryTable v-if="themeStore.savedTheme === 'Other'">
-        <OtherCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :color="item.colorOther || 'lightcyan'" />
+        <OtherCard
+          v-for="(item, index) in data"
+          :key="index"
+          :href="item.href"
+          :text="item.text"
+          :img-url="item.imgUrl"
+          :color="item.colorOther || 'lightcyan'"
+        />
       </CategoryTable>
       <CategoryTable v-if="themeStore.savedTheme === 'Gera'">
-        <GeraCard v-for="(item, index) in data" :key="index" href="/" :text="item.text" :img-url="item.imgUrl" />
+        <GeraCard v-for="(item, index) in data" :key="index" :href="item.href" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
       <CategoryTable v-if="themeStore.savedTheme === 'Vichagarn'">
-        <VichagarnCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" />
+        <VichagarnCard v-for="(item, index) in data" :key="index" :href="item.href" :text="item.text" :img-url="item.imgUrl" />
       </CategoryTable>
     </div>
   </div>
