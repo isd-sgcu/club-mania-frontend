@@ -30,7 +30,7 @@ const handleClick = () => {
 <template>
   <div class="max-w-[200px] box-border cursor-pointer" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <div class="flex flex-col" :class="!detect ? 'dark' : 'light'">
-      <img :src="imgUrl">
+      <img :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
       <div class="inner-frame">
         <text-sub2>{{ text }}</text-sub2>
       </div>
