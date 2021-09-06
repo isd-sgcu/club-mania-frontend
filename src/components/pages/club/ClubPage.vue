@@ -69,7 +69,7 @@
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
 import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, updateDoc, arrayUnion, addDoc, collection, setDoc, arrayRemove, deleteDoc, getDoc } from 'firebase/firestore'
-import { getNewPostDoc, setValuesIfIsMember } from '../../../utils'
+import { getNewPostDoc } from '../../../utils'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
 import { ClubDoc, PostDoc } from '~/firestore'
@@ -209,7 +209,7 @@ onMounted(async() => {
 
   const userStore = useUserStore()
   if (userStore.isMember(props.clubName) && userStore.badge === null)
-    userStore.setBadge(info.badge)
+    userStore.setBadge(staticInfo.value.badge)
 })
 
 onUnmounted(() => (unsubClub.value as Unsubscribe)())
