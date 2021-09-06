@@ -37,8 +37,7 @@ export const useUserStore = defineStore('user', () => {
    */
   const isMember = (clubName: string) => {
     if (clubOfUser.value === null) return false
-    const currentClubRef = doc(db.value!, 'clubs', clubName)
-    return clubOfUser.value === currentClubRef
+    return clubOfUser.value.path === `clubs/${clubName}`
   }
 
   /**
