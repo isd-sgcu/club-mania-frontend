@@ -37,8 +37,8 @@
       <!---Just for visual don't do anything special-->
       <div class="admin-block">
         <router-link to="/login">
-          <ri-logout-circle-r-line v-if="user.displayName" class="w-4 md:w-6 h-auto mr-8px hover:text-yellow-700" />
-          <mdi-account-circle-outline v-else class="w-4 md:w-6 h-auto mr-8px hover:text-yellow-700" />
+          <ri-logout-circle-r-line v-if="user.displayName" class="w-4 md:w-6 h-auto mr-4 hover:text-yellow-700" />
+          <mdi-account-circle-outline v-else class="w-4 md:w-6 h-auto mr-4 hover:text-yellow-700" />
         </router-link>
         <p>{{ displayName }}</p>
         <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="openSearch" />
