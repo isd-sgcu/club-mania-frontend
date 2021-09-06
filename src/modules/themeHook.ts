@@ -18,7 +18,7 @@ export const install: UserModule = ({ router, isClient }) => {
     router.afterEach(() => {
       const path = router.currentRoute.value.path.toLowerCase()
 
-      if (path === '/') {
+      if (path === '/' || path === '/login') {
         store.setNewTheme('Main')
         return
       }

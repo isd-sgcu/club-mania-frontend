@@ -3,14 +3,6 @@
     <Banner theme="Main" :is-club="false" class="cursor-default pointer-events-none" />
     <div class="flex justify-center ml-6 mr-6 mt-10 mb-10">
       <form class="w-full max-w-[500px] flex flex-col" @submit.prevent="handleLogin">
-        <!-- <text-sub2 class="text">
-          ชื่อผู้ใช้
-        </text-sub2>
-        <input v-model="username" class="input" type="text" />
-        <text-sub2 class="text">
-          รหัสผ่าน
-        </text-sub2>
-        <input v-model="password" class="input" type="password" /> -->
         <button
           v-if="!auth?.currentUser"
           type="submit"
@@ -19,7 +11,7 @@
           เข้าสู่ระบบด้วย Google
         </button>
         <button
-          v-if="auth?.currentUser"
+          v-else
           type="button"
           class="text-white font-Mitr h-13 bg-button pt-3 pb-3 text-size-[1rem] sm:text-size-[1.25rem] mt-6"
           @click="handleSignout"
@@ -50,8 +42,6 @@ import { useUserStore } from '~/stores/user'
 
 const router = useRouter()
 const store = useUserStore()
-// const username = ref('')
-// const password = ref('')
 
 const isLoginFailed = ref(false)
 
@@ -63,7 +53,7 @@ const handleLogin = async() => {
     // set user data in user store
     clearAllStorage()
     identifyUser() // checks if is a member of a staff
-    router.push('/')
+    router.back()
   }
   catch (error: any) {
     // eslint-disable-next-line no-console
