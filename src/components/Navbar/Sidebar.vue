@@ -23,7 +23,7 @@
           พัฒน์
         </li>
       </router-link>
-      <router-link to="/other">
+      <router-link to="/other" @click="$emit('collapse')">
         <li>
           อื่นๆ
         </li>
@@ -57,8 +57,9 @@
       class="absolute w-full bottom-0 flex items-center h-12
       border-[#3D3D3D] border-t-1 text-white pl-3 text-center md:hidden"
     >
-      <router-link to="/login">
-        <mdi-account-circle-outline class="w-4 h-auto mr-8px md:w-6 hover:text-yellow-700" />
+      <router-link to="/login" @click="$emit('collapse')">
+        <ri-logout-circle-r-line v-if="user.displayName" class="w-4 h-auto mr-8px md:w-6 hover:text-yellow-700" />
+        <mdi-account-circle-outline v-else class="w-4 h-auto mr-8px md:w-6 hover:text-yellow-700" />
       </router-link>
       <p class="whitespace-nowrap overflow-hidden overflow-ellipsis">
         {{ adminName }}
@@ -69,6 +70,7 @@
 
 <script setup lang="ts">
 import { useSearchTerm } from '~/stores/searchTerm'
+import { useUserStore } from '~/stores/user'
 import { PageIcon } from '~/imagePath'
 
 const props = defineProps<{
@@ -81,6 +83,7 @@ defineEmits<{
 }>()
 
 const searchTerm = useSearchTerm()
+const user = useUserStore()
 const foundClubs = computed(() => searchTerm.getClubs())
 
 const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' })

@@ -37,7 +37,8 @@
       <!---Just for visual don't do anything special-->
       <div class="admin-block">
         <router-link to="/login">
-          <mdi-account-circle-outline class="w-4 md:w-6 h-auto mr-8px hover:text-yellow-700" />
+          <ri-logout-circle-r-line v-if="user.displayName" class="w-4 md:w-6 h-auto mr-8px hover:text-yellow-700" />
+          <mdi-account-circle-outline v-else class="w-4 md:w-6 h-auto mr-8px hover:text-yellow-700" />
         </router-link>
         <p>{{ displayName }}</p>
         <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="openSearch" />
@@ -112,7 +113,7 @@ const closeSearch = () => {
   @apply relative flex items-center h-64px justify-self-end <md:hidden;
 }
 .admin-block p{
-  @apply font-Navbar w-133px h-32px bg-transparent pt-2px md:pt-6px opacity-75
+  @apply font-Navbar min-w-30 h-32px bg-transparent pt-2px md:pt-6px opacity-75
     cursor-default whitespace-nowrap overflow-hidden overflow-ellipsis;
 }
 
