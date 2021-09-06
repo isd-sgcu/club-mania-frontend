@@ -48,12 +48,12 @@
         </div>
       </div>
     </div>
-    <div>
-      <h2 class="block text-center text-xs tracking-wide uppercase text-white font-Roboto">
+    <div class="sm:(mb-3)">
+      <h2 class="block text-center text-xs tracking-wide sm:(text-left ml-5 inline text-0.9rem) uppercase text-white font-Roboto">
         Sponsored by
       </h2>
-      <div class="space-x-2 text-center my-2">
-        <a v-for="sp in sponsors" :key="sp.link" :href="sp.link" target="_blank"><img class="cover-center h-10 w-10 inline rounded border-1px border-white cursor-pointer" :src="sp.imageUrl"></a>
+      <div class="space-x-2 text-center my-2 sm:(text-left ml-5 inline)">
+        <a v-for="sp in sponsors" :key="sp.link" :href="sp.link" target="_blank"><img class="cover-center h-10 w-10 md:() inline rounded border-1px border-white cursor-pointer" :src="sp.imageUrl"></a>
       </div>
     </div>
   </footer>
