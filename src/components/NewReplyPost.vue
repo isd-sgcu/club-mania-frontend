@@ -4,7 +4,7 @@
       <input
         v-if="!asAnonymous"
         v-model="customName"
-        maxlength="25"
+        maxlength="12"
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ"
