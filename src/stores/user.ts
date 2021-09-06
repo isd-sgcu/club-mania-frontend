@@ -54,7 +54,7 @@ export const useUserStore = defineStore('user', () => {
    * @param clubRef Reference to the club documents
    * @param y year of the student from the document
    */
-  const setMemberValues = async(
+  const setMemberValues = (
     nickname: string,
     clubRef: DocumentReference,
     y: number,
