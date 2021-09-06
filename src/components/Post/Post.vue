@@ -2,7 +2,7 @@
   <BackgroundSection>
     <div class="space-y-3 relative">
       <!-- close icon -->
-      <div v-show="showDeleteIcon" @click="emitDelete">
+      <div v-show="userStore.asStaff || showDeleteIcon" @click="emitDelete">
         <svg
           width="1.2em"
           height="1.2em"
@@ -98,7 +98,6 @@ const unsubPost = ref<Unsubscribe | null>(null)
 const showDeleteIcon = ref(false)
 
 const decideShowDeleteIcon = () => {
-  if (userStore.asStaff) return true
   if (userStore.isMember(props.clubName)) {
     showDeleteIcon.value = true
     return
