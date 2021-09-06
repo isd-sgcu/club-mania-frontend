@@ -36,8 +36,10 @@
       </ol>
       <!---Just for visual don't do anything special-->
       <div class="admin-block">
-        <mdi-account-circle-outline class="w-4 md:w-6 h-auto mr-8px" />
-        <p>{{ adminName }}</p>
+        <router-link to="/login">
+          <mdi-account-circle-outline class="w-4 md:w-6 h-auto mr-8px hover:text-yellow-700" />
+        </router-link>
+        <p>{{ displayName }}</p>
         <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="openSearch" />
       </div>
     </nav>
@@ -50,7 +52,7 @@
   />
   <!--This show when an user click the magnify icon or the dummy block-->
   <Sidebar
-    :admin-name="user.savedName"
+    :admin-name="displayName"
     :show="isSearch"
     @collapse="closeSearch"
   />
@@ -63,9 +65,11 @@ import { useThemeStore } from '~/stores/themes'
 import { useUserStore } from '~/stores/user'
 
 const theme = useThemeStore()
+const user = useUserStore()
 const searchTerm = useSearchTerm()
 
 const isSearch = ref(false)
+const displayName = computed(() => user.displayName ? user.displayName : 'Anonymous')
 
 const openSearch = () => {
   isSearch.value = true
@@ -109,7 +113,7 @@ const closeSearch = () => {
 }
 .admin-block p{
   @apply font-Navbar w-133px h-32px bg-transparent pt-2px md:pt-6px opacity-75
-    cursor-default overflow-ellipsis;
+    cursor-default whitespace-nowrap overflow-hidden overflow-ellipsis;
 }
 
 </style>

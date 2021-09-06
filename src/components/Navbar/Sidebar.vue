@@ -55,10 +55,14 @@
     <div
       v-if="searchTerm.savedTerm === ''"
       class="absolute w-full bottom-0 flex items-center h-12
-      border-[#3D3D3D] border-t-1 text-white pl-6 py-3 md:hidden"
+      border-[#3D3D3D] border-t-1 text-white pl-3 text-center md:hidden"
     >
-      <mdi-account-circle-outline class="w-4 md:w-6 h-auto mr-8px" />
-      <p>{{ adminName }}</p>
+      <router-link to="/login">
+        <mdi-account-circle-outline class="w-4 h-auto mr-8px md:w-6 hover:text-yellow-700" />
+      </router-link>
+      <p class="whitespace-nowrap overflow-hidden overflow-ellipsis">
+        {{ adminName }}
+      </p>
     </div>
   </div>
 </template>
