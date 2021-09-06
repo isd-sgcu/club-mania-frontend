@@ -76,6 +76,8 @@ export const setValuesIfIsMember = async() => {
     return
   }
 
+  store.setDisplayName(user.displayName)
+
   // checks if user is a member of a club
   // const membersCollectionRef = getCollectionRef('members')
   // const q = query(membersCollectionRef, where(user.email,))

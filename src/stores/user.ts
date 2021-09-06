@@ -4,6 +4,7 @@ import { db } from '~/firebase'
 
 export const useUserStore = defineStore('user', () => {
   const clubOfUser = ref<DocumentReference | null>(null) // club route
+  // displayName is the nickname of the club member if this user is a member of a club or the default display name of the google account
   const displayName = ref<string | null>(null)
   const badge = ref<string | null>(null)
 
