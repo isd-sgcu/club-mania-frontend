@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { arrayRemove, arrayUnion, DocumentReference, updateDoc } from 'firebase/firestore'
+import { arrayRemove, arrayUnion, DocumentReference, increment, updateDoc } from 'firebase/firestore'
 import { auth } from '~/firebase'
 import { AnonymousId, Email } from '~/firestore'
 import { useThemeStore } from '~/stores/themes'
@@ -57,11 +57,13 @@ const toggle = () => {
   if (likeStatus.value) {
     updateDoc(props.postRef, {
       likes: arrayRemove(userEmailOrAnonymousId.value),
+      nLikes: increment(-1),
     })
   }
   else {
     updateDoc(props.postRef, {
       likes: arrayUnion(userEmailOrAnonymousId.value),
+      nLikes: increment(1),
     })
   }
 }

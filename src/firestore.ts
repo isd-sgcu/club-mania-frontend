@@ -21,14 +21,17 @@ export type MemberDoc = {
 }
 export type TextDoc = {
   by: Email | AnonymousId // stores email if logged in
-  likes: (Email | AnonymousId)[] // so that we know who likes this
   createdAt: Timestamp
   text: string
   name: string // The person who submits
   badge: string | null // The badge of the poster who is also a member of a club, null if the poster is not in a club
 }
 export type ReplyDoc = TextDoc
-export type PostDoc = TextDoc & { replies: ReplyDoc[] }
+export type PostDoc = TextDoc & {
+  replies: ReplyDoc[]
+  likes: (Email | AnonymousId)[] // so that we know who likes this
+  nLikes: number // number of likes, keep in sync with 'likes'
+}
 export type StaffDoc = {
   name: string
   studentId: string
