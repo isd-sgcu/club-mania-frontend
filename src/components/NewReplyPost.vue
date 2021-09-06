@@ -49,7 +49,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'submit', text: string, customName: string): void
+  (e: 'submit', text: string, customName?: string): void
   (e: 'textChange', text: string): void
   (e: 'toggle', activeState: boolean): void
 }>()
@@ -75,7 +75,7 @@ const onToggle = (activeState: boolean) => {
 }
 const submit = () => {
   if (isEmpty.value) return
-  emit('submit', currentText.value, customName.value)
+  emit('submit', currentText.value, customName.value === '' ? undefined : customName.value)
   currentText.value = ''
 }
 
