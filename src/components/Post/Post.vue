@@ -26,8 +26,8 @@
         <LikeButton
           :fill-color="fillColor"
           :like-status="likeStatus"
-          :likes="3"
-          @toggle-like="onToggleLike"
+          :likes="postDoc ? postDoc.likes : []"
+          :post-ref="props.post"
         />
         <ReplyButton :fill-color="fillColor" @click="onReplyClicked" />
       </div>
@@ -62,14 +62,6 @@
           <div class="space-y-2 pb-3">
             <PostHeader :publisher="reply.name" :created-at="reply.createdAt" :badge="postDoc.badge" />
             <TextFrame :disabled="true" :value="reply.text" />
-            <div class="space-x-3 flex items-center">
-              <LikeButton
-                :fill-color="fillColor"
-                :like-status="likeStatus"
-                :likes="5"
-                @toggle-like="onToggleLike"
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -120,9 +112,6 @@ const decideShowDeleteIcon = () => {
 
 const onReplyClicked = () => {
   replyActive.value = !replyActive.value
-}
-const onToggleLike = (like: boolean) => {
-  likeStatus.value = like
 }
 const toggleShowMore = () => {
   showingMore.value = !showingMore.value
