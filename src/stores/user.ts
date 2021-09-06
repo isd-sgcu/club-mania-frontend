@@ -1,6 +1,6 @@
-import { doc, DocumentReference } from 'firebase/firestore'
+import { doc, DocumentReference, getDoc } from 'firebase/firestore'
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import { db } from '~/firebase'
+import { auth, db } from '~/firebase'
 import { getFromLocal, setToLocal } from '~/utils'
 
 export const useUserStore = defineStore('user', () => {
@@ -9,11 +9,12 @@ export const useUserStore = defineStore('user', () => {
   const displayName = ref<string | null>(null)
   const badge = ref<string | null>(null)
   const year = ref<number | null>(null)
+  const asStaff = ref(false) // tells if this user is a staff of the site
 
   // Check if staff data is in local storage
-  const presistedData = getFromLocal('staffAccount')
-  if (presistedData) {
-    const userData = JSON.parse(presistedData)
+  const persistedData = getFromLocal('staffAccount')
+  if (persistedData) {
+    const userData = JSON.parse(persistedData)
     displayName.value = userData.nickname
     clubOfUser.value = userData.clubRef
     year.value = userData.year
@@ -38,6 +39,16 @@ export const useUserStore = defineStore('user', () => {
     if (clubOfUser.value === null) return false
     const currentClubRef = doc(db.value!, 'clubs', clubName)
     return clubOfUser.value === currentClubRef
+  }
+
+  /**
+   * Sets the value of asStaff by looking of the logged in user's email
+   */
+  const setAsStaff = async() => {
+    const user = auth.value!.currentUser
+    if (!user) return false
+    const staffDoc = await getDoc(doc(db.value!, 'staffs', user.email!))
+    asStaff.value = staffDoc.exists()
   }
 
   /**
@@ -100,6 +111,7 @@ export const useUserStore = defineStore('user', () => {
     setMemberValues,
     isMember,
     setYear,
+    setAsStaff,
   }
 })
 

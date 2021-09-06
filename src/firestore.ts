@@ -32,8 +32,4 @@ export type PostDoc = TextDoc & {
   likes: (Email | AnonymousId)[] // so that we know who likes this
   nLikes: number // number of likes, keep in sync with 'likes'
 }
-export type StaffDoc = {
-  name: string
-  studentId: string
-  year: number
-}
+export type StaffDoc = {} // We just need emails of staffs as the document ids
