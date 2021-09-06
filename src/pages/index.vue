@@ -14,7 +14,7 @@
     </swiper>
     <!---Main content-->
     <div class=" w-full flex flex-col items-center py-12 ">
-      <TextHeading>
+      <TextHeading class="md:mb-8">
         สำรวจชมรม
       </TextHeading>
       <CategoryTable>
