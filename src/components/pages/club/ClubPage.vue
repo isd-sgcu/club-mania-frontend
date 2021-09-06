@@ -36,7 +36,7 @@
             <!-- new new post -->
             <section class="space-y-4">
               <h5 class="<sm:(text-1.3rem) text-md" :class="`text-${clubNameClr}`">
-                ความคิดเห็น
+                ความคิดเห็น/ถามคำถาม
               </h5>
               <BackgroundSection>
                 <NewReplyPost :is-anonymous="isAnonymous" @submit="post" />
@@ -69,7 +69,7 @@
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
 import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, updateDoc, arrayUnion, addDoc, collection, setDoc } from 'firebase/firestore'
-import { getNewPostReplyDoc, setValuesIfIsMember } from '../../../utils'
+import { getNewPostDoc, setValuesIfIsMember } from '../../../utils'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
 import { ClubDoc, PostDoc } from '~/firestore'
@@ -147,7 +147,7 @@ const popularFilterOnClick = (activeState: boolean) => {
 }
 
 const post = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
-  const postDoc: PostDoc = getNewPostReplyDoc(text, customName)
+  const postDoc: PostDoc = getNewPostDoc(text, customName)
 
   const postRef = await addDoc(collection(clubRef.value as DocumentReference, 'posts'), postDoc)
 
