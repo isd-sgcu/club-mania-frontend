@@ -1,6 +1,7 @@
 import { doc, DocumentReference } from 'firebase/firestore'
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { db } from '~/firebase'
+import { getFromLocal, setToLocal } from '~/utils'
 
 export const useUserStore = defineStore('user', () => {
   const clubOfUser = ref<DocumentReference | null>(null) // ref to the club of this member
@@ -8,6 +9,20 @@ export const useUserStore = defineStore('user', () => {
   const displayName = ref<string | null>(null)
   const badge = ref<string | null>(null)
   const year = ref<number | null>(null)
+
+  // Check if staff data is in local storage
+  const presistedData = getFromLocal('staffAccount')
+  if (presistedData) {
+    const userData = JSON.parse(presistedData)
+    displayName.value = userData.nickname
+    clubOfUser.value = userData.clubRef
+    year.value = userData.year
+  }
+  else {
+    // staff data isn't in local storage then find anonymousCustomName
+    const customName = getFromLocal('anonymousCustomName')
+    if (customName) displayName.value = customName
+  }
 
   const reset = () => {
     // We don't reset displayName because we still want anonymous user's custom name to persist
@@ -36,6 +51,8 @@ export const useUserStore = defineStore('user', () => {
    * @param name display name of the club member or the auth.user.displayName which can be null
    */
   const setDisplayName = (name: string | null) => {
+    if (name)
+      setToLocal('anonymousCustomName', name) // save to local storage
     displayName.value = name
   }
   const setClubOfUser = (clubRef: DocumentReference) => {
@@ -63,6 +80,13 @@ export const useUserStore = defineStore('user', () => {
     displayName.value = nickname
     clubOfUser.value = clubRef
     year.value = y
+
+    const storedData = {
+      nickname,
+      clubRef,
+      year: y,
+    }
+    setToLocal('staffAccount', JSON.stringify(storedData))
   }
 
   return {

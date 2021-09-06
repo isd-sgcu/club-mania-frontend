@@ -207,7 +207,6 @@ onMounted(async() => {
     }
   })
 
-  await setValuesIfIsMember()
   const userStore = useUserStore()
   if (userStore.isMember(props.clubName) && userStore.badge === null)
     userStore.setBadge(info.badge)

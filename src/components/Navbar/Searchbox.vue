@@ -8,7 +8,7 @@
       <p class="font-Mitr max-w-44 text-white font-300 text-[10px] leading-[16px] md:hidden">
         {{ name }}
       </p>
-      <text-sub2 class="text-purple-700 max-w-65 overflow-clip <md:hidden <lg:text-[18px]">
+      <text-sub2 class="text-purple-700 max-w-65 <md:hidden <lg:text-[18px]">
         {{ name }}
       </text-sub2>
       <text-body2 class=" <md:hidden <lg:text-[10px]">

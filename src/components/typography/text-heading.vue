@@ -1,5 +1,5 @@
 <template>
-  <span class="font-Mitr text-white text-[42px] leading-[26px] md:(text-[72px] leading-[56px])">
+  <span class="font-Mitr text-white text-[32px] leading-[24px] md:(text-[72px] leading-[56px])">
     <slot />
   </span>
 </template>

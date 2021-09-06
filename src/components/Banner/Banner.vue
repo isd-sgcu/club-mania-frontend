@@ -4,7 +4,7 @@
 
 <template>
   <div class="club-banner" :class="{'items-center justify-center': !isClub}" @click="directTo">
-    <img :src="isClub? ClubBanner[theme] :CategoryBanner[theme]" :alt="theme" class="w-full cover-center h-200px md:h-260px lg:(min-h-312px h-auto max-h-500px)">
+    <img :src="isClub? ClubBanner[theme] :CategoryBanner[theme]" :alt="theme" class="w-full cover-center h-180px md:h-260px lg:(min-h-312px h-auto max-h-500px)">
     <span v-if="theme === 'Gera'" class="gera-glow" :class="{'md:text-[48px] xl:text-[64px] left-13/100 bottom-33/100': isClub}">
       <p class="gera-border">
         {{ displayText }}

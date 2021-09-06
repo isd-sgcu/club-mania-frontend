@@ -20,7 +20,7 @@ export type ClubStaticInfo = {
 
 export type InfoTopicOption = 'เกี่ยวกับชมรม' | 'สิ่งที่น้อง ๆ จะได้รับ' | 'ช่วงเวลาที่รับสมัคร' | 'ช่องทางการติดต่อ'
 
-export type LocalStorageKeys = 'anonymousId' | 'anonymousCustomName'
+export type LocalStorageKeys = 'anonymousId' | 'anonymousCustomName' | 'staffAccount'
 
 export type AnonymousName = 'บุคคลนิรนาม'
 
