@@ -50,7 +50,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'submit', text: string, customName?: string): void
+  (e: 'submit', text: string, customName?: string, asAnonymous: boolean): void
   (e: 'textChange', text: string): void
   (e: 'toggle', activeState: boolean): void
 }>()
@@ -101,7 +101,7 @@ const onToggle = (activeState: boolean) => {
 }
 const submit = () => {
   if (isEmpty.value) return
-  emit('submit', currentText.value, customName.value === '' ? undefined : customName.value)
+  emit('submit', currentText.value, customName.value === '' ? undefined : customName.value, asAnonymous.value)
   currentText.value = ''
 
   // saves new custom name to local storage and user store if the poster is anonymous user

@@ -157,8 +157,8 @@ const popularFilterOnClick = (activeState: boolean) => {
   isLastestFilterChosen.value = !activeState
 }
 
-const post = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
-  const postDoc: PostDoc = getNewPostDoc(text, customName)
+const post = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม', asAnonymous: boolean) => {
+  const postDoc: PostDoc = getNewPostDoc(text, asAnonymous ? 'บุคคลนิรนาม' : customName)
   const postRef = await addDoc(collection(clubRef.value as DocumentReference, 'posts'), postDoc)
   updateDoc(clubRef.value as DocumentReference, {
     posts: arrayUnion(postRef),
