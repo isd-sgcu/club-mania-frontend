@@ -8,6 +8,7 @@
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ (12)"
+        :disabled="nameEditable"
       />
       <TextFrame
         :show-discard-icon="true"
@@ -83,6 +84,9 @@ const initCustomName = () => {
 const currentText = ref('')
 const customName = ref(initCustomName())
 const asAnonymous = ref(customName.value === '')
+const nameEditable = ref(
+  auth.value!.currentUser !== null && customName.value,
+)
 
 const isEmpty = computed(() => {
   return currentText.value === ''
