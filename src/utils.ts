@@ -91,6 +91,7 @@ export const getNewReplyDoc = (text: string, customName: string, asAnonymous: bo
    * if yes, then set 'nickname', 'club ref', and 'year' to the user store.
    * If the user is not logged in, reset the values
    * @note This does not set the badge
+   * @returns True if is a member of a club else False
    */
 export const setValuesIfIsMember = async() => {
   // checks if is a member of a club
@@ -103,7 +104,7 @@ export const setValuesIfIsMember = async() => {
   // user is not logged in
   if (!user) {
     store.reset()
-    return
+    return false
   }
 
   store.setDisplayName(user.displayName)
@@ -116,7 +117,7 @@ export const setValuesIfIsMember = async() => {
 
   if (!userSnap.exists()) {
     store.reset()
-    return
+    return false
   }
 
   const userDoc = userSnap.data() as MemberDoc
@@ -125,4 +126,15 @@ export const setValuesIfIsMember = async() => {
     userDoc.club,
     userDoc.year,
   )
+  return true
+}
+
+/**
+ * Checks if a logged in user is a member of a club or is a staff.
+ * This also sets values to the user store
+ */
+export const identifyUser = async() => {
+  setValuesIfIsMember()
+  const userStore = useUserStore()
+  await userStore.setAsStaff()
 }

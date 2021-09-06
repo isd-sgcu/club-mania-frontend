@@ -43,12 +43,13 @@ export const useUserStore = defineStore('user', () => {
 
   /**
    * Sets the value of asStaff by looking of the logged in user's email
+   * @returns True if is a staff else False
    */
   const setAsStaff = async() => {
     const user = auth.value!.currentUser
     if (!user) return false
     const staffDoc = await getDoc(doc(db.value!, 'staffs', user.email!))
-    asStaff.value = staffDoc.exists()
+    return asStaff.value = staffDoc.exists()
   }
 
   /**

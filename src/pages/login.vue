@@ -45,7 +45,7 @@ import { useRouter } from 'vue-router'
 import { signInWithPopup, GoogleAuthProvider, Auth, signOut } from 'firebase/auth'
 import { auth } from '~/firebase'
 
-import { clearAllStorage, setValuesIfIsMember } from '~/utils'
+import { clearAllStorage, identifyUser } from '~/utils'
 import { useUserStore } from '~/stores/user'
 
 const router = useRouter()
@@ -62,7 +62,7 @@ const handleLogin = async() => {
     await signInWithPopup(auth.value as Auth, provider)
     // set user data in user store
     clearAllStorage()
-    await setValuesIfIsMember()
+    identifyUser() // checks if is a member of a staff
     router.push('/')
   }
   catch (error: any) {
