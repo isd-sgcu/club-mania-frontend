@@ -21,19 +21,15 @@
         />
       </div>
     </div>
-    <div v-else-if="props.images.length >= 4 " class="flex flex-col h-auto max-w-[600px] w-full mb-5">
-      <div class="flex w-full mb-2 box-content">
-        <img class="w-full rounded-lg w-1/2 mr-2 cover-center" :src="images[0]" :alt="clubName" />
-        <img class="w-full rounded-lg w-1/2 cover-center" :src="images[1]" :alt="clubName" />
-      </div>
-      <div class="flex w-full">
-        <img class="w-full rounded-lg mr-2 cover-center box-border" :src="images[2]" :alt="clubName" />
-        <div class="w-full relative">
-          <div class="absolute w-full h-full rounded-lg more-detail grid place-content-center">
-            <IcOutlinePlus color="white" font-size="80" />
-          </div>
-          <img class="w-full rounded-lg cover-center " :src="images[3]" :alt="clubName" />
+    <div v-else-if="props.images.length >= 4 " class="flex flex-col h-auto max-w-[600px] w-full grid grid-cols-2 grid-rows-2 gap-3">
+      <img class="w-full rounded-lg cover-center" :src="images[0]" :alt="clubName" />
+      <img class="w-full rounded-lg cover-center" :src="images[1]" :alt="clubName" />
+      <img class="w-full rounded-lg cover-center" :src="images[2]" :alt="clubName" />
+      <div class="relative">
+        <div class="absolute w-full h-full more-detail grid place-content-center">
+          <IcOutlinePlus color="white" font-size="60px" />
         </div>
+        <img class="w-full rounded-lg cover-center" :src="images[3]" :alt="clubName" />
       </div>
     </div>
   </div>
