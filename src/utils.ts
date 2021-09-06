@@ -59,7 +59,8 @@ export const getNewPostReplyDoc = (text: string, customName: string) => {
 }
 
 /**
-   * Checks if a currently logged in user is a member of a club if yes set nickname, club ref, and year to the user store.
+   * Checks if a currently logged in user is a member of a club,
+   * if yes, then set 'nickname', 'club ref', and 'year' to the user store.
    * If the user is not logged in, reset the values
    * @note This does not set the badge
    */
