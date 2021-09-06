@@ -44,7 +44,7 @@
       <div v-if="showingMore && postDoc" class="space-y-2">
         <div v-for="(reply, idx) in postDoc.replies" :key="idx" :class="commentMarginLeft">
           <div class="space-y-2 pb-3">
-            <PostHeader :publisher="reply.by" :created-at="reply.createdAt" />
+            <PostHeader :publisher="reply.name" :created-at="reply.createdAt" />
             <TextFrame :disabled="true" :value="reply.text" />
             <div class="space-x-3 flex items-center">
               <LikeButton
