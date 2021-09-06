@@ -69,12 +69,13 @@
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
 import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, Timestamp, updateDoc, arrayUnion, addDoc, collection, setDoc } from 'firebase/firestore'
+import { getAnonymousId, setValuesIfIsMember } from '../../../utils'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
 import { ClubDoc, PostDoc } from '~/firestore'
 import { db, auth } from '~/firebase'
-import { ClubStaticInfo, InfoTopicOption } from '~/types'
-import { getAnonymousId } from '../../../utils'
+import { AnonymousName, ClubStaticInfo, InfoTopicOption } from '~/types'
+import { useUserStore } from '~/stores/user'
 
 const { clubTypeColor, clubNameColor } = useClubConfig()
 const themeStore = useThemeStore()
@@ -145,14 +146,16 @@ const popularFilterOnClick = (activeState: boolean) => {
   isLastestFilterChosen.value = !activeState
 }
 
-const post = async(text: string) => {
+const post = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
+  const store = useUserStore()
   const user = auth.value!.currentUser
   const postDoc: PostDoc = {
-    by: user ? user.email : getAnonymousId(),
+    by: user ? user.email! : getAnonymousId(),
     likes: [],
     postedAt: Timestamp.fromDate(new Date()),
     replies: [],
     text,
+    name: user ? store.displayName : customName,
   }
 
   const postRef = await addDoc(collection(clubRef.value as DocumentReference, 'posts'), postDoc)
@@ -171,8 +174,14 @@ const createClubDoc = async(clubRef: DocumentReference) => {
 }
 
 onMounted(async() => {
-  const { info } = await import(`../../../assets/clubs/${props.category}/${props.clubName}.js`)
+  const { info }: { info: ClubStaticInfo }
+    = await import(`../../../assets/clubs/${props.category}/${props.clubName}.js`)
   staticInfo.value = info
+
+  setValuesIfIsMember()
+  const userStore = useUserStore()
+  if (userStore.isMember(props.clubName) && userStore.badge === null)
+    userStore.setBadge(info.badge)
 
   clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)
   unsubClub.value = onSnapshot(clubRef.value, async(snap) => {
