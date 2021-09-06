@@ -2,9 +2,11 @@
   <BackgroundSection>
     <div class="space-y-3 relative">
       <!-- header -->
-      <PostHeader v-if="postDoc" :publisher="postDoc.name" :created-at="postDoc.createdAt" />
+      <PostHeader v-if="postDoc" :publisher="postDoc.name" :created-at="postDoc.createdAt" :badge="postDoc.badge" />
       <!-- text of the post -->
-      <TextFrame v-if="postDoc" :value="postDoc.text" :disabled="true">{{ postDoc.text }}</TextFrame>
+      <TextFrame v-if="postDoc" :value="postDoc.text" :disabled="true">
+        {{ postDoc.text }}
+      </TextFrame>
       <!-- like/reply buttons -->
       <div class="flex md:(space-x-1)">
         <LikeButton
@@ -44,7 +46,7 @@
       <div v-if="showingMore && postDoc" class="space-y-2">
         <div v-for="(reply, idx) in postDoc.replies" :key="idx" :class="commentMarginLeft">
           <div class="space-y-2 pb-3">
-            <PostHeader :publisher="reply.name" :created-at="reply.createdAt" />
+            <PostHeader :publisher="reply.name" :created-at="reply.createdAt" :badge="postDoc.badge" />
             <TextFrame :disabled="true" :value="reply.text" />
             <div class="space-x-3 flex items-center">
               <LikeButton
@@ -62,14 +64,12 @@
 </template>
 
 <script setup lang="ts">
-import { DocumentReference, onSnapshot, Timestamp, Unsubscribe, updateDoc, arrayUnion } from 'firebase/firestore'
+import { DocumentReference, onSnapshot, Unsubscribe, updateDoc, arrayUnion } from 'firebase/firestore'
 import { onUnmounted } from 'vue'
-import { auth } from '../../firebase'
 import { PostDoc, ReplyDoc } from '~/firestore'
 import { useThemeStore } from '~/stores/themes'
-import { getAnonymousId } from '~/utils'
+import { getNewReplyDoc } from '~/utils'
 import { AnonymousName } from '~/types'
-import { useUserStore } from '~/stores/user'
 
 const themeStore = useThemeStore()
 
@@ -93,16 +93,8 @@ const toggleShowMore = () => {
   showingMore.value = !showingMore.value
 }
 
-const reply = async (text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
-  const store = useUserStore()
-  const user = auth.value!.currentUser
-  const replyDoc: ReplyDoc = {
-    by: user ? user.email as string : getAnonymousId(),
-    likes: [],
-    createdAt: Timestamp.fromDate(new Date()),
-    text,
-    name: user ? store.displayName : customName,
-  }
+const reply = async(text: string, customName: string | AnonymousName = 'บุคคลนิรนาม') => {
+  const replyDoc: ReplyDoc = getNewReplyDoc(text, customName)
   updateDoc(props.post, {
     replies: arrayUnion(replyDoc),
   })
