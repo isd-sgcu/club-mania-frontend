@@ -12,7 +12,7 @@
         {{ name }}
       </text-sub2>
       <text-body2 class=" <md:hidden <lg:text-[10px]">
-        {{ description }}
+        {{ textMap.get(description) }}
       </text-body2>
     </div>
   </router-link>
@@ -27,4 +27,10 @@ defineProps<{
   embedLink: string
 }>()
 
+const textMap = new Map<string, string>()
+textMap.set('wichakarn', 'ฝ่ายวิชาการ')
+textMap.set('pat', 'ฝ่ายพัฒนาสังคมและบำเพ็ญประโยชน์')
+textMap.set('silpvat', 'ฝ่ายศิลปวัฒนธรรม')
+textMap.set('geela', 'ฝ่ายกีฬา')
+textMap.set('other', 'ชมรมอื่นๆ')
 </script>
