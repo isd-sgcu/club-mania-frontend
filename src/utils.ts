@@ -134,7 +134,7 @@ export const setValuesIfIsMember = async() => {
  * This also sets values to the user store
  */
 export const identifyUser = async() => {
-  setValuesIfIsMember()
+  await setValuesIfIsMember()
   const userStore = useUserStore()
   await userStore.setAsStaff()
 }
