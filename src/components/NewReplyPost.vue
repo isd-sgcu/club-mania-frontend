@@ -7,7 +7,7 @@
         :maxlength="maxLength"
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
-        placeholder="ใส่ชื่อของคุณ"
+        placeholder="ใส่ชื่อของคุณ (12)"
       />
       <TextFrame
         :show-discard-icon="true"
