@@ -18,7 +18,14 @@
         สำรวจชมรม
       </TextHeading>
       <CategoryTable>
-        <MainCard v-for="(item, index) in data" :key="index" :text="item.text" :img-url="item.imgUrl" :type="item.variant" />
+        <MainCard
+          v-for="(item, index) in data"
+          :key="index"
+          :text="item.text"
+          :img-url="item.imgUrl"
+          :type="item.variant"
+          :href="item.href"
+        />
       </CategoryTable>
     </div>
   </div>
@@ -50,10 +57,12 @@ const variantList = ['Main', 'Gera', 'Pat', 'Wichakarn', 'SilpVat', 'Other'] as 
 
 const data = clubList.map((value) => {
   const newVariant = variantList.filter(each => each.toLowerCase() === value.category)[0]
+  console.log(value.url)
   return {
     text: value.name,
     imgUrl: value.logo,
     variant: newVariant,
+    href: value.url,
   }
 })
 
