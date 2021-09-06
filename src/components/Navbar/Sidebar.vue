@@ -38,7 +38,12 @@
     </div>
     <!---Search result add here!--->
     <div v-if="searchTerm !== ''" class="result-container">
-      <slot></slot>
+      <searchbox
+        v-for="item in foundClubs"
+        :key="item.name"
+        :name="item.name"
+        :description="item.category"
+      />
     </div>
     <div
       v-if="searchTerm === ''"
@@ -52,6 +57,9 @@
 </template>
 
 <script setup lang="ts">
+import { clubList } from '~/assets/clubs/clubList'
+
+import { Club } from '~/types'
 import { PageIcon } from '~/imagePath'
 
 const props = defineProps<{
@@ -62,23 +70,39 @@ const props = defineProps<{
 defineEmits<{
   (e: 'collapse'): void
 }>()
-const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' })
 
 const searchTerm = ref('')
+const foundClubs = ref<Array<Club>>([])
+const initial = ref(true)
 
 const searchClub = async(searchTerm: string) => {
   // TODO: implement search logic
-  /* - may be fetch data from files or firebase
-     - create a element to render below searchbar
-  */
-  console.log(searchTerm)
+  searchTerm = searchTerm.toLowerCase()
+  foundClubs.value = []
+  if (searchTerm !== '') {
+    for (let i = 0; i < clubList.length; i++) {
+      if (foundClubs.value.length >= 5) return
+
+      const clubname = clubList[i].name.toLowerCase()
+      if (clubname.includes(searchTerm))
+        foundClubs.value.push(clubList[i])
+    }
+  }
 }
 
 // trigger when there are change in searchTerm
-watchEffect(() => {
-  // console.log(searchTerm.value)
-  searchClub(searchTerm.value)
+watch(searchTerm, (searchTerm) => {
+  if (initial.value) {
+    initial.value = false
+    return
+  }
+  const timer = setTimeout(() => {
+    searchClub(searchTerm)
+  }, 500)
+  return () => clearTimeout(timer)
 })
+
+const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' })
 </script>
 
 <style scoped>
