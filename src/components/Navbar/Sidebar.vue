@@ -71,6 +71,7 @@ const props = defineProps<{
 defineEmits<{
   (e: 'collapse'): void
 }>()
+const MAX_DISPLAY = 6
 
 const searchTerm = ref('')
 const foundClubs = ref<Array<Club>>([])
@@ -79,14 +80,26 @@ const initial = ref(true)
 const searchClub = async(searchTerm: string) => {
   // TODO: implement search logic
   searchTerm = searchTerm.toLowerCase()
-  foundClubs.value = []
+  foundClubs.value = [] // [[score, club's index]]
   if (searchTerm !== '') {
+    const bufferArr = []
     for (let i = 0; i < clubList.length; i++) {
-      if (foundClubs.value.length >= 5) return
-
       const clubname = clubList[i].name.toLowerCase()
-      if (clubname.includes(searchTerm))
-        foundClubs.value.push(clubList[i])
+      const idx = clubname.indexOf(searchTerm)
+      if (idx !== -1)
+        bufferArr.push([idx, i])
+    }
+
+    const processArr = bufferArr.sort((a, b) => {
+      if (a[0] < b[0])
+        return -1
+      if (a[0] > b[0])
+        return 1
+      return a[1] - b[1]
+    })
+    for (let i = 0; i < MAX_DISPLAY && i < processArr.length; i++) {
+      const idx = processArr[i][1]
+      foundClubs.value.push(clubList[idx])
     }
   }
 }
