@@ -6,5 +6,5 @@ export const info = {
   recruitmentPeriod: '9 สิงหาคม 2564 - 3 กันยายน 2564 (หากสนใจอาจต้องรอการรับสมัครในปีถัดไป)',
   contact: 'Facebook : CU dance club\nInstagram : cudc_official',
   badge: '',
-  images: [],
+  images: ['https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'],
 }
