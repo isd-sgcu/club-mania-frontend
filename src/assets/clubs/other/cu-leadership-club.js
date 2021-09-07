@@ -7,9 +7,9 @@ export const info = {
   contact: 'FB: CU  Leadership Club\nIG: culeadershipclub',
   badge: 'CU Leadership Club',
   images: [
-    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-blood%2F1.jpg?alt=media',
-    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-blood%2F2.jpg?alt=media',
-    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-blood%2F3.jpg?alt=media',
-    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-blood%2F5.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-leadership-club%2F1.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-leadership-club%2F2.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-leadership-club%2F3.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-leadership-club%2F5.JPG?alt=media',
   ],
 }
