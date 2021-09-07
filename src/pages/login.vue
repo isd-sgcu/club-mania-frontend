@@ -70,6 +70,7 @@ const handleSignout = async() => {
     clearAllStorage()
     store.reset()
     store.setDisplayName(null)
+    router.back()
   }
   catch (error) {
     // eslint-disable-next-line no-alert
