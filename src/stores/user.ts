@@ -25,10 +25,11 @@ export const useUserStore = defineStore('user', () => {
   else {
     // staff data isn't in local storage then find anonymousCustomName
     const customName = getFromLocal('anonymousCustomName')
-    const staffStatus = getFromLocal('staffStatus')
     displayName.value = customName ?? customName
-    if (staffStatus) asStaff.value = true
   }
+
+  const staffStatus = getFromLocal('staffStatus')
+  if (staffStatus) asStaff.value = true
 
   /**
    * Sets the badge of a club member to the user store
@@ -86,6 +87,7 @@ export const useUserStore = defineStore('user', () => {
     const user = auth.value!.currentUser
     if (!user) return false
     const staffDoc = await getDoc(doc(db.value!, 'staffs', user.email!))
+    if (staffDoc.exists()) setToLocal('staffStatus', 'true')
     return asStaff.value = staffDoc.exists()
   }
 
