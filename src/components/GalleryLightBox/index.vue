@@ -17,7 +17,7 @@
       class="mySwiper text-white"
     >
       <swiper-slide v-for="item in imgUrl" :key="item">
-        <img class="pointer-events-none m-auto max-h-[500px]" :src="item">
+        <img class="pointer-events-none m-auto max-h-[800px]" :src="item">
       </swiper-slide>
     </swiper>
     <!-- Backdrop -->
@@ -42,8 +42,8 @@ defineProps<{ handleClose(): void; isOpen: boolean; imgUrl: string[]}>()
 
 <style scoped>
 .mySwiper {
-  max-width: 800px;
-  max-height: 500px;
+  max-width: 1000px;
+  max-height: 800px;
 }
 
 .root {
@@ -56,7 +56,7 @@ defineProps<{ handleClose(): void; isOpen: boolean; imgUrl: string[]}>()
 }
 
 .swiper-slide {
-  max-height: 500px;
+  max-height: 800px;
   text-align: center;
   font-size: 18px;
   background: rgba(0, 0, 0, 0);
