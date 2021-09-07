@@ -47,12 +47,13 @@ const isLoginFailed = ref(false)
 
 const handleLogin = async() => {
   try {
-    const provider = new GoogleAuthProvider()
     // call google authetication
+    const provider = new GoogleAuthProvider()
     await signInWithPopup(auth.value as Auth, provider)
-    // set user data in user store
+    // remove data of previous user
     clearAllStorage()
-    identifyUser() // checks if is a member of a staff
+    // set user data in user store
+    identifyUser()
     router.back()
   }
   catch (error: any) {

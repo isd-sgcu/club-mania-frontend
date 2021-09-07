@@ -13,9 +13,6 @@
 </template>
 
 <script setup lang="ts">
-// import { setValuesIfIsMember } from '~/utils'
-
-// onMounted(() => setValuesIfIsMember())
 </script>
 
 <style scoped>
