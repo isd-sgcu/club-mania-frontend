@@ -17,7 +17,7 @@
       class="mySwiper text-white"
     >
       <swiper-slide v-for="item in imgUrl" :key="item">
-        <img class="m-auto max-h-[500px]" :src="item">
+        <img class="pointer-events-none m-auto max-h-[500px]" :src="item">
       </swiper-slide>
     </swiper>
     <!-- Backdrop -->
