@@ -13,6 +13,8 @@ defineProps<IProps>()
 
 <template>
   <PatBorderCard :color="color">
-    <img class="p-2" :src="imgUrl || 'https://dummyimage.com/500x500/5c205c/ffffff.png'">
+    <div class="p-2">
+      <img class="bg-white box-border" :src="imgUrl || 'https://dummyimage.com/500x500/5c205c/ffffff.png'">
+    </div>
   </PatBorderCard>
 </template>
