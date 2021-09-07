@@ -14,7 +14,7 @@ defineProps<IProps>()
 <template>
   <PatBorderCard :color="color">
     <div class="p-2 h-full">
-      <img class="bg-white box-border h-full object-contain" :src="imgUrl || 'https://dummyimage.com/500x500/5c205c/ffffff.png'">
+      <img class="bg-white box-border h-full object-contain" :src="imgUrl">
     </div>
   </PatBorderCard>
 </template>
