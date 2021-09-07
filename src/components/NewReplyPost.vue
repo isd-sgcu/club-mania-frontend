@@ -91,8 +91,6 @@ const isEmpty = computed(() => {
 const toggleText = computed(() => !asAnonymous.value ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
 
 const nameEditable = (function() {
-  const user = auth.value!.currentUser
-  if (!user) return true
   return customName.value === ''
 })()
 
@@ -117,7 +115,6 @@ const submit = () => {
   setToLocal('anonymousCustomName', customName.value)
   userStore.setDisplayName(customName.value)
 }
-
 const buttonTextColors = {
   SilpVat: '#391E67',
   Vichagarn: '#391E67',
