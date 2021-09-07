@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-[200px] cursor-pointer" style="z-index: 1;" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <div class="relative">
-      <img class="absolute top-0 w-full h-full img-clip" :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
+      <img class="bg-white absolute top-0 w-full h-full img-clip" :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
       <img :src="!detect ? ghostImg : ghostHover" class="w-full h-full mb-4" preserveAspectRatio="none">
     </div>
     <div class="relative">
@@ -55,7 +55,7 @@ const handleClick = () => {
 <style scoped>
 .img-clip {
     z-index: -1;
-    clip-path: inset(10px 17px 20px 17px);
+    clip-path: inset(10px 18px 20px 18px);
 }
 
 .text-card {

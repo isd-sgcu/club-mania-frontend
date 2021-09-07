@@ -33,8 +33,6 @@ const CardBackground = ref('')
 const CardBorder = CardVariant.border[props.type || 'Other']
 const borderWidth = ref('3px')
 
-console.log(props.imgUrl)
-
 const handleMouseEnter = () => {
   borderWidth.value = '5px'
   CardBackground.value = `${CardVariant.bg[props.type || 'Other']}, `
