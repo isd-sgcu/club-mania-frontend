@@ -5,6 +5,6 @@ export const info = {
   whatToExpect: '-ความรู้เกี่ยวกับการจัดตั้งธุรกิจ\n-แนวทางจากนักธุรกิจจริง\n-แรงกระตุ้นและแรงบันดาลใจในการทำธุรกิจ\n-เครือข่ายเหล่านิสิตจุฬาที่มีความตั้งใจในการจัดตั้งธุรกิจเหมือนกัน',
   recruitmentPeriod: 'เวลาเปิดรับ: ช่วงต้นปี2565',
   contact: 'Facebook: CEO Chula\nInstagram: ceo.chula',
-  badge: '',
+  badge: 'CEO',
   images: [],
 }

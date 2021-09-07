@@ -5,6 +5,6 @@ export const info = {
   whatToExpect: '1. ได้พัฒนาศักยภาพตนเองในเรื่องทักษะการใช้ชีวิต ทั้งด้านการเรียน การทำงาน การจัดการอารมณ์และความเครียด\n2. ได้สร้างเสริมความสัมพันธ์กับเพื่อน ๆ พี่ ๆ ทั้งในคณะและต่างคณะ อีกทั้งเพื่อน ๆ จากต่างมหาวิทยาลัย\n3. ได้ความรู้ความเข้าใจเกี่ยวกับหลักคำสอนและวิถีปฏิบัติทางพุทธศาสนา ซึ่งสามารถนำไปปรับใช้ในชีวิตประจำวันได้',
   recruitmentPeriod: 'ตลอดปีการศึกษา',
   contact: 'Facebook Fanpage: ชมรมพุทธศาสตร์และประเพณี จุฬาลงกรณ์มหาวิทยาลัย https://www.facebook.com/cubsfanpage\nFacebook Group: CUBS ชมรมพุทธฯ จุฬาฯ พาสุขใจ https://www.facebook.com/groups/cubs072/ \nLINE Group : Freshy CUBS 2564 http://line.me/ti/g/NOFBj3XUT7 \nLine OpenChat : CUBS ชมรมพุทธฯ จุฬาฯ พาสุขใจ https://line.me/ti/g2/MUSXvMlEJhXwVeiz79-g8w?utm_source=invitation&utm_medium=link_copy&utm_campaign=default \nIG: @cubudclub https://instagram.com/cubudclub?utm_medium=copy_link ',
-  badge: '',
+  badge: 'Buddhist Society Club',
   images: [],
 }

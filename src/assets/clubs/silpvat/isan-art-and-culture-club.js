@@ -5,6 +5,6 @@ export const info = {
   whatToExpect: 'สมาชิกชมรมจะได้เรียนรู้ศิลปวัฒนธรรมอีสาน ดนตรีพื้นบ้านอีสาน นาฎศิลป์พื้นบ้านอีสาน อาหารอีสาน รวมไปถึงวิถึชีวิต ประเพณี และวัฒนธรรมของชาวอีสาน',
   recruitmentPeriod: 'เปิดสมัครสมาชิกชมรม ประจำปีการศึกษา 2564 ตั้งแต่วันนี้เป็นต้นไปสมัครได้ที่ https://fb.watch/7xYLvvV6q7/',
   contact: 'Facebook Page : ชมรมศิลปวัฒนธรรมอีสานจุฬาฯ (https://m.facebook.com/club.isanchula/)\nInstagram : @cu_isanclub (https://instagram.com/cu_isanclub)',
-  badge: '',
+  badge: 'Isan art and culture',
   images: [],
 }
