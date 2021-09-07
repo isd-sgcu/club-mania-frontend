@@ -206,11 +206,12 @@ onBeforeMount(async() => {
   })
 
   const userStore = useUserStore()
+  let setBadgeText = ''
   if (userStore.isMember(props.clubName))
-    userStore.setBadge(info.badge)
-
+    setBadgeText = info.badge
   else if (userStore.asStaff)
-    userStore.setBadge('staff')
+    setBadgeText = 'staff'
+  userStore.setBadge(setBadgeText)
 })
 
 // onMounted(async() => {
