@@ -146,7 +146,7 @@ export const clubList: Array<Club> = [
     logo: '',
   },
   {
-    url: 'silpvat/cu-thai-classical-music-club',
+    url: '/silpvat/cu-thai-classical-music-club',
     name: 'ชมรมดนตรีไทย ',
     category: 'silpvat',
     logo: '',
