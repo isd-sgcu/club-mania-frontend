@@ -11,7 +11,7 @@ export const clubList: Array<Club> = [
     url: '/other/co-founder-trainee',
     name: 'Co-founder Trainee',
     category: 'other',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fco-founder-trainee%2Flogo3.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fco-founder-trainee%2Flogo1.png?alt=media',
   },
   {
     url: '/other/cu-blood',
