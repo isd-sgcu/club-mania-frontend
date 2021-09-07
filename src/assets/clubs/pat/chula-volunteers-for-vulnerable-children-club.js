@@ -10,7 +10,6 @@ export const info = {
     'Facebook : chula volunteers for vulnerable children club: cvvc\nInstagram : cvvc.official',
   badge: 'อาสาพัฒนาเด็ก',
   images: [
-    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fchula-volunteers-for-vulnerable-children-club%2F.DS_Store?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fchula-volunteers-for-vulnerable-children-club%2F1.jpg?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fchula-volunteers-for-vulnerable-children-club%2F2.JPG?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fchula-volunteers-for-vulnerable-children-club%2F3.jpg?alt=media',
