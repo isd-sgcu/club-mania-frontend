@@ -10,7 +10,6 @@ export const info = {
   contact: 'Facebook: CU Blood\nInstagram: cu.blood',
   badge: 'CU Blood',
   images: [
-    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-blood%2F.DS_Store?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-blood%2F1.jpg?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-blood%2F2.jpg?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-blood%2F3.jpg?alt=media',
