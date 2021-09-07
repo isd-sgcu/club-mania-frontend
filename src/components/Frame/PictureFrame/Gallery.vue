@@ -31,9 +31,9 @@
       <div class="relative">
         <div v-if="props.images.length !== 4" class="flex flex-row absolute w-full h-full more-detail justify-center items-center">
           <IcOutlinePlus color="white" font-size="4rem" />
-          <TextBody1 class="text-white text-size-[4rem]">
+          <TextSub1 class="text-white !text-[4rem]">
             {{ props.images.length - 4 }}
-          </TextBody1>
+          </TextSub1>
         </div>
         <img class="w-full h-full rounded-lg cover-center" :style="{ aspectRatio: '4/3'}" :src="images[3]" :alt="clubName" />
       </div>
