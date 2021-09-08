@@ -111,7 +111,7 @@ export const clubList: Array<Club> = [
   },
   {
     url: '/pat/chula-volunteers-for-vulnerable-children-club',
-    name: 'ชมรมอาสาพัฒนาเพื่อเด็กด้อยโอกาส (cvvc)',
+    name: 'ชมรมอาสาพัฒนาเพื่อเด็กฯ (cvvc)',
     category: 'pat',
     logo: 'https://via.placeholder.com/150/FFFFFF',
   },
@@ -123,7 +123,7 @@ export const clubList: Array<Club> = [
   },
   {
     url: '/pat/aiesec-in-chulalongkorn-university',
-    name: 'ไอเซคแห่งจุฬาลงกรณ์มหาวิทยาลัย (AIESEC in CU)',
+    name: 'ชมรมไอเซคฯ (AIESEC in CU)',
     category: 'pat',
     logo: 'https://via.placeholder.com/150/FFFFFF',
   },
