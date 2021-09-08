@@ -1,5 +1,5 @@
 export const info = {
-  name: 'ชมรมยูโด จุฬาลงกรณ์มหาวิทยาลัย',
+  name: 'ชมรมยูโด',
   category: 'ฝ่ายกีฬา',
   about: 'ชมรมยูโด จุฬาลงกรณ์มหาวิทยาลัย (CU Judo Club)',
   whatToExpect:
