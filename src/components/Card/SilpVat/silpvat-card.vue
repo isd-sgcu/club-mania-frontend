@@ -4,10 +4,11 @@ import { useRouter } from 'vue-router'
 interface IProps {
   text: string
   href?: string
+  imgUrl?: string
 }
 
 const router = useRouter()
-const { href } = defineProps<IProps>()
+const { href, imgUrl } = defineProps<IProps>()
 
 const detect = ref(false)
 
@@ -26,9 +27,9 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="max-w-[200px] cursor-pointer flex flex-col" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
-    <img :class="'outer-frame-' + (!detect ? 'blue' : 'pink')" class="rounded-2xl w-full" src="https://dummyimage.com/200x200/5c205c/ffffff.png">
-    <div :class="'text-frame-' + (!detect ? 'blue' : 'pink')" class="flex items-center justify-center flex-1 bg-[#1F0A41] text-white pt-4 pb-4 pl-4 pr-4 rounded-2xl text-center mt-2">
+  <div class="max-w-[200px] cursor-pointer flex flex-col " @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
+    <img :class="'outer-frame-' + (!detect ? 'blue' : 'pink')" class="object-contain h-full max-h-[200px] rounded-2xl bg-white" :src="imgUrl">
+    <div :class="'text-frame-' + (!detect ? 'blue' : 'pink')" class="flex items-center justify-center flex-1 bg-[#1F0A41] text-white pt-4 pb-4 pl-4 pr-4 rounded-2xl text-center mt-4">
       <text-sub2 class="leading-6">
         {{ text }}
       </text-sub2>

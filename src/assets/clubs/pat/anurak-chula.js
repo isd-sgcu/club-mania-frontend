@@ -6,5 +6,11 @@ export const info = {
   recruitmentPeriod: 'เปิดรับสมัครช่วงก่อนสอบ 1 เดือน ประมาณช่วงกันยายน, พฤศจิกายน, กุมภาพันธ์,  เมษายน',
   contact: 'Facebook : ชมรมอนุรักษ์สภาพแวดล้อมแห่งจุฬาลงกรณ์มหาวิทยาลัย\nIG : anurakchula',
   badge: 'Anurak Chula',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fanurak-chula%2F1.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fanurak-chula%2F2.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fanurak-chula%2F3.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fanurak-chula%2F4.jpg?alt=media',
+  ],
+
 }
