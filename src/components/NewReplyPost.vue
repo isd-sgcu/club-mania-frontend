@@ -8,7 +8,7 @@
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ (12)"
-        :disabled="!nameEditable || nameEditableForUser"
+        :disabled="!nameEditable || nameNotEditableForUser"
         @click="reconsiderEditable"
       />
       <TextFrame
@@ -89,7 +89,7 @@ const asAnonymous = ref(customName.value === '')
  * computed nameEditable alone is not enough
  * See detail at 'reconsiderEditable' function below
  */
-const nameEditableForUser = ref(false)
+const nameNotEditableForUser = ref(false)
 
 const isEmpty = computed(() => {
   return currentText.value === ''
@@ -107,7 +107,7 @@ const nameEditable = computed(() => {
  * in case there's really is a user logged in
  */
 const reconsiderEditable = () => {
-  nameEditableForUser.value = auth.value?.currentUser !== null
+  nameNotEditableForUser.value = auth.value?.currentUser !== null
 }
 
 const onTextChange = (text: string) => {
