@@ -1,5 +1,5 @@
 export const info = {
-  name: 'CU Dancesport Club',
+  name: 'Dancesport Club',
   category: 'ฝ่ายกีฬา',
   about: 'CU Dancesport Club (ชมรมลีลาศ)',
   whatToExpect:
