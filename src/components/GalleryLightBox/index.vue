@@ -23,7 +23,7 @@
       </swiper-slide>
     </swiper>
     <!-- Backdrop -->
-    <div class="absolute h-full w-full flex justify-center items-center root" @click="handleClose" />
+    <div class="absolute h-full w-full flex justify-center items-center root" @click="handleCloseWrapper" />
   </div>
 </template>
 
@@ -36,13 +36,24 @@ import SwiperCore, {
 
 import 'swiper/swiper-bundle.css'
 
+interface IProps {
+  handleClose(newIndex: number): void
+  isOpen: boolean
+  imgUrl: string[]
+  index: number
+}
+
 SwiperCore.use([Pagination, Navigation])
 
-const props = defineProps<{ handleClose(): void; isOpen: boolean; imgUrl: string[]; index: number }>()
+const props = defineProps<IProps>()
 const swiperRef = ref<any>(null)
 
 const onSwiper = (newRef: any) => {
   swiperRef.value = newRef
+}
+
+const handleCloseWrapper = () => {
+  props.handleClose(swiperRef.value.activeIndex)
 }
 
 watch(props, () => {
