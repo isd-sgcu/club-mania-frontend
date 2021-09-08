@@ -25,7 +25,7 @@ export const useUserStore = defineStore('user', () => {
   else {
     // staff data isn't in local storage then find anonymousCustomName
     const customName = getFromLocal('anonymousCustomName')
-    displayName.value = customName ?? null
+    displayName.value = customName
   }
 
   const staffStatus = getFromLocal('staffStatus')
