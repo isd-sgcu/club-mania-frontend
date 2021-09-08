@@ -30,8 +30,8 @@
       <img class="w-full rounded-lg cover-center h-full cursor-pointer" :style="{ aspectRatio: '4/3'}" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
       <img class="w-full rounded-lg cover-center h-full cursor-pointer" :style="{ aspectRatio: '4/3'}" :src="images[1]" :alt="clubName" @click="() => handleOpenGallery(2)" />
       <img class="w-full rounded-lg cover-center h-full cursor-pointer" :style="{ aspectRatio: '4/3'}" :src="images[2]" :alt="clubName" @click="() => handleOpenGallery(3)" />
-      <div class="relative">
-        <div v-if="props.images.length !== 4" class="flex flex-row absolute w-full h-full more-detail justify-center items-center cursor-pointer" @click="() => handleOpenGallery(4)">
+      <div class="relative cursor-pointer" @click="() => handleOpenGallery(4)">
+        <div v-if="props.images.length !== 4" class="flex flex-row absolute w-full h-full more-detail justify-center items-center ">
           <IcOutlinePlus color="white" font-size="4rem" />
           <TextSub1 class="text-white !text-[4rem]">
             {{ props.images.length - 3 }}
