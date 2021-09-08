@@ -116,7 +116,8 @@ const postDocsWithRefs = ref<
 }[]
 >([])
 
-const handleClose = () => {
+const handleClose = (newValue: number) => {
+  index.value = newValue
   isOpen.value = false
 }
 
