@@ -7,6 +7,6 @@ export const info = {
     'มีพี่ ๆ คอยสอนงาน ไม่ว่าจะเป็นงานฝ่ายเขียนและบรรณาธิการ หรือฝ่ายอาร์ต และยังได้ลองทำงานจริง',
   recruitmentPeriod: 'ตลอดทั้งปี',
   contact: 'Facebook Page: CU Pen Club\nInstagram: cupenclub',
-  badge: '',
+  badge: 'CU PEN',
   images: [],
 }

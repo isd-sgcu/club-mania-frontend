@@ -6,8 +6,7 @@ export const info = {
   whatToExpect:
     'ประสบการณ์การทํางานการจัดกิจกรรมต่างๆ ประสบการณ์การออกกองถ่ายภาพยนตร์ ประสบการณ์การเขียนบทภาพยนตร์ ประสบการณ์การตัดต่อวิดีโอ เเละเพื่อนใหม่ๆ',
   recruitmentPeriod: 'เปิดรับสมัครทั้งเทอม',
-  contact:
-    'FB: https://www.facebook.com/movieclubchula\nIG: https://www.instagram.com/movieclubchula/',
-  badge: '',
+  contact: 'FB: https://www.facebook.com/movieclubchula\nIG: https://www.instagram.com/movieclubchula/',
+  badge: 'MVCU',
   images: [],
 }

@@ -6,8 +6,7 @@ export const info = {
   whatToExpect:
     '1. ความเข้าใจเกี่ยวกับศาสนาคริสต์ นิกายโรมันคาทอลิก\n2. รู้จักการแบ่งปัน และรักเพื่อนมนุษย์\n3. มีความสัมพันธ์ทีดีกับเพื่อน ๆ ในชมรม ไม่ว่าจะอยู่ปีใดก็ตามเราคือเพื่อนกัน ที่จะคอยช่วยเหลือกัน\n4. ได้เข้าร่วมกิจกรรมทางศาสนาคริสต์ นิกายโรมันคาทอลิก ที่สนใจแต่อาจจะยังไม่มีโอกาสได้เข้าร่วม',
   recruitmentPeriod: 'สามารถเข้าร่วมได้ตลอดทั้งปีการศึกษา',
-  contact:
-    'Facebook : Catholic Club Chula\nIG : Catholicchula\nLine ID : malangphomp284',
-  badge: '',
+  contact: 'Facebook : Catholic Club Chula\nIG : Catholicchula\nLine ID : malangphomp284',
+  badge: 'CU Cathoric',
   images: [],
 }

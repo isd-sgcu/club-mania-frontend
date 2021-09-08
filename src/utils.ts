@@ -24,6 +24,7 @@ export const clearAllStorage = () => {
   clearLocal('anonymousId')
   clearLocal('anonymousCustomName')
   clearLocal('memberAccount')
+  clearLocal('staffStatus')
 }
 
 // generates new anonymous id
@@ -102,11 +103,10 @@ export const setValuesIfIsMember = async() => {
   const user = auth.value!.currentUser
 
   // user is not logged in
-  if (!user) {
-    store.reset()
+  if (!user)
     return false
-  }
 
+  // In case it this isn't a club member account
   store.setDisplayName(user.displayName)
 
   // checks if user is a member of a club
@@ -115,15 +115,13 @@ export const setValuesIfIsMember = async() => {
   const userRef = doc(db.value!, 'members', user.email!)
   const userSnap = await getDoc(userRef)
 
-  if (!userSnap.exists()) {
-    store.reset()
+  if (!userSnap.exists())
     return false
-  }
 
   const userDoc = userSnap.data() as MemberDoc
   store.setMemberValues(
     userDoc.name,
-    userDoc.club,
+    userDoc.club.id,
     userDoc.year,
   )
   return true

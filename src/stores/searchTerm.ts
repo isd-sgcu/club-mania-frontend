@@ -2,27 +2,33 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 import { ThemeOption, Club } from '~/types'
 import { clubList } from '~/assets/clubs/clubList'
 
-const MAX_DISPLAY = 5
+const MAX_DISPLAY = 5 // limited the number of display result
 
 export const useSearchTerm = defineStore('searchTerm', () => {
   const foundClubs = ref<Array<Club>>([])
   const savedTerm = ref<string>('')
   const initial = ref(true)
 
+  /**
+  *This function search for clubs whose name matches with savedTerm
+  *@param foundClubs array of matched clubs
+  **/
   const searchClub = async(savedTerm: string) => {
-    // TODO: implement search logic
+    // reset foundClubs value when start searching
     foundClubs.value = []
 
     if (savedTerm !== '') {
+      // handle lowercase and uppercase are not match
       savedTerm = savedTerm.toLowerCase()
       const bufferArr = [] // [[score, club's index]]
       for (let i = 0; i < clubList.length; i++) {
         const clubname = clubList[i].name.toLowerCase()
-        const idx = clubname.indexOf(savedTerm)
-        if (idx !== -1)
-          bufferArr.push([idx, i])
+        const idxOfFirstChar = clubname.indexOf(savedTerm)
+        if (idxOfFirstChar !== -1)
+          bufferArr.push([idxOfFirstChar, i])
       }
 
+      // sort by the front value first and then sort by second value
       const processArr = bufferArr.sort((a, b) => {
         if (a[0] < b[0])
           return -1
@@ -37,15 +43,18 @@ export const useSearchTerm = defineStore('searchTerm', () => {
     }
   }
 
+  // trigger when saveTerm change
   watch(savedTerm, (savedTerm) => {
+    // block search when webpage is open
     if (initial.value) {
       initial.value = false
       return
     }
+    // delay 500ms after user types
     const timer = setTimeout(() => {
       searchClub(savedTerm)
     }, 500)
-    return () => clearTimeout(timer)
+    return () => clearTimeout(timer) // clear previous called timer
   })
 
   function setNewTerm(name: ThemeOption) {
@@ -54,7 +63,6 @@ export const useSearchTerm = defineStore('searchTerm', () => {
 
   function clearSavedTerm() {
     savedTerm.value = ''
-    initial.value = true
   }
 
   function getClubs() {

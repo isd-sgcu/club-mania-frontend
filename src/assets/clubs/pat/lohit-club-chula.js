@@ -8,6 +8,6 @@ export const info = {
   recruitmentPeriod:
     'รับสมัครสองช่วงค่ายยาวประมาณ 10 วันช่วงต้นเดือนมกราคมค่ายกลางประมาณไม่เกิน 10 วัน ช่วงปลายเดือนพฤษภาคมสามารถติดตามรายละเอียดได้ทาง Facebook Page และ Instagram ของชมรม',
   contact: 'FB Page : Lohitclub Chula\nInstagram: Lohitclub.chula',
-  badge: '',
+  badge: 'Lohit Club',
   images: [],
 }

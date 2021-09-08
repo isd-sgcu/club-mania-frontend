@@ -184,9 +184,7 @@ onBeforeMount(async() => {
   const { info }: { info: ClubStaticInfo }
     = await import(`../../../assets/clubs/${props.category}/${props.clubName}.js`)
   staticInfo.value = info
-})
 
-onMounted(async() => {
   clubRef.value = doc(db.value as Firestore, 'clubs', props.clubName)
   unsubClub.value = onSnapshot(clubRef.value, async(snap) => {
     const clubDoc = snap.data() as ClubDoc | undefined // if not exist
@@ -208,9 +206,17 @@ onMounted(async() => {
   })
 
   const userStore = useUserStore()
-  if (userStore.isMember(props.clubName) && userStore.badge === null)
-    userStore.setBadge(staticInfo.value.badge)
+  let setBadgeText = ''
+  if (userStore.isMember(props.clubName))
+    setBadgeText = info.badge
+  else if (userStore.asStaff)
+    setBadgeText = 'staff'
+  userStore.setBadge(setBadgeText)
 })
+
+// onMounted(async() => {
+
+// })
 
 onUnmounted(() => (unsubClub.value as Unsubscribe)())
 </script>

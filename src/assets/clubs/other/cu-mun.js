@@ -7,6 +7,6 @@ export const info = {
     'Members can discuss issues that will require substantial researching, public speaking, debating, and writing skills, as well as critical thinking, teamwork, and leadership abilities.\nWe also get to go abroad to participate in international MUNs!',
   recruitmentPeriod: '2 September, 2021',
   contact: 'ig: ChulaMUN \nfb: ChulaMUN \nMedium: ChulaMUN ',
-  badge: '',
+  badge: 'CU MUN',
   images: [],
 }
