@@ -13,8 +13,10 @@
         clickable: true,
         dynamicBullets: true,
       }"
+      :initial-slide="index"
       :navigation="true"
       class="mySwiper text-white"
+      @swiper="onSwiper"
     >
       <swiper-slide v-for="item in imgUrl" :key="item">
         <img class="pointer-events-none m-auto max-h-[800px]" :src="item">
@@ -36,7 +38,16 @@ import 'swiper/swiper-bundle.css'
 
 SwiperCore.use([Pagination, Navigation])
 
-defineProps<{ handleClose(): void; isOpen: boolean; imgUrl: string[]}>()
+const props = defineProps<{ handleClose(): void; isOpen: boolean; imgUrl: string[]; index: number }>()
+const swiperRef = ref<any>(null)
+
+const onSwiper = (newRef: any) => {
+  swiperRef.value = newRef
+}
+
+watch(props, () => {
+  swiperRef.value.slideTo(props.index)
+})
 
 </script>
 

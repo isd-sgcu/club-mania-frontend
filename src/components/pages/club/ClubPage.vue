@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GalleryLightBox :img-url="staticInfo.images" :is-open="isOpen" :handle-close="handleClose" />
+    <GalleryLightBox :img-url="staticInfo.images" :index="index" :is-open="isOpen" :handle-close="handleClose" />
 
     <!-- banner is here -->
     <Banner :theme="themeStore.savedTheme" :is-club="true" :text="staticInfo.name" />
@@ -20,7 +20,12 @@
                 :class="`text-${clubNameClr}`"
               >{{ staticInfo.name }}</span>
             </text-sub1>
-            <Gallery v-if="staticInfo.images" :club-name="staticInfo.name" :images="staticInfo.images" class="cursor-pointer" @click="isOpen = true" />
+            <Gallery
+              v-if="staticInfo.images"
+              :club-name="staticInfo.name"
+              :images="staticInfo.images"
+              :handle-open-gallery="handleOpenGallery"
+            />
             <div v-for="topic in topics" :key="topic">
               <BackgroundSection>
                 <h5 class="<sm:(text-1.3rem) mb-3" :class="`text-${clubNameClr}`">
@@ -102,6 +107,9 @@ const staticInfo = ref<ClubStaticInfo>({
   badge: '',
   images: [],
 })
+
+const index = ref<number>(1)
+
 const postDocsWithRefs = ref<
 { ref: DocumentReference
   doc: PostDoc
@@ -110,6 +118,11 @@ const postDocsWithRefs = ref<
 
 const handleClose = () => {
   isOpen.value = false
+}
+
+const handleOpenGallery = (newValue: number) => {
+  index.value = newValue
+  isOpen.value = true
 }
 
 const filteredPostDocsWithRefs = computed(() => {
