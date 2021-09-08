@@ -106,6 +106,7 @@ export const setValuesIfIsMember = async() => {
   if (!user)
     return false
 
+  // In case it this isn't a club member account
   store.setDisplayName(user.displayName)
 
   // checks if user is a member of a club

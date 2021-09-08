@@ -44,7 +44,7 @@ import useTextFrameConfig from './Frame/TextFrame/config'
 import { useThemeStore } from '~/stores/themes'
 import { auth } from '~/firebase'
 import { useUserStore } from '~/stores/user'
-import { getFromLocal, setToLocal } from '~/utils'
+import { getFromLocal } from '~/utils'
 const { border, placeholder, text } = useTextFrameConfig()
 
 const props = defineProps<{
@@ -78,7 +78,7 @@ const initCustomName = () => {
   if (!defaultUserDisplayName)
     return ''
 
-  userStore.setDisplayName(defaultUserDisplayName)
+  // userStore.setDisplayName(defaultUserDisplayName)
   return defaultUserDisplayName.slice(0, maxLength - 1)
 }
 
@@ -125,11 +125,9 @@ const submit = () => {
   emit('submit', currentText.value, customName.value === '' ? undefined : customName.value, asAnonymous.value)
   currentText.value = ''
 
-  // saves new custom name to local storage and user store if the poster is anonymous user
-  // for later use
-  if (auth.value!.currentUser) return
-  setToLocal('anonymousCustomName', customName.value)
-  userStore.setDisplayName(customName.value)
+  // if (auth.value!.currentUser) return
+  // setToLocal('anonymousCustomName', customName.value)
+  // userStore.setDisplayName(customName.value)
 }
 const buttonTextColors = {
   SilpVat: '#391E67',
