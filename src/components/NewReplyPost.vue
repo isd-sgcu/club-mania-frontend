@@ -8,7 +8,8 @@
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ (12)"
-        :disabled="!nameEditable"
+        :disabled="!nameEditable || nameEditableForUser"
+        @click="reconsiderEditable"
       />
       <TextFrame
         :show-discard-icon="true"
@@ -25,7 +26,7 @@
       </div>
       <button
         class="<sm:(min-w-4rem text-sm px-3px) min-w-6rem md:(min-w-[10rem]) rounded focus:outline-none text-[16px] px-[16px] py-[4px] h-[32px]"
-        :class="{'cursor-not-allowed': isEmpty }"
+        :class="{ 'cursor-not-allowed': isEmpty }"
         :style="{
           color: buttonTextColors[themeStore.savedTheme],
           backgroundColor: backgroundColors[themeStore.savedTheme]
@@ -84,15 +85,30 @@ const initCustomName = () => {
 const currentText = ref('')
 const customName = ref(initCustomName())
 const asAnonymous = ref(customName.value === '')
+/**
+ * computed nameEditable alone is not enough
+ * See detail at 'reconsiderEditable' function below
+ */
+const nameEditableForUser = ref(false)
 
 const isEmpty = computed(() => {
   return currentText.value === ''
 })
 const toggleText = computed(() => !asAnonymous.value ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
 
-const nameEditable = (function() {
-  return customName.value === ''
-})()
+const nameEditable = computed(() => {
+  if (!auth.value) return false // maybe logged in but auth is some how null
+  return auth.value.currentUser === null
+})
+
+/**
+ * on refresh auth.value.currentUser is null for a second
+ * and computed failed to see for its change from null to User
+ * in case there's really is a user logged in
+ */
+const reconsiderEditable = () => {
+  nameEditableForUser.value = auth.value?.currentUser !== null
+}
 
 const onTextChange = (text: string) => {
   currentText.value = text
