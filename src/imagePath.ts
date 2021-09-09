@@ -21,7 +21,16 @@ import SlipVatMobile from '/Banners/mobile-SilpVat.png'
 import PatMobile from '/Banners/mobile-Pat.png'
 import OtherMobile from '/Banners/mobile-Other.png'
 
-export const CategoryBanner = {
+export type ImageBundle = {
+  Main: string
+  Vichagarn: string
+  Gera: string
+  SilpVat: string
+  Pat: string
+  Other: string
+}
+
+export const CategoryBanner: ImageBundle = {
   Main: MainBanner,
   Vichagarn: VichagarnBanner,
   Gera: GeraBanner,
@@ -30,7 +39,7 @@ export const CategoryBanner = {
   Other: OtherBanner,
 }
 
-export const ClubBanner = {
+export const ClubBanner: ImageBundle = {
   Main: dummyImage,
   Vichagarn: VichagarnClubBanner,
   Gera: GeraClubBanner,
@@ -39,7 +48,7 @@ export const ClubBanner = {
   Other: OtherBanner,
 }
 
-export const MobileBanner = {
+export const MobileBanner: ImageBundle = {
   Main: MainMobile,
   Vichagarn: VichagarnMobile,
   Gera: GeraMobile,
@@ -48,7 +57,7 @@ export const MobileBanner = {
   Other: OtherMobile,
 }
 
-export const PageIcon = {
+export const PageIcon: ImageBundle = {
   Main: iconWhite,
   Vichagarn: iconYellow,
   Gera: iconViolet,
