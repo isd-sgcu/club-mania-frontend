@@ -1,6 +1,6 @@
 <template>
   <span
-    class="<sm:(px-2 text-sm) border-1 rounded-full px-3 py-0.5 text-center"
+    class="<sm:(px-2 text-sm) italic border-1 rounded-full px-3 py-0.5 text-center"
     :class="`border-${badgeBorder[decidedTheme]} text-${badgeTextColor[decidedTheme]}`"
   >{{ badgeText }}</span>
 </template>
