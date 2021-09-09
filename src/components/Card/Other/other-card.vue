@@ -6,7 +6,7 @@
     </div>
     <div class="relative">
       <img :src="!detect ? backgroundImg : backgroundHover" class="w-full h-full" preserveAspectRatio="none">
-      <text-sub2 class="w-[200px] text-size-[0.7rem] max-w-[180px] sm:text-size-[1rem] absolute break-words pl-6 pr-6 pb-2 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
+      <text-sub2 class="w-[200px] <sm:(text-size-[0.7rem] leading-5) max-w-[180px] absolute break-words pl-6 pr-6 pb-2 text-center text-card" :class="`text-${!detect ? textColor : 'white'}`">
         {{ text }}
       </text-sub2>
     </div>

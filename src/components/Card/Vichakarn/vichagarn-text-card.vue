@@ -10,7 +10,9 @@ defineProps<IProps>()
 
 <template>
   <div :class="!hover ? 'outer-frame' : 'outer-frame-hover'" class="rounded-none border-solid border-width-8 p-2 max-w-[200px] text-center bg-[#0D3D78] text-white w-full box-border">
-    <text-sub2><slot /></text-sub2>
+    <text-sub2 class="<sm:(text-size-[1rem] leading-5)">
+      <slot />
+    </text-sub2>
   </div>
 </template>
 
