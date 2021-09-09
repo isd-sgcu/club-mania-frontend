@@ -224,7 +224,7 @@ onBeforeMount(async() => {
   if (userStore.isMember(props.clubName))
     setBadgeText = info.badge
   else if (userStore.asStaff)
-    setBadgeText = 'staff'
+    setBadgeText = 'Staff'
   userStore.setBadge(setBadgeText)
 })
 
