@@ -1,9 +1,9 @@
 <template>
-  <div class="<sm:(space-x-2) space-x-3 flex flex-wrap items-center">
-    <h2 class="text-[24px] font-Roboto inline">
+  <div class="<sm:(space-x-1) flex flex-wrap items-center">
+    <h2 class="text-[24px] font-Roboto inline sm:(mr-2)">
       {{ props.publisher }}
     </h2>
-    <Badge v-if="props.badge" :badge-text="props.badge" />
+    <Badge class="sm:(mr-4)" v-if="props.badge" :badge-text="props.badge" />
     <span class="<sm:(hidden)">{{ formattedCreatedAt }}</span>
   </div>
   <span class="sm:(hidden)">{{ formattedCreatedAt }}</span>
