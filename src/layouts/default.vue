@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-[100vh] overflow-x-hidden">
+  <div class="flex flex-col min-h-100vh overflow-x-hidden">
     <Navbar />
     <PageBackground class="flex-1">
       <router-view v-slot="{ Component, route }">
