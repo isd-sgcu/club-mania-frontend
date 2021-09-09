@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-[200px] cursor-pointer" style="z-index: 1;" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
     <div class="relative">
-      <img class="bg-white absolute top-0 w-full h-full img-clip" :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
+      <img class="bg-white absolute top-0 w-full h-full img-clip object-contain p-2" :src="imgUrl || 'https://dummyimage.com/200x200/5c205c/ffffff.png'">
       <img :src="!detect ? ghostImg : ghostHover" class="w-full h-full mb-4" preserveAspectRatio="none">
     </div>
     <div class="relative">
