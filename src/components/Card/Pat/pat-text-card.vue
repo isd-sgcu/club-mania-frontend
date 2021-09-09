@@ -12,7 +12,9 @@ defineProps<IProps>()
 <template>
   <PatBorderCard :color="color">
     <div class="text-container flex items-center justify-center">
-      <TextSub2><slot /></TextSub2>
+      <TextSub2 class="<sm:(text-size-[1rem] leading-5)">
+        <slot />
+      </TextSub2>
       <div class="rectangle-top-left" />
       <div class="rectangle-top-right" />
       <div class="rectangle-bottom-left" />

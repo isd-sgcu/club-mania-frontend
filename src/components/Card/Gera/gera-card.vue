@@ -32,7 +32,9 @@ const handleClick = () => {
     <div class="flex flex-col" :class="!detect ? 'dark' : 'light'">
       <img class="bg-white h-[200px] object-contain p-2" :src="imgUrl">
       <div class="inner-frame">
-        <text-sub2>{{ text }}</text-sub2>
+        <text-sub2 class="<sm:(text-size-[1rem] leading-5)">
+          {{ text }}
+        </text-sub2>
       </div>
     </div>
   </div>
