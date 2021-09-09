@@ -42,8 +42,8 @@
       </div>
       <div class="relative cursor-pointer flex" @click="() => handleOpenGallery(4)">
         <div v-if="props.images.length !== 4" class="flex flex-row absolute w-full h-full more-detail justify-center items-center min-h-full ">
-          <IcOutlinePlus color="white" font-size="4rem" />
-          <TextSub1 class="text-white !text-[4rem]">
+          <IcOutlinePlus color="white" class="text-[4rem] <sm:(text-[2rem])" />
+          <TextSub1 class="text-white text-[4rem] <sm:(text-[2rem])">
             {{ props.images.length - 3 }}
           </TextSub1>
         </div>
