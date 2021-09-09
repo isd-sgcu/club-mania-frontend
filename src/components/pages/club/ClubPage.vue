@@ -11,12 +11,12 @@
           <section class="space-y-3 md:(space-y-4)">
             <text-sub1>
               <span
-                class="text-1.3rem sm:(text-2xl) lg:(text-3xl)"
+                class="text-1.5rem sm:(text-3xl) lg:(text-4xl)"
                 :class="`text-${clubTypeClr}`"
               >{{ staticInfo.category }}</span>
               <br />
               <span
-                class="text-1.3rem sm:(text-2xl) lg:(text-3xl)"
+                class="text-1.5rem sm:(text-3xl) lg:(text-4xl)"
                 :class="`text-${clubNameClr}`"
               >{{ staticInfo.name }}</span>
             </text-sub1>
