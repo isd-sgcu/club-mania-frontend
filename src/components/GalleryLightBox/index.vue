@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute h-full w-full pl-4 pr-4 flex justify-center items-center transition-all" :style="{opacity: isOpen ? '1': '0', zIndex: isOpen ? '99' : '-1'}">
+  <div class="fixed h-full w-full pl-4 pr-4 flex justify-center items-center transition-all" :style="{opacity: isOpen ? '1': '0', zIndex: isOpen ? '99' : '-1'}">
     <swiper
       :auto-height="true"
       :style="{'--swiper-navigation-color': '#fff','--swiper-pagination-color': '#fff'}"

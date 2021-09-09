@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GalleryLightBox class="overflow-hidden" :img-url="staticInfo.images" :index="index" :is-open="isOpen" :handle-close="handleClose" />
+    <GalleryLightBox :img-url="staticInfo.images" :index="index" :is-open="isOpen" :handle-close="handleClose" />
 
     <!-- banner is here -->
     <Banner :theme="themeStore.savedTheme" :is-club="true" :text="staticInfo.name" />
