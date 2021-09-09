@@ -27,7 +27,7 @@ watch(props, () => {
 
 <style scoped>
 .outer-border {
-    @apply max-w-[200px] h-[200px] relative bg-[#D03131];
+    @apply max-w-[200px] max-h-[200px] relative bg-[#D03131];
     border: 8px red solid;
 
     clip-path: polygon(
