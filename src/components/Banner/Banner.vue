@@ -5,6 +5,7 @@
 <template>
   <div class="club-banner" :class="{'items-center justify-center': !isClub}" @click="directTo">
     <img :src="isClub? ClubBanner[theme] :CategoryBanner[theme]" :alt="theme" class="<md:hidden w-full h-260px lg:(min-h-312px h-auto max-h-500px)">
+    <img :src="MobileBanner[theme]" :alt="theme" class="w-full h-35 md:hidden">
     <span v-if="theme === 'Gera'" class="gera-glow" :class="isClub ? textPosInClubPage : ''">
       <p class="gera-border">
         {{ displayText }}
@@ -37,7 +38,7 @@ import CatagoryText from './bannerText.json'
 import { ThemeOption } from '~/types'
 
 // Path
-import { CategoryBanner, ClubBanner } from '~/imagePath'
+import { CategoryBanner, ClubBanner, MobileBanner } from '~/imagePath'
 
 const props = defineProps<{
   theme: ThemeOption

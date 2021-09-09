@@ -84,7 +84,7 @@ const closeSearch = () => {
 
 <style>
 .wrapper {
-  @apply fixed top-0 z-10 px-5 md:px-9 w-full min-h-8 backdrop-filter backdrop-blur-[15px];
+  @apply fixed top-0 z-10 px-5 md:px-9 w-full min-h-12 backdrop-filter backdrop-blur-[15px];
 }
 
 .headbar {
