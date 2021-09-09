@@ -55,14 +55,24 @@ export const getAnonymousId = () => {
  * @param badge null if not a club member else the badge of the club where this member belongs to
  * @returns the new text doc structure which is the base of PostDoc and is the ReplyDoc
  */
-const getNewTextDoc = (text: string, customName: string, asAnonymous: boolean) => {
+const getNewTextDoc = (
+  text: string,
+  customName: string,
+  asAnonymous: boolean,
+) => {
   const store = useUserStore()
   const user = auth.value!.currentUser
+  let name = asAnonymous
+    ? 'บุคคลนิรนาม'
+    : user
+      ? store.displayName ?? customName
+      : customName
+  if (store.year) name += ` ปี ${store.year}`
   const textDoc: TextDoc = {
     by: user ? user.email! : getAnonymousId(),
     createdAt: Timestamp.fromDate(new Date()),
     text,
-    name: asAnonymous ? 'บุคคลนิรนาม' : user ? (store.displayName ?? customName) : customName,
+    name,
     badge: asAnonymous ? null : store.badge,
   }
   return textDoc
@@ -74,7 +84,11 @@ const getNewTextDoc = (text: string, customName: string, asAnonymous: boolean) =
  * @param badge null if not a club member else the badge of the club where this member belongs to
  * @returns a new PostDoc structure
  */
-export const getNewPostDoc = (text: string, customName: string, asAnonymous: boolean): PostDoc => {
+export const getNewPostDoc = (
+  text: string,
+  customName: string,
+  asAnonymous: boolean,
+): PostDoc => {
   const newTextDoc = getNewTextDoc(text, customName, asAnonymous)
   return { ...newTextDoc, replies: [], likes: [], nLikes: 0 }
 }
@@ -85,15 +99,19 @@ export const getNewPostDoc = (text: string, customName: string, asAnonymous: boo
  * @param badge null if not a club member else the badge of the club where this member belongs to
  * @returns a new ReplyDoc structure
  */
-export const getNewReplyDoc = (text: string, customName: string, asAnonymous: boolean) => getNewTextDoc(text, customName, asAnonymous)
+export const getNewReplyDoc = (
+  text: string,
+  customName: string,
+  asAnonymous: boolean,
+) => getNewTextDoc(text, customName, asAnonymous)
 
 /**
-   * Checks if a currently logged in user is a member of a club,
-   * if yes, then set 'nickname', 'club ref', and 'year' to the user store.
-   * If the user is not logged in, reset the values
-   * @note This does not set the badge
-   * @returns True if is a member of a club else False
-   */
+ * Checks if a currently logged in user is a member of a club,
+ * if yes, then set 'nickname', 'club ref', and 'year' to the user store.
+ * If the user is not logged in, reset the values
+ * @note This does not set the badge
+ * @returns True if is a member of a club else False
+ */
 export const setValuesIfIsMember = async() => {
   // checks if is a member of a club
   // if yes set nickname, year to the user store, *not the badge
@@ -103,8 +121,7 @@ export const setValuesIfIsMember = async() => {
   const user = auth.value!.currentUser
 
   // user is not logged in
-  if (!user)
-    return false
+  if (!user) return false
 
   // In case it this isn't a club member account
   store.setDisplayName(user.displayName)
@@ -115,15 +132,10 @@ export const setValuesIfIsMember = async() => {
   const userRef = doc(db.value!, 'members', user.email!)
   const userSnap = await getDoc(userRef)
 
-  if (!userSnap.exists())
-    return false
+  if (!userSnap.exists()) return false
 
   const userDoc = userSnap.data() as MemberDoc
-  store.setMemberValues(
-    userDoc.name,
-    userDoc.club.id,
-    userDoc.year,
-  )
+  store.setMemberValues(userDoc.name, userDoc.club.id, userDoc.year)
   return true
 }
 
