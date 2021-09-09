@@ -9,7 +9,7 @@
     >
       <!---Each page of the slide-->
       <swiper-slide v-for="(item, index) in themes" :key="index" class="relative flex items-center justify-center">
-        <Banner :theme="item" :is-club="false" />
+        <Banner :theme="item" :is-club="false" class="cursor-pointer" />
       </swiper-slide>
     </swiper>
     <!---Main content-->
