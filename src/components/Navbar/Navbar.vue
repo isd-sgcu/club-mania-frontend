@@ -6,6 +6,7 @@
           <img :src="PageIcon[theme.savedTheme]" class="py-2 w-18 md:w-22 lg:w-28 h-auto" />
         </router-link>
       </div>
+      <img class="w-7 h-7 mr-4 rounded-full ml-auto md:(hidden)" :src="userPhotoUrl" alt="">
       <ci-hamburger class="open-menu" @click="openSearch" />
       <ol class="main-menu">
         <router-link to="/wichakarn">
