@@ -37,10 +37,14 @@
       <!---Just for visual don't do anything special-->
       <div class="admin-block">
         <router-link to="/login">
-          <ri-logout-circle-r-line v-if="user.displayName" class="w-4 md:w-6 h-auto mr-4 hover:text-yellow-700" />
+          <div v-if="user.displayName" class="flex">
+            <ri-logout-circle-r-line class="w-4 md:w-6 h-auto mr-4 hover:text-yellow-700" />
+            <img class="w-5 md:w-7 h-auto mr-4 rounded-full" :src="userPhotoUrl" alt="">
+          </div>
           <mdi-account-circle-outline v-else class="w-4 md:w-6 h-auto mr-4 hover:text-yellow-700" />
         </router-link>
-        <p>{{ displayName }}</p>
+        <img src="">
+        <span class="font-Mitr lg:(text-lg)">{{ displayName }}</span>
         <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="openSearch" />
       </div>
     </nav>
@@ -60,6 +64,8 @@
 </template>
 
 <script setup lang="ts">
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '~/firebase'
 import { PageIcon } from '~/imagePath'
 import { useSearchTerm } from '~/stores/searchTerm'
 import { useThemeStore } from '~/stores/themes'
@@ -71,6 +77,7 @@ const searchTerm = useSearchTerm()
 
 const isSearch = ref(false)
 const displayName = computed(() => user.displayName ? user.displayName : 'Anonymous')
+const userPhotoUrl = ref('')
 
 const openSearch = () => {
   isSearch.value = true
@@ -80,6 +87,15 @@ const closeSearch = () => {
   searchTerm.clearSavedTerm()
   isSearch.value = false
 }
+
+onMounted(() => {
+  const unsub = onAuthStateChanged(auth.value!, (user) => {
+    if (user) {
+      userPhotoUrl.value = user.photoURL ?? ''
+      unsub()
+    }
+  })
+})
 </script>
 
 <style scoped>
