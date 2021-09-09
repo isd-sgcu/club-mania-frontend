@@ -22,7 +22,7 @@
         {{ postDoc.text }}
       </TextFrame>
       <!-- like/reply buttons -->
-      <div class="flex md:(space-x-1)">
+      <div class="flex !m-0 md:(space-x-1)">
         <LikeButton
           :fill-color="fillColor"
           :like-status="likeStatus"
@@ -54,7 +54,7 @@
           >
             <path d="M0 6L6 0L12 6H0Z" :fill="`${fillColor[themeStore.savedTheme]}`" />
           </svg>
-          <text-body2>{{ showingMore ? 'ซ่อนการตอบกลับ' : 'แสดงการตอบกลับ' }}</text-body2>
+          <text-body2 class="<sm:(text-13px)">{{ showingMore ? 'ซ่อนการตอบกลับ' : 'แสดงการตอบกลับ' }}</text-body2>
         </div>
       </div>
       <div v-if="showingMore && postDoc" class="space-y-2">
