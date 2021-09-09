@@ -40,3 +40,5 @@ export const PageIcon = {
   Pat: iconViolet,
   Other: iconYellow,
 }
+
+export const placeholder = 'https://via.placeholder.com/150/FFFFFF'
