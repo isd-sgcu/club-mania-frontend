@@ -6,10 +6,10 @@
       </div>
     </div>
     <div v-else-if="props.images.length === 2" class="w-full h-full grid grid-cols-2 grid-rows-1 gap-3">
-      <div class="flex">
+      <div class="flex max-h-[350px]">
         <img class="w-full rounded-lg cover-center cursor-pointer" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
       </div>
-      <div class="flex">
+      <div class="flex max-h-[350px]">
         <img class="w-full rounded-lg cover-center cursor-pointer" :src="images[1]" :alt="clubName" @click="() => handleOpenGallery(2)" />
       </div>
     </div>
@@ -31,19 +31,19 @@
       </div>
     </div>
     <div v-else-if="props.images.length >= 4 " class="w-full h-full grid grid-cols-2 grid-rows-2 gap-3">
-      <div class="flex">
+      <div class="flex max-h-[350px]">
         <img class="rounded-lg cover-center cursor-pointer" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
       </div>
-      <div class="flex">
+      <div class="flex max-h-[350px]">
         <img class="rounded-lg cover-center cursor-pointer" :src="images[1]" :alt="clubName" @click="() => handleOpenGallery(2)" />
       </div>
-      <div class="flex">
+      <div class="flex max-h-[350px]">
         <img class="rounded-lg cover-center cursor-pointer" :src="images[2]" :alt="clubName" @click="() => handleOpenGallery(3)" />
       </div>
-      <div class="relative cursor-pointer flex" @click="() => handleOpenGallery(4)">
+      <div class="relative cursor-pointer flex max-h-[350px]" @click="() => handleOpenGallery(4)">
         <div v-if="props.images.length !== 4" class="flex flex-row absolute w-full h-full more-detail justify-center items-center min-h-full ">
           <IcOutlinePlus color="white" class="text-[4rem] <sm:(text-[2rem])" />
-          <TextSub1 class="text-white text-[4rem] <sm:(text-[2rem])">
+          <TextSub1 class="text-white sm:!text-[4rem] <sm:(!text-[2rem])">
             {{ props.images.length - 3 }}
           </TextSub1>
         </div>
