@@ -228,17 +228,5 @@ onBeforeMount(async() => {
   userStore.setBadge(setBadgeText)
 })
 
-// onMounted(async() => {
-
-// })
-
 onUnmounted(() => (unsubClub.value as Unsubscribe)())
 </script>
-
-<style>
-</style>
-
-<route lang="yaml">
-meta:
-  layout: club
-</route>
