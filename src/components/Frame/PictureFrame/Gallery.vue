@@ -5,9 +5,13 @@
         <img class="h-lg cover-center cursor-pointer" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
       </div>
     </div>
-    <div v-else-if="props.images.length === 2" class="w-full grid grid-cols-2 grid-rows-1 gap-3">
-      <img class="w-full h-full rounded-lg cover-center cursor-pointer" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
-      <img class="w-full h-full rounded-lg cover-center cursor-pointer" :src="images[1]" :alt="clubName" @click="() => handleOpenGallery(2)" />
+    <div v-else-if="props.images.length === 2" class="w-full h-full grid grid-cols-2 grid-rows-1 gap-3">
+      <div class="flex">
+        <img class="w-full rounded-lg cover-center cursor-pointer" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
+      </div>
+      <div class="flex">
+        <img class="w-full rounded-lg cover-center cursor-pointer" :src="images[1]" :alt="clubName" @click="() => handleOpenGallery(2)" />
+      </div>
     </div>
     <div v-else-if="props.images.length === 3" class="flex flex-col h-auto w-full sm:(h-md flex-row) lg:(h-lg) xl:(h-xl)">
       <img class="<sm:(w-full) rounded-lg w-2/3  mr-2 cover-center cursor-pointer" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
@@ -26,18 +30,24 @@
         />
       </div>
     </div>
-    <div v-else-if="props.images.length >= 4 " class="h-auto w-full grid grid-cols-2 grid-rows-2 gap-3">
-      <img class="w-full rounded-lg cover-center h-full cursor-pointer" :style="{ aspectRatio: '4/3'}" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
-      <img class="w-full rounded-lg cover-center h-full cursor-pointer" :style="{ aspectRatio: '4/3'}" :src="images[1]" :alt="clubName" @click="() => handleOpenGallery(2)" />
-      <img class="w-full rounded-lg cover-center h-full cursor-pointer" :style="{ aspectRatio: '4/3'}" :src="images[2]" :alt="clubName" @click="() => handleOpenGallery(3)" />
-      <div class="relative cursor-pointer" @click="() => handleOpenGallery(4)">
-        <div v-if="props.images.length !== 4" class="flex flex-row absolute w-full h-full more-detail justify-center items-center ">
+    <div v-else-if="props.images.length >= 4 " class="w-full h-full grid grid-cols-2 grid-rows-2 gap-3">
+      <div class="flex">
+        <img class="rounded-lg cover-center cursor-pointer" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
+      </div>
+      <div class="flex">
+        <img class="rounded-lg cover-center cursor-pointer" :src="images[1]" :alt="clubName" @click="() => handleOpenGallery(2)" />
+      </div>
+      <div class="flex">
+        <img class="rounded-lg cover-center cursor-pointer" :src="images[2]" :alt="clubName" @click="() => handleOpenGallery(3)" />
+      </div>
+      <div class="relative cursor-pointer flex" @click="() => handleOpenGallery(4)">
+        <div v-if="props.images.length !== 4" class="flex flex-row absolute w-full h-full more-detail justify-center items-center min-h-full ">
           <IcOutlinePlus color="white" font-size="4rem" />
           <TextSub1 class="text-white !text-[4rem]">
             {{ props.images.length - 3 }}
           </TextSub1>
         </div>
-        <img class="w-full h-full rounded-lg cover-center" :style="{ aspectRatio: '4/3'}" :src="images[3]" :alt="clubName" />
+        <img class="w-full rounded-lg cover-center h-full" :style="{ aspectRatio: '4/3'}" :src="images[3]" :alt="clubName" />
       </div>
     </div>
   </div>
