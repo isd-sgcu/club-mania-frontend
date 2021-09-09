@@ -28,7 +28,7 @@ const handleClick = () => {
 
 <template>
   <div class="max-w-[200px] cursor-pointer flex flex-col " @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseOut">
-    <img :class="'outer-frame-' + (!detect ? 'blue' : 'pink')" class="object-contain h-[200px] max-w-[200px] rounded-2xl bg-white py-2" :src="imgUrl">
+    <img :class="'outer-frame-' + (!detect ? 'blue' : 'pink')" class="object-contain h-[200px] max-w-[200px] rounded-2xl bg-white p-2" :src="imgUrl">
     <div :class="'text-frame-' + (!detect ? 'blue' : 'pink')" class="flex items-center justify-center flex-1 bg-[#1F0A41] text-white pt-4 pb-4 pl-4 pr-4 rounded-2xl text-center mt-4">
       <text-sub2 class="leading-6">
         {{ text }}
