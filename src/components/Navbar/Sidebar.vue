@@ -49,6 +49,7 @@
         :embed-link="item.url"
         :name="item.name"
         :description="item.category"
+        :image="item.logo"
         @click="$emit('collapse')"
       />
     </div>
