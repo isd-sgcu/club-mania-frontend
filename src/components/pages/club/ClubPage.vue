@@ -119,11 +119,13 @@ const postDocsWithRefs = ref<
 const handleClose = (newValue: number) => {
   index.value = newValue
   isOpen.value = false
+  document.body.style.overflow = 'auto'
 }
 
 const handleOpenGallery = (newValue: number) => {
   index.value = newValue
   isOpen.value = true
+  document.body.style.overflow = 'hidden'
 }
 
 const filteredPostDocsWithRefs = computed(() => {
