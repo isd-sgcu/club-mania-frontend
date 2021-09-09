@@ -8,8 +8,7 @@
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ (12)"
-        :disabled="!nameEditable || nameNotEditableForUser"
-        @click="reconsiderEditable"
+        :disabled="nameNotEditable"
       />
       <TextFrame
         :show-discard-icon="true"
@@ -40,6 +39,7 @@
 </template>
 
 <script setup lang="ts">
+import { onAuthStateChanged, Unsubscribe } from 'firebase/auth'
 import useTextFrameConfig from './Frame/TextFrame/config'
 import { useThemeStore } from '~/stores/themes'
 import { auth } from '~/firebase'
@@ -85,30 +85,13 @@ const initCustomName = () => {
 const currentText = ref('')
 const customName = ref(initCustomName())
 const asAnonymous = ref(customName.value === '')
-/**
- * computed nameEditable alone is not enough
- * See detail at 'reconsiderEditable' function below
- */
-const nameNotEditableForUser = ref(false)
+const authUnsub = ref<Unsubscribe | null>(null)
+const nameNotEditable = ref(false)
 
 const isEmpty = computed(() => {
   return currentText.value === ''
 })
 const toggleText = computed(() => !asAnonymous.value ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน')
-
-const nameEditable = computed(() => {
-  if (!auth.value) return false // maybe logged in but auth is some how null
-  return auth.value.currentUser === null
-})
-
-/**
- * on refresh auth.value.currentUser is null for a second
- * and computed failed to see for its change from null to User
- * in case there's really is a user logged in
- */
-const reconsiderEditable = () => {
-  nameNotEditableForUser.value = auth.value?.currentUser !== null
-}
 
 const onTextChange = (text: string) => {
   currentText.value = text
@@ -129,6 +112,18 @@ const submit = () => {
   // setToLocal('anonymousCustomName', customName.value)
   // userStore.setDisplayName(customName.value)
 }
+
+onMounted(() => {
+  authUnsub.value = onAuthStateChanged(auth.value!, () => {
+    if (auth.value?.currentUser)
+      nameNotEditable.value = true
+  })
+})
+
+onUnmounted(() => {
+  authUnsub.value!()
+})
+
 const buttonTextColors = {
   SilpVat: '#391E67',
   Vichagarn: '#391E67',
