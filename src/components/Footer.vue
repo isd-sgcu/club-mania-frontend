@@ -39,14 +39,14 @@
         <div class="flex items-center space-x-3">
           <a :href="igLink" target="_blank">
             <img class="h-5 inline" src="/ig.svg" />
+            <span class="<sm:(text-xs) <md:(text-sm ml-3)">sgcu.chula</span>
           </a>
-          <span class="<sm:(text-xs) <md:(text-sm)">CLUB MANIA</span>
         </div>
         <div class="flex items-center space-x-3">
           <a :href="fbLink" target="_blank">
             <img class="h-5 inline" src="/fb.svg" />
+            <span class="<sm:(text-xs) <md:(text-sm ml-3)">/sgcu.chula</span>
           </a>
-          <span class="<sm:(text-xs) <md:(text-sm)">SGCU CHULA</span>
         </div>
       </div>
     </div>
@@ -62,13 +62,11 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import { useThemeStore } from '~/stores/themes'
-const { t } = useI18n()
 const themeStore = useThemeStore()
 
-const igLink = '#'
-const fbLink = '#'
+const igLink = 'https://www.instagram.com/sgcu.chula/'
+const fbLink = 'https://www.facebook.com/sgcu.chula'
 const sponsors: {
   link: string
   imageUrl: string
