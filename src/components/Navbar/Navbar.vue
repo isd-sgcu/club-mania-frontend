@@ -65,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import { onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged, Unsubscribe } from 'firebase/auth'
 import { auth } from '~/firebase'
 import { PageIcon } from '~/imagePath'
 import { useSearchTerm } from '~/stores/searchTerm'
@@ -79,6 +79,7 @@ const searchTerm = useSearchTerm()
 const isSearch = ref(false)
 const displayName = computed(() => user.displayName ? user.displayName : 'Anonymous')
 const userPhotoUrl = ref('')
+const authUnsub = ref<Unsubscribe | null>(null)
 
 const openSearch = () => {
   isSearch.value = true
@@ -90,12 +91,16 @@ const closeSearch = () => {
 }
 
 onMounted(() => {
-  const unsub = onAuthStateChanged(auth.value!, (user) => {
-    if (user) {
+  authUnsub.value = onAuthStateChanged(auth.value!, (user) => {
+    if (user)
       userPhotoUrl.value = user.photoURL ?? ''
-      unsub()
-    }
+    else
+      userPhotoUrl.value = ''
   })
+})
+
+onUnmounted(() => {
+  authUnsub.value!()
 })
 </script>
 
