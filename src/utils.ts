@@ -67,7 +67,7 @@ const getNewTextDoc = (
     : user
       ? store.displayName ?? customName
       : customName
-  if (store.year) name += ` ปี ${store.year}`
+  if (!asAnonymous && store.year) name += ` ปี ${store.year}`
   const textDoc: TextDoc = {
     by: user ? user.email! : getAnonymousId(),
     createdAt: Timestamp.fromDate(new Date()),
