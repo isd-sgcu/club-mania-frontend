@@ -8,5 +8,10 @@ export const info = {
   recruitmentPeriod: 'สมารถสมัครได้ทุกช่วงเลยครับ :)',
   contact: 'Facebook : CU EQ Club\nIG : EQ Club\nWeb: www.eqclub.co',
   badge: 'EQ club',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Feq-club%2F1.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Feq-club%2F2.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Feq-club%2F3.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Feq-club%2F4.jpg?alt=media',
+  ],
 }

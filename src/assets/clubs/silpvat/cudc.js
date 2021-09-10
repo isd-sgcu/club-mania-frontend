@@ -9,5 +9,10 @@ export const info = {
     '9 สิงหาคม 2564 - 3 กันยายน 2564 (หากสนใจอาจต้องรอการรับสมัครในปีถัดไป)',
   contact: 'Facebook : CU dance club\nInstagram : cudc_official',
   badge: 'CUDC',
-  images: ['https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150', 'https://via.placeholder.com/150'],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcudc%2F1.PNG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcudc%2F2.PNG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcudc%2F3.PNG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcudc%2F4.PNG?alt=media',
+  ],
 }

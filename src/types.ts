@@ -28,5 +28,5 @@ export type Club = {
   url: string
   name: string
   category: RouteCategoryOption
-  logo: string
+  logo?: string
 }

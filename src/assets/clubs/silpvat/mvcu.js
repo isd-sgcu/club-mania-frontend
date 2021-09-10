@@ -8,5 +8,13 @@ export const info = {
   recruitmentPeriod: 'เปิดรับสมัครทั้งเทอม',
   contact: 'FB: https://www.facebook.com/movieclubchula\nIG: https://www.instagram.com/movieclubchula/',
   badge: 'MVCU',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fmvcu%2F1.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fmvcu%2F2.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fmvcu%2F3.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fmvcu%2F4.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fmvcu%2F5.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fmvcu%2F6.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fmvcu%2F7.jpg?alt=media',
+  ],
 }

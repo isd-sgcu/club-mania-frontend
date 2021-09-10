@@ -8,5 +8,11 @@ export const info = {
   recruitmentPeriod: '2 September, 2021',
   contact: 'ig: ChulaMUN \nfb: ChulaMUN \nMedium: ChulaMUN ',
   badge: 'CU MUN',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-mun%2F1.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-mun%2F2.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-mun%2F3.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-mun%2F4.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcu-mun%2F5.jpg?alt=media',
+  ],
 }

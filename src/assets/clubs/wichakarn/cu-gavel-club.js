@@ -8,5 +8,11 @@ export const info = {
   recruitmentPeriod: 'สามารถสมัครเป็น member ของชมรมได้ตลอดทั้งปี',
   contact: 'Facebook: CU Gavel Club\nInstagram: cu.gavel',
   badge: 'CU Gavel',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-gavel-club%2F1.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-gavel-club%2F2.png?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-gavel-club%2F3.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-gavel-club%2F4.jpeg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-gavel-club%2F5.jpeg?alt=media',
+  ],
 }

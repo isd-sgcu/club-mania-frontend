@@ -8,5 +8,12 @@ export const info = {
   recruitmentPeriod: 'ตลอดปีการศึกษา',
   contact: 'Facebook Fanpage: ชมรมพุทธศาสตร์และประเพณี จุฬาลงกรณ์มหาวิทยาลัย https://www.facebook.com/cubsfanpage\nFacebook Group: CUBS ชมรมพุทธฯ จุฬาฯ พาสุขใจ https://www.facebook.com/groups/cubs072/ \nLINE Group : Freshy CUBS 2564 http://line.me/ti/g/NOFBj3XUT7 \nLine OpenChat : CUBS ชมรมพุทธฯ จุฬาฯ พาสุขใจ https://line.me/ti/g2/MUSXvMlEJhXwVeiz79-g8w?utm_source=invitation&utm_medium=link_copy&utm_campaign=default \nIG: @cubudclub https://instagram.com/cubudclub?utm_medium=copy_link ',
   badge: 'Buddhist Society Club',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcubs%2F1.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcubs%2F2.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcubs%2F3.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcubs%2F4.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcubs%2F5.jpeg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcubs%2F6.png?alt=media',
+  ],
 }
