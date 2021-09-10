@@ -50,14 +50,14 @@
         </div>
       </div>
     </div>
-    <div class="sm:(mb-3)">
+    <!-- <div class="sm:(mb-3)">
       <h2 class="block text-center text-xs tracking-wide sm:(text-left ml-5 inline text-0.9rem) uppercase text-white font-Roboto">
         Sponsored by
       </h2>
       <div class="space-x-2 text-center my-2 sm:(text-left ml-5 inline)">
         <a v-for="sp in sponsors" :key="sp.link" :href="sp.link" target="_blank"><img class="cover-center h-10 w-10 md:() inline rounded border-1px border-white cursor-pointer" :src="sp.imageUrl"></a>
       </div>
-    </div>
+    </div> -->
   </footer>
 </template>
 
@@ -67,25 +67,25 @@ const themeStore = useThemeStore()
 
 const igLink = 'https://www.instagram.com/sgcu.chula/'
 const fbLink = 'https://www.facebook.com/sgcu.chula'
-const sponsors: {
-  link: string
-  imageUrl: string
-}[] = [
-  {
-    link: '#',
-    imageUrl: 'https://www.msd-animal-health-hub.co.uk/sites/default/files/diabetes-cat-3-min.png',
-  },
-  {
-    link: '#',
-    imageUrl: 'https://i.guim.co.uk/img/media/934738f102dae25a69bbfd22c55380b483347af3/0_71_2119_1272/master/2119.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=7641f7ddd84e2361f6eb8d47c9958293',
-  },
-  {
-    link: '#',
-    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBi6q97nzVlCfH38XNNwxhBqGfWsj2G4-XJQ&usqp=CAU',
-  },
-  {
-    link: '#',
-    imageUrl: 'https://www.alleycat.org/wp-content/uploads/2021/02/344x361_FoundACat.jpg',
-  },
-]
+// const sponsors: {
+//   link: string
+//   imageUrl: string
+// }[] = [
+//   {
+//     link: '#',
+//     imageUrl: 'https://www.msd-animal-health-hub.co.uk/sites/default/files/diabetes-cat-3-min.png',
+//   },
+//   {
+//     link: '#',
+//     imageUrl: 'https://i.guim.co.uk/img/media/934738f102dae25a69bbfd22c55380b483347af3/0_71_2119_1272/master/2119.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=7641f7ddd84e2361f6eb8d47c9958293',
+//   },
+//   {
+//     link: '#',
+//     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBi6q97nzVlCfH38XNNwxhBqGfWsj2G4-XJQ&usqp=CAU',
+//   },
+//   {
+//     link: '#',
+//     imageUrl: 'https://www.alleycat.org/wp-content/uploads/2021/02/344x361_FoundACat.jpg',
+//   },
+// ]
 </script>
