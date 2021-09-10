@@ -121,6 +121,7 @@ export const useUserStore = defineStore('user', () => {
     setYear,
     setAsStaff,
     asStaff,
+    year,
   }
 })
 
