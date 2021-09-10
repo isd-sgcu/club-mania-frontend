@@ -81,9 +81,7 @@ const isSearch = ref(false)
 const displayName = computed(() => {
   if (user.displayName)
     return user.displayName
-
-  const savedAnnyName = getFromLocal('anonymousNameForReal')
-  return savedAnnyName ?? 'Anonymous'
+  return getFromLocal('anonymousNameForReal') ?? 'Anonymous'
 })
 const userPhotoUrl = ref('')
 const authUnsub = ref<Unsubscribe | null>(null)
