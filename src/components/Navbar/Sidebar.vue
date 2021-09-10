@@ -4,27 +4,27 @@
     <img v-if="searchTerm.savedTerm === ''" :src="PageIcon['Main']" class="clubmania-icon" />
     <ol v-if="searchTerm.savedTerm === ''" class="mobile-menu">
       <router-link to="/wichakarn" @click="$emit('collapse')">
-        <li>
+        <li :class="{'highlight-text': theme.savedTheme === 'Vichagarn'}">
           วิชาการ
         </li>
       </router-link>
       <router-link to="/silpvat" @click="$emit('collapse')">
-        <li>
+        <li :class="{'highlight-text': theme.savedTheme === 'SilpVat'}">
           ศิลป์วัฒน์
         </li>
       </router-link>
       <router-link to="/geela" @click="$emit('collapse')">
-        <li>
+        <li :class="{'highlight-text': theme.savedTheme === 'Gera'}">
           กีฬา
         </li>
       </router-link>
       <router-link to="/pat" @click="$emit('collapse')">
-        <li>
+        <li :class="{'highlight-text': theme.savedTheme === 'Pat'}">
           พัฒน์
         </li>
       </router-link>
       <router-link to="/other" @click="$emit('collapse')">
-        <li>
+        <li :class="{'highlight-text': theme.savedTheme === 'Other'}">
           อื่นๆ
         </li>
       </router-link>
@@ -72,6 +72,8 @@
 <script setup lang="ts">
 import { useSearchTerm } from '~/stores/searchTerm'
 import { useUserStore } from '~/stores/user'
+import { useThemeStore } from '~/stores/themes'
+// Image path
 import { PageIcon } from '~/imagePath'
 
 const props = defineProps<{
@@ -85,6 +87,8 @@ defineEmits<{
 
 const searchTerm = useSearchTerm()
 const user = useUserStore()
+const theme = useThemeStore()
+
 const foundClubs = computed(() => searchTerm.getClubs())
 
 const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' })
