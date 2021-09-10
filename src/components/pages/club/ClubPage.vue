@@ -116,7 +116,7 @@ const postDocsWithRefs = ref<
 >([])
 
 useHead({
-  title: computed(() => `${staticInfo.value.name}, ${staticInfo.value.category}`),
+  title: computed(() => `${staticInfo.value.name} | Club Mania 2021`),
   meta: [
     { name: 'description', content: computed(() => staticInfo.value.about) },
   ],
