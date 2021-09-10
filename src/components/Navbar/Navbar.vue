@@ -6,7 +6,7 @@
           <img :src="PageIcon[theme.savedTheme]" class="py-2 w-18 md:w-22 lg:w-28 h-auto" />
         </router-link>
       </div>
-      <img class="w-7 h-7 mr-4 rounded-full ml-auto md:(hidden)" :src="userPhotoUrl" alt="">
+      <img v-show="userPhotoUrl" class="w-7 h-7 mr-4 rounded-full ml-auto md:(hidden)" :src="userPhotoUrl">
       <ci-hamburger class="open-menu" @click="openSearch" />
       <ol class="main-menu">
         <router-link to="/wichakarn">
@@ -40,7 +40,7 @@
         <router-link to="/login">
           <div v-if="user.displayName" class="flex">
             <ri-logout-circle-r-line class="w-4 md:w-6 h-auto mr-4 hover:text-yellow-700" />
-            <img class="w-5 md:w-7 h-auto mr-4 rounded-full" :src="userPhotoUrl" alt="">
+            <img v-show="userPhotoUrl" class="w-5 md:w-7 h-auto mr-4 rounded-full" :src="userPhotoUrl">
           </div>
           <mdi-account-circle-outline v-else class="w-4 md:w-6 h-auto mr-4 hover:text-yellow-700" />
         </router-link>
