@@ -44,7 +44,7 @@ import useTextFrameConfig from './Frame/TextFrame/config'
 import { useThemeStore } from '~/stores/themes'
 import { auth } from '~/firebase'
 import { useUserStore } from '~/stores/user'
-import { getFromLocal } from '~/utils'
+import { getFromLocal, setToLocal } from '~/utils'
 const { border, placeholder, text } = useTextFrameConfig()
 
 const props = defineProps<{
@@ -102,9 +102,9 @@ const submit = () => {
   emit('submit', currentText.value, customName.value === '' ? undefined : customName.value, asAnonymous.value)
   currentText.value = ''
 
-  // if (auth.value!.currentUser) return
-  // setToLocal('anonymousCustomName', customName.value)
-  // userStore.setDisplayName(customName.value)
+  if (auth.value!.currentUser) return
+  setToLocal('anonymousNameForReal', customName.value)
+  userStore.setDisplayName(customName.value)
 }
 
 onMounted(() => {
