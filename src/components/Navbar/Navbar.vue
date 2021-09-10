@@ -80,7 +80,7 @@ const isSearch = ref(false)
 const displayName = computed(() => {
   if (user.displayName)
     return user.displayName
-  return getFromLocal('anonymousNameForReal') ?? 'Anonymous'
+  return getFromLocal('anonymousNameForReal') ?? 'บุคคลนิรนาม'
 })
 const userPhotoUrl = ref('')
 const authUnsub = ref<Unsubscribe | null>(null)
