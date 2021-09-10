@@ -41,13 +41,15 @@
         <img class="rounded-lg cover-center cursor-pointer" :src="images[2]" :alt="clubName" @click="() => handleOpenGallery(3)" />
       </div>
       <div class="relative cursor-pointer flex max-h-[350px]" @click="() => handleOpenGallery(4)">
-        <div v-if="props.images.length !== 4" class="flex flex-row absolute w-full h-full more-detail justify-center items-center min-h-full ">
+        <div v-if="props.images.length !== 4" class="rounded-lg flex flex-row absolute w-full h-full more-detail justify-center items-center min-h-full ">
           <IcOutlinePlus color="white" class="text-6xl <sm:text-4xl" />
-          <TextSub1 class="text-white sm:text-6xl <sm:text-4xl">
+          <TextSub1 class="text-white sm:text-6xl <sm:text-4xl ">
             {{ props.images.length - 3 }}
           </TextSub1>
         </div>
-        <img class="w-full rounded-lg cover-center h-full" :style="{ aspectRatio: '4/3'}" :src="images[3]" :alt="clubName" />
+        <div>
+          <img class="w-full rounded-lg cover-center h-full" :style="{ aspectRatio: '4/3'}" :src="images[3]" :alt="clubName" />
+        </div>
       </div>
     </div>
   </div>
