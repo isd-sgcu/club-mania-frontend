@@ -154,11 +154,11 @@ export default defineConfig({
   shortcuts: {
     'font-Navbar': 'font-Roboto font-500 text-[16px] md:text-[18px] xl:text-[20px] leading-[24px] tracking-[0.1px]',
     'font-Main': 'font-Retro text-[24px] md:text-[56px] xl:text-[72px] leading-[24px] tracking-[2px]',
-    'font-Vichagarn': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
-    'font-Gera': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[0.2px]',
-    'font-Pat': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
-    'font-SilpVat': 'font-Mitr font-700 text-[34px] md:text-[70px] xl:text-[86px] leading-[24px] tracking-[2px]',
-    'font-Other': 'font-Mitr text-[32px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
+    'font-Vichagarn': 'font-Mitr text-[28px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
+    'font-Gera': 'font-Mitr text-[28px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[0.2px]',
+    'font-Pat': 'font-Mitr text-[28px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
+    'font-SilpVat': 'font-Mitr font-700 text-[30px] md:text-[70px] xl:text-[86px] leading-[24px] tracking-[2px]',
+    'font-Other': 'font-Mitr text-[28px] md:text-[68px] xl:text-[84px] leading-[24px] tracking-[2px]',
     'cover-center': 'object-center object-cover', // stretch out img and place at the center
   },
 })

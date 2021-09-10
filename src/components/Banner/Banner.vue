@@ -3,14 +3,15 @@
 <!-- Last Updated by Kaoklong -->
 
 <template>
-  <div class="club-banner" :class="{'items-center justify-center': !isClub}" @click="directTo">
-    <img :src="isClub? ClubBanner[theme] :CategoryBanner[theme]" :alt="theme" class="w-full cover-center h-180px md:h-260px lg:(min-h-312px h-auto max-h-500px)">
-    <span v-if="theme === 'Gera'" class="gera-glow" :class="{'md:text-[48px] xl:text-[64px] left-13/100 bottom-33/100': isClub}">
+  <div class="club-banner" :class="{'md:items-center justify-center': !isClub}" @click="directTo">
+    <img :src="(isClub) ? ClubBanner[theme] : MobileBanner[theme]" :alt="theme + 'mobile'" class="bg-cover w-full h-140px md:hidden">
+    <img :src="(isClub) ? ClubBanner[theme] : CategoryBanner[theme]" :alt="theme" class="<md:hidden bg-cover w-full h-260px lg:(min-h-312px h-auto max-h-500px)">
+    <span v-if="theme === 'Gera'" class="gera-glow" :class="isClub ? textPosInClubPage : '<md:bottom-10'">
       <p class="gera-border">
         {{ displayText }}
       </p>
     </span>
-    <div v-else-if="theme === 'SilpVat'" class="silpvat-glow" :class="{'md:text-[48px] xl:text-[64px] left-13/100 bottom-33/100': isClub}">
+    <div v-else-if="theme === 'SilpVat'" class="silpvat-glow" :class="isClub ? textPosInClubPage : '<md:bottom-10'">
       <p class="outer">
         {{ displayText }}
       </p>
@@ -18,7 +19,7 @@
         {{ displayText }}
       </p>
     </div>
-    <p class="absolute" :class="isClub ?`font-${theme} left-13/100 bottom-33/100 md:text-[48px] xl:text-[64px]`: `font-${theme}`" :style="styleObject">
+    <p class="absolute" :class="isClub ?`font-${theme} ` + textPosInClubPage: `font-${theme} <md:bottom-10`" :style="styleObject">
       {{ displayText }}
     </p>
   </div>
@@ -37,7 +38,7 @@ import CatagoryText from './bannerText.json'
 import { ThemeOption } from '~/types'
 
 // Path
-import { CategoryBanner, ClubBanner } from '~/imagePath'
+import { CategoryBanner, ClubBanner, MobileBanner } from '~/imagePath'
 
 const props = defineProps<{
   theme: ThemeOption
@@ -49,19 +50,21 @@ const props = defineProps<{
 const displayText = computed(() => props.isClub ? props.text : CatagoryText[props.theme])
 const styleObject: any = computed(() => TextStyle[props.theme])
 
+const textPosInClubPage = 'md:(text-[48px] left-13/100 bottom-33/100) xl:text-[64px] left-2/25 bottom-1/5'
 const router = useRouter()
 const directTo = () => {
+  if (props.isClub) return
   router.push({ path: BannerRoute[props.theme] })
 }
 </script>
 
 <style>
 .club-banner {
-  @apply w-full relative flex cursor-pointer;
+  @apply w-full relative flex;
 }
 
 .gera-glow {
-  @apply absolute font-Gera md:font-700 text-stroke-3 md:text-stroke-5 xl:text-stroke-8 text-stroke-black;
+  @apply absolute font-Gera text-stroke-3 md:text-stroke-5 xl:text-stroke-8 text-stroke-black;
   filter: drop-shadow(0px 0px 15px #DF322A);
 }
 
