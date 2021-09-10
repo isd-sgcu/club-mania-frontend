@@ -3,7 +3,7 @@
     :to="embedLink"
     class="cursor-pointer hover:bg-grey-primary px-6 my-3 md:(flex max-h-120px bg-white p-4 my-0 hover:bg-grey-light)"
   >
-    <img :src="image ?? placeholder" class="min-w-18 w-18 h-auto lg:(w-22 h-auto) <md:hidden" />
+    <img :src="image" class="min-w-18 w-18 h-18 lg:(w-22 h-22) <md:hidden" />
     <div class="px-3 md:(flex flex-col justify-center)">
       <p class="font-Mitr max-w-44 text-white font-300 text-[10px] leading-[16px] md:hidden">
         {{ name }}
@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { placeholder } from '~/imagePath'
 defineProps<{
   name: string
   description: string

@@ -6,5 +6,11 @@ export const info = {
   recruitmentPeriod: 'เปิดรับสมัครตลอดปีการศึกษา (สามารถติดต่อได้ทุกช่องทางเลย)',
   contact: 'ประธานชมรม : ยีรีน วิทยาศาสตร์การกีฬา ปี3\nโทร : 080-8696527\nIG : Chula Rowing Crew\nFacebook page : Chula Rowing Crew\nห้องชมรม : สนามกีฬาจุฬาลงกรณ์มหาวิทยาลัย ฝั่งสาธิตจุฬา',
   badge: 'Rowing crew',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fchula-rowing-crew%2F1.png?alt=media&token=7d4e4fbc-4438-41af-96f7-f6d89693c925',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fchula-rowing-crew%2F2.jpeg?alt=media&token=2c512d20-b995-4249-a45d-de705ad8ffb6',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fchula-rowing-crew%2F3.jpeg?alt=media&token=2c512d20-b995-4249-a45d-de705ad8ffb6',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fchula-rowing-crew%2F4.jpeg?alt=media&token=2c512d20-b995-4249-a45d-de705ad8ffb6',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fchula-rowing-crew%2F5.jpeg?alt=media&token=2c512d20-b995-4249-a45d-de705ad8ffb6',
+  ],
 }

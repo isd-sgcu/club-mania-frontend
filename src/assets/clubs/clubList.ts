@@ -29,7 +29,7 @@ export const clubList: Array<Club> = [
     url: '/other/charm-chula',
     name: 'องค์กรฌาร์ม (CHARM Chula)',
     category: 'other',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/other%2Fcharm-chula%2Flogo.png?alt=media',
   },
   {
     url: '/other/coach-by-champ',
@@ -53,13 +53,13 @@ export const clubList: Array<Club> = [
     url: '/wichakarn/chulalongkorn-university-buddhist-society-cubs',
     name: 'ชมรมพุทธศาสตร์และประเพณี (CUBS)',
     category: 'wichakarn',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcubs%2Flogo.jpg?alt=media&token=ed344cc2-59c7-45cc-bc49-bec9fcde0af9',
   },
   {
     url: '/wichakarn/cu-pen-club',
     name: 'ชมรมวรรณศิลป์ (CU Pen Club)',
     category: 'wichakarn',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-pen-club%2Flogo.png?alt=media&token=4aecb6a7-6ee7-4d0e-8034-d0bb2886454f',
   },
   {
     url: '/wichakarn/eq-club',
@@ -77,7 +77,7 @@ export const clubList: Array<Club> = [
     url: '/wichakarn/ceo',
     name: 'Chulalongkorn Entrepreneur Organization (CEO)',
     category: 'wichakarn',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fceo%2Flogo.png?alt=media&token=852b0772-e89a-43c3-9b8c-230eaa13c3ed',
   },
   {
     url: '/wichakarn/cu-gavel-club',
@@ -95,7 +95,7 @@ export const clubList: Array<Club> = [
     url: '/pat/lohit-club-chula',
     name: 'ชมรมบริการโลหิตและสังคมสงเคราะห์ในพระบรมราชินูปถัมภ์ (Lohit Club Chula)',
     category: 'pat',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Flohit-club-chula%2FLOGO.png?alt=media',
   },
   {
     url: '/pat/hill-tribe-club',
@@ -107,13 +107,13 @@ export const clubList: Array<Club> = [
     url: '/pat/slum-club',
     name: 'จุฬาฯสู่ชุมชน (Slum Club)',
     category: 'pat',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fslum-club%2Flogo.png?alt=media',
   },
   {
     url: '/pat/chula-volunteers-for-vulnerable-children-club',
     name: 'ชมรมอาสาพัฒนาเพื่อเด็กฯ (cvvc)',
     category: 'pat',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fcvvc%2Flogo.png?alt=media',
   },
   {
     url: '/pat/voluntary-club-of-the-student-union-chulalongkorn-university',
@@ -143,7 +143,7 @@ export const clubList: Array<Club> = [
     url: '/silpvat/cu-band',
     name: 'ชมรมดนตรีสากล (CU Band)',
     category: 'silpvat',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-band%2Flogo.png?alt=media',
   },
   {
     url: '/silpvat/cu-thai-classical-music-club',
@@ -167,7 +167,7 @@ export const clubList: Array<Club> = [
     url: '/silpvat/isan-art-and-culture-club',
     name: 'ชมรมศิลปวัฒนธรรมอีสาน (Isan Art and Culture Club)',
     category: 'silpvat',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fisan-art-and-culture-club%2Flogo.jpeg?alt=media',
   },
   {
     url: '/silpvat/cu-southern-art-and-culture-club',
@@ -185,7 +185,7 @@ export const clubList: Array<Club> = [
     url: '/silpvat/cudc',
     name: 'ชมรมเต้นแห่งจุฬาลงกรณ์มหาวิทยาลัย (CUDC)',
     category: 'silpvat',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcudc%2FLogo.JPG?alt=media',
   },
   {
     url: '/silpvat/cu-northern-art-and-culture-club',
@@ -221,7 +221,7 @@ export const clubList: Array<Club> = [
     url: '/geela/chula-rowing-crew',
     name: 'ชมรมเรือใบและเรือพาย',
     category: 'geela',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/logo_placeholder.png?alt=media',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fchula-rowing-crew%2Flogo.JPG?alt=media&token=c28b9285-9b65-40f6-a584-1aad31e10b24',
   },
   {
     url: '/geela/cu-judo-club',

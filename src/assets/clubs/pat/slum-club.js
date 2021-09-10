@@ -6,5 +6,11 @@ export const info = {
   recruitmentPeriod: 'เปิดรับสมัครสมาชิกช่วงเดือนมีนาคม หรือสามารถติดตามกิจกรรมต่าง ๆ ของพวกเราจากเพจเฟซบุ๊กและหรือไอจีของชมรมได้เลย',
   contact: 'Facebook Page: SLUM CLUB (ชมรมจุฬาฯสู่ชุมชน)\nInstagram: Slumclub_chula',
   badge: 'Slum Club',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fslum-club%2F1.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fslum-club%2F2.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fslum-club%2F3.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fslum-club%2F4.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Fslum-club%2F5.jpg?alt=media',
+  ],
 }

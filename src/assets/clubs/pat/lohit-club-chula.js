@@ -9,5 +9,11 @@ export const info = {
     'รับสมัครสองช่วงค่ายยาวประมาณ 10 วันช่วงต้นเดือนมกราคมค่ายกลางประมาณไม่เกิน 10 วัน ช่วงปลายเดือนพฤษภาคมสามารถติดตามรายละเอียดได้ทาง Facebook Page และ Instagram ของชมรม',
   contact: 'FB Page : Lohitclub Chula\nInstagram: Lohitclub.chula',
   badge: 'Lohit Club',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Flohit-club-chula%2F1.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Flohit-club-chula%2F2.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Flohit-club-chula%2F3.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Flohit-club-chula%2F4.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/pat%2Flohit-club-chula%2F5.jpg?alt=media',
+  ],
 }

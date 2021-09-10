@@ -8,5 +8,11 @@ export const info = {
   recruitmentPeriod: 'สามารถเข้าร่วมได้ตลอดทั้งปีการศึกษา',
   contact: 'Facebook : Catholic Club Chula\nIG : Catholicchula\nLine ID : malangphomp284',
   badge: 'CU Cathoric',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-catholic%2F1.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-catholic%2F2.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-catholic%2F3.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-catholic%2F4.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-catholic%2F5.JPG?alt=media',
+  ],
 }

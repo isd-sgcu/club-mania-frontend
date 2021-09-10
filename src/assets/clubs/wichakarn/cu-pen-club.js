@@ -8,5 +8,11 @@ export const info = {
   recruitmentPeriod: 'ตลอดทั้งปี',
   contact: 'Facebook Page: CU Pen Club\nInstagram: cupenclub',
   badge: 'CU PEN',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-pen-club%2F1.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-pen-club%2F2.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-pen-club%2F3.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-pen-club%2F4.JPG?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/wichakarn%2Fcu-pen-club%2F5.JPG?alt=media',
+  ],
 }

@@ -9,5 +9,11 @@ export const info = {
   contact:
     'Instagram: @cuchorus_official\nFacebook: CU Chorus\nYoutube: CU Chorus \nTwitter: CU Chorus',
   badge: 'CU Chorus',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-chorus%2F1.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-chorus%2F2.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-chorus%2F3.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-chorus%2F4.jpg?alt=media',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-chorus%2F5.jpg?alt=media',
+  ],
 }
