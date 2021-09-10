@@ -3,14 +3,15 @@
 </template>
 
 <script setup lang="ts">
-import { clubList } from '~/assets/clubs/clubList'
+import { useHead } from '@vueuse/head'
+import { setUpCategoryPage } from '~/utils'
 
-const data = clubList.filter(value => value.category === 'wichakarn').map((value) => {
-  return {
-    text: value.name,
-    imgUrl: value.logo,
-    href: value.url,
-  }
+const { description, data, title } = setUpCategoryPage('wichakarn', 'ฝ่ายวิชาการ')
+
+useHead({
+  title,
+  meta: [
+    { name: 'description', content: description },
+  ],
 })
-
 </script>
