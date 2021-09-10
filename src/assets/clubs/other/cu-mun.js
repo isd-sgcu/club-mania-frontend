@@ -1,6 +1,6 @@
 export const info = {
   name: 'Chulalongkorn Model United Nations',
-  category: 'ไม่สังกัดฝ่ายใดเลย',
+  category: 'ไม่สังกัดฝ่าย',
   about:
     'We are a CLOSED CLUB by political science facility that simulates UN committees by letting members role play as delegates from various countries. ',
   whatToExpect:

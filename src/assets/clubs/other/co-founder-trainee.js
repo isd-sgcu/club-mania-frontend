@@ -1,6 +1,6 @@
 export const info = {
   name: 'Co-founder Trainee',
-  category: 'ไม่สังกัดฝ่ายใดเลย',
+  category: 'ไม่สังกัดฝ่าย',
   about:
     'โครงการพัฒนาการเป็นผู้ประกอบการจาก lecture และ intern จากผู้ประกอบการตัวจริง',
   whatToExpect:
