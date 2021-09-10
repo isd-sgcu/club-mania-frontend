@@ -8,7 +8,7 @@
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ (12)"
-        :disabled="nameNotEditable"
+        :disabled="true"
       />
       <TextFrame
         :show-discard-icon="true"
@@ -67,7 +67,6 @@ const userStore: { displayName: string | null; setDisplayName: (name: string) =>
 
 const currentText = ref('')
 const authUnsub = ref<Unsubscribe | null>(null)
-const nameNotEditable = ref(false)
 const showCustomName = ref(false)
 
 const customName = computed(() => {
@@ -118,13 +117,10 @@ const submit = () => {
 
 onMounted(() => {
   authUnsub.value = onAuthStateChanged(auth.value!, () => {
-    if (auth.value?.currentUser) {
-      nameNotEditable.value = true
+    if (auth.value?.currentUser)
       showCustomName.value = true
-    }
-    else {
+    else
       showCustomName.value = false
-    }
   })
 })
 
