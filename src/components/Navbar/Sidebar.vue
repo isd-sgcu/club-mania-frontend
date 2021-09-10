@@ -57,7 +57,7 @@
     </div>
     <div
       v-if="notOnfocus && searchTerm.savedTerm === ''"
-      class="absolute w-full bottom-0 flex items-center h-12
+      class="mt-auto w-full flex items-center h-12
       border-[#3D3D3D] border-t-1 text-white pl-3 text-center md:hidden"
     >
       <router-link to="/login" @click="$emit('collapse')">
@@ -95,13 +95,21 @@ const notOnfocus = ref(true)
 
 const foundClubs = computed(() => searchTerm.getClubs())
 const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' })
+
+// check if is not server side rendering
+if (typeof window !== 'undefined') {
+  visualViewport.addEventListener('resize', () => {
+    document.documentElement.style.setProperty('--viewport-height', `${visualViewport.height}px`)
+  })
+}
 </script>
 
 <style scoped>
 .sidebar {
-  @apply fixed overflow-hidden top-0 z-30 min-w-50 h-full -right-full bg-[#1f1f1f]
+  @apply fixed flex flex-col overflow-hidden top-0 z-30 min-w-50 -right-full bg-[#1f1f1f]
   md:(p-0 max-w-432px w-1/3 bg-transparent);
   transition: right 0.5s ease-out;
+  height: var(--viewport-height);
 }
 
 .clubmania-icon {
