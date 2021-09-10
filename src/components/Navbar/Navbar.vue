@@ -10,27 +10,27 @@
       <ci-hamburger class="open-menu" @click="openSearch" />
       <ol class="main-menu">
         <router-link to="/wichakarn">
-          <li>
+          <li :class="{'highlight-text': theme.savedTheme === 'Vichagarn'}">
             วิชาการ
           </li>
         </router-link>
         <router-link to="/silpvat">
-          <li>
+          <li :class="{'highlight-text': theme.savedTheme === 'SilpVat'}">
             ศิลป์วัฒน์
           </li>
         </router-link>
         <router-link to="/geela">
-          <li>
+          <li :class="{'highlight-text': theme.savedTheme === 'Gera'}">
             กีฬา
           </li>
         </router-link>
         <router-link to="/pat">
-          <li>
+          <li :class="{'highlight-text': theme.savedTheme === 'Pat'}">
             พัฒน์
           </li>
         </router-link>
         <router-link to="/other">
-          <li>
+          <li :class="{'highlight-text': theme.savedTheme === 'Other'}">
             อื่นๆ
           </li>
         </router-link>
@@ -44,7 +44,6 @@
           </div>
           <mdi-account-circle-outline v-else class="w-4 md:w-6 h-auto mr-4 hover:text-yellow-700" />
         </router-link>
-        <img src="">
         <span class="font-Mitr lg:(text-lg)">{{ displayName }}</span>
         <mdi-magnify class="w-4 md:w-6 h-auto ml-3 lg:ml-6 cursor-pointer hover:text-yellow-700" @click="openSearch" />
       </div>
@@ -109,9 +108,9 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
+<style>
 .wrapper {
-  @apply fixed top-0 z-10 px-5 md:px-9 w-full min-h-8 backdrop-filter backdrop-blur-[15px];
+  @apply fixed top-0 z-10 px-5 md:px-9 w-full min-h-10 backdrop-filter backdrop-blur-[15px];
 }
 
 .headbar {
@@ -144,4 +143,7 @@ onUnmounted(() => {
     cursor-default whitespace-nowrap overflow-hidden overflow-ellipsis;
 }
 
+.highlight-text {
+  @apply text-yellow-700;
+}
 </style>
