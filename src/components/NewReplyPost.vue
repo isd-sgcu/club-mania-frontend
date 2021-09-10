@@ -1,10 +1,10 @@
 <template>
   <div class="relative">
     <transition-group appear name="fade" mode="out-in">
+      <!-- :maxlength="maxLength" -->
       <input
         v-if="!asAnonymous"
         v-model="customName"
-        :maxlength="maxLength"
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
         placeholder="ใส่ชื่อของคุณ (12)"
@@ -60,13 +60,14 @@ const emit = defineEmits<{
 const themeStore = useThemeStore()
 const userStore: { displayName: string | null; setDisplayName: (name: string) => void } = useUserStore() // displayName does not need to be reactive
 
-const maxLength = 12
+// const maxLength = 12
 
-/**
- * Decide initial custom name
- */
-const initCustomName = () => {
-  if (userStore.displayName) return userStore.displayName.slice(0, maxLength - 1)
+const currentText = ref('')
+const authUnsub = ref<Unsubscribe | null>(null)
+const nameNotEditable = ref(false)
+
+const customName = computed(() => {
+  if (userStore.displayName) return userStore.displayName
 
   const user = auth.value!.currentUser
   if (!user) {
@@ -78,16 +79,9 @@ const initCustomName = () => {
   if (!defaultUserDisplayName)
     return ''
 
-  // userStore.setDisplayName(defaultUserDisplayName)
-  return defaultUserDisplayName.slice(0, maxLength - 1)
-}
-
-const currentText = ref('')
-const customName = ref(initCustomName())
+  return defaultUserDisplayName
+})
 const asAnonymous = ref(customName.value === '')
-const authUnsub = ref<Unsubscribe | null>(null)
-const nameNotEditable = ref(false)
-
 const isEmpty = computed(() => {
   return currentText.value === ''
 })
