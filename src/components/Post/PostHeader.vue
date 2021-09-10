@@ -3,7 +3,7 @@
     <h2 class="text-20px font-Roboto inline sm:(mr-2 text-24px)">
       {{ props.publisher }}
     </h2>
-    <Badge class="sm:(mr-4)" v-if="props.badge" :badge-text="props.badge" />
+    <Badge v-if="props.badge" class="sm:(mr-4)" :badge-text="props.badge" />
     <span class="<sm:(hidden)">{{ formattedCreatedAt }}</span>
   </div>
   <span class="sm:(hidden) text-13px">{{ formattedCreatedAt }}</span>
