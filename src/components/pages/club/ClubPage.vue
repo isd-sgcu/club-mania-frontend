@@ -74,6 +74,7 @@
 <script setup lang="ts">
 import { useFavicon } from '@vueuse/core'
 import { doc, DocumentReference, Firestore, Unsubscribe, onSnapshot, updateDoc, arrayUnion, addDoc, collection, setDoc, arrayRemove, deleteDoc, getDoc } from 'firebase/firestore'
+import { useHead } from '@vueuse/head'
 import { getNewPostDoc } from '../../../utils'
 import useClubConfig from './config'
 import { useThemeStore } from '~/stores/themes'
@@ -107,14 +108,19 @@ const staticInfo = ref<ClubStaticInfo>({
   badge: '',
   images: [],
 })
-
 const index = ref<number>(1)
-
 const postDocsWithRefs = ref<
 { ref: DocumentReference
   doc: PostDoc
 }[]
 >([])
+
+useHead({
+  title: computed(() => `${staticInfo.value.name}, ${staticInfo.value.category}`),
+  meta: [
+    { name: 'description', content: computed(() => staticInfo.value.about) },
+  ],
+})
 
 const handleClose = (newValue: number) => {
   index.value = newValue
