@@ -14,7 +14,6 @@ export const info = {
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-nothern-art-and-cluture-club%2F2.jpg?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-nothern-art-and-cluture-club%2F3.jpg?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-nothern-art-and-cluture-club%2F4.jpg?alt=media',
-    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-nothern-art-and-cluture-club%2F5.jpg?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-nothern-art-and-cluture-club%2F5.JPG?alt=media',
     'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/silpvat%2Fcu-nothern-art-and-cluture-club%2F6.JPG?alt=media',
   ],
