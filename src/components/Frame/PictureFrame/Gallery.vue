@@ -47,7 +47,7 @@
             {{ props.images.length - 3 }}
           </TextSub1>
         </div>
-        <div>
+        <div class="w-full">
           <img class="w-full rounded-lg cover-center h-full" :style="{ aspectRatio: '4/3'}" :src="images[3]" :alt="clubName" />
         </div>
       </div>
