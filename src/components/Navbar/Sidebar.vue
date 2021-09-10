@@ -38,6 +38,8 @@
         v-model="searchTerm.savedTerm"
         type="text"
         placeholder="ค้นหาชมรม"
+        @focusin="() => {notOnfocus = false}"
+        @focusout="() => {notOnfocus = true}"
       >
       <carbon-close-filled class="w-32px h-auto ml-8px cursor-pointer hover:text-yellow-700 <md:hidden" @click="$emit('collapse')" />
     </div>
@@ -54,7 +56,7 @@
       />
     </div>
     <div
-      v-if="searchTerm.savedTerm === ''"
+      v-if="notOnfocus && searchTerm.savedTerm === ''"
       class="absolute w-full bottom-0 flex items-center h-12
       border-[#3D3D3D] border-t-1 text-white pl-3 text-center md:hidden"
     >
@@ -89,14 +91,15 @@ const searchTerm = useSearchTerm()
 const user = useUserStore()
 const theme = useThemeStore()
 
-const foundClubs = computed(() => searchTerm.getClubs())
+const notOnfocus = ref(true)
 
+const foundClubs = computed(() => searchTerm.getClubs())
 const transition = computed(() => props.show ? { right: 0 } : { right: '-100%' })
 </script>
 
 <style scoped>
 .sidebar {
-  @apply fixed top-0 right-0 z-30 min-w-50 h-screen -right-full bg-[#1f1f1f]
+  @apply fixed overflow-hidden top-0 z-30 min-w-50 h-full -right-full bg-[#1f1f1f]
   md:(p-0 max-w-432px w-1/3 bg-transparent);
   transition: right 0.5s ease-out;
 }
