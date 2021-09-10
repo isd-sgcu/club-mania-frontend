@@ -1,8 +1,26 @@
 import { collection, doc, getDoc, Timestamp } from 'firebase/firestore'
+import { clubList } from './assets/clubs/clubList'
 import { auth, db } from './firebase'
 import { CollectionOption, MemberDoc, PostDoc, TextDoc } from './firestore'
 import { useUserStore } from './stores/user'
-import { LocalStorageKeys } from './types'
+import { LocalStorageKeys, RouteCategoryOption } from './types'
+
+/**
+ * @param route route of the category
+ * @returns description and title used in meta tag and data of that category page
+ */
+export const setUpCategoryPage = (route: RouteCategoryOption, categoryInThai: string) => {
+  let description = ''
+  const data = clubList.filter(value => value.category === route).map((value) => {
+    description += `${value.name}, `
+    return {
+      text: value.name,
+      imgUrl: value.logo,
+      href: value.url,
+    }
+  })
+  return { description, data, title: `${categoryInThai} | Club Mania 2021` }
+}
 
 export const getCollectionRef = (collectionName: CollectionOption) => {
   return collection(db.value!, collectionName)
