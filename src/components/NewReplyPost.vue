@@ -40,12 +40,15 @@
 
 <script setup lang="ts">
 import { onAuthStateChanged, Unsubscribe } from 'firebase/auth'
+import { useRouter } from 'vue-router'
 import useTextFrameConfig from './Frame/TextFrame/config'
 import { useThemeStore } from '~/stores/themes'
 import { auth } from '~/firebase'
 import { useUserStore } from '~/stores/user'
 import { getFromLocal, setToLocal } from '~/utils'
+
 const { border, placeholder, text } = useTextFrameConfig()
+const router = useRouter()
 
 const props = defineProps<{
   buttonText?: string
@@ -98,6 +101,9 @@ const onToggle = (activeState: boolean) => {
   asAnonymous.value = !asAnonymous.value
   if (auth.value!.currentUser)
     showCustomName.value = activeState
+  else
+    router.push('/login')
+
   // toggleText.value = activeState ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน'
 }
 const submit = () => {
