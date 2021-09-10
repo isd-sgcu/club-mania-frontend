@@ -52,7 +52,7 @@
   <!------blur backdrop----->
   <div
     v-if="isSearch"
-    class="fixed w-full h-full backdrop-filter backdrop-blur-[15px] bg-[rgba(0,0,0,0.5)] z-10 md:hidden"
+    class="fixed w-screen h-screen backdrop-filter backdrop-blur-[15px] bg-[rgba(0,0,0,0.5)] z-10 md:hidden"
     @click="closeSearch"
   />
   <!--This show when an user click the magnify icon or the dummy block-->
