@@ -71,13 +71,20 @@ import { PageIcon } from '~/imagePath'
 import { useSearchTerm } from '~/stores/searchTerm'
 import { useThemeStore } from '~/stores/themes'
 import { useUserStore } from '~/stores/user'
+import { getFromLocal } from '~/utils'
 
 const theme = useThemeStore()
 const user = useUserStore()
 const searchTerm = useSearchTerm()
 
 const isSearch = ref(false)
-const displayName = computed(() => user.displayName ? user.displayName : 'Anonymous')
+const displayName = computed(() => {
+  if (user.displayName)
+    return user.displayName
+
+  const savedAnnyName = getFromLocal('anonymousNameForReal')
+  return savedAnnyName ?? 'Anonymous'
+})
 const userPhotoUrl = ref('')
 const authUnsub = ref<Unsubscribe | null>(null)
 
