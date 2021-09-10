@@ -3,7 +3,7 @@
     <transition-group appear name="fade" mode="out-in">
       <!-- :maxlength="maxLength" -->
       <input
-        v-if="!asAnonymous"
+        v-if="showCustomName"
         v-model="customName"
         class="<sm:(text-sm) bg-transparent border-1 rounded-full focus:outline-none px-[12px] py-[4px] mb-3"
         :class="`border-${border[themeStore.savedTheme]} placeholder-${placeholder[themeStore.savedTheme]} text-${text[themeStore.savedTheme]}`"
@@ -65,6 +65,7 @@ const userStore: { displayName: string | null; setDisplayName: (name: string) =>
 const currentText = ref('')
 const authUnsub = ref<Unsubscribe | null>(null)
 const nameNotEditable = ref(false)
+const showCustomName = ref(false)
 
 const customName = computed(() => {
   if (userStore.displayName) return userStore.displayName
@@ -95,6 +96,8 @@ const onTextChange = (text: string) => {
 const onToggle = (activeState: boolean) => {
   emit('toggle', activeState)
   asAnonymous.value = !asAnonymous.value
+  if (auth.value!.currentUser)
+    showCustomName.value = activeState
   // toggleText.value = activeState ? 'แสดงตัวตน' : 'ไม่แสดงตัวตน'
 }
 const submit = () => {
@@ -109,8 +112,13 @@ const submit = () => {
 
 onMounted(() => {
   authUnsub.value = onAuthStateChanged(auth.value!, () => {
-    if (auth.value?.currentUser)
+    if (auth.value?.currentUser) {
       nameNotEditable.value = true
+      showCustomName.value = true
+    }
+    else {
+      showCustomName.value = false
+    }
   })
 })
 
