@@ -17,7 +17,7 @@ import iconViolet from '/icons/icon_violet.png'
 import MainMobile from '/Banners/mobile-Main.png'
 import VichagarnMobile from '/Banners/mobile-Vichagarn.png'
 import GeraMobile from '/Banners/mobile-Gera.png'
-import SlipVatMobile from '/Banners/mobile-SilpVat.png'
+import SlipVatMobile from '/Banners/mobile-Silpvat.png'
 import PatMobile from '/Banners/mobile-Pat.png'
 import OtherMobile from '/Banners/mobile-Other.png'
 
