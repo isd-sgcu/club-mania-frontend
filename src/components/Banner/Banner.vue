@@ -4,7 +4,8 @@
 
 <template>
   <div class="club-banner" :class="{'md:items-center justify-center': !isClub}" @click="directTo">
-    <img :src="BannerImage" :alt="theme" class="bg-cover w-full h-140px md:h-260px lg:(min-h-312px h-auto max-h-500px)">
+    <img :src="(isClub) ? ClubBanner[theme] : MobileBanner[theme]" :alt="theme + 'mobile'" class="bg-cover w-full h-140px md:hidden">
+    <img :src="(isClub) ? ClubBanner[theme] : CategoryBanner[theme]" :alt="theme" class="<md:hidden bg-cover w-full h-260px lg:(min-h-312px h-auto max-h-500px)">
     <span v-if="theme === 'Gera'" class="gera-glow" :class="isClub ? textPosInClubPage : '<md:bottom-10'">
       <p class="gera-border">
         {{ displayText }}
@@ -49,24 +50,12 @@ const props = defineProps<{
 const displayText = computed(() => props.isClub ? props.text : CatagoryText[props.theme])
 const styleObject: any = computed(() => TextStyle[props.theme])
 
-const textPosInClubPage = 'md:(text-[48px] left-13/100 bottom-33/100) xl:text-[64px] left-8 bottom-8'
+const textPosInClubPage = 'md:(text-[48px] left-13/100 bottom-33/100) xl:text-[64px] left-2/25 bottom-1/5'
 const router = useRouter()
 const directTo = () => {
   if (props.isClub) return
   router.push({ path: BannerRoute[props.theme] })
 }
-
-const width = ref<number>(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth)
-
-const setWindowWidth = () => {
-  width.value = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
-}
-
-const BannerImage = computed(() => {
-  if (props.isClub) return ClubBanner[props.theme]
-  return (width!.value < 768) ? MobileBanner[props.theme] : CategoryBanner[props.theme]
-})
-window.addEventListener('resize', setWindowWidth)
 </script>
 
 <style>
