@@ -13,7 +13,7 @@
       </swiper-slide>
     </swiper>
     <!---Main content-->
-    <div class=" w-full flex flex-col items-center py-12 ">
+    <div class=" w-full flex flex-col items-center py-6 md:py-12 ">
       <TextHeading class="md:mb-8">
         สำรวจชมรม
       </TextHeading>
@@ -87,11 +87,11 @@ const data = shuffle(clubList.map((value) => {
 
 <style>
 .swiper-pagination {
-  @apply bottom-6 md:bottom-12 2xl:bottom-2018;
+  @apply md:bottom-12 2xl:bottom-20;
 }
 
 .swiper-pagination-bullet {
-  @apply w-12px h-12px 2xl:(w-16px h-16px);
+  @apply w-2 h-2 md:(w-3 h-3) 2xl:(w-4 h-4);
   opacity: 1;
   background: rgba(187, 187, 187, 0.4);
 }
