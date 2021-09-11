@@ -32,13 +32,13 @@
     </div>
     <div v-else-if="props.images.length >= 4 " class="w-full h-full grid grid-cols-2 grid-rows-2 gap-3">
       <div class="flex max-h-[350px]">
-        <img class="rounded-lg cover-center cursor-pointer" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
+        <img class="w-full rounded-lg cover-center cursor-pointer" :src="images[0]" :alt="clubName" @click="() => handleOpenGallery(1)" />
       </div>
       <div class="flex max-h-[350px]">
-        <img class="rounded-lg cover-center cursor-pointer" :src="images[1]" :alt="clubName" @click="() => handleOpenGallery(2)" />
+        <img class="w-full rounded-lg cover-center cursor-pointer" :src="images[1]" :alt="clubName" @click="() => handleOpenGallery(2)" />
       </div>
       <div class="flex max-h-[350px]">
-        <img class="rounded-lg cover-center cursor-pointer" :src="images[2]" :alt="clubName" @click="() => handleOpenGallery(3)" />
+        <img class="w-full rounded-lg cover-center cursor-pointer" :src="images[2]" :alt="clubName" @click="() => handleOpenGallery(3)" />
       </div>
       <div class="relative cursor-pointer flex max-h-[350px]" @click="() => handleOpenGallery(4)">
         <div v-if="props.images.length !== 4" class="rounded-lg flex flex-row absolute w-full h-full more-detail justify-center items-center min-h-full ">
