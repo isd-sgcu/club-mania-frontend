@@ -7,5 +7,11 @@ export const info = {
   recruitmentPeriod: 'เปิดรับสมัครตลอดเวลาเลย',
   contact: 'Ig: chula_fencing \nfacebook: cu fencing club',
   badge: 'CU Fencing Club',
-  images: [],
+  images: [
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fcu-fencing-club%2F1.jpg?alt=media&token=a16f010b-3b82-4a0e-9ae5-bc9855f66602',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fcu-fencing-club%2F2.jpg?alt=media&token=a16f010b-3b82-4a0e-9ae5-bc9855f66602',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fcu-fencing-club%2F3.jpg?alt=media&token=a16f010b-3b82-4a0e-9ae5-bc9855f66602',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fcu-fencing-club%2F4.jpg?alt=media&token=a16f010b-3b82-4a0e-9ae5-bc9855f66602',
+    'https://firebasestorage.googleapis.com/v0/b/club-mania2021.appspot.com/o/geela%2Fcu-fencing-club%2F5.jpg?alt=media&token=a16f010b-3b82-4a0e-9ae5-bc9855f66602',
+  ],
 }
